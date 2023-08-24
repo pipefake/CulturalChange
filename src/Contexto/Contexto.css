@@ -1,0 +1,12 @@
+.subtitulo{
+    font-size: 30px;
+    color: #432B18;
+}
+p{
+    font-size: 16px;
+    color: #432B18;
+    text-align: initial;
+}
+.centrarParrafo{
+    text-align: center;
+}

@@ -1,0 +1,179 @@
+.div_logo_rol{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.div_logo_rol>img{
+    width: 40px;
+}
+.contenedor_info_rol{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+h3{
+    margin: 0px 0px 0px 25px;
+    font-size: 30px;
+    color: #432B18;
+    font-family: 'ABeeZee', sans-serif;
+}
+
+@keyframes animationMapa {
+    0% {
+        background-image: url(./resources/animacionmapa/Frame\ 49.png);
+    }
+
+    50% {
+        background-image: url(./resources/animacionmapa/Frame\ 50.png);
+    }
+
+    100% {
+        background-image: url(./resources/animacionmapa/Frame\ 51.png);
+    }
+}
+@keyframes animationHuaquero {
+    0% {
+        background-image: url(./resources/animacionHuaquero/Frame\ 52.png);
+    }
+
+    50% {
+        background-image: url(./resources/animacionHuaquero/Frame\ 53.png);
+    }
+
+    100% {
+        background-image: url(./resources/animacionHuaquero/Frame\ 54.png);
+    }
+}
+@keyframes animationInterprete {
+    0% {
+        background-image: url(./resources/animacionInterprete/Frame\ 55.png);
+    }
+
+    10% {
+        background-image: url(./resources/animacionInterprete/Frame\ 55.png);
+    }
+
+    20% {
+        background-image: url(./resources/animacionInterprete/Frame\ 56.png);
+    }
+    50% {
+        background-image: url(./resources/animacionInterprete/Frame\ 57.png);
+    }
+    60% {
+        background-image: url(./resources/animacionInterprete/Frame\ 58.png);
+    }
+    80% {
+        background-image: url(./resources/animacionInterprete/Frame\ 59.png);
+    }
+    90% {
+        background-image: url(./resources/animacionInterprete/Frame\ 60.png);
+    }
+    100% {
+        background-image: url(./resources/animacionInterprete/Frame\ 61.png);
+    }
+    
+}
+
+
+@keyframes animationAntropologo {
+    0% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 70.png);
+    }
+
+    10% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 69.png);
+    }
+
+    20% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 68.png);
+    }
+    50% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 67.png);
+    }
+    60% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 66.png);
+    }
+    80% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 65.png);
+    }
+    90% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 63.png);
+    }
+    100% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 62.png);
+    }
+    
+}
+
+
+.animacionmapa {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationMapa;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    width: 300px;
+    height: 298px;
+    
+
+}
+.animacionAntropologo {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationAntropologo;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    width: 300px;
+    height: 298px;
+    
+
+}
+
+.animacionInterprete{
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationInterprete;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    width: 300px;
+    height: 290px;
+}
+
+.animacionHuaquero{
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationHuaquero;
+    animation-duration: 5.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    width: 300px;
+    height: 290px;
+}
+
+
+.animacionAntropologo {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationAntropologo;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    animation-timing-function: ease-in;
+    display: flex;
+    width: 300px;
+    height: 298px;
+    
+
+}

@@ -1,0 +1,26 @@
+.btnContinuar{
+    background: #EE8249;
+    border-radius: 10px;
+    
+    width: 170px;
+    padding: 10px;
+    border: none;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 20px;
+    color: #432B18;
+}
+.btnContinuar>a{
+    text-decoration: none;
+    color: #432B18;
+}
+.btnContinuarBlock{
+    background: #90644D;
+    color: #6E3E22;
+    border-radius: 10px;
+    margin: 15px;
+    width: 204px;
+    font-size: 23px;
+    padding: 10px;
+    border: none;
+    height: 41px;
+}

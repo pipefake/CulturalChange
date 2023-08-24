@@ -1,0 +1,40 @@
+.imglogo{
+    width: 120px;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    width: 290px;
+    justify-content: space-between;
+}
+.logos{
+    width: 125px;
+    height: 125px;
+}
+li{
+    text-align: center;
+    margin-top: 20px;
+}
+.linkRoles{
+    display: flex;
+    flex-direction: column;
+}
+.divPicker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 120px;
+}
+.txtRoles{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #583d28;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 24px;
+    color: #583d28;
+    text-decoration: none;
+    align-items: center;
+}

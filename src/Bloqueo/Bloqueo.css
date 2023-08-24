@@ -1,0 +1,23 @@
+.input_acronimo{
+    border-radius: 23px;
+    height: 30px;
+    border-color: #523115;
+    background: #FED158;
+    font-size: 29px;
+    width: 170px;
+    color: #523115;
+    padding: 5px 2px 5px 10px;
+}
+.textoAcronimo{
+    -webkit-text-stroke: 1px #523115;
+    font-size: 35px;
+    margin: 9px;
+    color: #523115;
+    font-family: 'ABeeZee', sans-serif;
+}
+.contenedorAcronimo{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

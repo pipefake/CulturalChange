@@ -1,0 +1,88 @@
+.modalinput{
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: #FED158;
+    overflow: auto;
+    outline: none;
+    padding: 15px 0;
+    height: 350px;
+    top: 197px;
+    border-radius: 69px;
+    font-family: 'ABeeZee', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 -8px 14px #0000004a;
+
+}
+.modaltitulo{
+    color: #75553B;
+    font-size: 32px;
+    margin: 5px;
+    font-weight: 800;
+    font-family: 'ABeeZee', sans-serif;
+    -webkit-text-stroke-width: 1px;
+}
+
+.inputRegistro{
+    color: #000000;
+    background: #D3A14A;
+    border: none;
+    border-radius: 6px;
+    height: 29px;
+    width: 223px;
+    font-size: 14px;
+    padding-left: 8px;
+    font-weight: bolder;
+    margin-top: 12px;
+
+}
+
+.txtTerminos{
+    margin-top: 9px;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+}
+.txtRol{
+   
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+input::placeholder {
+    
+    opacity: 0.8;
+    color: #424242;
+    font-size: 11px;
+    font-family: 'ABeeZee', sans-serif;
+}
+
+.mycheck {
+    cursor: pointer;
+    background-color: #d3a14a;
+    width: 13px;
+    height: 13px;
+    appearance: none;
+    border-radius: 3px;
+}
+.mycheckRol {
+    cursor: pointer;
+    background-color: #d3a14a;
+    width: 26px;
+    height: 26px;
+    appearance: none;
+    border-radius: 13px;
+}
+
+.rolCheckbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.txtBTN{
+    color: #6E3E22;
+    text-decoration: none;
+}

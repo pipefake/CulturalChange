@@ -1,0 +1,62 @@
+@keyframes animationCronometro {
+    0% {
+        background-image: url(./Reloj/Reloj1.png);
+    }
+
+    6% {
+        background-image: url(./Reloj/Reloj2.png);
+    }
+
+    12% {
+        background-image: url(./Reloj/Reloj3.png);
+    }
+    18% {
+        background-image: url(./Reloj/Reloj4.png);
+    }
+    25% {
+        background-image: url(./Reloj/Reloj5.png);
+    }
+    50% {
+        background-image: url(./Reloj/Reloj6.png);
+    }
+    65% {
+        background-image: url(./Reloj/Reloj7.png);
+    }
+    70% {
+        background-image: url(./Reloj/Reloj8.png);
+    }
+    85% {
+        background-image: url(./Reloj/Reloj9.png);
+    }
+    90% {
+        background-image: url(./Reloj/Reloj10.png);
+    }
+    92% {
+        background-image: url(./Reloj/Reloj11.png);
+    }
+    94% {
+        background-image: url(./Reloj/Reloj12.png);
+    }
+    96% {
+        background-image: url(./Reloj/Reloj13.png);
+    }
+    98% {
+        background-image: url(./Reloj/Reloj14.png);
+    }
+    100% {
+        background-image: url(./Reloj/Reloj15.png);
+    }
+}
+.animacionCronometro {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animationCronometro;
+    animation-duration: 30s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: ease;
+    width: 60px;
+    height: 72px;
+
+}

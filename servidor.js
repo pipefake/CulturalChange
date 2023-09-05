@@ -21,7 +21,7 @@ app.use(logger);
 //despues de hacer el log llamamos a cors
 
 //vamos a hacer una whitelist 
-const whitelist = ["https://www.google.com","http://127.0.0.1:5500", "http://localhost:3500"]
+const whitelist = ["https://www.google.com","http://127.0.0.1:5500", "http://localhost:3500", "http://localhost:3000"]
 
 //en pocas palabras revisamos si el origen (quien hace la peticion) diferente al primer origen
 //cosas de notacion de node en su funcion, lo se es raro
@@ -66,8 +66,19 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.get("^/$|/index(.html)?", (req,res)=>{
 	//res.sendFile("./views/index.html",{root: __dirname});
 	//forma alternativa
-	res.sendFile(path.join(__dirname, "views", "index.html"));
+	res.sendFile(path.join(__dirname, "public", "index.html"));
 })
+
+//rutas a manifiesto y favicon
+app.get("^/$|/favicon.ico", (req,res)=>{
+	res.sendFile(path.join(__dirname, "public", "favicon.ico"));
+})
+
+app.get("^/$|/manifest.json", (req,res)=>{
+	res.sendFile(path.join(__dirname, "views", "manifest.json"));
+})
+
+//=============
 
 //llamando otra pagina
 app.get("/new-page(.html)?", (req,res)=>{

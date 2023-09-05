@@ -1,0 +1,3 @@
+20230905	17:55:33	9773b52c-ca48-4361-8f6e-a6c7dcf5bcf7	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'
+20230905	17:55:33	9ec70d4c-8ce3-45ea-b8d8-5142bc99e08f	URIError: Failed to decode param '/%PUBLIC_URL%/favicon.ico'
+20230905	17:55:42	ec46146c-bdfa-4bff-8dde-66a6e060f37c	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'

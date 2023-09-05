@@ -3,3 +3,6 @@
 20230905	17:55:42	ec46146c-bdfa-4bff-8dde-66a6e060f37c	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'
 20230905	18:01:12	ebaf173c-20a0-45cd-bbc0-03f4708d9e3b	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\manifest.json'
 20230905	18:01:23	76b117f7-12c5-4916-8022-05a39427398e	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\manifest.json'
+20230905	18:02:17	c740a41e-14a9-4fd2-a905-c1eaacd8dcb1	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
+20230905	18:02:29	60c87d3d-3ef6-44e4-b63d-3fb524def427	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
+20230905	18:02:35	0afca863-e193-429f-9ea9-1fe366ed66ca	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'

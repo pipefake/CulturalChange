@@ -78,6 +78,13 @@ app.get("^/$|/manifest.json", (req,res)=>{
 	res.sendFile(path.join(__dirname, "public", "manifest.json"));
 })
 
+app.get("^/$|/react192.png", (req,res)=>{
+	res.sendFile(path.join(__dirname, "public", "react192.png"));
+})
+
+app.get("^/$|/react512.png", (req,res)=>{
+	res.sendFile(path.join(__dirname, "public", "react512.png"));
+})
 //=============
 
 //llamando otra pagina

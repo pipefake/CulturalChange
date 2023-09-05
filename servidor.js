@@ -75,7 +75,7 @@ app.get("^/$|/favicon.ico", (req,res)=>{
 })
 
 app.get("^/$|/manifest.json", (req,res)=>{
-	res.sendFile(path.join(__dirname, "views", "manifest.json"));
+	res.sendFile(path.join(__dirname, "public", "manifest.json"));
 })
 
 //=============

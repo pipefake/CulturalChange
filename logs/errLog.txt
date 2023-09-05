@@ -1,3 +1,5 @@
 20230905	17:55:33	9773b52c-ca48-4361-8f6e-a6c7dcf5bcf7	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'
 20230905	17:55:33	9ec70d4c-8ce3-45ea-b8d8-5142bc99e08f	URIError: Failed to decode param '/%PUBLIC_URL%/favicon.ico'
 20230905	17:55:42	ec46146c-bdfa-4bff-8dde-66a6e060f37c	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'
+20230905	18:01:12	ebaf173c-20a0-45cd-bbc0-03f4708d9e3b	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\manifest.json'
+20230905	18:01:23	76b117f7-12c5-4916-8022-05a39427398e	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\manifest.json'

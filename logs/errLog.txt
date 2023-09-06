@@ -6,3 +6,4 @@
 20230905	18:02:17	c740a41e-14a9-4fd2-a905-c1eaacd8dcb1	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
 20230905	18:02:29	60c87d3d-3ef6-44e4-b63d-3fb524def427	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
 20230905	18:02:35	0afca863-e193-429f-9ea9-1fe366ed66ca	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
+20230905	18:05:02	da94af22-ab3f-4d70-b6ec-3c0f4999e0a3	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'

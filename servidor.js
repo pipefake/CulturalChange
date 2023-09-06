@@ -52,22 +52,29 @@ app.use(express.urlencoded({extended: false}));
 //nos permite sacar json de las respuestas
 app.use(express.json());
 
-//para mostrar los archivos que esten en carpeta publica
+//para mostrar los archivos que esten en carpeta publica a express, diciendole
+//que son archivos estaticos
 app.use(express.static(path.join(__dirname, "/public")));
+
+app.use("/", require("./routes/root"));
 
 //-----------------------------------------------------
 //cuando el servidor reciba una peticion a raiz (/) le respondemos
 //el archivo y encima le decimos la raiz en node
 
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 //magia de express, podemos decir
 //^ inicia con eso
 //$ finaliza con esto, | o es esta ruta
 //(.html)? para decir que es opcional si pone la extension
-app.get("^/$|/index(.html)?", (req,res)=>{
+//app.get("^/$|/index(.html)?", (req,res)=>{
 	//res.sendFile("./views/index.html",{root: __dirname});
 	//forma alternativa
-	res.sendFile(path.join(__dirname, "public", "index.html"));
-})
+//	res.sendFile(path.join(__dirname, "public", "index.html"));
+//})
+
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 //rutas a manifiesto y favicon
 app.get("^/$|/favicon.ico", (req,res)=>{

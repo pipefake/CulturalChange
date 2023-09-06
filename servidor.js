@@ -54,7 +54,7 @@ app.use(express.json());
 
 //para mostrar los archivos que esten en carpeta publica a express, diciendole
 //que son archivos estaticos
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
 

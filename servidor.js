@@ -1,3 +1,5 @@
+//variables que no queremos en el git
+require("dotenv").config()
 const express = require("express");
 const app = express();
 const path = require('path');
@@ -12,6 +14,16 @@ const {logger} = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
 //para hacer parse a galletas
 const cookieParser = require("cookie-parser")
+//llamando a la carpeta de origenes permitidos para enviar a cors la lista
+const corsOptions = require("./config/corsOptions")
+//conexion a base de datos
+const mongoose = require("mongoose")
+const connectDB = require("./config/dbConn")
+
+
+//conexion base de datos
+connectDB();
+
 //--------------------------------------------
 //agregando midwares, cosas que estan entre peticion y respuesta
 
@@ -19,32 +31,9 @@ const cookieParser = require("cookie-parser")
 //middleware y el archivo logEvents, llamando solo a logger que llama a log event
 app.use(logger);
 
-//despues de hacer el log llamamos a cors
-
-//vamos a hacer una whitelist 
-const whitelist = ["https://www.google.com","http://127.0.0.1:5500", "http://localhost:3500", "http://localhost:3000"]
-
-//en pocas palabras revisamos si el origen (quien hace la peticion) diferente al primer origen
-//cosas de notacion de node en su funcion, lo se es raro
-//si el origen esta en los indices del arreglo, le devolvemos null=error, 
-//true es decir "si es el mismo origen, dejalo pasar"
-
-//IMPORTANTE, despues de desarrollar se borra || !origin
-
-const corsOptions = {
-	origin: (origin, callback) => {
-		if(whitelist.indexOf(origin) !== -1 || !origin){
-			callback(null, true);
-		}else{
-			callback(new Error("Denegado por CORS"));
-		}
-	},
-	optionsSuccessStatus: 200
-}
-
-//para activar la white list se descomenta esto y se quita la linea de abajo
-app.use(cors(corsOptions));
+//cors con lista de permitidos
 //Cross Origin Resource Sharing
+app.use(cors(corsOptions));
 //app.use(cors());
 
 //sacar cosas de url
@@ -112,4 +101,14 @@ app.all("*", (req,res)=>{
 //la logica de la funcion esta en middleware en 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//escuchamos el evento de abiero (la conexion a la bd)
+mongoose.connection.once("open", () => {
+	console.log("Connected to MongoDB")
+	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+})
+
+//catch errores en conexion
+mongoose.connection.on("error", err => {
+	console.log(err);
+	logger(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,`mongoErrLog.log`)
+})

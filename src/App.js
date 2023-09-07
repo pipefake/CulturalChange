@@ -1,16 +1,15 @@
-import './App.css';
+import "./App.css";
 
-import { InputCodigo } from './InputCodigo';
+import { InputCodigo } from "./InputCodigo";
 
-import { Header } from './Header';
-import { Contexto } from './Contexto';
-import { Introduccion } from './Introduccion';
+import { Header } from "./Header";
+import { Contexto } from "./Contexto";
+import { Introduccion } from "./Introduccion";
 
-import { HashRouter, Routes, Route } from 'react-router-dom';
-import { Picker } from './Picker';
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { Picker } from "./Picker";
 
 function App() {
-
   const cartas = [1, 2, 3, 4, 5];
 
   function getRandomInt(min, max) {
@@ -26,16 +25,13 @@ function App() {
         {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
 
         <Routes>
+          <Route path="/*" element={<p>no encontrado</p>} />
           <Route path="/" element={<InputCodigo></InputCodigo>} />
           <Route path="/introduccion" element={<Picker></Picker>} />
-          <Route path="/*" element={<p>no encontrado</p>} />
         </Routes>
       </HashRouter>
-
     </div>
   );
 }
 
 export default App;
-
-

@@ -16,7 +16,9 @@
     align-items: center;
     box-shadow: inset 0 -8px 14px #0000004a;
 
-}.modalcarga{
+}
+
+.modalcarga{
     position: absolute;
     inset: 40px;
     border: 1px solid rgb(204, 204, 204);
@@ -35,6 +37,7 @@
     box-shadow: inset 0 -8px 14px #0000004a;
 
 }
+
 .modaltitulo{
     color: #75553B;
     font-size: 32px;
@@ -64,12 +67,14 @@
     display: flex;
     align-items: center;
 }
+
 .txtRol{
    
     font-size: 14px;
     display: flex;
     align-items: center;
 }
+
 input::placeholder {
     
     opacity: 0.8;
@@ -78,7 +83,7 @@ input::placeholder {
     font-family: 'ABeeZee', sans-serif;
 }
 
-.mycheck {
+/* .mycheck {
     cursor: pointer;
     background-color: #d3a14a;
     width: 13px;
@@ -86,7 +91,49 @@ input::placeholder {
     appearance: none;
     border-radius: 3px;
 }
+
+.mycheck:checked {
+    cursor: pointer;
+    background-color: #523115;
+    width: 13px;
+    height: 13px;
+    appearance: none;
+    border-radius: 3px;
+} */
+
 .mycheckRol {
+    cursor: pointer;
+    background-color: transparent; /* Haz el fondo transparente aquí */
+    width: 26px;
+    height: 26px;
+    position: relative; /* Hazlo relativo para que pueda contener pseudo-elementos posicionados */
+    appearance: none;
+    border-radius: 13px;
+    overflow: hidden; /* Esconde cualquier contenido fuera de los límites */
+}
+
+/* Establece estilos predeterminados para el pseudo-elemento, que será el círculo visible */
+.mycheckRol::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #d3a14a;
+    border-radius: inherit; /* Toma el radio de la frontera de su padre */
+}
+
+/* Estilo cuando está seleccionado */
+.mycheckRol:checked::before {
+    width: 80%; /* Reducir el ancho al 80% */
+    height: 80%; /* Reducir la altura al 80% */
+    background-color: #EE8249;
+    position: absolute; /* Absoluto para que puedas centrarlo */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el pseudo-elemento */
+}
+
+/* .mycheckRol1 {
     cursor: pointer;
     background-color: #d3a14a;
     width: 26px;
@@ -95,15 +142,26 @@ input::placeholder {
     border-radius: 13px;
 }
 
+.mycheckRol2 {
+    cursor: pointer;
+    background-color: #d3a14a;
+    width: 26px;
+    height: 26px;
+    appearance: none;
+    border-radius: 13px;
+} */
+
 .rolCheckbox{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .txtBTN{
     color: #6E3E22;
     text-decoration: none;
 }
+
 .btnContinuarUnblock{
     -webkit-font-smoothing: antialiased;
     background: #EE8249;
@@ -116,6 +174,7 @@ input::placeholder {
     border: none;
     height: 41px;
 }
+
 .btnContinuarBlock:hover {
     background: #90644D;
     color: #6E3E22;
@@ -127,6 +186,7 @@ input::placeholder {
     border: none;
     height: 41px;
 }
+
 .btnContinuarUnblock:hover:not([disabled]) {
     background: #b06337;
     color: #412c19;

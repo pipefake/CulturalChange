@@ -6,3 +6,9 @@
 		/%PUBLIC_URL%/favicon.ico	undefined
 20230907	16:57:00	ee239d6f-8b63-41fd-8b8b-ef7c562ea7dd	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'	GET
 		/hola	undefined
+20230907	23:04:15	7fa6793e-0953-4015-8483-f5c6300c727f	SyntaxError: Unexpected token a in JSON at position 42	POST
+		/users	undefined
+20230907	23:04:39	046123c4-584e-40d8-a9fc-8ee7157e03fb	ValidationError: User validation failed: id: Cast to Number failed for value "a" (type string) at path "id"	POST
+		/users	undefined
+20230907	23:04:49	4b856b2d-91d4-45c7-9d30-f26f7483ea79	SyntaxError: Unexpected token e in JSON at position 39	POST
+		/users	undefined

@@ -20,11 +20,11 @@ const getAllUsers = asyncHandler(async(req, res) =>{
 //ruta: POST /users
 //acceso: privado
 const createNewUser = asyncHandler(async(req, res) =>{
-	const {username, id, rol, correo} = req.body
+	const {username, id, correo, rol} = req.body
 
 	//comprobacion que no son campos vacios
 	if(!username || !id || !correo ||!rol){
-		return res.status(400).json({message: "Todos los campos son requeridos"});
+		return res.status(400).json({message: `Todos los campos son requeridos: ${username} ${id} ${correo} ${rol} `});
 	}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS

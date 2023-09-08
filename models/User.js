@@ -1,4 +1,4 @@
-const mongoose = requie("mongoose")
+const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
 	username:{
@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
 		required: true
 	},
 	id:{
-		type: Integer,
+		type: Number,
 		required: true
 	},
 	correo:{

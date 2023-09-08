@@ -33,8 +33,8 @@ app.use(logger);
 
 //cors con lista de permitidos
 //Cross Origin Resource Sharing
-app.use(cors(corsOptions));
-//app.use(cors());
+//app.use(cors(corsOptions));
+app.use(cors());
 
 //sacar cosas de url
 app.use(express.urlencoded({extended: false}));
@@ -49,7 +49,11 @@ app.use(cookieParser());
 //que son archivos estaticos
 app.use(express.static(path.join(__dirname, "public")));
 
+//==============
 app.use("/", require("./routes/root"));
+//enrutando a un html para usuarios
+app.use("/users", require("./routes/userRoutes"))
+//==============
 
 //rutas a manifiesto y favicon
 app.get("^/$|/favicon.ico", (req,res)=>{
@@ -68,16 +72,6 @@ app.get("^/$|/react512.png", (req,res)=>{
 	res.sendFile(path.join(__dirname, "public", "react512.png"));
 })
 //=============
-
-//llamando otra pagina
-app.get("/new-page(.html)?", (req,res)=>{
-	res.sendFile(path.join(__dirname, "views", "new-page.html"));
-})
-
-//redireccionando
-app.get("/old-page(.html)?", (req,res)=>{
-	res.redirect(301,"/new-page.html"); //302 por defecto, lo de 301 opcional
-})
 
 //para todos los casos que no se cumplan, llevame a 404 personalizado
 //cambiamos app.get("/*",)

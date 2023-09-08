@@ -22,7 +22,8 @@ const logEvents = async (message, logName) => {
 //funcion para llamar y hacer el registro
 const logger = ((req,res,next)=>{
 	//que metodo se usa, quien lo usa y el archivo que pide, nombre archivo de log a crear
-	logEvents(`${req.method} \t ${req.headers.origin} \t ${req,path}`, "reqLog.txt");
+	//logEvents(`${req.method} \t ${req.headers} \t ${req.path}`, "reqLog.txt");
+    logEvents(`${req.method} \t ${req.headers.origin} \t ${req.path}`, "reqLog.txt");
 	console.log(`${req.method} ${req.path}`);
 	next();
 });

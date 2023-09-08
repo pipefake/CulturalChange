@@ -1,2 +1,8 @@
 20230905	18:02:35	0afca863-e193-429f-9ea9-1fe366ed66ca	URIError: Failed to decode param '/%PUBLIC_URL%/react192.png'
 20230905	18:05:02	da94af22-ab3f-4d70-b6ec-3c0f4999e0a3	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'
+20230907	16:41:45	444df570-7c13-46dd-b392-c4a7a32b08a7	URIError: Failed to decode param '/%PUBLIC_URL%/manifest.json'	GET
+		/%PUBLIC_URL%/manifest.json	undefined
+20230907	16:41:45	f13b71b1-ed3a-487d-95ef-df8dc9908988	URIError: Failed to decode param '/%PUBLIC_URL%/favicon.ico'	GET
+		/%PUBLIC_URL%/favicon.ico	undefined
+20230907	16:57:00	ee239d6f-8b63-41fd-8b8b-ef7c562ea7dd	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'	GET
+		/hola	undefined

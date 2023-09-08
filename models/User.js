@@ -9,13 +9,13 @@ const userSchema = new mongoose.Schema({
 		type: Integer,
 		required: true
 	},
-	rol:{
+	correo:{
 		type: String,
 		required: true
 	},
-	active:{
-		type: Boolean,
-		default: false
+	rol:{
+		type: String,
+		required: true
 	}
 })
 

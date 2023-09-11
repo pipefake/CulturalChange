@@ -16,6 +16,11 @@ const userSchema = new mongoose.Schema({
 	rol:{
 		type: String,
 		required: true
+	},
+	finalizadaTarea:{
+		type: Boolean,
+		default: false,
+		required: true
 	}
 })
 

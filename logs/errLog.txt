@@ -12,3 +12,79 @@
 		/users	undefined
 20230907	23:04:49	4b856b2d-91d4-45c7-9d30-f26f7483ea79	SyntaxError: Unexpected token e in JSON at position 39	POST
 		/users	undefined
+20230911	17:47:47	d74f455d-4615-46cd-a5ad-bcdac947d67e	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'	PATCH
+		/users	undefined
+20230911	17:51:06	f6bfb0b5-6f74-4e16-9dce-405b848801e8	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'	PATCH
+		/users	undefined
+20230911	17:56:20	250d2698-ce21-4bbc-846b-374ab6015692	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	17:56:42	9cea8f8e-1f5f-45bf-b394-042acce3ac8e	CastError: Cast to ObjectId failed for value "2" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:24:13	b278210a-d0e4-4c1b-9eb9-5603661b1d69	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:26:14	f5d273c9-94f2-424b-9e8e-842d9a7a208e	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:26:35	f6319655-6c6e-44d4-9ee1-9c5e214a23aa	CastError: Cast to ObjectId failed for value "12" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:32:35	363bf8ba-d4f6-4ade-8889-b875efccad51	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:33:33	af1633df-7191-4aac-bdfb-b8a442fcffba	ReferenceError: _id is not defined	PATCH
+		/users	undefined
+20230911	18:33:51	f1590c84-73fc-456d-9e41-85aaf051627a	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:42:04	589a53e2-9dea-42b3-801c-08c2b1ae670d	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:47:53	b21eab0f-5899-4dc1-ac55-e9ed3f200c7b	CastError: Cast to ObjectId failed for value "usuario1" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:50:24	18d67b96-7a1e-4322-ac14-fe78112c22cc	SyntaxError: Unexpected token ` in JSON at position 14	PATCH
+		/users	undefined
+20230911	18:50:34	bb175e89-9fe3-4b57-9b25-ebe75b63a906	CastError: Cast to ObjectId failed for value "usuario1" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:50:46	a081c542-8160-4119-b385-0137d90f9317	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	18:53:03	31f3693f-d621-43c0-94cc-c16938cfc587	CastError: Cast to ObjectId failed for value "1" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:17:12	29974dcc-dd41-41c8-b7bf-99f15afed149	CastError: Cast to ObjectId failed for value "2" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:18:24	06c785fb-805e-4df2-b6b5-7d4f40a36be7	CastError: Cast to ObjectId failed for value "2" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:19:28	2a679d53-95b8-490e-a293-827627569463	CastError: Cast to ObjectId failed for value "2" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:21:01	6f62cb72-da0a-4559-bc05-84a222a95984	TypeError: bcrypt is not a function	PATCH
+		/users	undefined
+20230911	19:35:53	9ad3ba34-723a-4f0f-aacf-c5377ead0064	CastError: Cast to ObjectId failed for value "3" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:41:43	74e31be7-d2af-40e6-a390-9afe9d74ef3d	ValidationError: User validation failed: id: Path `id` is required.	POST
+		/users	undefined
+20230911	19:45:22	01e3fc3d-46e2-48b5-951a-48a4c9544f41	ReferenceError: id is not defined	PATCH
+		/users	undefined
+20230911	19:45:46	08f69e94-fef7-499e-9a01-acfe31b206af	ReferenceError: id is not defined	PATCH
+		/users	undefined
+20230911	19:46:06	84d05bc4-ad6d-4f47-b036-71c6a0bc7876	ReferenceError: id is not defined	PATCH
+		/users	undefined
+20230911	19:47:07	c8cea52c-61a2-4d42-90e4-bf088d16ac67	CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:55:36	9208fa78-9af1-415e-9a17-80ebb156e6ea	CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:56:27	d707e0f2-41cf-402c-b8ca-c6d63be8dd44	CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	19:59:46	0545025f-2ca4-4cca-a0ee-ebd6e10d9906	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type string) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:00:04	438ea89f-7f94-4430-96aa-079445c4e062	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type number) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:02:19	38fc2aaa-133d-45ca-b9a3-42447af9cde7	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type string) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:02:27	e6224ab4-e796-434a-9437-30bf9482cf7e	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type number) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:04:48	b36f4460-47f9-4398-ac09-83b4cf1fd175	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type number) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:05:34	37586047-52c8-4eea-afb1-9d06e488e232	ValidationError: User validation failed: identificacion: Cast to ObjectId failed for value "1" (type string) at path "identificacion" because of "BSONError"	POST
+		/users	undefined
+20230911	20:17:48	7a514000-b674-49f2-8e93-adc5f755cdf1	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\Repositorio v2\proyect\views\404.html'	GET
+		/users/identificacion=1	undefined
+20230911	20:30:09	eb99fc60-36df-4bd1-8212-59d06e4000f5	CastError: Cast to ObjectId failed for value "2" (type string) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	20:30:20	6b39fff3-8c66-4059-822a-08abc29d702c	CastError: Cast to ObjectId failed for value "2" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined
+20230911	20:30:51	1cff2da5-568f-43dc-843c-aaffa33cfba2	CastError: Cast to ObjectId failed for value "2" (type number) at path "_id" for model "User"	PATCH
+		/users	undefined

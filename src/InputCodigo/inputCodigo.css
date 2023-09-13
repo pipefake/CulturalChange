@@ -17,8 +17,138 @@
     box-shadow: inset 0 -8px 14px #0000004a;
 
 }
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modaltitulo{
+    color: #75553B;
+    font-size: 32px;
+    margin: 5px;
+    font-weight: 800;
+    font-family: 'ABeeZee', sans-serif;
+    -webkit-text-stroke-width: 1px;
+}
 
-.modalcarga{
+.inputRegistro{
+    -webkit-font-smoothing: antialiased;
+    background: #D3A14A;
+    border: none;
+    border-radius: 6px;
+    height: 29px;
+    width: 223px;
+    padding-left: 8px;
+    font-weight: bolder;
+    margin-bottom: 4px;
+    margin-top: 0 !important;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 12px;
+    color: #424242;
+
+}
+
+.txtTerminos{
+    margin-top: 9px;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+}
+
+input::placeholder {
+    
+    opacity: 0.8;
+    color: #424242;
+    font-size: 11px;
+    font-family: 'ABeeZee', sans-serif;
+}
+
+.mycheck {
+    cursor: pointer;
+    background-color: #d3a14a;
+    width: 13px;
+    height: 13px;
+    appearance: none;
+    border-radius: 3px;
+}
+
+.rolCheckbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.txtBTN{
+    color: #6E3E22;
+    text-decoration: none;
+}
+
+
+.divtxtEscribiendo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+
+
+}
+.ptxtEscribiendo {
+    font-size: 10px;
+    margin: 0;
+}
+.inputRegistronombre{
+    -webkit-font-smoothing: antialiased;
+    background: #D3A14A;
+    border: none;
+    border-radius: 6px;
+    height: 29px;
+    width: 223px;
+    padding-left: 8px;
+    font-weight: bolder;
+    margin-bottom: 4px;
+    margin-top: 0 !important;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 12px;
+    color: #424242;
+    
+}
+.errorTxt{
+    -webkit-font-smoothing: antialiased;
+    text-align: initial;
+    font-size: 9px;
+    color: red;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: 600;
+    margin: 1px;
+}
+.divError{
+    -webkit-font-smoothing: antialiased;
+    font-family: 'ABeeZee', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -3px;
+}
+
+
+//////
+
+
+
+.mychecked {
+    cursor: pointer;
+    background-color: #90644d;
+    width: 13px;
+    height: 13px;
+    appearance: none;
+    border: 3px solid #d3a14a;
+    border-radius: 3px;
+}
+
+
+
+.modalinput, .modalcarga {
     position: absolute;
     inset: 40px;
     border: 1px solid rgb(204, 204, 204);
@@ -35,10 +165,9 @@
     justify-content: center;
     align-items: center;
     box-shadow: inset 0 -8px 14px #0000004a;
-
 }
 
-.modaltitulo{
+.modaltitulo {
     color: #75553B;
     font-size: 32px;
     margin: 5px;
@@ -47,43 +176,44 @@
     -webkit-text-stroke-width: 1px;
 }
 
-.inputRegistro{
-    color: #000000;
+.inputRegistro {
+    -webkit-font-smoothing: antialiased;
     background: #D3A14A;
     border: none;
     border-radius: 6px;
     height: 29px;
     width: 223px;
-    font-size: 14px;
     padding-left: 8px;
     font-weight: bolder;
-    margin-top: 12px;
-
+    margin-bottom: 4px;
+    margin-top: 0 !important;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 12px;
+    color: #424242;
 }
 
-.txtTerminos{
-    margin-top: 9px;
-    font-size: 9px;
+.txtTerminos {
     display: flex;
     align-items: center;
+    font-size: 9px;
 }
-
-.txtRol{
-   
-    font-size: 14px;
+form{
     display: flex;
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 input::placeholder {
-    
     opacity: 0.8;
     color: #424242;
     font-size: 11px;
     font-family: 'ABeeZee', sans-serif;
 }
 
-/* .mycheck {
+.mycheck {
     cursor: pointer;
     background-color: #d3a14a;
     width: 13px;
@@ -91,93 +221,41 @@ input::placeholder {
     appearance: none;
     border-radius: 3px;
 }
-
-.mycheck:checked {
-    cursor: pointer;
-    background-color: #523115;
-    width: 13px;
-    height: 13px;
-    appearance: none;
-    border-radius: 3px;
-} */
 
 .mycheckRol {
     cursor: pointer;
-    background-color: transparent; /* Haz el fondo transparente aquí */
+    background-color: #d3a14a;
     width: 26px;
     height: 26px;
-    position: relative; /* Hazlo relativo para que pueda contener pseudo-elementos posicionados */
     appearance: none;
     border-radius: 13px;
-    overflow: hidden; /* Esconde cualquier contenido fuera de los límites */
 }
 
-/* Establece estilos predeterminados para el pseudo-elemento, que será el círculo visible */
-.mycheckRol::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: #d3a14a;
-    border-radius: inherit; /* Toma el radio de la frontera de su padre */
-}
-
-/* Estilo cuando está seleccionado */
-.mycheckRol:checked::before {
-    width: 80%; /* Reducir el ancho al 80% */
-    height: 80%; /* Reducir la altura al 80% */
-    background-color: #EE8249;
-    position: absolute; /* Absoluto para que puedas centrarlo */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrar el pseudo-elemento */
-}
-
-/* .mycheckRol1 {
+.mycheckedRol {
     cursor: pointer;
-    background-color: #d3a14a;
+    background-color: #90644d;
     width: 26px;
     height: 26px;
+    border: 2.5px solid #d3a14a;
     appearance: none;
     border-radius: 13px;
 }
 
-.mycheckRol2 {
-    cursor: pointer;
-    background-color: #d3a14a;
-    width: 26px;
-    height: 26px;
-    appearance: none;
-    border-radius: 13px;
-} */
-
-.rolCheckbox{
+.rolCheckbox {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.txtBTN{
+.txtBTN {
     color: #6E3E22;
     text-decoration: none;
 }
 
-.btnContinuarUnblock{
+.btnContinuarUnblock, .btnContinuarBlock:hover {
     -webkit-font-smoothing: antialiased;
     background: #EE8249;
     color: #432B18;
-    border-radius: 10px;
-    margin: 15px;
-    width: 204px;
-    font-size: 23px;
-    padding: 10px;
-    border: none;
-    height: 41px;
-}
-
-.btnContinuarBlock:hover {
-    background: #90644D;
-    color: #6E3E22;
     border-radius: 10px;
     margin: 15px;
     width: 204px;
@@ -197,4 +275,41 @@ input::placeholder {
     padding: 10px;
     border: none;
     height: 41px;
+}
+
+.divtxtEscribiendo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.ptxtEscribiendo {
+    font-size: 10px;
+    margin: 0;
+}
+
+.errorTxt {
+    -webkit-font-smoothing: antialiased;
+    text-align: initial;
+    font-size: 9px;
+    color: red;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: 600;
+    margin: 1px;
+}
+
+.divError {
+    -webkit-font-smoothing: antialiased;
+    font-family: 'ABeeZee', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -3px;
+}
+.txtRol{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
 }

@@ -1,0 +1,9 @@
+/* EnviandoCarga.css */
+.rotating-image {
+    animation: spin 2s linear infinite; /* 2 segundos de duración, animación infinita */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); } /* Cambiado a -360deg para la rotación en sentido antihorario */
+  }

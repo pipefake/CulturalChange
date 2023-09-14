@@ -90,7 +90,7 @@ function InputCodigo() {
         throw new Error("El campo Documento de Identidad es obligatorio.");
       }
       if (!userData.email) {
-        throw new Error("El campo Correo es obligatorio.");
+        throw  new Error("El campo Correo es obligatorio.");
       }
       if (!userData.acceptTerms) {
         throw new Error("Debes aceptar los términos y condiciones.");
@@ -101,7 +101,7 @@ function InputCodigo() {
       if (userData.student && userData.visitor) {
         throw new Error("No puedes seleccionar ambas opciones al mismo tiempo.");
       }
-
+  
       // Construir el objeto JSON a enviar
       const requestBody = {
         nombre: userData.name,
@@ -109,7 +109,7 @@ function InputCodigo() {
         correo: userData.email,
         rol: "huaquero" // Rol por defecto
       };
-
+  
       // Realizar la solicitud POST al servidor
       const response = await fetch('https://localhost:3500/users', {
         method: 'POST',
@@ -118,21 +118,26 @@ function InputCodigo() {
         },
         body: JSON.stringify(requestBody),
       });
-
+  
       // Verificar la respuesta del servidor
       if (!response.ok) {
+        setErrorEnviandoFormulario(true); // Establecer errorEnviandoFormulario en true
         throw new Error(`Error en la solicitud: ${response.statusText}`);
+      } else {
+        // Si la respuesta es exitosa, establecer errorEnviandoFormulario en false
+        setErrorEnviandoFormulario(true);
       }
-
+  
       // Si todas las validaciones pasan y la solicitud es exitosa, puedes realizar alguna acción
       console.log('Datos enviados correctamente.');
-
+  
       // Redirigir a la ruta "/introduccion"
       navigate('/introduccion');
     } catch (error) {
       console.error(`Error: ${error.message}`);
     }
   };
+  
 
 
   const [errorEmail, setErrorEmail] = useState('');
@@ -190,6 +195,7 @@ function InputCodigo() {
   };
 
   const [errorIdentification, setErrorIdentification] = useState('');
+  const [errorEnviandoFormulario, setErrorEnviandoFormulario] = useState(false);
 
   const handleIdentificationInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -251,9 +257,9 @@ function InputCodigo() {
         setShowModal(false);
         // Redirigir a la ruta "/introduccion" después de mostrar el modal
         navigate('/introduccion');
-      }, 2000); // 2000 ms = 2 segundos
+      }, 1000); // 2000 ms = 2 segundos
     }
-  }, 3000); // 5000 ms = 5 segundos
+  }, 1000); // 5000 ms = 5 segundos
 };
 
 

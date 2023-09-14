@@ -1,5 +1,6 @@
 import React from 'react';
 import './ErrorCarga.css';
+import error from './error.png';
 
 function ErrorCarga({ onClose }) {
       
@@ -10,10 +11,12 @@ function ErrorCarga({ onClose }) {
   return (
     <div className="modalinput">
       <h2 className='modaltitulo'>Error</h2>
-      <p>Verifique la información diligenciada</p>
-      <h1 className='imagenpruebaX'>X</h1>
+      <img src={error} alt="Logo de error" />
+            
+      <p className='font-p'>Verifique la información diligenciada</p>
+      
       {/* Agrega detalles sobre el error si lo deseas */}
-      <button onClick={handleCerrarErrorClick}>Cerrar Error</button>
+      <button className='btnContinuar' onClick={handleCerrarErrorClick}>Cerrar</button>
     </div>
   );
 };

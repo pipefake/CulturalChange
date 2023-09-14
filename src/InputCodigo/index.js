@@ -125,7 +125,7 @@ function InputCodigo() {
         throw new Error(`Error en la solicitud: ${response.statusText}`);
       } else {
         // Si la respuesta es exitosa, establecer errorEnviandoFormulario en false
-        setErrorEnviandoFormulario(true);
+        setErrorEnviandoFormulario(false);
       }
   
       // Si todas las validaciones pasan y la solicitud es exitosa, puedes realizar alguna acción
@@ -241,7 +241,7 @@ function InputCodigo() {
   // Simular una demora en la conexión con el servidor (5 segundos)
   setTimeout(() => {
     // Simular un error (puedes cambiar esta lógica según tus necesidades)
-    const hasError = true; // Cambiar a 'true' para simular un error
+    const hasError = setErrorEnviandoFormulario; // Cambiar a 'true' para simular un error
 
     if (hasError) {
       console.log(errorOccurred);

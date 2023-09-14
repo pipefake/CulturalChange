@@ -252,30 +252,34 @@ input::placeholder {
     text-decoration: none;
 }
 
-.btnContinuarUnblock, .btnContinuarBlock:hover {
-    -webkit-font-smoothing: antialiased;
-    background: #EE8249;
-    color: #432B18;
-    border-radius: 10px;
-    margin: 15px;
-    width: 204px;
-    font-size: 23px;
-    padding: 10px;
-    border: none;
-    height: 41px;
+.btnContinuarUnblock,
+.btnContinuarBlock {
+  -webkit-font-smoothing: antialiased;
+  background: #EE8249;
+  color: #432B18;
+  border-radius: 10px;
+  margin: 15px;
+  width: 204px;
+  font-size: 23px;
+  padding: 10px;
+  border: none;
+  height: 41px;
+  transition: background-color 0.3s, color 0.3s; /* Agregamos una transición para suavizar el cambio de colores */
 }
 
-.btnContinuarUnblock:hover:not([disabled]) {
-    background: #b06337;
-    color: #412c19;
-    border-radius: 10px;
-    margin: 15px;
-    width: 204px;
-    font-size: 23px;
-    padding: 10px;
-    border: none;
-    height: 41px;
+.btnContinuarUnblock:hover:not([disabled]),
+.btnContinuarBlock:hover:not([disabled]) {
+  background: #b06337;
+  color: #412c19;
+  border-radius: 10px;
+  margin: 15px;
+  width: 204px;
+  font-size: 23px;
+  padding: 10px;
+  border: none;
+  height: 41px;
 }
+
 
 .divtxtEscribiendo {
     display: flex;

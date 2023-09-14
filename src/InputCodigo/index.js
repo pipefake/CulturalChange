@@ -11,6 +11,7 @@ import { ErrorCarga } from '../ErrorCarga';
 import { SentInformacion } from '../SentInformacion';
 
 function InputCodigo() {
+
   // const auth = useAuth();
   const [username, setUsername] = React.useState('');
 
@@ -78,7 +79,7 @@ function InputCodigo() {
     setShowModal(true);
   };
 
-  const handleModalSubmit = (e) => {
+  const handleModalSubmit = async (e) => {
     e.preventDefault();
     try {
       // Realizar validaciones adicionales aquí
@@ -101,37 +102,67 @@ function InputCodigo() {
         throw new Error("No puedes seleccionar ambas opciones al mismo tiempo.");
       }
 
-      // Si todas las validaciones pasan, puedes realizar alguna acción, como enviar los datos al servidor.
-      console.log(userData);
+      // Construir el objeto JSON a enviar
+      const requestBody = {
+        nombre: userData.name,
+        identificacion: userData.identification,
+        correo: userData.email,
+        rol: "huaquero" // Rol por defecto
+      };
+
+      // Realizar la solicitud POST al servidor
+      const response = await fetch('https://localhost:3500/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      // Verificar la respuesta del servidor
+      if (!response.ok) {
+        throw new Error(`Error en la solicitud: ${response.statusText}`);
+      }
+
+      // Si todas las validaciones pasan y la solicitud es exitosa, puedes realizar alguna acción
+      console.log('Datos enviados correctamente.');
 
       // Redirigir a la ruta "/introduccion"
       navigate('/introduccion');
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      console.error(`Error: ${error.message}`);
     }
   };
+
 
   const [errorEmail, setErrorEmail] = useState('');
 
   const handleEmailInputChange = (event) => {
     const { name, value, type, checked } = event.target;
-
-    // Valida que el valor sea una dirección de correo electrónico válida utilizando una expresión regular
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (!emailRegex.test(value)) {
-      setErrorEmail('El correo debe contener @.com.');
+  
+    // Verifica si el valor no está vacío antes de validar el formato del correo electrónico
+    if (value === '') {
+      setErrorEmail(''); // Limpia el mensaje de error si el campo está vacío
     } else {
-      // El valor del correo electrónico es válido
-      // Puedes realizar acciones adicionales aquí si es necesario
-      setErrorEmail('');
+      // Valida que el valor sea una dirección de correo electrónico válida utilizando una expresión regular
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  
+      if (!emailRegex.test(value)) {
+        setErrorEmail('El correo debe contener @ y .com.');
+      } else {
+        // El valor del correo electrónico es válido
+        setErrorEmail('');
+      }
     }
-    // Actualiza el estado con el valor válido
+  
+    // Actualiza el estado con el valor ingresado
     setUserData({ ...userData, [name]: value });
-
+  
     // Comprueba si los campos requeridos están completos
     updateFormComplete();
   };
+  
+  
 
 
   const [name, setName] = useState('');
@@ -193,40 +224,48 @@ function InputCodigo() {
 
 
   const handleEnviarClick = () => {
-    // Realiza cualquier lógica de envío de datos aquí
-    setIsLoading(true);
+  // Verificar si los campos requeridos están completos antes de realizar la acción
+  if (!areFieldsComplete()) {
+    return; // No hagas nada si el formulario no está completo
+  }
 
-    // Simular una demora en la conexión con el servidor (5 segundos)
-    setTimeout(() => {
-      // Simular un error (puedes cambiar esta lógica según tus necesidades)
-      const hasError = true; // Cambiar a 'true' para simular un error
+  // Realiza cualquier lógica de envío de datos aquí
+  setIsLoading(true);
 
-      if (hasError) {
-        console.log(errorOccurred);
-        setErrorOccurred(true);
-        setIsLoading(false);
-      } else {
-        // Si no hay error, mostrar el modal de SentInformacion durante 2 segundos
-        setSentInformation(true);
-        setIsLoading(false);
+  // Simular una demora en la conexión con el servidor (5 segundos)
+  setTimeout(() => {
+    // Simular un error (puedes cambiar esta lógica según tus necesidades)
+    const hasError = true; // Cambiar a 'true' para simular un error
 
-        setTimeout(() => {
-          setSentInformation(false);
-          setShowModal(false);
-          // Redirigir a la ruta "/introduccion" después de mostrar el modal
-          navigate('/introduccion');
-        }, 2000); // 2000 ms = 2 segundos
-      }
-    }, 3000); // 5000 ms = 5 segundos
-  };
+    if (hasError) {
+      console.log(errorOccurred);
+      setErrorOccurred(true);
+      setIsLoading(false);
+    } else {
+      // Si no hay error, mostrar el modal de SentInformacion durante 2 segundos
+      setSentInformation(true);
+      setIsLoading(false);
 
-  const areFieldsComplete = () => {
-    return (
-      userData.identification !== '' &&
-      userData.acceptTerms === true &&
-      (userData.student || userData.visitor)
-    );
-  };
+      setTimeout(() => {
+        setSentInformation(false);
+        setShowModal(false);
+        // Redirigir a la ruta "/introduccion" después de mostrar el modal
+        navigate('/introduccion');
+      }, 2000); // 2000 ms = 2 segundos
+    }
+  }, 3000); // 5000 ms = 5 segundos
+};
+
+
+const areFieldsComplete = () => {
+  return (
+    userData.name !== '' &&
+    userData.identification !== '' &&
+    userData.email !== '' &&
+    userData.acceptTerms === true &&
+    (userData.student || userData.visitor)
+  );
+};
 
   const buttonClass = areFieldsComplete() ? 'btnContinuarUnblock' : 'btnContinuarBlock';
 
@@ -296,7 +335,7 @@ function InputCodigo() {
               value={userData.email}
               onChange={handleEmailInputChange}
             />
-            {setErrorEmail && <div className='divError'><p className='errorTxt'>{setErrorEmail}</p></div>}
+            {errorEmail && <div className='divError'><p className='errorTxt'>{errorEmail}</p></div>}
 
             <label className='txtTerminos'>
               <input
@@ -338,10 +377,10 @@ function InputCodigo() {
                 />
               </label>
             </div>
-
             <button className={buttonClass} onClick={handleEnviarClick} disabled={!areFieldsComplete()}>
-              Enviar
-            </button>
+  Enviar
+</button>
+
           </form>
         </Modal>
       )}

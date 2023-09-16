@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const asyncHandler = require("express-async-handler");
-const bcrypt = require("bcrypt")
+//const bcrypt = require("bcrypt")
+const CryptoJS = require('crypto-js');
 
 //descripcion: GET all users
 //ruta: GET /users
@@ -20,11 +21,11 @@ const getAllUsers = asyncHandler(async(req, res) =>{
 //ruta: POST /users
 //acceso: privado
 const createNewUser = asyncHandler(async(req, res) =>{
-	const {username, identificacion, correo, rol, finalizadaTarea} = req.body
+	const {username, identificacion, correo, rol, finalizadaTarea, estudianteUAO, codigoSala} = req.body
 
 	//comprobacion que no son campos vacios
-	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea){
-		return res.status(400).json({message: `Todos los campos son requeridos: ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea}`});
+	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea ||!estudianteUAO ||!codigoSala){
+		return res.status(400).json({message: `Todos los campos son requeridos: ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${estudianteUAO} ${codigoSala}`});
 	}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS
@@ -33,10 +34,17 @@ const createNewUser = asyncHandler(async(req, res) =>{
 	//	return res.status(409).json({Mensaje: "usuario duplicado"})
 	//}
 
-	//Encriptacion
-	const hashedName = await bcrypt.hash(username, 10)//salt rounds
+	//Encriptacion antigua (mal)
+	//const hashedName = await bcrypt.hash(username, 10)//salt rounds
 
-	const userObject = {"username": hashedName, identificacion, correo, rol, finalizadaTarea}
+	//Encriptando todos los parametros
+	const secretKey = '$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy';
+	const encryptedUsername = CryptoJS.AES.encrypt(username, secretKey).toString();
+	const encryptedIdentificacion = CryptoJS.AES.encrypt(identificacion.toString(), secretKey).toString();
+	const encryptedCorreo = CryptoJS.AES.encrypt(correo, secretKey).toString();
+	const encryptedRol = CryptoJS.AES.encrypt(rol, secretKey).toString();
+
+	const userObject = {"username": encryptedUsername, "identificacion": encryptedIdentificacion, "correo": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, estudianteUAO, codigoSala}
 
 	//crear y guardar nuevo usuario
 	const user = await User.create(userObject);
@@ -53,11 +61,11 @@ const createNewUser = asyncHandler(async(req, res) =>{
 //acceso: privado
 const updateUser = asyncHandler(async(req, res) =>{
 	//lamo informacion del body
-	const {_id, username, identificacion, correo, rol, finalizadaTarea} = req.body;
+	const {_id, username, identificacion, correo, rol, finalizadaTarea, estudianteUAO, codigoSala} = req.body;
 
 	//confirmando campos no vacios
-	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea){
-		return res.status(400).json({message: `Todos los campos son requeridos: ${_id} ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea}`});
+	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea ||!estudianteUAO ||!codigoSala){
+		return res.status(400).json({message: `Todos los campos son requeridos: ${_id} ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${estudianteUAO} ${codigoSala}`});
 	}
 
 	//toca modificar un solo usuario, asi que llamemos por su id
@@ -77,14 +85,17 @@ const updateUser = asyncHandler(async(req, res) =>{
 
 	//modificarlo
 	//hash id
-	if(username){
 		//hash id
-		user.username = await bcrypt.hash(username, 10) //10 es sales
-	}
-	user.identificacion = identificacion;
-	user.correo = correo;
-	user.rol = rol;
+		//user.username = await bcrypt.hash(username, 10) //10 es sales
+	//encriptando informacion a modificar
+	const secretKey = '$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy';
+	user.username = CryptoJS.AES.encrypt(username, secretKey).toString();
+	user.identificacion = CryptoJS.AES.encrypt(identificacion, secretKey).toString();
+	user.correo = CryptoJS.AES.encrypt(correo, secretKey).toString();
+	user.rol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 	user.finalizadaTarea = finalizadaTarea;
+	user.estudianteUAO = estudianteUAO;
+	user.codigoSala = codigoSala;
 
 	//actualizar
 	const updateUser = await user.save();

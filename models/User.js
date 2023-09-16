@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
 		required: true
 	},
 	identificacion:{
-		type: Number,
+		type: String,
 		required: true
 	},
 	correo:{
@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
 	finalizadaTarea:{
 		type: Boolean,
 		default: false,
+		required: true
+	},
+	estudianteUAO:{
+		type: Boolean,
+		required: true
+	},
+	codigoSala:{
+		type: String,
 		required: true
 	}
 })

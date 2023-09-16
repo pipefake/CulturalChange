@@ -88,3 +88,37 @@
 		/users	undefined
 20230911	20:30:51	1cff2da5-568f-43dc-843c-aaffa33cfba2	CastError: Cast to ObjectId failed for value "2" (type number) at path "_id" for model "User"	PATCH
 		/users	undefined
+20230916	10:02:06	f872b8bc-d582-49a6-86cd-d2655f532b16	ReferenceError: hasheencryptedUsernamedName is not defined	POST
+		/users	undefined
+20230916	10:02:35	1d65d6fe-9875-4b3b-9a1f-f366d9d26adc	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
+		/users	undefined
+20230916	10:03:49	fbdb155d-7fd2-4c65-bd2a-99a5f0850bcc	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
+		/users	undefined
+20230916	10:04:00	10980864-67b9-409b-afc7-8b9dd4bd4722	SyntaxError: Unexpected token , in JSON at position 181	POST
+		/users	undefined
+20230916	10:04:05	cdf77f60-a753-48f9-9ea7-04c9fde53cc7	ValidationError: User validation failed: estudianteUAO: Cast to Boolean failed for value "" (type string) at path "estudianteUAO" because of "CastError"	POST
+		/users	undefined
+20230916	10:44:01	a4848ee0-16b7-4652-8e76-6ec56027bb70	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	10:46:41	f164874f-0484-49ee-a7ea-176377714b5f	SyntaxError: Unexpected token } in JSON at position 190	POST
+		/users	undefined
+20230916	10:46:58	5aaa6b72-7475-47e4-a7c6-9896c9f085e8	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	10:48:21	0e09976e-6467-4903-8c68-d7208a580ed9	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	10:49:41	e4c94b02-15f9-4c2c-94a0-1c8bfefbe930	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	11:10:42	63d31f1d-4b6b-481d-a9fe-d98d09f2f16b	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	11:11:49	a643bbb3-d25d-4c01-9453-b0d1d5a0f879	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	11:17:46	0eb422d5-048f-4a53-b0fe-5447d2979634	RangeError: Invalid array length	POST
+		/users	undefined
+20230916	11:21:10	1fc3f6df-c8be-40c4-be7e-411425cb22d2	ValidationError: User validation failed: identificacion: Cast to Number failed for value "U2FsdGVkX1+Yu14yT3/vZxc5OhS5j8Auwsxzr0oXGHo=" (type string) at path "identificacion", finalizadaTarea: Cast to Boolean failed for value "U2FsdGVkX1/7r4pwWg1YmetK0jKEOSsPHBVhK0raiPg=" (type string) at path "finalizadaTarea" because of "CastError", estudianteUAO: Cast to Boolean failed for value "U2FsdGVkX19lOuY9060rd+78hS7x+rpQXL34OOJi+e0=" (type string) at path "estudianteUAO" because of "CastError"	POST
+		/users	undefined
+20230916	11:26:56	3adc23e6-6ac4-4ec7-bad4-1883aa07452a	ReferenceError: Cannot access 'user' before initialization	POST
+		/users	undefined
+20230916	11:31:48	483c6d09-3ece-4481-ac2e-12b1c133a2ff	ValidationError: User validation failed: identificacion: Cast to Number failed for value "U2FsdGVkX1/ZV9IKwMrtokPUsePNTEPEuSzFqkA+yyc=" (type string) at path "identificacion"	POST
+		/users	undefined
+20230916	11:32:08	78bcadb9-c304-4e46-9717-85d87cd6b4be	ValidationError: User validation failed: identificacion: Cast to Number failed for value "U2FsdGVkX18gXnc2mjBRrjv5ef7NWJfQW/Kwy6Wy1u0=" (type string) at path "identificacion"	POST
+		/users	undefined

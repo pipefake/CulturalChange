@@ -6,8 +6,18 @@
     "@react-three/fiber": "^8.13.5",
     "@react-three/xr": "^5.6.1",
     "@types/three": "^0.154.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "font-awesome": "^4.7.0",
     "lodash.shuffle": "^4.2.0",
+    "mongodb": "^6.0.0",
+    "mongoose": "^7.5.0",
+    "nodemon": "^3.0.1",
     "react": "^18",
     "react-card-flip": "^1.2.0",
     "react-dom": "^18",
@@ -16,12 +26,14 @@
     "react-scripts": "5.0.1",
     "reactjs-flip-card": "^2.0.2",
     "three": "^0.154.0",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon servidor"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +51,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3500"
 }

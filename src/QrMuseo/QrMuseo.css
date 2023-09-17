@@ -1,0 +1,63 @@
+.container-qr-museo {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.texto-informacion {
+  color: #583d28;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.linea-texto {
+  margin-bottom: 10px;
+}
+
+.imagen-qr {
+  margin-top: 20px;
+  border-radius: 49px;
+  background: rgba(194, 96, 96, 0.43);
+  box-shadow: 7px 20px 20px -3px rgba(0, 0, 0, 0.13) inset;
+  width: 300px;
+  height: 351px;
+  flex-shrink: 0;
+}
+
+.contador {
+  margin-top: 20px;
+  color: #3f1e1e;
+  text-align: center;
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: ABeeZee;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.imagenes-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-boton {
+  cursor: pointer;
+  position: absolute;
+  width: 90.833px;
+  height: 92.199px;
+  flex-shrink: 0;
+  right: calc(50% - (400px / 2 + 90.833px + 20px));
+  top: calc(50% + (120px / 2 + 20px));
+}

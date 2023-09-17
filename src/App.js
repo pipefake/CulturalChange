@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { InputCodigo } from "./InputCodigo";
+import { PantallaMuseo } from "./PantallaMuseo";
 
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
@@ -28,6 +29,8 @@ function App() {
           <Route path="/*" element={<p>no encontrado</p>} />
           <Route path="/" element={<InputCodigo></InputCodigo>} />
           <Route path="/introduccion" element={<Picker></Picker>} />
+          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
+          {/* Aquí está la nueva ruta */}
         </Routes>
       </HashRouter>
     </div>

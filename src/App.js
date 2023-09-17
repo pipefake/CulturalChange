@@ -3,6 +3,7 @@ import "./App.css";
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
+import { QrMuseo } from "./QrMuseo";
 
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/introduccion" element={<Picker></Picker>} />
           <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
           <Route path="/animacion" element={<AnimacionMuseo />} />
+          <Route path="/qr" element={<QrMuseo />} />
         </Routes>
       </HashRouter>
     </div>

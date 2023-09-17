@@ -22,7 +22,7 @@
     "react-card-flip": "^1.2.0",
     "react-dom": "^18",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.14.2",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "reactjs-flip-card": "^2.0.2",
     "three": "^0.154.0",

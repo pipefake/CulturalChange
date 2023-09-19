@@ -24,7 +24,7 @@ function PantallaMuseo() {
         } else {
           setImagenActual(3);
           setAnimacionActiva(false); // Detener la animación
-          navigate("/animacion"); // Navegar a la nueva página
+          navigate("/animacionMuseo"); // Navegar a la nueva página
         }
       }, 1000);
 

@@ -1,6 +1,7 @@
 {
   "name": "platzi-intro-react-base",
   "version": "0.1.0",
+  "proxy": "http://localhost:3500",
   "dependencies": {
     "@artcom/react-three-arjs": "^0.5.5",
     "@react-three/fiber": "^8.13.5",
@@ -53,6 +54,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:3500"
+  }
+
 }

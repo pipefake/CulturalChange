@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./inputCodigo.css";
+
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import museolili from "./resources/museolili.png";
 import { ModalHelp } from "../Modal";
+// import { useAuth } from '../auth';
+import { EnviandoCarga } from "../EnviandoCarga";
+import { ErrorCarga } from "../ErrorCarga";
+import { SentInformacion } from "../SentInformacion";
 import axios from "axios";
 
 function InputCodigo() {
+
+  const [username, setUsername] = React.useState("");
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
-
   const [formComplete, setFormComplete] = useState(false); // Nuevo estado
   const [errors, setErrors] = useState({});
 
@@ -21,8 +28,15 @@ function InputCodigo() {
     visitor: false,
   });
 
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [sentInformation, setSentInformation] = useState(false);
+  const [errorEmail, setErrorEmail] = useState("");
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
+  const [errorIdentification, setErrorIdentification] = useState("");
+  const [errorEnviandoFormulario, setErrorEnviandoFormulario] = useState(false);
 
   const updateFormComplete = () => {
     const { name, email } = userData;
@@ -47,22 +61,32 @@ function InputCodigo() {
     updateFormComplete();
   };
 
+  const validateName = (name) => {
+    const regex = /^[a-zA-Z\s]*$/;
+    if (!regex.test(name)) {
+      return "The name cannot contain any numbers.";
+    }
+    return "";
+  };
+
+  const validateID = (id) => {
+    const regex = /^\d+$/; // This regex matches only numeric digits
+    if (!regex.test(id)) {
+      return "The ID should only contain numeric digits.";
+    }
+    return "";
+  };
+
+  const validateEmail = (email) => {
+    if (!email.includes("@") || !email.endsWith(".com")) {
+      return "The email must contain '@' and end with '.com'.";
+    }
+    return "";
+  };
+
   const areFieldsComplete = () => {
-    const nameRegex = /^[a-zA-Z\s]*$/;
-    const idRegex = /^[0-9]+$/;
-
-    // Check if any of the fields is empty
+    // Ensure all string fields are not empty
     if (!userData.name || !userData.identification || !userData.email) {
-      return false;
-    }
-
-    // Check if name contains numbers or special characters
-    if (!nameRegex.test(userData.name)) {
-      return false;
-    }
-
-    // Check if ID contains anything other than numeric digits
-    if (!idRegex.test(userData.identification)) {
       return false;
     }
 
@@ -71,7 +95,7 @@ function InputCodigo() {
       return false;
     }
 
-    // Ensure acceptTerms is checked and either student or visitor is checked
+    // Ensure both checkboxes are checked
     if (!userData.acceptTerms || !(userData.student || userData.visitor)) {
       return false;
     }
@@ -92,42 +116,29 @@ function InputCodigo() {
     updateFormComplete();
   };
 
-  const handleValidation = () => {
-    const newErrors = {};
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const numberPattern = /^[0-9]+$/;
-
-    // Validate name
-    if (/\d/.test(userData.name)) {
-      // check if there's any digit in the name
-      newErrors.name = "Name cannot contain numbers.";
+  const handleEnviarClick = () => {
+    if (!areFieldsComplete()) {
+      console.warn("Not all fields are complete.");
+      return; // Exit the function early if fields are not complete
     }
-
-    // Validate ID
-    if (!numberPattern.test(userData.identification)) {
-      newErrors.identification = "ID should only be numeric digits.";
-    }
-
-    // Validate email
-    if (!emailPattern.test(userData.email)) {
-      newErrors.email =
-        'Invalid email format. Email must contain "@" and end with ".com".';
-    }
-
-    setErrors(newErrors);
+  
+    // At this point, all fields are complete
+    console.log("Sending the following data:", userData);
+  
+    // In a real-world application, you'd make an API call or some other operation
+    // For now, we just log that the data has been sent
+    console.log("Data has been sent successfully!");
   };
-
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (
-      Object.keys(errors).length === 0
-    ) 
-    console.log("Conditions arent met.");
-    {
+      Object.keys(errors).length === 0 &&
+      userData.email &&
+      userData.password
+    ) {
       try {
-        console.log("Conditions met. Attempting to send data...");
         const response = await axios.post("/api/register", userData);
         console.log("User registered:", response.data);
       } catch (error) {
@@ -143,7 +154,7 @@ function InputCodigo() {
   useEffect(() => {
     // Aquí puedes agregar efectos secundarios cuando cambie el estado de isLoading o errorOccurred
   }, [isLoading, errorOccurred]);
-
+  
   return (
     <div className="cont_inicio">
       <ModalHelp />
@@ -185,11 +196,14 @@ function InputCodigo() {
             value={userData.name}
             onChange={(e) => {
               setUserData({ ...userData, name: e.target.value });
-              handleValidation();
+              validateName();
             }}
           />
-          {errors.name && (
-            <div style={{ color: "red", fontSize: "12px" }}>{errors.name}</div>
+
+          {error && (
+            <div className="divError">
+              <p className="errorTxt">{error}</p>
+            </div>
           )}
 
           {userData.identification && (
@@ -206,12 +220,13 @@ function InputCodigo() {
             value={userData.identification}
             onChange={(e) => {
               setUserData({ ...userData, identification: e.target.value });
-              handleValidation();
+              validateID();
             }}
           />
-          {errors.identification && (
-            <div style={{ color: "red", fontSize: "12px" }}>
-              {errors.identification}
+
+          {errorIdentification && (
+            <div className="divError">
+              <p className="errorTxt">{errorIdentification}</p>
             </div>
           )}
 
@@ -220,19 +235,23 @@ function InputCodigo() {
               <p className="ptxtEscribiendo">Correo:</p>
             </div>
           )}
+
           <input
             className="inputRegistro"
             placeholder="Correo:"
             type="email"
             name="email"
-            value={userData.email || ""}
+            value={userData.email}
             onChange={(e) => {
               setUserData({ ...userData, email: e.target.value });
-              handleValidation();
+              validateEmail();
             }}
           />
-          {errors.email && (
-            <p style={{ color: "red", fontSize: "6px" }}>{errors.email}</p>
+
+          {errorEmail && (
+            <div className="divError">
+              <p className="errorTxt">{errorEmail}</p>
+            </div>
           )}
 
           <label className="txtTerminos">
@@ -276,9 +295,10 @@ function InputCodigo() {
               />
             </label>
           </div>
+
           <button
             className={buttonClass}
-            type="submit"
+            onClick={handleEnviarClick}
             disabled={!areFieldsComplete()}
           >
             Enviar

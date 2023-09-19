@@ -1,0 +1,66 @@
+.roles-slider {
+  width: 1280px;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+
+.roles-slider h1 {
+  color: #3f1e1e;
+  text-align: center;
+  text-shadow: 3px 7px 11px rgba(0, 0, 0, 0.25);
+  font-family: ABeeZee;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 124.8px */
+  letter-spacing: -0.96px;
+  background-color: rgba(255, 255, 255, 0.6); /* fondo blanco con 60% de opacidad */
+  border-radius: 5px; /* bordes redondeados para suavizar la apariencia */
+}
+
+.roles-slider h2 {
+  color: #3f1e1e;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 62.4px */
+  letter-spacing: -0.48px;
+}
+
+.role-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role-content img {
+  filter: drop-shadow(3px 7px 11px rgba(0, 0, 0, 0.25));
+  width: 314.129px;
+  height: 313px;
+  flex-shrink: 0;
+  margin-left: 110px;
+}
+
+.role-content p {
+  color: #3f1e1e;
+  font-family: ABeeZee;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 52px */
+  letter-spacing: -0.4px;
+  margin-left: 70px;
+  margin-right: 20px;
+}
+
+.role-slide {
+  position: relative;
+  width: 1280px;
+  height: 1024px;
+  background-position: center;  /* Centra la imagen en el div */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-size: cover;
+}

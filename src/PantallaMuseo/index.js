@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PantallaMuseo.css";
 import fondo from "./resources/Bienvenida.png";
 import BotonImagen from "./resources/BotonImagen.png";
@@ -11,6 +12,7 @@ import BotonImagen7 from "./resources/BotonImagen7.png";
 import BotonImagen8 from "./resources/BotonImagen8.png";
 
 function PantallaMuseo() {
+  const navigate = useNavigate();
   const [imagenActual, setImagenActual] = useState(0);
   const [animacionActiva, setAnimacionActiva] = useState(false);
 
@@ -21,12 +23,14 @@ function PantallaMuseo() {
           setImagenActual((prev) => prev + 1);
         } else {
           setImagenActual(3);
+          setAnimacionActiva(false); // Detener la animación
+          navigate("/animacionMuseo"); // Navegar a la nueva página
         }
       }, 1000);
 
       return () => clearInterval(interval);
     }
-  }, [imagenActual, animacionActiva]);
+  }, [imagenActual, animacionActiva, navigate]);
 
   const iniciarAnimacion = () => {
     setImagenActual(0);

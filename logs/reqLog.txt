@@ -311,3 +311,6 @@
 20230916	11:45:22	194c8d73-ddee-42ee-b5d7-18aaa952bf1f	GET 	 undefined 	 /users
 20230916	11:46:04	0eac634b-0144-454e-bbfa-9154f7a2ece3	GET 	 http://localhost:3000 	 /users
 20230916	11:46:38	9021f5dd-b139-4308-aba6-ada2f59731b7	GET 	 http://localhost:3000 	 /users
+20230918	20:03:24	b625f29e-8604-44ae-9744-62d744021e00	POST 	 http://localhost:3500/ 	 /api/register
+20230918	20:03:24	4e221055-6b34-4351-b6b6-c1735c74d18e	POST 	 http://localhost:3500/ 	 /api/register
+20230918	20:03:42	2d61da3a-0ee5-4c24-bce4-c2fd59125efd	POST 	 http://localhost:3500/ 	 /api/register

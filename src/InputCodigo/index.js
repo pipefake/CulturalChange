@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./inputCodigo.css";
 import Modal from "react-modal";
 import museolili from "./resources/museolili.png";
 import { ModalHelp } from "../Modal";
 import axios from "axios";
+import { EnviandoCarga } from "../EnviandoCarga";
+import { ErrorCarga } from "../ErrorCarga";
+import { SentInformacion } from "../SentInformacion";
 
 function InputCodigo() {
   const [inputValue, setInputValue] = useState("");
@@ -23,6 +27,14 @@ function InputCodigo() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [sentInformation, setSentInformation] = useState(false);
+
+
+  const navigate = useNavigate();
+
+  const closeErrorModal = () => {
+    setErrorOccurred(false);
+  };
 
   const updateFormComplete = () => {
     const { name, email } = userData;
@@ -117,23 +129,50 @@ function InputCodigo() {
     setErrors(newErrors);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      Object.keys(errors).length === 0
-    ) 
-    console.log("Conditions arent met.");
-    {
-      try {
-        console.log("Conditions met. Attempting to send data...");
-        const response = await axios.post("/api/register", userData);
-        console.log("User registered:", response.data);
-      } catch (error) {
-        console.error("Error registering user:", error.response.data);
-      }
+    if (!areFieldsComplete()) {
+      return; // Don't proceed if the form isn't complete
     }
+
+    setIsLoading(true);
+
+    // Simulate a delay for the server connection (5 seconds)
+    setTimeout(async () => {
+      if (Object.keys(errors).length === 0) {
+        try {
+          console.log("Conditions met. Attempting to send data...");
+          const response = await axios.post("/api/register", userData);
+          console.log("User registered:", response.data);
+
+          setIsLoading(false);
+
+          // If successful, show the SentInformacion modal for 2 seconds
+          setSentInformation(true);
+
+          setTimeout(() => {
+            setSentInformation(false);
+            // Redirect to "/introduccion" after showing the modal
+            navigate("/introduccion");
+          }, 2000); // 2 seconds
+
+        } catch (error) {
+          console.error("Error registering user:", error.response.data);
+
+          // On error, show the error modal and turn off the loading state
+          setErrorOccurred(true);
+          setIsLoading(false);
+        }
+      } else {
+        // If there are validation errors, just turn off the loading state
+        setIsLoading(false);
+      }
+    }, 5000); // 5 seconds
+};
+
+  const handleEnviarClick = async () => {
+    console.log("handleEnviarClick called");
   };
 
   const buttonClass = areFieldsComplete()
@@ -161,7 +200,14 @@ function InputCodigo() {
         maxLength={4}
       />
       <img src={museolili} alt="Logo del museo lili" />
-
+      {/* Modal para el registro de datos */}
+      {isLoading ? (
+        <EnviandoCarga />
+      ) : errorOccurred ? (
+        <ErrorCarga onClose={closeErrorModal} />
+      ) : sentInformation ? (
+        <SentInformacion />
+      ) : (
       <Modal
         className="modalinput"
         isOpen={showModal}
@@ -280,11 +326,13 @@ function InputCodigo() {
             className={buttonClass}
             type="submit"
             disabled={!areFieldsComplete()}
+            onClick={handleEnviarClick}
           >
             Enviar
           </button>
         </form>
       </Modal>
+      )}
     </div>
   );
 }

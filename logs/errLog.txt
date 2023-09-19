@@ -122,3 +122,9 @@
 		/users	undefined
 20230916	11:32:08	78bcadb9-c304-4e46-9717-85d87cd6b4be	ValidationError: User validation failed: identificacion: Cast to Number failed for value "U2FsdGVkX18gXnc2mjBRrjv5ef7NWJfQW/Kwy6Wy1u0=" (type string) at path "identificacion"	POST
 		/users	undefined
+20230918	20:03:24	19faacb5-19ed-4557-a993-79df2dbc0208	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/
+20230918	20:03:24	cf6abb49-3b8f-4f96-b8bd-25c3ed5be17f	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/
+20230918	20:03:42	9788c245-0e09-48e1-ac58-faa737627d8a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/

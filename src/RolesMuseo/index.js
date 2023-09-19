@@ -24,7 +24,6 @@ const roles = [
     descripcion:
       "Con ayuda de la cámara de tu dispositivo, escanea las esculturas y descubre los símbolos misteriosos.",
     logo: HuaqueroLogo,
-    fondo: FondoGuia,
   },
   {
     titulo: "Intérprete",

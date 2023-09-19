@@ -32,10 +32,13 @@ function App() {
           <Route path="/*" element={<p>no encontrado</p>} />
           <Route path="/" element={<InputCodigo></InputCodigo>} />
           <Route path="/introduccion" element={<Picker></Picker>} />
+          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
+          <Route path="/introduccion" element={<Picker></Picker>} />
           <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
           <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
           <Route path="/qrMuseo" element={<QrMuseo />} />
           <Route path="/rolesMuseo" element={<RolesMuseo />} />
+          {/* Aquí está la nueva ruta */}
         </Routes>
       </HashRouter>
     </div>

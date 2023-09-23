@@ -6,13 +6,13 @@ const CryptoJS = require('crypto-js');
 //descripcion: GET all users
 //ruta: GET /users
 //acceso: privado
-const getAllUsers = asyncHandler(async(req, res) =>{
+const getAllUsers = asyncHandler(async (req, res) => {
 	//llamamos a la base de mongo, que nos pase usuarios sin recibir toda la info de como
 	//manjear datos usando "lean"
 	//el select es para que no nos pase ese dato
 	const users = await User.find().select("-id").lean();
-	if(!users){
-		return res.status(400).json({message: "no hay usuarios"})
+	if (!users) {
+		return res.status(400).json({ message: "no hay usuarios" })
 	}
 	res.json(users);
 })
@@ -20,12 +20,12 @@ const getAllUsers = asyncHandler(async(req, res) =>{
 //descripcion: Create new user
 //ruta: POST /users
 //acceso: privado
-const createNewUser = asyncHandler(async(req, res) =>{
-	const {username, identificacion, correo, rol, finalizadaTarea, estudianteUAO, codigoSala} = req.body
+const createNewUser = asyncHandler(async (req, res) => {
+	const { username, identificacion, correo, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body
 
 	//comprobacion que no son campos vacios
-	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea ||!estudianteUAO ||!codigoSala){
-		return res.status(400).json({message: `Todos los campos son requeridos: ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${estudianteUAO} ${codigoSala}`});
+	if (!username || !identificacion || !correo || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
 	}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS
@@ -44,36 +44,36 @@ const createNewUser = asyncHandler(async(req, res) =>{
 	const encryptedCorreo = CryptoJS.AES.encrypt(correo, secretKey).toString();
 	const encryptedRol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 
-	const userObject = {"username": encryptedUsername, "identificacion": encryptedIdentificacion, "correo": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, estudianteUAO, codigoSala}
+	const userObject = { "username": encryptedUsername, "identificacion": encryptedIdentificacion, "correo": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, tipoUsuario, codigoSala }
 
 	//crear y guardar nuevo usuario
 	const user = await User.create(userObject);
 
-	if(user){
-		res.status(201).json({message: `Nuevo usuario ${identificacion} creado`})
-	}else{
-		res.status(400).json({message: `No se ha ingresado el usuario ${identificacion}`})
+	if (user) {
+		res.status(201).json({ message: `Nuevo usuario ${identificacion} creado` })
+	} else {
+		res.status(400).json({ message: `No se ha ingresado el usuario ${identificacion}` })
 	}
 })
 
 //descripcion: update user
 //ruta: POST /users
 //acceso: privado
-const updateUser = asyncHandler(async(req, res) =>{
+const updateUser = asyncHandler(async (req, res) => {
 	//lamo informacion del body
-	const {_id, username, identificacion, correo, rol, finalizadaTarea, estudianteUAO, codigoSala} = req.body;
+	const { _id, username, identificacion, correo, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body;
 
 	//confirmando campos no vacios
-	if(!username || !identificacion || !correo ||!rol ||!finalizadaTarea ||!estudianteUAO ||!codigoSala){
-		return res.status(400).json({message: `Todos los campos son requeridos: ${_id} ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${estudianteUAO} ${codigoSala}`});
+	if (!username || !identificacion || !correo || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${_id} ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
 	}
 
 	//toca modificar un solo usuario, asi que llamemos por su id
 	const user = await User.findById(_id).exec();
 
 	//si no lo encontramos
-	if(!user){
-		return res.status(400).json({message: "Usuario no encontrado"})
+	if (!user) {
+		return res.status(400).json({ message: "Usuario no encontrado" })
 	}
 
 	//estan comentadas
@@ -85,8 +85,8 @@ const updateUser = asyncHandler(async(req, res) =>{
 
 	//modificarlo
 	//hash id
-		//hash id
-		//user.username = await bcrypt.hash(username, 10) //10 es sales
+	//hash id
+	//user.username = await bcrypt.hash(username, 10) //10 es sales
 	//encriptando informacion a modificar
 	const secretKey = '$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy';
 	user.username = CryptoJS.AES.encrypt(username, secretKey).toString();
@@ -94,14 +94,14 @@ const updateUser = asyncHandler(async(req, res) =>{
 	user.correo = CryptoJS.AES.encrypt(correo, secretKey).toString();
 	user.rol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 	user.finalizadaTarea = finalizadaTarea;
-	user.estudianteUAO = estudianteUAO;
+	user.tipoUsuario = tipoUsuario;
 	user.codigoSala = codigoSala;
 
 	//actualizar
 	const updateUser = await user.save();
 
 	//respuesta
-	res.json({message: `Se actualizó: ${updateUser.username} ${updateUser.identificacion}`});
+	res.json({ message: `Se actualizï¿½: ${updateUser.username} ${updateUser.identificacion}` });
 })
 
 module.exports = {

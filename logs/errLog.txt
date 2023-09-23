@@ -128,3 +128,9 @@
 		/api/register	http://localhost:3500/
 20230918	20:03:42	9788c245-0e09-48e1-ac58-faa737627d8a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	POST
 		/api/register	http://localhost:3500/
+20230923	10:22:44	4035d43e-30d0-4eca-a0ff-6a94852858ae	Error: ENOENT: no such file or directory, stat 'C:\Trabajos\SMIGC\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/
+20230923	10:22:56	702e5d3d-baf2-4eca-8d39-72c15aee45d9	Error: ENOENT: no such file or directory, stat 'C:\Trabajos\SMIGC\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/
+20230923	10:25:45	70b18a2d-dcbf-4ce8-b2f4-35570e2c2872	Error: ENOENT: no such file or directory, stat 'C:\Trabajos\SMIGC\CulturalChange\views\404.html'	POST
+		/api/user	http://localhost:3500/

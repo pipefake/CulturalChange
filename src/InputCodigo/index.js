@@ -29,6 +29,9 @@ function InputCodigo() {
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [sentInformation, setSentInformation] = useState(false);
 
+  const [errorName, setErrorName] = useState({});
+  const [errorEmail, setErrorEmail] = useState({});
+  const [errorIdentification, setErrorIdentification] = useState({});
 
   const navigate = useNavigate();
 
@@ -104,29 +107,51 @@ function InputCodigo() {
     updateFormComplete();
   };
 
-  const handleValidation = () => {
+
+
+  const handleValidationErrorName = () => {
     const newErrors = {};
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const numberPattern = /^[0-9]+$/;
 
-    // Validate name
-    if (/\d/.test(userData.name)) {
-      // check if there's any digit in the name
-      newErrors.name = "Name cannot contain numbers.";
+    const namePattern = /^[a-zA-Z]+$/; // Only letters allowed
+
+    if (!namePattern.test(userData.name)) {
+      newErrors.name = "El nombre solo debe contener letras.";
+    } else if (userData.name.length > 30) {
+      newErrors.name = "El nombre no puede contener más de 30 caracteres.";
     }
 
-    // Validate ID
-    if (!numberPattern.test(userData.identification)) {
-      newErrors.identification = "ID should only be numeric digits.";
-    }
+    setErrorName(newErrors);
+  };
 
-    // Validate email
+  const handleValidationErrorEmail = () => {
+    const newErrors = {};
+
+    // Regular expression pattern checks for "@" and either ".com" or ".co" domains
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|co)$/;
+
     if (!emailPattern.test(userData.email)) {
       newErrors.email =
-        'Invalid email format. Email must contain "@" and end with ".com".';
+        "El email debe contener '@' y terminar en '.com' o '.co'.";
     }
 
-    setErrors(newErrors);
+    setErrorEmail(newErrors);
+  };
+
+  const handleValidationErrorIdentification = () => {
+    const numberPattern = /^[0-9]{1,10}$/; // Only numbers allowed and max length of 10
+    const newErrors = {};
+
+    if (!numberPattern.test(userData.identification)) {
+      if (userData.identification.length > 10) {
+        newErrors.identification =
+          "La identificación no puede tener más de 10 dígitos.";
+      } else {
+        newErrors.identification =
+          "La identificación solo debe contener números.";
+      }
+    }
+
+    setErrorIdentification(newErrors);
   };
 
   const handleSubmit = async (e) => {
@@ -156,7 +181,6 @@ function InputCodigo() {
             // Redirect to "/introduccion" after showing the modal
             navigate("/introduccion");
           }, 2000); // 2 seconds
-
         } catch (error) {
           console.error("Error registering user:", error.response.data);
 
@@ -169,7 +193,7 @@ function InputCodigo() {
         setIsLoading(false);
       }
     }, 5000); // 5 seconds
-};
+  };
 
   const handleEnviarClick = async () => {
     console.log("handleEnviarClick called");
@@ -208,130 +232,133 @@ function InputCodigo() {
       ) : sentInformation ? (
         <SentInformacion />
       ) : (
-      <Modal
-        className="modalinput"
-        isOpen={showModal}
-        onRequestClose={() => setShowModal(false)}
-        contentLabel="Registro de Datos"
-      >
-        <form onSubmit={handleSubmit}>
-          <h2 className="modaltitulo">Registro</h2>
+        <Modal
+          className="modalinput"
+          isOpen={showModal}
+          onRequestClose={() => setShowModal(false)}
+          contentLabel="Registro de Datos"
+        >
+          <form onSubmit={handleSubmit}>
+            <h2 className="modaltitulo">Registro</h2>
 
-          {userData.name && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">Nombre:</p>
-            </div>
-          )}
+            {userData.name && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">Nombre:</p>
+              </div>
+            )}
 
-          <input
-            className="inputRegistro inputRegistronombre"
-            placeholder="Nombre:"
-            type="text"
-            name="name"
-            value={userData.name}
-            onChange={(e) => {
-              setUserData({ ...userData, name: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.name && (
-            <div style={{ color: "red", fontSize: "12px" }}>{errors.name}</div>
-          )}
-
-          {userData.identification && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">D.I o código estudiantil:</p>
-            </div>
-          )}
-
-          <input
-            className="inputRegistro"
-            placeholder="D.I o código estudiantil:"
-            type="text"
-            name="identification"
-            value={userData.identification}
-            onChange={(e) => {
-              setUserData({ ...userData, identification: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.identification && (
-            <div style={{ color: "red", fontSize: "12px" }}>
-              {errors.identification}
-            </div>
-          )}
-
-          {userData.email && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">Correo:</p>
-            </div>
-          )}
-          <input
-            className="inputRegistro"
-            placeholder="Correo:"
-            type="email"
-            name="email"
-            value={userData.email || ""}
-            onChange={(e) => {
-              setUserData({ ...userData, email: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.email && (
-            <p style={{ color: "red", fontSize: "6px" }}>{errors.email}</p>
-          )}
-
-          <label className="txtTerminos">
             <input
-              className={userData.acceptTerms ? "mychecked" : "mycheck"}
-              type="checkbox"
-              name="acceptTerms"
-              checked={userData.acceptTerms}
-              onChange={handleModalInputChange}
+              className="inputRegistro inputRegistronombre"
+              placeholder="Nombre:"
+              type="text"
+              name="name"
+              value={userData.name}
+              onChange={(e) => {
+                setUserData({ ...userData, name: e.target.value });
+                handleValidationErrorName();
+              }}
             />
-            Estoy de acuerdo con los&nbsp;
-            <a
-              href="https://www.uao.edu.co/aviso-de-privacidad-de-la-universidad-autonoma-de-occidente/"
-              target="_blank"
-              rel="noopener noreferrer"
+            {errorName.name && (
+              <div style={{ color: "red", fontSize: "12px" }}>
+                {errorName.name}
+              </div>
+            )}
+
+            {userData.identification && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">D.I o código estudiantil:</p>
+              </div>
+            )}
+
+            <input
+              className="inputRegistro"
+              placeholder="D.I o código estudiantil:"
+              type="text"
+              name="identification"
+              value={userData.identification}
+              onChange={(e) => {
+                setUserData({ ...userData, identification: e.target.value });
+                handleValidationErrorIdentification();
+              }}
+            />
+            {errorIdentification.identification && (
+              <div style={{ color: "red", fontSize: "12px" }}>
+                {errorIdentification.identification}
+              </div>
+            )}
+            {userData.email && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">Correo:</p>
+              </div>
+            )}
+            <input
+              className="inputRegistro"
+              placeholder="Correo:"
+              type="email"
+              name="email"
+              value={userData.email || ""}
+              onChange={(e) => {
+                setUserData({ ...userData, email: e.target.value });
+                handleValidationErrorEmail();
+              }}
+            />
+            {errorEmail.email && (
+              <p style={{ color: "red", fontSize: "12px" }}>
+                {errorEmail.email}
+              </p>
+            )}
+
+            <label className="txtTerminos">
+              <input
+                className={userData.acceptTerms ? "mychecked" : "mycheck"}
+                type="checkbox"
+                name="acceptTerms"
+                checked={userData.acceptTerms}
+                onChange={handleModalInputChange}
+              />
+              Estoy de acuerdo con los&nbsp;
+              <a
+                href="https://www.uao.edu.co/aviso-de-privacidad-de-la-universidad-autonoma-de-occidente/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                términos y condiciones
+              </a>
+            </label>
+
+            <div className="rolCheckbox">
+              <label className="txtRol">
+                Estudiante:
+                <input
+                  className={userData.student ? "mycheckedRol" : "mycheckRol"}
+                  type="checkbox"
+                  name="student"
+                  checked={userData.student}
+                  onChange={handleModalInputChange}
+                />
+              </label>
+
+              <label className="txtRol">
+                Visitante:
+                <input
+                  className={userData.visitor ? "mycheckedRol" : "mycheckRol"}
+                  type="checkbox"
+                  name="visitor"
+                  checked={userData.visitor}
+                  onChange={handleModalInputChange}
+                />
+              </label>
+            </div>
+            <button
+              className={buttonClass}
+              type="submit"
+              disabled={!areFieldsComplete()}
+              onClick={handleEnviarClick}
             >
-              términos y condiciones
-            </a>
-          </label>
-
-          <div className="rolCheckbox">
-            <label className="txtRol">
-              Estudiante:
-              <input
-                className={userData.student ? "mycheckedRol" : "mycheckRol"}
-                type="checkbox"
-                name="student"
-                checked={userData.student}
-                onChange={handleModalInputChange}
-              />
-            </label>
-
-            <label className="txtRol">
-              Visitante:
-              <input
-                className={userData.visitor ? "mycheckedRol" : "mycheckRol"}
-                type="checkbox"
-                name="visitor"
-                checked={userData.visitor}
-                onChange={handleModalInputChange}
-              />
-            </label>
-          </div>
-          <button
-            className={buttonClass}
-            type="submit"
-            disabled={!areFieldsComplete()}
-            onClick={handleEnviarClick}
-          >
-            Enviar
-          </button>
-        </form>
-      </Modal>
+              Enviar
+            </button>
+          </form>
+        </Modal>
       )}
     </div>
   );

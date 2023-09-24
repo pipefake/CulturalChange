@@ -36,10 +36,12 @@ function App() {
           <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
           <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
           <Route path="/qrMuseo" element={<QrMuseo />} />
+          <Route path="/introduccion/:slug" element={<Introduccion />} />
+
           {/* Aquí está la nueva ruta */}
         </Routes>
       </HashRouter>
-    </div>
+    </div >
   );
 }
 

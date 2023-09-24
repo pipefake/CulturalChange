@@ -50,11 +50,11 @@ function InputCodigo() {
     setIsStudent(isChecked);
     setIsVisitor(!isChecked); // If student is checked, visitor becomes unchecked and vice versa
     setUserData(prevData => ({
-        ...prevData,
-        rol: isChecked ? "Estudiante" : (isVisitor ? "Visitante" : ""),  // Adjust based on checkboxes' state
-        tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario
+      ...prevData,
+      rol: isChecked ? "Estudiante" : (isVisitor ? "Visitante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario
     }));
-};
+  };
 
   // Handle the change of the visitor checkbox
   const handleVisitorChange = (event) => {
@@ -62,11 +62,11 @@ function InputCodigo() {
     setIsVisitor(isChecked);
     setIsStudent(!isChecked); // If visitor is checked, student becomes unchecked and vice versa
     setUserData(prevData => ({
-        ...prevData,
-        rol: isChecked ? "Visitante" : (isStudent ? "Estudiante" : ""),  // Adjust based on checkboxes' state
-        tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario
+      ...prevData,
+      rol: isChecked ? "Visitante" : (isStudent ? "Estudiante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario
     }));
-};
+  };
 
   const updateFormComplete = () => {
     const { name, email } = userData;
@@ -158,7 +158,7 @@ function InputCodigo() {
 
     if (!emailPattern.test(userData.email)) {
       newErrors.email =
-        "El email debe contener '@' y terminar en '.com' o '.co'.";
+        "El email debe contener '@' y '.com' o '.co'.";
     }
 
     setErrorEmail(newErrors);
@@ -286,7 +286,7 @@ function InputCodigo() {
               }}
             />
             {errorName.name && (
-              <div style={{ color: "red", fontSize: "12px" }}>
+              <div className="errorTxt">
                 {errorName.name}
               </div>
             )}
@@ -309,7 +309,7 @@ function InputCodigo() {
               }}
             />
             {errorIdentification.identification && (
-              <div style={{ color: "red", fontSize: "12px" }}>
+              <div className="errorTxt">
                 {errorIdentification.identification}
               </div>
             )}
@@ -330,14 +330,14 @@ function InputCodigo() {
               }}
             />
             {errorEmail.email && (
-              <p style={{ color: "red", fontSize: "12px" }}>
+              <p className="errorTxt">
                 {errorEmail.email}
               </p>
             )}
 
             <label className="txtTerminos">
               <input
-                className={acceptTerms  ? "mychecked" : "mycheck"}
+                className={acceptTerms ? "mychecked" : "mycheck"}
                 type="checkbox"
                 name="acceptTerms"
                 checked={acceptTerms}

@@ -1,0 +1,19 @@
+.cont_logos{
+    display: flex;
+    flex-direction: row;
+}
+.logosSeleccion{
+    width: 64px;
+    margin: 9px;
+}
+.divPicker>p{
+font-size: 36px;
+font-weight: 600;}
+.animacioncarga{
+    margin: 50px 0;
+}
+.listo_img
+{
+    width: 125px;
+    margin: 80px;
+}

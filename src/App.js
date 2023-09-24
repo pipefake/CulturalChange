@@ -8,6 +8,7 @@ import { QrMuseo } from "./QrMuseo";
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
 import { Introduccion } from "./Introduccion";
+import { SeleccionCargando } from "./SeleccionCargando";
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Picker } from "./Picker";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
           <Route path="/qrMuseo" element={<QrMuseo />} />
           <Route path="/introduccion/:slug" element={<Introduccion />} />
+          <Route path="/seleccionCargando" element={<SeleccionCargando />} />
 
           {/* Aquí está la nueva ruta */}
         </Routes>

@@ -23,7 +23,7 @@ function InputCodigo() {
     "rol": "",
     "finalizadaTarea": "false",
     "tipoUsuario": "",
-    "codigoSala": "algo",
+    "codigoSala": "algo"
   });
 
   const [acceptTerms, setAcceptTerms] = useState(false);

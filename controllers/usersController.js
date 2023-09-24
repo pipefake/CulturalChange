@@ -23,14 +23,10 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const createNewUser = asyncHandler(async (req, res) => {
 	const { name, identification, email, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body
 
-	//ERROR 24/09/2023
-	//la comprobacion en backend de evitar un POST vacio generaba un error, quitar esta logica y dejarsela solo a 
-	//front fue la solucion, ademas de forzar que sean iguales las variables
-
 	//comprobacion que no son campos vacios
-	//if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
-	//	return res.status(400).json({ message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
-	//}
+	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
+	}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS
 	//const duplicate = await User.findOne({ id }).lean().exec()

@@ -350,3 +350,5 @@
 20230924	16:36:07	ad4686e2-2003-4b8e-afc6-75ed5f37a122	POST 	 http://localhost:3000 	 /users
 20230924	16:36:58	55dbfa57-b7d5-460e-8651-abfcfb5f343b	OPTIONS 	 http://localhost:3000 	 /users
 20230924	16:36:58	4b39d783-1709-4f2a-96f2-033ed78ed898	POST 	 http://localhost:3000 	 /users
+20230924	16:46:33	2a7c9c85-ce97-479f-bd09-7add117d4780	OPTIONS 	 http://localhost:3000 	 /users
+20230924	16:46:33	b5f311ec-db5e-4d51-abce-19aabb690e11	POST 	 http://localhost:3000 	 /users

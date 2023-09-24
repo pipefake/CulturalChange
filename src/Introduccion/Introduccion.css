@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 .div_logo_rol>img{
     width: 40px;
@@ -11,7 +12,9 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 30px;
+    align-items: center;
 }
+
 h3{
     margin: 0px 0px 0px 25px;
     font-size: 30px;
@@ -119,6 +122,7 @@ h3{
     width: 300px;
     height: 298px;
     
+    margin: 58px 0px;
 
 }
 .animacionAntropologo {
@@ -133,7 +137,7 @@ h3{
     width: 300px;
     height: 298px;
     
-
+    margin: 58px 0px;
 }
 
 .animacionInterprete{
@@ -143,10 +147,11 @@ h3{
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-direction: normal;
-    animation-timing-function: ease-in;
+    animation-timing-function: inherit;
     display: flex;
     width: 300px;
-    height: 290px;
+    height: 297px;
+    margin: 58px 0px;
 }
 
 .animacionHuaquero{
@@ -159,7 +164,8 @@ h3{
     animation-timing-function: ease-in;
     display: flex;
     width: 300px;
-    height: 290px;
+    height: 297px;
+    margin: 58px 0px;
 }
 
 

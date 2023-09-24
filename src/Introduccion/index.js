@@ -15,6 +15,8 @@ function Introduccion() {
     const rol = blogpost.rol;
     console.log(rol);
 
+
+
     // Función para obtener la etiqueta src de la imagen
     const getImgSrc = (img) => {
         switch (img) {
@@ -59,9 +61,14 @@ function Introduccion() {
                 </div>
                 <p>{blogpost.texto}</p>
                 <div className={getAnimacionClassName(rol)}>
-                    <img className="estiloanimacionmapa" alt="Animación de mapa"></img>
+
                 </div>
-                <BtnContinuar></BtnContinuar>
+                <button className="btnContinuar">
+
+
+                    Continuar
+
+                </button>
             </div>
         </>
     );

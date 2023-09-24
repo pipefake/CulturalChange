@@ -20,10 +20,15 @@ function InputCodigo() {
     name: "",
     identification: "",
     email: "",
-    acceptTerms: false,
-    student: false,
-    visitor: false,
+    rol: "",
+    finalizadaTarea: false,
+    tipoUsuario: "",
+    codigoSala: "",
   });
+
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [isStudent, setIsStudent] = useState(false);
+  const [isVisitor, setIsVisitor] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
@@ -37,6 +42,30 @@ function InputCodigo() {
 
   const closeErrorModal = () => {
     setErrorOccurred(false);
+  };
+
+  // Handle the change of the student checkbox
+  const handleStudentChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsStudent(isChecked);
+    setIsVisitor(!isChecked); // If student is checked, visitor becomes unchecked and vice versa
+    setUserData(prevData => ({
+      ...prevData,
+      rol: isChecked ? "Estudiante" : (isVisitor ? "Visitante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario
+    }));
+  };
+
+  // Handle the change of the visitor checkbox
+  const handleVisitorChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsVisitor(isChecked);
+    setIsStudent(!isChecked); // If visitor is checked, student becomes unchecked and vice versa
+    setUserData(prevData => ({
+      ...prevData,
+      rol: isChecked ? "Visitante" : (isStudent ? "Estudiante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario
+    }));
   };
 
   const updateFormComplete = () => {
@@ -87,7 +116,7 @@ function InputCodigo() {
     }
 
     // Ensure acceptTerms is checked and either student or visitor is checked
-    if (!userData.acceptTerms || !(userData.student || userData.visitor)) {
+    if (!acceptTerms || !(isStudent || isVisitor)) {
       return false;
     }
 
@@ -106,8 +135,6 @@ function InputCodigo() {
     }
     updateFormComplete();
   };
-
-
 
   const handleValidationErrorName = () => {
     const newErrors = {};
@@ -131,7 +158,7 @@ function InputCodigo() {
 
     if (!emailPattern.test(userData.email)) {
       newErrors.email =
-        "El email debe contener '@' y terminar en '.com' o '.co'.";
+        "El email debe contener '@' y '.com' o '.co'.";
     }
 
     setErrorEmail(newErrors);
@@ -259,7 +286,7 @@ function InputCodigo() {
               }}
             />
             {errorName.name && (
-              <div style={{ color: "red", fontSize: "12px" }}>
+              <div className="errorTxt">
                 {errorName.name}
               </div>
             )}
@@ -282,7 +309,7 @@ function InputCodigo() {
               }}
             />
             {errorIdentification.identification && (
-              <div style={{ color: "red", fontSize: "12px" }}>
+              <div className="errorTxt">
                 {errorIdentification.identification}
               </div>
             )}
@@ -303,18 +330,18 @@ function InputCodigo() {
               }}
             />
             {errorEmail.email && (
-              <p style={{ color: "red", fontSize: "12px" }}>
+              <p className="errorTxt">
                 {errorEmail.email}
               </p>
             )}
 
             <label className="txtTerminos">
               <input
-                className={userData.acceptTerms ? "mychecked" : "mycheck"}
+                className={acceptTerms ? "mychecked" : "mycheck"}
                 type="checkbox"
                 name="acceptTerms"
-                checked={userData.acceptTerms}
-                onChange={handleModalInputChange}
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
               />
               Estoy de acuerdo con los&nbsp;
               <a
@@ -330,22 +357,22 @@ function InputCodigo() {
               <label className="txtRol">
                 Estudiante:
                 <input
-                  className={userData.student ? "mycheckedRol" : "mycheckRol"}
+                  className={isStudent ? "mycheckedRol" : "mycheckRol"}
                   type="checkbox"
                   name="student"
-                  checked={userData.student}
-                  onChange={handleModalInputChange}
+                  checked={isStudent}
+                  onChange={handleStudentChange}
                 />
               </label>
 
               <label className="txtRol">
                 Visitante:
                 <input
-                  className={userData.visitor ? "mycheckedRol" : "mycheckRol"}
+                  className={isVisitor ? "mycheckedRol" : "mycheckRol"}
                   type="checkbox"
                   name="visitor"
-                  checked={userData.visitor}
-                  onChange={handleModalInputChange}
+                  checked={isVisitor}
+                  onChange={handleVisitorChange}
                 />
               </label>
             </div>

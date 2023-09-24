@@ -314,3 +314,6 @@
 20230918	20:03:24	b625f29e-8604-44ae-9744-62d744021e00	POST 	 http://localhost:3500/ 	 /api/register
 20230918	20:03:24	4e221055-6b34-4351-b6b6-c1735c74d18e	POST 	 http://localhost:3500/ 	 /api/register
 20230918	20:03:42	2d61da3a-0ee5-4c24-bce4-c2fd59125efd	POST 	 http://localhost:3500/ 	 /api/register
+20230923	10:22:44	c48a1c91-8d0f-4112-9471-09454f178d7b	POST 	 http://localhost:3500/ 	 /api/register
+20230923	10:22:56	7908d672-1aae-437b-b31c-05418c57d8d8	POST 	 http://localhost:3500/ 	 /api/register
+20230923	10:25:45	5a5006d9-7c71-4691-93c2-d2d77a97cda4	POST 	 http://localhost:3500/ 	 /api/user

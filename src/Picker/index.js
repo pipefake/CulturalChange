@@ -13,7 +13,7 @@ import logoAntropologo from './logos/logoAntropologo.png';
 function Picker() {
     return (
         <>
-            <ModalHelp />
+
             <div className="divPicker">
 
 
@@ -32,13 +32,13 @@ function Picker() {
 function IntroduccionRol({ post }) {
     // Define the logo variable based on the role
     let logo;
-    if (post.rol === "Guia") {
+    if (post.rol === "Guía") {
         logo = logoGuia;
     } else if (post.rol === "Huaquero") {
         logo = logoHuaquero;
     } else if (post.rol === "Interprete") {
         logo = LogoInterprete;
-    } else if (post.rol === "Antropologo") {
+    } else if (post.rol === "Antropólogo") {
         logo = logoAntropologo;
     } else {
 

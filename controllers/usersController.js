@@ -21,12 +21,16 @@ const getAllUsers = asyncHandler(async (req, res) => {
 //ruta: POST /users
 //acceso: privado
 const createNewUser = asyncHandler(async (req, res) => {
-	const { username, identificacion, correo, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body
+	const { name, identification, email, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body
+
+	//ERROR 24/09/2023
+	//la comprobacion en backend de evitar un POST vacio generaba un error, quitar esta logica y dejarsela solo a 
+	//front fue la solucion, ademas de forzar que sean iguales las variables
 
 	//comprobacion que no son campos vacios
-	if (!username || !identificacion || !correo || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
-		return res.status(400).json({ message: `Todos los campos son requeridos: ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
-	}
+	//if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
+	//	return res.status(400).json({ message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
+	//}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS
 	//const duplicate = await User.findOne({ id }).lean().exec()
@@ -39,20 +43,20 @@ const createNewUser = asyncHandler(async (req, res) => {
 
 	//Encriptando todos los parametros
 	const secretKey = '$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy';
-	const encryptedUsername = CryptoJS.AES.encrypt(username, secretKey).toString();
-	const encryptedIdentificacion = CryptoJS.AES.encrypt(identificacion.toString(), secretKey).toString();
-	const encryptedCorreo = CryptoJS.AES.encrypt(correo, secretKey).toString();
+	const encryptedUsername = CryptoJS.AES.encrypt(name, secretKey).toString();
+	const encryptedIdentificacion = CryptoJS.AES.encrypt(identification.toString(), secretKey).toString();
+	const encryptedCorreo = CryptoJS.AES.encrypt(email, secretKey).toString();
 	const encryptedRol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 
-	const userObject = { "username": encryptedUsername, "identificacion": encryptedIdentificacion, "correo": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, tipoUsuario, codigoSala }
+	const userObject = { "name": encryptedUsername, "identification": encryptedIdentificacion, "email": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, tipoUsuario, codigoSala }
 
 	//crear y guardar nuevo usuario
 	const user = await User.create(userObject);
 
 	if (user) {
-		res.status(201).json({ message: `Nuevo usuario ${identificacion} creado` })
+		res.status(201).json({ message: `Nuevo usuario ${identification} creado` })
 	} else {
-		res.status(400).json({ message: `No se ha ingresado el usuario ${identificacion}` })
+		res.status(400).json({ message: `No se ha ingresado el usuario ${identification}` })
 	}
 })
 

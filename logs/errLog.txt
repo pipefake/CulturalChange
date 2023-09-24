@@ -134,3 +134,9 @@
 		/api/register	http://localhost:3500/
 20230923	10:25:45	70b18a2d-dcbf-4ce8-b2f4-35570e2c2872	Error: ENOENT: no such file or directory, stat 'C:\Trabajos\SMIGC\CulturalChange\views\404.html'	POST
 		/api/user	http://localhost:3500/
+20230924	15:24:46	fb8d5aea-a1ba-495a-a353-147c4d425e9a	Error: ENOENT: no such file or directory, stat 'C:\Users\ALEJANDRO\Desktop\TRABAJOS\Diseño multimedia 2\proyecto\CulturalChange\views\404.html'	POST
+		/api/register	http://localhost:3500/
+20230924	16:31:36	4baf1caf-358f-4444-a1f0-8d693a11065c	SyntaxError: Unexpected token } in JSON at position 179	POST
+		/users	undefined
+20230924	16:36:07	2fd7574e-0057-47fd-ab57-f3b39ec6518f	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
+		/users	http://localhost:3000

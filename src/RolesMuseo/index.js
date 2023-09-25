@@ -7,7 +7,6 @@ import GuiaLogo from "./resources/GuiaLogo.png";
 import HuaqueroLogo from "./resources/HuaqueroLogo.png";
 import InterpreteLogo from "./resources/InterpreteLogo.png";
 import AntropologoLogo from "./resources/AntropologoLogo.png";
-import FondoGuia from "./resources/FondoGuia.png";
 
 const roles = [
   {
@@ -16,7 +15,6 @@ const roles = [
     descripcion:
       "Deberás observar detalladamente el mapa e indicarle al Huaquero, dónde debe buscar los misteriosos símbolos que aparecen en el mapa.",
     logo: GuiaLogo,
-    fondo: FondoGuia,
   },
   {
     titulo: "Huaquero",

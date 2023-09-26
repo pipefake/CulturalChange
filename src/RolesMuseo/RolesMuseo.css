@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.fondo{
+.fondo {
   background-size: 1280px 1024px;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@
   text-align: center;
   text-shadow: 3px 7px 11px rgba(0, 0, 0, 0.25);
   font-family: ABeeZee;
-  font-size: 80px;
+  font-size: 68px;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
@@ -82,8 +82,8 @@
 
 .role-content img {
   filter: drop-shadow(3px 7px 11px rgba(0, 0, 0, 0.25));
-  width: 214px;
-  height: 213px;
+  width: 150px;
+  height: 150px;
 }
 
 .role-content p {
@@ -96,4 +96,40 @@
   letter-spacing: -0.4px;
   text-align: center;
   margin-top: 20px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotate 2s linear infinite;
+}
+
+.start-button {
+  flex-shrink: 0;
+  color: #432b18;
+  text-align: center;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  padding: 10px 20px;
+  background-color: #ee8249;
+  border: 1px solid #432b18;
+  border-radius: 5px;
 }

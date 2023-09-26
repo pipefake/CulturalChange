@@ -1,5 +1,7 @@
 import "./App.css";
 
+import { MyContextProvider } from './SeleccionCargando/MyContext';
+
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
@@ -23,27 +25,30 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <HashRouter>
-        {/* <Header rol={"Antropólogo"} /> */}
-        {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
+    <MyContextProvider>
 
-        <Routes>
-          <Route path="/*" element={<p>no encontrado</p>} />
-          <Route path="/" element={<InputCodigo></InputCodigo>} />
-          <Route path="/introduccion" element={<Picker></Picker>} />
-          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
-          <Route path="/introduccion" element={<Picker></Picker>} />
-          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
-          <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
-          <Route path="/qrMuseo" element={<QrMuseo />} />
-          <Route path="/introduccion/:slug" element={<Introduccion />} />
-          <Route path="/seleccionCargando" element={<SeleccionCargando />} />
+      <div className="App">
+        <HashRouter>
+          {/* <Header rol={"Antropólogo"} /> */}
+          {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
 
-          {/* Aquí está la nueva ruta */}
-        </Routes>
-      </HashRouter>
-    </div >
+          <Routes>
+            <Route path="/*" element={<p>no encontrado</p>} />
+            <Route path="/" element={<InputCodigo></InputCodigo>} />
+            <Route path="/introduccion" element={<Picker></Picker>} />
+            <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
+            <Route path="/introduccion" element={<Picker></Picker>} />
+            <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
+            <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
+            <Route path="/qrMuseo" element={<QrMuseo />} />
+            <Route path="/introduccion/:slug" element={<Introduccion />} />
+            <Route path="/seleccionCargando" element={<SeleccionCargando />} />
+
+            {/* Aquí está la nueva ruta */}
+          </Routes>
+        </HashRouter>
+      </div >
+    </MyContextProvider>
   );
 }
 

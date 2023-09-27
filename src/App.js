@@ -6,6 +6,7 @@ import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
 import { QrMuseo } from "./QrMuseo";
+import { RolesMuseo } from "./RolesMuseo";
 
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
@@ -25,32 +26,26 @@ function App() {
   }
 
   return (
-    <MyContextProvider>
-      <div className="App">
-        <HashRouter>
-          {/* <Header rol={"Antropólogo"} /> */}
-          {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
+    <div className="App">
+      <HashRouter>
+        {/* <Header rol={"Antropólogo"} /> */}
+        {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
 
-          <Routes>
-            <Route path="/*" element={<p>no encontrado</p>} />
-            <Route path="/" element={<InputCodigo></InputCodigo>} />
-            <Route path="/introduccion" element={<Picker></Picker>} />
-            <Route
-              path="/museo"
-              element={<PantallaMuseo></PantallaMuseo>}
-            />{" "}
-            <Route path="/introduccion" element={<Picker></Picker>} />
-            <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
-            <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
-            <Route path="/qrMuseo" element={<QrMuseo />} />
-            <Route path="/introduccion/:slug" element={<Introduccion />} />
-            <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-            <Route path="/rolesMuseo" element={<RolesMuseo />} />
-            {/* Aquí está la nueva ruta */}
-          </Routes>
-        </HashRouter>
-      </div>
-    </MyContextProvider>
+        <Routes>
+          <Route path="/*" element={<p>no encontrado</p>} />
+          <Route path="/" element={<InputCodigo></InputCodigo>} />
+          <Route path="/introduccion" element={<Picker></Picker>} />
+          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
+          <Route path="/introduccion" element={<Picker></Picker>} />
+          <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
+          <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
+          <Route path="/qrMuseo" element={<QrMuseo />} />
+          <Route path="/introduccion/:slug" element={<Introduccion />} />
+          <Route path="/rolesMuseo" element={<RolesMuseo />} />
+          {/* Aquí está la nueva ruta */}
+        </Routes>
+      </HashRouter>
+    </div>
   );
 }
 

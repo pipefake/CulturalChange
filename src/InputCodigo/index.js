@@ -17,13 +17,13 @@ function InputCodigo() {
   const [errors, setErrors] = useState({});
 
   const [userData, setUserData] = useState({
-    name: "",
-    identification: "",
-    email: "",
-    rol: "",
-    finalizadaTarea: false,
-    tipoUsuario: "",
-    codigoSala: "",
+    "name": "",
+    "identification": "",
+    "email": "",
+    "rol": "",
+    "finalizadaTarea": "false",
+    "tipoUsuario": "",
+    "codigoSala": "algo"
   });
 
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -195,7 +195,20 @@ function InputCodigo() {
       if (Object.keys(errors).length === 0) {
         try {
           console.log("Conditions met. Attempting to send data...");
-          const response = await axios.post("/api/register", userData);
+          const response = await axios.post("http://localhost:3500/users", {
+            name: userData.name,
+    identification: userData.identification,
+    email: userData.email,
+    rol: userData.rol,
+    finalizadaTarea: userData.finalizadaTarea,
+    tipoUsuario: userData.tipoUsuario,
+    codigoSala: userData.codigoSala
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
           console.log("User registered:", response.data);
 
           setIsLoading(false);
@@ -224,6 +237,8 @@ function InputCodigo() {
 
   const handleEnviarClick = async () => {
     console.log("handleEnviarClick called");
+    //Consola para verificar que tiene los estados, recordar meter userData como parametro en esta funcion
+    //console.log("AQUI MIRAME" + userData.name + userData.identification + userData.email + userData.rol + userData.finalizadaTarea + userData.tipoUsuario + userData.codigoSala)
   };
 
   const buttonClass = areFieldsComplete()

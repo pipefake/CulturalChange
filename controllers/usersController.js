@@ -61,11 +61,11 @@ const createNewUser = asyncHandler(async (req, res) => {
 //acceso: privado
 const updateUser = asyncHandler(async (req, res) => {
 	//lamo informacion del body
-	const { _id, username, identificacion, correo, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body;
+	const { _id, name, identification, email, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body;
 
 	//confirmando campos no vacios
-	if (!username || !identificacion || !correo || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
-		return res.status(400).json({ message: `Todos los campos son requeridos: ${_id} ${username} ${identificacion} ${correo} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
+	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
 	}
 
 	//toca modificar un solo usuario, asi que llamemos por su id
@@ -89,9 +89,9 @@ const updateUser = asyncHandler(async (req, res) => {
 	//user.username = await bcrypt.hash(username, 10) //10 es sales
 	//encriptando informacion a modificar
 	const secretKey = '$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy';
-	user.username = CryptoJS.AES.encrypt(username, secretKey).toString();
-	user.identificacion = CryptoJS.AES.encrypt(identificacion, secretKey).toString();
-	user.correo = CryptoJS.AES.encrypt(correo, secretKey).toString();
+	user.name = CryptoJS.AES.encrypt(name, secretKey).toString();
+	user.identification = CryptoJS.AES.encrypt(identification, secretKey).toString();
+	user.email = CryptoJS.AES.encrypt(email, secretKey).toString();
 	user.rol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 	user.finalizadaTarea = finalizadaTarea;
 	user.tipoUsuario = tipoUsuario;
@@ -101,7 +101,7 @@ const updateUser = asyncHandler(async (req, res) => {
 	const updateUser = await user.save();
 
 	//respuesta
-	res.json({ message: `Se actualiz�: ${updateUser.username} ${updateUser.identificacion}` });
+	res.json({ message: `Se actualizo: ${updateUser.name} ${updateUser.identification}` });
 })
 
 module.exports = {

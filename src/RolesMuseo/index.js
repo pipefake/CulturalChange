@@ -50,7 +50,7 @@ function RolesMuseo() {
           className="role-slide"
           style={{ backgroundImage: `url(${rol.fondo})` }}
         >
-          <h1>¡Seleccionen sus roles, viajeros!</h1>
+          <h1 className="tituloCarga">¡Seleccionen sus roles, viajeros!</h1>
           <h2>{rol.titulo}</h2>
           <div className="role-content">
             <img src={rol.logo} alt={rol.titulo} />

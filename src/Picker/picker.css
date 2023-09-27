@@ -28,7 +28,7 @@ li{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 60px; 
 }
 .txtRoles{
     -webkit-text-stroke-width: 1px;
@@ -42,4 +42,8 @@ li{
 
 .margin{
     margin-right: 10px;
+  }
+
+  .tituloCarga{
+    text-align: center !important;
   }

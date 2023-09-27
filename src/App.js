@@ -27,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+
       <MyContextProvider>
         <HashRouter>
           {/* <Header rol={"Antropólogo"} /> */}

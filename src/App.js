@@ -1,5 +1,11 @@
 import "./App.css";
+<<<<<<< HEAD
 import { MyContextProvider } from "./SeleccionCargando/MyContext";
+=======
+
+
+
+>>>>>>> fcb1023a4cdd2b9f82fd69da336ea4086c45a5b6
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
@@ -9,6 +15,11 @@ import { Header } from "./Header";
 import { Contexto } from "./Contexto";
 import { Introduccion } from "./Introduccion";
 import { SeleccionCargando } from "./SeleccionCargando";
+<<<<<<< HEAD
+=======
+import { MyContextProvider } from "./SeleccionCargando/MyContext";
+import { HashRouter, Routes, Route } from "react-router-dom";
+>>>>>>> fcb1023a4cdd2b9f82fd69da336ea4086c45a5b6
 import { Picker } from "./Picker";
 import { HashRouter, Routes, Route } from "react-router-dom";
 

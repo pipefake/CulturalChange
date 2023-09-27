@@ -55,7 +55,7 @@ function SeleccionCargando() {
             <div className="divPicker">
 
 
-                <h1>Esperando viajeros</h1>
+                <h1 className="centrarTitulo">Esperando viajeros</h1>
                 {esLoanding ? (
                     <img className="rotating-image animacioncarga" src={cargando} alt="Logo de enviando" />
                 ) : (

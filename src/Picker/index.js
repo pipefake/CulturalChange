@@ -18,16 +18,7 @@ import logoInterpreteBN from '../SeleccionCargando/logos/logoInterpreteBN.png';
 import logoAntropologoBN from '../SeleccionCargando/logos/logoAntropologoBN.png';
 
 function Picker() {
-    const {
-        esGuia,
-        setEsGuia,
-        esHuaquero,
-        setEsHuaquero,
-        esInterprete,
-        setEsInterprete,
-        esAntropologo,
-        setEsAntropologo,
-    } = useMyContext();
+
 
     return (
         <>
@@ -56,6 +47,7 @@ function IntroduccionRol({ post }) {
         esAntropologo,
         setEsAntropologo,
     } = useMyContext();
+
     // Define the logo variable based on the role
     let logo;
 

@@ -1,5 +1,7 @@
 import "./App.css";
 
+import { MyContextProvider } from "./SeleccionCargando/MyContext";
+
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
@@ -9,6 +11,7 @@ import { RolesMuseo } from "./RolesMuseo";
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
 import { Introduccion } from "./Introduccion";
+import { SeleccionCargando } from "./SeleccionCargando";
 
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Picker } from "./Picker";

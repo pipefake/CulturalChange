@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { MyContextProvider } from './SeleccionCargando/MyContext';
+import { MyContextProvider } from "./SeleccionCargando/MyContext";
 
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
@@ -26,7 +26,6 @@ function App() {
 
   return (
     <MyContextProvider>
-
       <div className="App">
         <HashRouter>
           {/* <Header rol={"Antropólogo"} /> */}
@@ -36,18 +35,21 @@ function App() {
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo></InputCodigo>} />
             <Route path="/introduccion" element={<Picker></Picker>} />
-            <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />{" "}
+            <Route
+              path="/museo"
+              element={<PantallaMuseo></PantallaMuseo>}
+            />{" "}
             <Route path="/introduccion" element={<Picker></Picker>} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
             <Route path="/qrMuseo" element={<QrMuseo />} />
             <Route path="/introduccion/:slug" element={<Introduccion />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-
+            <Route path="/rolesMuseo" element={<RolesMuseo />} />
             {/* Aquí está la nueva ruta */}
           </Routes>
         </HashRouter>
-      </div >
+      </div>
     </MyContextProvider>
   );
 }

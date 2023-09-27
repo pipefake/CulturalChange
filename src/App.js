@@ -42,6 +42,7 @@ function App() {
           <Route path="/qrMuseo" element={<QrMuseo />} />
           <Route path="/introduccion/:slug" element={<Introduccion />} />
           <Route path="/rolesMuseo" element={<RolesMuseo />} />
+          <Route path="/seleccionCargando" element={<SeleccionCargando />} />
           {/* Aquí está la nueva ruta */}
         </Routes>
       </HashRouter>

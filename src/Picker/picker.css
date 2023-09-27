@@ -1,7 +1,7 @@
 .centrarTitulo{
     text-align: center !important;
-  }
-  .imglogo{
+}
+.imglogo{
     width: 120px;
 }
 ul{
@@ -31,7 +31,7 @@ li{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 20px; 
 }
 .txtRoles{
     -webkit-text-stroke-width: 1px;
@@ -45,5 +45,4 @@ li{
 
 .margin{
     margin-right: 10px;
-  }
-  
+}  

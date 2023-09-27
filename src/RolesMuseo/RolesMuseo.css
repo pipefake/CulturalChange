@@ -1,66 +1,135 @@
-.roles-slider {
-  width: 1280px;
-  height: 1024px;
-  position: relative;
-  overflow: hidden;
+.roles-section {
+  width: 95%;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.roles-slider h1 {
+.fondo {
+  background-size: 1280px 1024px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.roles-section h1 {
   color: #3f1e1e;
   text-align: center;
   text-shadow: 3px 7px 11px rgba(0, 0, 0, 0.25);
   font-family: ABeeZee;
-  font-size: 96px;
+  font-size: 68px;
   font-style: normal;
   font-weight: 400;
-  line-height: 130%; /* 124.8px */
+  line-height: 130%;
   letter-spacing: -0.96px;
-  background-color: rgba(255, 255, 255, 0.6); /* fondo blanco con 60% de opacidad */
-  border-radius: 5px; /* bordes redondeados para suavizar la apariencia */
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-.roles-slider h2 {
+.roles-section h3 {
   color: #3f1e1e;
   text-align: center;
   font-family: ABeeZee;
-  font-size: 48px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
-  line-height: 130%; /* 62.4px */
+  line-height: 130%;
+  letter-spacing: -0.96px;
+  margin-bottom: 20px;
+}
+
+.roles-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.role {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  min-height: 100%;
+}
+
+.roles-container h2 {
+  color: #3f1e1e;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
   letter-spacing: -0.48px;
+  margin-bottom: 20px;
 }
 
 .role-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 }
 
 .role-content img {
   filter: drop-shadow(3px 7px 11px rgba(0, 0, 0, 0.25));
-  width: 314.129px;
-  height: 313px;
-  flex-shrink: 0;
-  margin-left: 110px;
+  width: 150px;
+  height: 150px;
 }
 
 .role-content p {
   color: #3f1e1e;
   font-family: ABeeZee;
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 400;
-  line-height: 130%; /* 52px */
+  line-height: 130%;
   letter-spacing: -0.4px;
-  margin-left: 70px;
-  margin-right: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
-.role-slide {
-  position: relative;
-  width: 1280px;
-  height: 1024px;
-  background-position: center;  /* Centra la imagen en el div */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-size: cover;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  animation: rotate 2s linear infinite;
+}
+
+.start-button {
+  flex-shrink: 0;
+  color: #432b18;
+  text-align: center;
+  font-family: "ABeeZee", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  padding: 10px 20px;
+  background-color: #ee8249;
+  border: 1px solid #432b18;
+  border-radius: 5px;
 }

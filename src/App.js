@@ -7,6 +7,7 @@ import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
 import { QrMuseo } from "./QrMuseo";
 import { RolesMuseo } from "./RolesMuseo";
+import { EstadoMuseo } from "./EstadoMuseo";
 
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/introduccion/:slug" element={<Introduccion />} />
           <Route path="/rolesMuseo" element={<RolesMuseo />} />
           <Route path="/seleccionCargando" element={<SeleccionCargando />} />
+          <Route path="/estadoMuseo" element={<EstadoMuseo />} />
           {/* Aquí está la nueva ruta */}
         </Routes>
       </HashRouter>

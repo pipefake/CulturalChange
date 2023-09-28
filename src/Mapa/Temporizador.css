@@ -1,0 +1,43 @@
+.tempo>p{
+  font-size: 64px;
+  font-family: 'ABeeZee', sans-serif;
+  color: #424242;
+  text-align: center;
+  margin: 5px;
+}
+.textoRojo{
+    color: red !important;
+    text-align: center;
+}
+.reloadTemp{
+    position: absolute;
+    top: 335px;
+    left: 67px;
+
+}
+button{
+    background: none;
+    border: none;
+}
+.loader {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid rgb(60, 60, 60);
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    align-items: center;
+    justify-items: center;
+    margin: 80px 50px;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 

@@ -1,11 +1,5 @@
 import "./App.css";
-<<<<<<< HEAD
 import { MyContextProvider } from "./SeleccionCargando/MyContext";
-=======
-
-
-
->>>>>>> fcb1023a4cdd2b9f82fd69da336ea4086c45a5b6
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
@@ -13,17 +7,15 @@ import { QrMuseo } from "./QrMuseo";
 import { RolesMuseo } from "./RolesMuseo";
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
+import { Mapa } from './Mapa';
 import { Introduccion } from "./Introduccion";
 import { SeleccionCargando } from "./SeleccionCargando";
-<<<<<<< HEAD
-=======
-import { MyContextProvider } from "./SeleccionCargando/MyContext";
-import { HashRouter, Routes, Route } from "react-router-dom";
->>>>>>> fcb1023a4cdd2b9f82fd69da336ea4086c45a5b6
 import { Picker } from "./Picker";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+
+
   return (
     <div className="App">
       <HashRouter>
@@ -40,6 +32,7 @@ function App() {
             <Route path="/introduccion/:slug" element={<Introduccion />} />
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
+            <Route path="/juego/guia" element={<Mapa historia={2} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

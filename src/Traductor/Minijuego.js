@@ -77,12 +77,14 @@ const Minijuego = () => {
             <Header></Header>
             <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto
 "></Contexto>
-            <div className='contentMinijuego'>
-                <Link to="/juego/interprete/traduccion">
-                    <img src={off} alt="logo de Guia"></img>
-                </Link>
-                <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} />
+            <div className="fondoAmarillo">
+                <div className='contentMinijuego'>
+                    <Link to="/juego/interprete/traduccion">
+                        <img src={off} alt="logo de Guia"></img>
+                    </Link>
+                    <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} />
 
+                </div>
             </div>
             <Acumulador />
         </>

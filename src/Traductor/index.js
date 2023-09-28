@@ -27,18 +27,19 @@ function Traductor(props) {
             <Header></Header>
             <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto
 "></Contexto>
-            <div className='contentMinijuego'>
-                <Link to="/juego/interprete/parejas">
-                    <img src={on} alt="botón para retroceder" />
+            <div className="fondoAmarillo">
+                <div className='contentMinijuego '>
+                    <Link to="/juego/interprete/parejas">
+                        <img src={on} alt="botón para retroceder" />
 
-                </Link>
+                    </Link>
+                </div>
+                <div className="ContTraduccion">
+                    {aux.map((simbolo, index) => (
+                        <Casilla img={simbolo.image} valid={simbolo.interpretado} anagrama={simbolo.anagrama}></Casilla>
+                    ))}
+                </div>
             </div>
-            <div className="ContTraduccion">
-                {aux.map((simbolo, index) => (
-                    <Casilla img={simbolo.image} valid={simbolo.interpretado} anagrama={simbolo.anagrama}></Casilla>
-                ))}
-            </div>
-
             <Acumulador />
         </>
     );

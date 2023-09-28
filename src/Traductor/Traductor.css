@@ -8,3 +8,17 @@
     width: 150px;
     margin: 5px;
 }
+.fondoAmarillo {
+    position: fixed;
+    top: 217px;
+    left: 0;
+    background-color: #FED158;
+    width: 80vw;
+    height: 652px;
+    border-radius: 90px 90px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10vw;
+}

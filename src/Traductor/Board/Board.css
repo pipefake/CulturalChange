@@ -1,0 +1,14 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    max-width: 600px;
+    margin: 60px auto;
+    width: 270px;
+}
+.contentMinijuego{
+    display: flex;
+    flex-direction: column;
+        align-items: center;
+        
+}

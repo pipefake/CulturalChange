@@ -1,0 +1,10 @@
+.ContTraduccion{
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.ContTraduccion>img{
+    width: 150px;
+    margin: 5px;
+}

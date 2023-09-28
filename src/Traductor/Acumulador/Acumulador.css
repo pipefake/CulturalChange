@@ -1,0 +1,16 @@
+.acumulador{
+    display: flex;
+    flex-direction: row;
+    width: 396px;
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    top: 700px;
+    justify-content: center;
+}
+.imgBloqueo{
+    width: 95px;
+}
+.imgAnagramaBlock{
+    width: 150px;
+}

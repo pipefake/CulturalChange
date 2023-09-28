@@ -6,8 +6,8 @@ const MyContext = createContext();
 // Creamos un componente proveedor para envolver la aplicación
 export function MyContextProvider({ children }) {
     const [esGuia, setEsGuia] = useState(true);
-    const [esHuaquero, setEsHuaquero] = useState(false);
-    const [esInterprete, setEsInterprete] = useState(false);
+    const [esHuaquero, setEsHuaquero] = useState(true);
+    const [esInterprete, setEsInterprete] = useState(true);
     const [esAntropologo, setEsAntropologo] = useState(true);
 
     return (

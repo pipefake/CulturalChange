@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { blogdata } from '../blogdata';
 import museolili from '../InputCodigo/resources/museolili.png';
 import './seleccionCargando.css';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import cargando from './cargando.png';
 import { useMyContext } from './MyContext';
@@ -18,6 +18,20 @@ import logoAntropologoBN from './logos/logoAntropologoBN.png';
 import ready from './listo.png';
 
 function SeleccionCargando() {
+
+    const { slug } = useParams();
+    const blogpost = blogdata.find(post => post.slug === slug);
+    const navigate = useNavigate();
+
+    const redirectGame = (e) => {
+        navigate(enlace);
+    }
+
+    const rol = "guia";
+
+
+
+    const enlace = (`/juego/${rol}`);
 
     const {
         esGuia,
@@ -40,8 +54,10 @@ function SeleccionCargando() {
     const verificarEstados = () => {
         if (esGuia && esHuaquero && esInterprete && esAntropologo) {
             setEsLoading(false);
+            redirectGame();
         } else {
             setEsLoading(true);
+
         }
     };
 

@@ -20,6 +20,51 @@ const corsOptions = require("./config/corsOptions")
 const mongoose = require("mongoose")
 const connectDB = require("./config/dbConn")
 
+//======================
+//test sockets
+const http = require('http');
+const socketIo = require('socket.io');
+
+
+const server = http.createServer(app);
+const io = socketIo(server);
+
+//aqui tenemos el socket que va a enviar un evento cada vez que se cambie la coleccion usuarios
+//front escucha el evento y recarga componentes
+
+io.on('connection', (socket) => {
+  console.log('Nuevo cliente conectado');
+  
+  // Supongamos que tienes un modelo Mongoose llamado User
+  const User = mongoose.model('User');
+
+  // Puedes escuchar al evento de Mongoose que se emite cuando hay cambios en tu colección
+  const changeStream = User.watch();
+  
+  changeStream.on('change', async (change) => {
+    console.log('Cambio detectado:', change);
+    
+    // Enviar a todos los clientes conectados la lista actualizada de usuarios
+    const users = await User.find().lean();
+    socket.emit('cambioEnLaColeccion', users);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Cliente desconectado');
+    changeStream.close(); // Importante cerrar el changeStream cuando el cliente se desconecta
+  });
+});
+
+console.log("detalle 2");
+
+//======================
+
+
+//conexion base de datos
+connectDB();
+
+//--------------------------------------------
+
 
 //conexion base de datos
 connectDB();
@@ -53,6 +98,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
 //enrutando a un html para usuarios
 app.use("/users", require("./routes/userRoutes"))
+//peticion de socket
+app.use("/socket.io/", require("./routes/userRoutes"))
 //==============
 
 //rutas a manifiesto y favicon
@@ -98,7 +145,9 @@ app.use(errorHandler);
 //escuchamos el evento de abiero (la conexion a la bd)
 mongoose.connection.once("open", () => {
 	console.log("Connected to MongoDB")
-	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+	//cambios a server por socket
+	//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+	server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
 
 //catch errores en conexion

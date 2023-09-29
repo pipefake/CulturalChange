@@ -1,0 +1,61 @@
+.container-estado-museo {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-roles {
+  color: #583d28;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-roles {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.grid-logos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Espacio entre los logos */
+  margin-top: 80px; /* Espacio entre el título y los logos */
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 252px;
+  height: 252px;
+}
+
+.logo-container p {
+  margin: 10px 0 0 0; /* Ajusta el margen superior y elimina los demás márgenes */
+  padding: 0;
+  text-align: center;
+  color: #583d28;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: ABeeZee;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+}

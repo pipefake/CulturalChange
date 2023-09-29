@@ -1,0 +1,161 @@
+.contenedorImagen {
+    height: 150px; /* Ajusta la altura según tus necesidades */
+    margin-bottom: 150px;
+}  
+.centrarVerticalmente {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    height: 100%; /* Opcional: ajusta la altura según tus necesidades */
+  }
+  
+.fondoAmarillo {
+    position: fixed;
+    top: 217px;
+    left: 0;
+    background-color: #FED158;
+    width: 80vw;
+    height: 652px;
+    border-radius: 90px 90px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10vw;
+}
+
+.position_map{
+    position: relative;
+}
+.position_map>img{
+    margin-top: 40px;
+}
+.textoRojo{
+    font-size: 54px;
+    font-family: 'ABeeZee', sans-serif;
+    color: #424242;
+    text-align: center;
+    margin: 29px 0px;
+    font-weight: 600;
+}
+.textNormal{
+    font-size: 54px;
+    color: #424242;
+}
+@keyframes animation {
+    0% {
+        background-image: url(./resources/pin-12.png);
+    }
+
+    30% {
+        background-image: url(./resources/pin-13.png);
+    }
+
+    60% {
+        background-image: url(./resources/pin-14.png);
+    }
+    100% {
+        background-image: url(./resources/pin-13.png);
+    }
+}
+.parrafoInferior{
+    font-size: 16px;
+    font-family: 'ABeeZee', sans-serif;
+    color: #75553B;
+    text-align: center;
+
+}
+.titulosGuia{
+    color: #75553B;
+    font-size: 34px;
+    margin: 5px;
+    font-weight: 800;
+    font-family: 'ABeeZee', sans-serif;
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.animacionweb1 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    position: absolute;
+    top: 47px;
+    left: 97px;
+
+}
+
+.estiloanimacionmapa{
+    opacity: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.animacionweb2 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    position: inherit;
+    top: 54px;
+    left: 131px;
+}
+
+.animacionweb3 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    position: absolute;
+    top: 95px;
+    left: 181px;
+}
+.contenedorPunto{
+    width: 307px;
+    height: 303PX;
+    POSITION: absolute;
+    TOP: 39PX;
+}
+.animacionweb4 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    position: absolute;
+    top: 103px;
+    left: 230px;
+
+}
+.animacionweb5 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    display: flex;
+    position: absolute;
+    top: 136px;
+    left: 230px;
+
+}

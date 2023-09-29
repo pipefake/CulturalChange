@@ -1,32 +1,32 @@
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
-	username:{
+	name: {
 		type: String,
 		required: true
 	},
-	identificacion:{
+	identification: {
 		type: String,
 		required: true
 	},
-	correo:{
+	email: {
 		type: String,
 		required: true
 	},
-	rol:{
+	rol: {
 		type: String,
 		required: true
 	},
-	finalizadaTarea:{
+	finalizadaTarea: {
 		type: Boolean,
 		default: false,
 		required: true
 	},
-	estudianteUAO:{
-		type: Boolean,
+	tipoUsuario: {
+		type: String,
 		required: true
 	},
-	codigoSala:{
+	codigoSala: {
 		type: String,
 		required: true
 	}

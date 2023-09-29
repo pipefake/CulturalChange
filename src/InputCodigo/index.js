@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./inputCodigo.css";
 import Modal from "react-modal";
 import museolili from "./resources/museolili.png";
 import { ModalHelp } from "../Modal";
 import axios from "axios";
+import { EnviandoCarga } from "../EnviandoCarga";
+import { ErrorCarga } from "../ErrorCarga";
+import { SentInformacion } from "../SentInformacion";
 
 function InputCodigo() {
   const [inputValue, setInputValue] = useState("");
@@ -13,16 +17,56 @@ function InputCodigo() {
   const [errors, setErrors] = useState({});
 
   const [userData, setUserData] = useState({
-    name: "",
-    identification: "",
-    email: "",
-    acceptTerms: false,
-    student: false,
-    visitor: false,
+    "name": "",
+    "identification": "",
+    "email": "",
+    "rol": "",
+    "finalizadaTarea": "false",
+    "tipoUsuario": "",
+    "codigoSala": "algo"
   });
+
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [isStudent, setIsStudent] = useState(false);
+  const [isVisitor, setIsVisitor] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [sentInformation, setSentInformation] = useState(false);
+
+  const [errorName, setErrorName] = useState({});
+  const [errorEmail, setErrorEmail] = useState({});
+  const [errorIdentification, setErrorIdentification] = useState({});
+
+  const navigate = useNavigate();
+
+  const closeErrorModal = () => {
+    setErrorOccurred(false);
+  };
+
+  // Handle the change of the student checkbox
+  const handleStudentChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsStudent(isChecked);
+    setIsVisitor(!isChecked); // If student is checked, visitor becomes unchecked and vice versa
+    setUserData(prevData => ({
+      ...prevData,
+      rol: isChecked ? "Estudiante" : (isVisitor ? "Visitante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario
+    }));
+  };
+
+  // Handle the change of the visitor checkbox
+  const handleVisitorChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsVisitor(isChecked);
+    setIsStudent(!isChecked); // If visitor is checked, student becomes unchecked and vice versa
+    setUserData(prevData => ({
+      ...prevData,
+      rol: isChecked ? "Visitante" : (isStudent ? "Estudiante" : ""),  // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario
+    }));
+  };
 
   const updateFormComplete = () => {
     const { name, email } = userData;
@@ -72,7 +116,7 @@ function InputCodigo() {
     }
 
     // Ensure acceptTerms is checked and either student or visitor is checked
-    if (!userData.acceptTerms || !(userData.student || userData.visitor)) {
+    if (!acceptTerms || !(isStudent || isVisitor)) {
       return false;
     }
 
@@ -92,48 +136,109 @@ function InputCodigo() {
     updateFormComplete();
   };
 
-  const handleValidation = () => {
+  const handleValidationErrorName = () => {
     const newErrors = {};
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const numberPattern = /^[0-9]+$/;
 
-    // Validate name
-    if (/\d/.test(userData.name)) {
-      // check if there's any digit in the name
-      newErrors.name = "Name cannot contain numbers.";
+    const namePattern = /^[a-zA-Z]+$/; // Only letters allowed
+
+    if (!namePattern.test(userData.name)) {
+      newErrors.name = "El nombre solo debe contener letras.";
+    } else if (userData.name.length > 30) {
+      newErrors.name = "El nombre no puede contener más de 30 caracteres.";
     }
 
-    // Validate ID
-    if (!numberPattern.test(userData.identification)) {
-      newErrors.identification = "ID should only be numeric digits.";
-    }
-
-    // Validate email
-    if (!emailPattern.test(userData.email)) {
-      newErrors.email =
-        'Invalid email format. Email must contain "@" and end with ".com".';
-    }
-
-    setErrors(newErrors);
+    setErrorName(newErrors);
   };
 
+  const handleValidationErrorEmail = () => {
+    const newErrors = {};
+
+    // Regular expression pattern checks for "@" and either ".com" or ".co" domains
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|co)$/;
+
+    if (!emailPattern.test(userData.email)) {
+      newErrors.email =
+        "El email debe contener '@' y '.com' o '.co'.";
+    }
+
+    setErrorEmail(newErrors);
+  };
+
+  const handleValidationErrorIdentification = () => {
+    const numberPattern = /^[0-9]{1,10}$/; // Only numbers allowed and max length of 10
+    const newErrors = {};
+
+    if (!numberPattern.test(userData.identification)) {
+      if (userData.identification.length > 10) {
+        newErrors.identification =
+          "La identificación no puede tener más de 10 dígitos.";
+      } else {
+        newErrors.identification =
+          "La identificación solo debe contener números.";
+      }
+    }
+
+    setErrorIdentification(newErrors);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      Object.keys(errors).length === 0
-    ) 
-    console.log("Conditions arent met.");
-    {
-      try {
-        console.log("Conditions met. Attempting to send data...");
-        const response = await axios.post("/api/register", userData);
-        console.log("User registered:", response.data);
-      } catch (error) {
-        console.error("Error registering user:", error.response.data);
-      }
+    if (!areFieldsComplete()) {
+      return; // Don't proceed if the form isn't complete
     }
+
+    setIsLoading(true);
+
+    // Simulate a delay for the server connection (5 seconds)
+    setTimeout(async () => {
+      if (Object.keys(errors).length === 0) {
+        try {
+          console.log("Conditions met. Attempting to send data...");
+          const response = await axios.post("http://localhost:3500/users", {
+            name: userData.name,
+    identification: userData.identification,
+    email: userData.email,
+    rol: userData.rol,
+    finalizadaTarea: userData.finalizadaTarea,
+    tipoUsuario: userData.tipoUsuario,
+    codigoSala: userData.codigoSala
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+          console.log("User registered:", response.data);
+
+          setIsLoading(false);
+
+          // If successful, show the SentInformacion modal for 2 seconds
+          setSentInformation(true);
+
+          setTimeout(() => {
+            setSentInformation(false);
+            // Redirect to "/introduccion" after showing the modal
+            navigate("/introduccion");
+          }, 2000); // 2 seconds
+        } catch (error) {
+          console.error("Error registering user:", error.response.data);
+
+          // On error, show the error modal and turn off the loading state
+          setErrorOccurred(true);
+          setIsLoading(false);
+        }
+      } else {
+        // If there are validation errors, just turn off the loading state
+        setIsLoading(false);
+      }
+    }, 5000); // 5 seconds
+  };
+
+  const handleEnviarClick = async () => {
+    console.log("handleEnviarClick called");
+    //Consola para verificar que tiene los estados, recordar meter userData como parametro en esta funcion
+    //console.log("AQUI MIRAME" + userData.name + userData.identification + userData.email + userData.rol + userData.finalizadaTarea + userData.tipoUsuario + userData.codigoSala)
   };
 
   const buttonClass = areFieldsComplete()
@@ -161,130 +266,142 @@ function InputCodigo() {
         maxLength={4}
       />
       <img src={museolili} alt="Logo del museo lili" />
+      {/* Modal para el registro de datos */}
+      {isLoading ? (
+        <EnviandoCarga />
+      ) : errorOccurred ? (
+        <ErrorCarga onClose={closeErrorModal} />
+      ) : sentInformation ? (
+        <SentInformacion />
+      ) : (
+        <Modal
+          className="modalinput"
+          isOpen={showModal}
+          onRequestClose={() => setShowModal(false)}
+          contentLabel="Registro de Datos"
+        >
+          <form onSubmit={handleSubmit}>
+            <h2 className="modaltitulo">Registro</h2>
 
-      <Modal
-        className="modalinput"
-        isOpen={showModal}
-        onRequestClose={() => setShowModal(false)}
-        contentLabel="Registro de Datos"
-      >
-        <form onSubmit={handleSubmit}>
-          <h2 className="modaltitulo">Registro</h2>
+            {userData.name && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">Nombre:</p>
+              </div>
+            )}
 
-          {userData.name && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">Nombre:</p>
-            </div>
-          )}
-
-          <input
-            className="inputRegistro inputRegistronombre"
-            placeholder="Nombre:"
-            type="text"
-            name="name"
-            value={userData.name}
-            onChange={(e) => {
-              setUserData({ ...userData, name: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.name && (
-            <div style={{ color: "red", fontSize: "12px" }}>{errors.name}</div>
-          )}
-
-          {userData.identification && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">D.I o código estudiantil:</p>
-            </div>
-          )}
-
-          <input
-            className="inputRegistro"
-            placeholder="D.I o código estudiantil:"
-            type="text"
-            name="identification"
-            value={userData.identification}
-            onChange={(e) => {
-              setUserData({ ...userData, identification: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.identification && (
-            <div style={{ color: "red", fontSize: "12px" }}>
-              {errors.identification}
-            </div>
-          )}
-
-          {userData.email && (
-            <div className="divtxtEscribiendo">
-              <p className="ptxtEscribiendo">Correo:</p>
-            </div>
-          )}
-          <input
-            className="inputRegistro"
-            placeholder="Correo:"
-            type="email"
-            name="email"
-            value={userData.email || ""}
-            onChange={(e) => {
-              setUserData({ ...userData, email: e.target.value });
-              handleValidation();
-            }}
-          />
-          {errors.email && (
-            <p style={{ color: "red", fontSize: "6px" }}>{errors.email}</p>
-          )}
-
-          <label className="txtTerminos">
             <input
-              className={userData.acceptTerms ? "mychecked" : "mycheck"}
-              type="checkbox"
-              name="acceptTerms"
-              checked={userData.acceptTerms}
-              onChange={handleModalInputChange}
+              className="inputRegistro inputRegistronombre"
+              placeholder="Nombre:"
+              type="text"
+              name="name"
+              value={userData.name}
+              onChange={(e) => {
+                setUserData({ ...userData, name: e.target.value });
+                handleValidationErrorName();
+              }}
             />
-            Estoy de acuerdo con los&nbsp;
-            <a
-              href="https://www.uao.edu.co/aviso-de-privacidad-de-la-universidad-autonoma-de-occidente/"
-              target="_blank"
-              rel="noopener noreferrer"
+            {errorName.name && (
+              <div className="errorTxt">
+                {errorName.name}
+              </div>
+            )}
+
+            {userData.identification && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">D.I o código estudiantil:</p>
+              </div>
+            )}
+
+            <input
+              className="inputRegistro"
+              placeholder="D.I o código estudiantil:"
+              type="text"
+              name="identification"
+              value={userData.identification}
+              onChange={(e) => {
+                setUserData({ ...userData, identification: e.target.value });
+                handleValidationErrorIdentification();
+              }}
+            />
+            {errorIdentification.identification && (
+              <div className="errorTxt">
+                {errorIdentification.identification}
+              </div>
+            )}
+            {userData.email && (
+              <div className="divtxtEscribiendo">
+                <p className="ptxtEscribiendo">Correo:</p>
+              </div>
+            )}
+            <input
+              className="inputRegistro"
+              placeholder="Correo:"
+              type="email"
+              name="email"
+              value={userData.email || ""}
+              onChange={(e) => {
+                setUserData({ ...userData, email: e.target.value });
+                handleValidationErrorEmail();
+              }}
+            />
+            {errorEmail.email && (
+              <p className="errorTxt">
+                {errorEmail.email}
+              </p>
+            )}
+
+            <label className="txtTerminos">
+              <input
+                className={acceptTerms ? "mychecked" : "mycheck"}
+                type="checkbox"
+                name="acceptTerms"
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
+              />
+              Estoy de acuerdo con los&nbsp;
+              <a
+                href="https://www.uao.edu.co/aviso-de-privacidad-de-la-universidad-autonoma-de-occidente/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                términos y condiciones
+              </a>
+            </label>
+
+            <div className="rolCheckbox">
+              <label className="txtRol">
+                Estudiante:
+                <input
+                  className={isStudent ? "mycheckedRol" : "mycheckRol"}
+                  type="checkbox"
+                  name="student"
+                  checked={isStudent}
+                  onChange={handleStudentChange}
+                />
+              </label>
+
+              <label className="txtRol">
+                Visitante:
+                <input
+                  className={isVisitor ? "mycheckedRol" : "mycheckRol"}
+                  type="checkbox"
+                  name="visitor"
+                  checked={isVisitor}
+                  onChange={handleVisitorChange}
+                />
+              </label>
+            </div>
+            <button
+              className={buttonClass}
+              type="submit"
+              disabled={!areFieldsComplete()}
+              onClick={handleEnviarClick}
             >
-              términos y condiciones
-            </a>
-          </label>
-
-          <div className="rolCheckbox">
-            <label className="txtRol">
-              Estudiante:
-              <input
-                className={userData.student ? "mycheckedRol" : "mycheckRol"}
-                type="checkbox"
-                name="student"
-                checked={userData.student}
-                onChange={handleModalInputChange}
-              />
-            </label>
-
-            <label className="txtRol">
-              Visitante:
-              <input
-                className={userData.visitor ? "mycheckedRol" : "mycheckRol"}
-                type="checkbox"
-                name="visitor"
-                checked={userData.visitor}
-                onChange={handleModalInputChange}
-              />
-            </label>
-          </div>
-          <button
-            className={buttonClass}
-            type="submit"
-            disabled={!areFieldsComplete()}
-          >
-            Enviar
-          </button>
-        </form>
-      </Modal>
+              Enviar
+            </button>
+          </form>
+        </Modal>
+      )}
     </div>
   );
 }

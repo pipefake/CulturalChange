@@ -5,18 +5,24 @@ import { ModalHelp } from '../Modal';
 import museolili from '../InputCodigo/resources/museolili.png';
 import './picker.css';
 
+import { useMyContext } from '../SeleccionCargando/MyContext';
+
+
 import logoGuia from './logos/logoGuia.png';
 import logoHuaquero from './logos/logoHuaquero.png';
-import LogoInterprete from './logos/logoInterprete.png';
+import logoInterprete from './logos/logoInterprete.png';
 import logoAntropologo from './logos/logoAntropologo.png';
+import logoGuiaBN from '../SeleccionCargando/logos/logoGuiaBN.png';
+import logoHuaqueroBN from '../SeleccionCargando/logos/logoHuaqueroBN.png';
+import logoInterpreteBN from '../SeleccionCargando/logos/logoInterpreteBN.png';
+import logoAntropologoBN from '../SeleccionCargando/logos/logoAntropologoBN.png';
 
 function Picker() {
+
+
     return (
         <>
-            <ModalHelp />
             <div className="divPicker">
-
-
                 <h1>Escoge tu rol</h1>
                 <ul>
                     {blogdata.map(post => (
@@ -30,36 +36,79 @@ function Picker() {
 }
 
 function IntroduccionRol({ post }) {
+
+    const {
+        esGuia,
+        setEsGuia,
+        esHuaquero,
+        setEsHuaquero,
+        esInterprete,
+        setEsInterprete,
+        esAntropologo,
+        setEsAntropologo,
+    } = useMyContext();
+
     // Define the logo variable based on the role
     let logo;
-    if (post.rol === "Guia") {
-        logo = logoGuia;
-    } else if (post.rol === "Huaquero") {
-        logo = logoHuaquero;
-    } else if (post.rol === "Interprete") {
-        logo = LogoInterprete;
-    } else if (post.rol === "Antropologo") {
-        logo = logoAntropologo;
-    } else {
 
-        // Provide a default logo in case the role doesn't match any of the above
-        logo = LogoInterprete;
+
+    let isDisabled = false;
+
+    if (post.rol === "Guía") {
+        logo = !esGuia ? logoGuia : logoGuiaBN;
+        if (logo === logoGuiaBN) {
+            isDisabled = true;
+        }
+    } else if (post.rol === "Huaquero") {
+        logo = !esHuaquero ? logoHuaquero : logoHuaqueroBN;
+        if (logo === logoHuaqueroBN) {
+            isDisabled = true;
+        }
+    } else if (post.rol === "Intérprete") {
+        logo = !esInterprete ? logoInterprete : logoInterpreteBN;
+        if (logo === logoInterpreteBN) {
+            isDisabled = true;
+        }
+    } else if (post.rol === "Antropólogo") {
+        logo = !esAntropologo ? logoAntropologo : logoAntropologoBN;
+        if (logo === logoAntropologoBN) {
+            isDisabled = true;
+        }
+    } else {
+        // Proporciona un logotipo predeterminado en caso de que el rol no coincida con ninguno de los anteriores
+        logo = logoInterprete;
     }
 
+    // Ahora puedes usar la variable isDisabled según tus necesidades.
+
+
+
+
     console.log(`post.rol: ${post.rol}`); // Add this line for debugging purposes
+
 
     return (
         <>
             <li>
                 {/* Use the selected logo */}
-
-                <Link className="txtRoles linkRoles" to={`/introduccion/${post.slug}`}>
-                    <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
-                    {post.rol}
-                </Link>
+                {
+                    isDisabled ? (
+                        <a className={`txtRoles linkRoles disabled-link`} disabled>
+                            <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
+                            {post.rol}
+                        </a>
+                    ) : (
+                        <Link className={`txtRoles linkRoles`} to={`/introduccion/${post.slug}`}>
+                            <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
+                            {post.rol}
+                        </Link>
+                    )
+                }
             </li>
         </>
-    )
+    );
 }
 
 export { Picker };
+
+

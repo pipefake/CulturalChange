@@ -15,6 +15,14 @@ function PantallaMuseo() {
   const navigate = useNavigate();
   const [imagenActual, setImagenActual] = useState(0);
   const [animacionActiva, setAnimacionActiva] = useState(false);
+  
+//Se cargan todas las imagenes antes de iniciar la animacion
+  useEffect(() => {
+      imagenes.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    }, []);
 
   useEffect(() => {
     if (animacionActiva) {
@@ -26,7 +34,7 @@ function PantallaMuseo() {
           setAnimacionActiva(false); // Detener la animación
           navigate("/animacionMuseo"); // Navegar a la nueva página
         }
-      }, 1000);
+      }, 400);
 
       return () => clearInterval(interval);
     }

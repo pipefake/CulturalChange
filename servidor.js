@@ -20,6 +20,40 @@ const corsOptions = require("./config/corsOptions")
 const mongoose = require("mongoose")
 const connectDB = require("./config/dbConn")
 
+//====================================
+//PRUEBAS CODIGO QR
+const cron = require("node-cron");
+const RoomCode = require ("./models/RoomCode");
+
+const generateRoomCode = () => {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < 4; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+};
+
+cron.schedule("* * * * *", async () => {
+    const newCode = generateRoomCode();
+    console.log(`Generated new room code: ${newCode}`);
+    try {
+        // Update the current room code in the RoomCode collection
+        let roomCodeEntry = await RoomCode.findOne();
+        if (roomCodeEntry) {
+            roomCodeEntry.code = newCode;
+            roomCodeEntry.updatedAt = Date.now();
+            await roomCodeEntry.save();
+        } else {
+            await RoomCode.create({ code: newCode });
+        }
+
+    } catch (error) {
+        console.error("Error updating room codes:", error);
+    }
+});
+//====================================
+
 
 //conexion base de datos
 connectDB();
@@ -53,6 +87,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
 //enrutando a un html para usuarios
 app.use("/users", require("./routes/userRoutes"))
+//enrutando para darme el codigo de la sala
+app.use("/roomCode", require("./routes/roomCodeRoutes"))
 //==============
 
 //rutas a manifiesto y favicon

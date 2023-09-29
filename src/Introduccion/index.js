@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { blogdata } from '../blogdata';
 import logoGuia from '../Picker/logos/logoGuia.png';
 import logoInterprete from '../Picker/logos/logoInterprete.png';
@@ -14,6 +14,8 @@ function Introduccion() {
     const blogpost = blogdata.find(post => post.slug === slug);
     const rol = blogpost.rol;
     console.log(rol);
+    const navigate = useNavigate();
+
 
     // Función para obtener la etiqueta src de la imagen
     const getImgSrc = (img) => {
@@ -47,6 +49,11 @@ function Introduccion() {
         }
     };
 
+    const handleSubmit = (e) => {
+        navigate("/seleccionCargando");
+    }
+
+
     return (
         <>
             <Link to="/introduccion">
@@ -59,9 +66,15 @@ function Introduccion() {
                 </div>
                 <p>{blogpost.texto}</p>
                 <div className={getAnimacionClassName(rol)}>
-                    <img className="estiloanimacionmapa" alt="Animación de mapa"></img>
+
                 </div>
-                <BtnContinuar></BtnContinuar>
+
+                <Link to="/seleccionCargando">
+                    <button className="btnContinuar"
+                    >Seleccionar</button>
+                </Link>
+
+
             </div>
         </>
     );

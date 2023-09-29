@@ -1,3 +1,6 @@
+.centrarTitulo{
+    text-align: center !important;
+}
 .imglogo{
     width: 120px;
 }
@@ -9,6 +12,7 @@ ul{
     padding: 0;
     width: 290px;
     justify-content: space-between;
+    margin: 45px 0;
 }
 .logos{
     width: 125px;
@@ -27,7 +31,7 @@ li{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 120px;
+    margin-top: 20px; 
 }
 .txtRoles{
     -webkit-text-stroke-width: 1px;
@@ -38,3 +42,7 @@ li{
     text-decoration: none;
     align-items: center;
 }
+
+.margin{
+    margin-right: 10px;
+}  

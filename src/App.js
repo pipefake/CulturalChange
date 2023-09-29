@@ -1,7 +1,5 @@
 import "./App.css";
-
 import { MyContextProvider } from "./SeleccionCargando/MyContext";
-
 import { InputCodigo } from "./InputCodigo";
 import { PantallaMuseo } from "./PantallaMuseo";
 import { AnimacionMuseo } from "./AnimacionMuseo";
@@ -11,20 +9,14 @@ import { EstadoMuseo } from "./EstadoMuseo";
 
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
+import { Mapa } from './Mapa';
 import { Introduccion } from "./Introduccion";
 import { SeleccionCargando } from "./SeleccionCargando";
-
-import { HashRouter, Routes, Route } from "react-router-dom";
 import { Picker } from "./Picker";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const cartas = [1, 2, 3, 4, 5];
 
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
 
   return (
     <div className="App">

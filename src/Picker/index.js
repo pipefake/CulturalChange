@@ -18,16 +18,7 @@ import logoInterpreteBN from '../SeleccionCargando/logos/logoInterpreteBN.png';
 import logoAntropologoBN from '../SeleccionCargando/logos/logoAntropologoBN.png';
 
 function Picker() {
-    const {
-        esGuia,
-        setEsGuia,
-        esHuaquero,
-        setEsHuaquero,
-        esInterprete,
-        setEsInterprete,
-        esAntropologo,
-        setEsAntropologo,
-    } = useMyContext();
+
 
     return (
         <>
@@ -56,26 +47,42 @@ function IntroduccionRol({ post }) {
         esAntropologo,
         setEsAntropologo,
     } = useMyContext();
+
     // Define the logo variable based on the role
     let logo;
 
 
+    let isDisabled = false;
+
     if (post.rol === "Guía") {
         logo = !esGuia ? logoGuia : logoGuiaBN;
-
+        if (logo === logoGuiaBN) {
+            isDisabled = true;
+        }
     } else if (post.rol === "Huaquero") {
         logo = !esHuaquero ? logoHuaquero : logoHuaqueroBN;
-
+        if (logo === logoHuaqueroBN) {
+            isDisabled = true;
+        }
     } else if (post.rol === "Intérprete") {
         logo = !esInterprete ? logoInterprete : logoInterpreteBN;
-
+        if (logo === logoInterpreteBN) {
+            isDisabled = true;
+        }
     } else if (post.rol === "Antropólogo") {
         logo = !esAntropologo ? logoAntropologo : logoAntropologoBN;
-
+        if (logo === logoAntropologoBN) {
+            isDisabled = true;
+        }
     } else {
         // Proporciona un logotipo predeterminado en caso de que el rol no coincida con ninguno de los anteriores
         logo = logoInterprete;
     }
+
+    // Ahora puedes usar la variable isDisabled según tus necesidades.
+
+
+
 
     console.log(`post.rol: ${post.rol}`); // Add this line for debugging purposes
 
@@ -84,12 +91,19 @@ function IntroduccionRol({ post }) {
         <>
             <li>
                 {/* Use the selected logo */}
-                <Link className={`txtRoles linkRoles `}
-                    to={`/introduccion/${post.slug}`}
-                >
-                    <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
-                    {post.rol}
-                </Link>
+                {
+                    isDisabled ? (
+                        <a className={`txtRoles linkRoles disabled-link`} disabled>
+                            <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
+                            {post.rol}
+                        </a>
+                    ) : (
+                        <Link className={`txtRoles linkRoles`} to={`/introduccion/${post.slug}`}>
+                            <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
+                            {post.rol}
+                        </Link>
+                    )
+                }
             </li>
         </>
     );

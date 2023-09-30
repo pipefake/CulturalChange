@@ -356,3 +356,6 @@
 20230927	11:03:12	3264fa7f-438f-41ed-b266-ef6b3ab0b9d2	GET 	 undefined 	 /users
 20230927	11:04:02	c3584edd-904f-4fd2-9b8f-28391c3d31f2	PATCH 	 undefined 	 /users
 20230927	11:04:19	10fd57be-96c5-4f53-9a16-a9d0edddf7f0	GET 	 undefined 	 /users
+20230929	20:55:01	7630882c-e088-4878-86d3-40898fac8f6c	GET 	 undefined 	 /roomCode
+20230929	20:55:28	dcb7774b-5f45-4823-a3f1-a238acc33a38	OPTIONS 	 http://localhost:3000 	 /users
+20230929	20:55:28	5a323656-5ca4-4190-89a7-aa951e663de1	POST 	 http://localhost:3000 	 /users

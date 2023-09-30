@@ -40,7 +40,7 @@ function Traductor(props) {
                     ))}
                 </div>
             </div>
-            <Acumulador />
+            <Acumulador historia={props.historia} />
         </>
     );
 

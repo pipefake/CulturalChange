@@ -38,7 +38,7 @@ function InputCodigo() {
   const [errorEmail, setErrorEmail] = useState({});
   const [errorIdentification, setErrorIdentification] = useState({});
 
-  const [roomCode, setRoomCode] = useState('');
+  const [roomCode, setRoomCode] = useState("");
 
   const navigate = useNavigate();
 
@@ -78,23 +78,20 @@ function InputCodigo() {
 
   const fetchRoomCode = async () => {
     try {
-      const response = await axios.get('/roomCode');
-      console.log('Full Response:', response.data); // Log entire response
+      const response = await axios.get("/roomCode");
+      console.log("Full Response:", response.data); // Log entire response
       if (response.data.length > 0 && response.data[0].code) {
         setRoomCode(response.data[0].code); // Set the room code state
       }
     } catch (error) {
-      console.error('Error fetching room code:', error);
+      console.error("Error fetching room code:", error);
     }
   };
 
   const updateFormComplete = () => {
     const { name, email } = userData;
     const isComplete =
-      name &&
-      email &&
-      inputValue.length === 4 &&
-      inputValue === roomCode; // compare with roomCode from the state
+      name && email && inputValue.length === 4 && inputValue === roomCode; // compare with roomCode from the state
     setFormComplete(isComplete);
   };
 
@@ -233,6 +230,9 @@ function InputCodigo() {
           );
 
           console.log("User registered:", response.data);
+          const userId = response.data.userId; // Grab the userId from the response
+          console.log("User ID:", userId); // Log the user ID for debugging
+          localStorage.setItem("userId", userId); // Store the userId in localStorage
 
           setIsLoading(false);
 

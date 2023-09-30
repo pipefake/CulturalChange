@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const room = require("../models/RoomCode");
 const asyncHandler = require("express-async-handler");
 //const bcrypt = require("bcrypt")
 const CryptoJS = require("crypto-js");
@@ -28,8 +29,11 @@ const createNewUser = asyncHandler(async (req, res) => {
     rol,
     finalizadaTarea,
     tipoUsuario,
-    codigoSala,
   } = req.body;
+
+  //lineas para meter el codigo de la sala
+  const roomCodeEntry = await room.findOne();
+  const roomCode = roomCodeEntry ? roomCodeEntry.code : "INIT";
 
   //comprobacion que no son campos vacios
   if (
@@ -38,13 +42,12 @@ const createNewUser = asyncHandler(async (req, res) => {
     !email ||
     !rol ||
     !finalizadaTarea ||
-    !tipoUsuario ||
-    !codigoSala
+    !tipoUsuario 
   ) {
     return res
       .status(400)
       .json({
-        message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}`,
+        message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${roomCode}`,
       });
   }
 
@@ -75,7 +78,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     rol: encryptedRol,
     finalizadaTarea,
     tipoUsuario,
-    codigoSala,
+    roomCode,
   };
 
   //crear y guardar nuevo usuario

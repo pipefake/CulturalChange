@@ -1,10 +1,40 @@
-import React from "react";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
+
 
 function PruebaPrueba() {
+
+  const [userData, setUserData] = useState({});
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+          console.error('User ID not found in local storage');
+          return;
+        }
+
+        const response = await axios.get(`/api/users/${userId}`);
+        
+        if (response.data) {
+          console.log('User data fetched:', response.data);
+          setUserData(response.data);
+        } else {
+          console.error('User not found:', response.data.message);
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error.response?.data || error.message);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+
   const handleRoleUpdate = async (selectedRole) => {
     try {
-      const userId = localStorage.getItem("userId");
       if (!userId) throw new Error("User ID not found");
 
       const response = await axios.patch("/users", {

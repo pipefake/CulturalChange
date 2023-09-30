@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const room = require("../models/RoomCode");
 const asyncHandler = require("express-async-handler");
 //const bcrypt = require("bcrypt")
 const CryptoJS = require('crypto-js');
@@ -21,11 +22,15 @@ const getAllUsers = asyncHandler(async (req, res) => {
 //ruta: POST /users
 //acceso: privado
 const createNewUser = asyncHandler(async (req, res) => {
-	const { name, identification, email, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body
+	const { name, identification, email, rol, finalizadaTarea, tipoUsuario} = req.body
+
+	//lineas para meter el codigo de la sala
+	const roomCodeEntry = await room.findOne();
+	const roomCode = roomCodeEntry ? roomCodeEntry.code : "INIT";
 
 	//comprobacion que no son campos vacios
-	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
-		return res.status(400).json({ message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
+	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${roomCode}` });
 	}
 
 	//EN CASO QUE QUERAMOS EVITAR DUPLICADOS
@@ -44,7 +49,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 	const encryptedCorreo = CryptoJS.AES.encrypt(email, secretKey).toString();
 	const encryptedRol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 
-	const userObject = { "name": encryptedUsername, "identification": encryptedIdentificacion, "email": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, tipoUsuario, codigoSala }
+	const userObject = { "name": encryptedUsername, "identification": encryptedIdentificacion, "email": encryptedCorreo, "rol": encryptedRol, finalizadaTarea, tipoUsuario, "codigoSala": roomCode }
 
 	//crear y guardar nuevo usuario
 	const user = await User.create(userObject);
@@ -61,11 +66,11 @@ const createNewUser = asyncHandler(async (req, res) => {
 //acceso: privado
 const updateUser = asyncHandler(async (req, res) => {
 	//lamo informacion del body
-	const { _id, name, identification, email, rol, finalizadaTarea, tipoUsuario, codigoSala } = req.body;
+	const { _id, name, identification, email, rol, finalizadaTarea, tipoUsuario} = req.body;
 
 	//confirmando campos no vacios
-	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario || !codigoSala) {
-		return res.status(400).json({ message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${codigoSala}` });
+	if (!name || !identification || !email || !rol || !finalizadaTarea || !tipoUsuario) {
+		return res.status(400).json({ message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}` });
 	}
 
 	//toca modificar un solo usuario, asi que llamemos por su id
@@ -95,7 +100,6 @@ const updateUser = asyncHandler(async (req, res) => {
 	user.rol = CryptoJS.AES.encrypt(rol, secretKey).toString();
 	user.finalizadaTarea = finalizadaTarea;
 	user.tipoUsuario = tipoUsuario;
-	user.codigoSala = codigoSala;
 
 	//actualizar
 	const updateUser = await user.save();

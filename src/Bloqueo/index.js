@@ -11,7 +11,9 @@ function Bloqueo(props) {
 
 
     const [anagramas, setAnagramas] = useState([]);
-    const [descifrado, setDescifrado] = useState([false, false, false, false]);
+
+    const [descifrados, setDescifrado1] = useState([false, true, true, true]);
+
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
 
@@ -36,6 +38,7 @@ function Bloqueo(props) {
         setAreAllInputsCorrect(validitiesRef.current.every(Boolean));
     }, []);
 
+
     return (
         <>
             <Header />
@@ -52,6 +55,7 @@ function Bloqueo(props) {
                 <div className="contentMinijuego">
                     {anagramas.map((palabra, index) => (
                         <Anagrama
+                            isLock={descifrados[index]}
                             key={index}
                             palabra={palabra}
                             onValidityChange={(isValid) => handleAnagramaValidity(index, isValid)}
@@ -72,6 +76,8 @@ function Bloqueo(props) {
 
 function Anagrama(props) {
     const [inputValue, setInputValue] = useState('');
+
+    const luckimg = props.isLock;
 
     function resolverAnagrama(anagrama) {
         let aux;
@@ -105,9 +111,15 @@ function Anagrama(props) {
     return (
         <div className="contenedorAcronimo">
             <div>
-                <h4 className={isInputCorrect ? 'textoAcronimo verde' : 'textoAcronimo rojo'}>
-                    {props.palabra}
-                </h4>
+                {luckimg ? (
+                    <h4 className={isInputCorrect ? 'textoAcronimo verde' : 'textoAcronimo rojo'}>
+                        {props.palabra}
+                    </h4>
+                ) : (
+                    <img src={bloqueoIMG} alt="Imagen" />
+                )}
+
+
             </div>
             <input className="input_acronimo" value={inputValue} onChange={handleChange} />
         </div>

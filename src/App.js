@@ -16,6 +16,8 @@ import { SeleccionCargando } from "./SeleccionCargando";
 import { Picker } from "./Picker";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Traductor } from './Traductor';
+import { Bloqueo } from './Bloqueo';
+
 
 function App() {
 
@@ -44,6 +46,7 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={2} />} />
             <Route path="/juego/interprete/parejas" element={<Minijuego historia={2}></Minijuego>} />
             <Route path="/juego/interprete/traduccion" element={<Traductor historia={4}></Traductor>} />
+            <Route path="/juego/antropologo" element={<Bloqueo historia={1}></Bloqueo>} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />

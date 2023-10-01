@@ -46,7 +46,7 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={2} />} />
             <Route path="/juego/interprete/parejas" element={<Minijuego historia={2}></Minijuego>} />
             <Route path="/juego/interprete/traduccion" element={<Traductor historia={4}></Traductor>} />
-            <Route path="/juego/antropologo" element={<Bloqueo historia={1}></Bloqueo>} />
+            <Route path="/juego/antropologo" element={<Bloqueo historia={5}></Bloqueo>} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />

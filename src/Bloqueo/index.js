@@ -12,7 +12,7 @@ function Bloqueo(props) {
 
     const [anagramas, setAnagramas] = useState([]);
 
-    const [descifrados, setDescifrado1] = useState([false, true, true, true]);
+    const [descifrados, setDescifrado1] = useState([true, true, true, true]);
 
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
@@ -26,7 +26,17 @@ function Bloqueo(props) {
 
         if (historia === 1) {
             nuevosAnagramas = ["tuariles", "tear", "alfarosre", "potiem"];
-        } else {
+        } else if (historia === 2) {
+            nuevosAnagramas = ["turascul", "masfor", "blospue", "gadole"];
+        } else if (historia === 3) {
+            nuevosAnagramas = ["braso", "loshi", "toriahis", "tefuen"];
+        } else if (historia === 4) {
+            nuevosAnagramas = ["tuariles", "naur", "incianfa", "zacru"];
+        } else if (historia === 5) {
+            nuevosAnagramas = ["dosniso", "zaspie", "toriahis", "batosil"];
+        }
+
+        else {
             console.warn("Unhandled history case: ", historia);
         }
 
@@ -90,12 +100,41 @@ function Anagrama(props) {
             aux = "alfareros";
         } else if (anagrama === "potiem") {
             aux = "tiempo";
+        } else if (anagrama === "braso") {
+            aux = "braso";
+        } else if (anagrama === "loshi") {
+            aux = "hilos";
+        } else if (anagrama === "toriahis") {
+            aux = "historia";
+        } else if (anagrama === "tefuen") {
+            aux = "fuente";
+        } else if (anagrama === "naur") {
+            aux = "urna";
+        } else if (anagrama === "incianfa") {
+            aux = "infancia";
+        } else if (anagrama === "zacru") {
+            aux = "cruza";
+        } else if (anagrama === "dosniso") {
+            aux = "sonidos";
+        } else if (anagrama === "zaspie") {
+            aux = "piezas";
+        } else if (anagrama === "toriahis") {
+            aux = "historia";
+        } else if (anagrama === "batosil") {
+            aux = "silbato";
+        } else if (anagrama === "turascul") {
+            aux = "culturas";
+        } else if (anagrama === "masfor") {
+            aux = "formas";
+        } else if (anagrama === "blospue") {
+            aux = "pueblos";
+        } else if (anagrama === "gadole") {
+            aux = "legado";
         } else {
             aux = "Anagrama no reconocido";
         }
 
         return aux;
-
     }
 
     const isInputCorrect = inputValue === resolverAnagrama(props.palabra);

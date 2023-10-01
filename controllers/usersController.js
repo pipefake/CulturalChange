@@ -47,7 +47,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     return res
       .status(400)
       .json({
-        message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${roomCode}`,
+        message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
       });
   }
 
@@ -69,13 +69,12 @@ const createNewUser = asyncHandler(async (req, res) => {
     secretKey
   ).toString();
   const encryptedCorreo = CryptoJS.AES.encrypt(email, secretKey).toString();
-  const encryptedRol = CryptoJS.AES.encrypt(rol, secretKey).toString();
-
+  
   const userObject = {
     name: encryptedUsername,
     identification: encryptedIdentificacion,
     email: encryptedCorreo,
-    rol: encryptedRol,
+    rol,
     finalizadaTarea,
     tipoUsuario,
     codigoSala: roomCode
@@ -123,7 +122,7 @@ const updateUser = asyncHandler(async (req, res) => {
     return res
       .status(400)
       .json({
-        message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario} ${roomCode}`,
+        message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
       });
   }
 
@@ -155,10 +154,9 @@ const updateUser = asyncHandler(async (req, res) => {
     secretKey
   ).toString();
   user.email = CryptoJS.AES.encrypt(email, secretKey).toString();
-  user.rol = CryptoJS.AES.encrypt(rol, secretKey).toString();
+  user.rol = rol;
   user.finalizadaTarea = finalizadaTarea;
   user.tipoUsuario = tipoUsuario;
-  user.roomCode = roomCode;
 
   //actualizar
   const updateUser = await user.save();

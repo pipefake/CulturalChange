@@ -63,7 +63,6 @@ const createNewUser = asyncHandler(async (req, res) => {
   //Encriptando todos los parametros
   const secretKey =
     "$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy";
-  const encryptedUsername = CryptoJS.AES.encrypt(name, secretKey).toString();
   const encryptedIdentificacion = CryptoJS.AES.encrypt(
     identification.toString(),
     secretKey
@@ -71,7 +70,7 @@ const createNewUser = asyncHandler(async (req, res) => {
   const encryptedCorreo = CryptoJS.AES.encrypt(email, secretKey).toString();
   
   const userObject = {
-    name: encryptedUsername,
+    name,
     identification: encryptedIdentificacion,
     email: encryptedCorreo,
     rol,
@@ -148,7 +147,7 @@ const updateUser = asyncHandler(async (req, res) => {
   //encriptando informacion a modificar
   const secretKey =
     "$2b$10$tV5AHXrk3pZymfGihPI4T.S8Sxx12aWfNpyQTAt.QA029.HQqJMcy";
-  user.name = CryptoJS.AES.encrypt(name, secretKey).toString();
+  user.name = name;
   user.identification = CryptoJS.AES.encrypt(
     identification,
     secretKey

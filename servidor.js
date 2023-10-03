@@ -34,7 +34,7 @@ const generateRoomCode = () => {
     return code;
 };
 
-cron.schedule("* * * * *", async () => {
+cron.schedule("*/10 * * * *", async () => {
     const newCode = generateRoomCode();
     console.log(`Generated new room code: ${newCode}`);
     try {
@@ -112,7 +112,7 @@ app.get("^/$|/react512.png", (req,res)=>{
 //para todos los casos que no se cumplan, llevame a 404 personalizado
 //cambiamos app.get("/*",)
 //a all, esto permite que todo (incluso middleware) obtenga el erro 404
-//los if es para ver que tipo de archivo pidió
+//los if es para ver que tipo de archivo pidiï¿½
 //y le respondemos 404 dependiendo el tipo
 app.all("*", (req,res)=>{
 	res.status(404);

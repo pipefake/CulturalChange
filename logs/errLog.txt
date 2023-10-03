@@ -140,3 +140,25 @@
 		/users	undefined
 20230924	16:36:07	2fd7574e-0057-47fd-ab57-f3b39ec6518f	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
 		/users	http://localhost:3000
+20230930	00:00:14	fb5c472d-df0b-422f-ac84-e09281272450	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3000
+20230930	00:03:18	4acee2e4-f900-4471-87f6-1a07e29079ce	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/api/users	http://localhost:3500/
+20230930	00:08:02	c5402536-00bd-4d64-be0e-cd0c3946be4d	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3000
+20230930	00:08:21	318a8827-ae28-4bfa-a009-71de72a286da	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3500/
+20230930	00:20:44	60820e89-1763-414a-a3eb-36fb56fbd83a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517b00b1c488e8df81f9ebe	undefined
+20230930	00:21:08	ccdbd18e-4751-4dbe-af97-4650f09faa83	SyntaxError: Unexpected string in JSON at position 29	PATCH
+		/users/	undefined
+20230930	00:21:28	299bb220-a29f-4e95-9a38-8ab302e8ff64	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PUT
+		/users/	undefined
+20231001	11:10:23	f494b4bf-7c76-4b07-acd7-65b08cde58e8	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/users/651999e710aebc81c4515598	undefined
+20231001	11:10:28	8fd618e4-0cf5-4400-81fe-932f34035d62	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/users/651999e710aebc81c4515598	undefined
+20231001	11:11:37	39f8384e-af42-4914-acb5-a3a648c89fa1	ReferenceError: roomCode is not defined	PATCH
+		/users	http://localhost:3000
+20231001	11:43:36	3c8cd534-8821-4758-b402-f557a181073a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined

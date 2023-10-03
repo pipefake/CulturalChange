@@ -8,7 +8,13 @@
     justify-content: center; /* Centrar horizontalmente */
     height: 100%; /* Opcional: ajusta la altura según tus necesidades */
   }
-  
+.btn_buscar{
+  background: none;
+  border: none;
+}
+.btn_buscar>img{
+    width: 50px;
+}
 .fondoAmarillo {
     position: fixed;
     top: 217px;
@@ -30,17 +36,21 @@
 .position_map>img{
     margin-top: 40px;
 }
+.btn_buscar:active img {
+    content: url('./resources/lupahover.png'); /* Cambia la imagen al hacer hover */
+  }
 .textoRojo{
     font-size: 54px;
     font-family: 'ABeeZee', sans-serif;
     color: #424242;
     text-align: center;
-    margin: 29px 0px;
+    margin: 10px 0px;
     font-weight: 600;
 }
 .textNormal{
     font-size: 54px;
     color: #424242;
+    margin: 15px 0px;
 }
 @keyframes animation {
     0% {

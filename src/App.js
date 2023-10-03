@@ -6,11 +6,11 @@ import { AnimacionMuseo } from "./AnimacionMuseo";
 import { QrMuseo } from "./QrMuseo";
 import { RolesMuseo } from "./RolesMuseo";
 import { EstadoMuseo } from "./EstadoMuseo";
-
+import { PruebaPrueba } from "./PruebaPrueba/PruebaPrueba";
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
-import { Mapa } from './Mapa';
-import { Minijuego } from './Traductor/Minijuego.js';
+import { Mapa } from "./Mapa";
+import { Minijuego } from "./Traductor/Minijuego.js";
 import { Introduccion } from "./Introduccion";
 import { SeleccionCargando } from "./SeleccionCargando";
 import { Picker } from "./Picker";
@@ -20,23 +20,19 @@ import { Bloqueo } from './Bloqueo';
 
 
 function App() {
-
-
   return (
     <div className="App">
       <HashRouter>
-
         {/* Envuelve toda la aplicación con MyContextProvider */}
         <MyContextProvider>
           {/* <Header rol={"Antropólogo"} /> */}
           {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
-
-
           {/* Tu contenido de la aplicación */}
           <Routes>
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo />} />
             <Route path="/introduccion" element={<Picker />} />
+            <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
             <Route path="/qrMuseo" element={<QrMuseo />} />
@@ -52,7 +48,6 @@ function App() {
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
           </Routes>
         </MyContextProvider>
-
       </HashRouter>
     </div>
   );

@@ -39,10 +39,9 @@ const Minijuego = (props) => {
     const [imageList, setImageList] = useState([simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */]);
 
 
-    const [encontrado1, setEncontrado1] = useState(true);
-    const [encontrado2, setEncontrado2] = useState(true);
-    const [encontrado3, setEncontrado3] = useState(false);
-    const [encontrado4, setEncontrado4] = useState(false);
+
+    const [encontrados, setEncontrados] =
+        useState([true, true, false, true]);
 
 
     useEffect(() => {
@@ -95,12 +94,16 @@ const Minijuego = (props) => {
         if (selectedMemoBlock === null) {
             setselectedMemoBlock(memoBlock);
         } else if (selectedMemoBlock.image === memoBlock.image) {
-            // Cuando las parejas coinciden
             console.log(`¡Las parejas coinciden! Son: ${JSON.stringify(selectedMemoBlock)} y ${JSON.stringify(memoBlock)}`);
 
-            // Validar si selectedMemoBlock.image coincide con las 4 primeras imágenes del arreglo imageList
-            const isInFirstFour = imageList.slice(0, 4).includes(selectedMemoBlock.image);
-            if (!isInFirstFour) {
+            const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
+
+            console.log(positionInImageList);
+
+            // Check if the image is in the first position and the corresponding position in encontrados is true
+            if (positionInImageList === 0 && encontrados[positionInImageList]) {
+                setselectedMemoBlock(null);
+            } else if (!imageList.slice(0, 4).includes(selectedMemoBlock.image) || !encontrados[positionInImageList]) {
                 setAnimating(true);
                 setTimeout(() => {
                     shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);

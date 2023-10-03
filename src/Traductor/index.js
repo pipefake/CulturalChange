@@ -25,8 +25,7 @@ function Traductor(props) {
 
         <>
             <Header></Header>
-            <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto
-"></Contexto>
+            <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"></Contexto>
             <div className="fondoAmarillo">
                 <div className='contentMinijuego '>
                     <Link to="/juego/interprete/parejas">
@@ -40,7 +39,7 @@ function Traductor(props) {
                     ))}
                 </div>
             </div>
-            <Acumulador />
+            <Acumulador historia={props.historia} />
         </>
     );
 

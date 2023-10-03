@@ -86,7 +86,7 @@ const Minijuego = () => {
 
                 </div>
             </div>
-            <Acumulador />
+            <Acumulador historia={4} />
         </>
 
     );

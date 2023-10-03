@@ -15,7 +15,9 @@ import { Introduccion } from "./Introduccion";
 import { SeleccionCargando } from "./SeleccionCargando";
 import { Picker } from "./Picker";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { Traductor } from "./Traductor";
+import { Traductor } from './Traductor';
+import { Bloqueo } from './Bloqueo';
+
 
 function App() {
   return (
@@ -25,7 +27,6 @@ function App() {
         <MyContextProvider>
           {/* <Header rol={"Antropólogo"} /> */}
           {/* <Contexto titulo={"Descifra las palabras"} parrafo={"Solicita al intérprete las palabras claves"}></Contexto> */}
-
           {/* Tu contenido de la aplicación */}
           <Routes>
             <Route path="/*" element={<p>no encontrado</p>} />
@@ -39,14 +40,9 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={2} />} />
-            <Route
-              path="/juego/interprete/parejas"
-              element={<Minijuego></Minijuego>}
-            />
-            <Route
-              path="/juego/interprete/traduccion"
-              element={<Traductor></Traductor>}
-            />
+            <Route path="/juego/interprete/parejas" element={<Minijuego historia={2}></Minijuego>} />
+            <Route path="/juego/interprete/traduccion" element={<Traductor historia={4}></Traductor>} />
+            <Route path="/juego/antropologo" element={<Bloqueo historia={5}></Bloqueo>} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />

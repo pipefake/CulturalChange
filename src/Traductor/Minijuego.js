@@ -1,16 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Board from './Board/Board.js';
 import { Link } from 'react-router-dom';
 import { Header } from '../Header';
 
-import simbolo1 from './simbolos/simbolo1.jpg';
-import simbolo2 from './simbolos/simbolo2.jpg';
-import simbolo3 from './simbolos/simbolo3.jpg';
-import simbolo4 from './simbolos/simbolo4.jpg';
-import simbolo5 from './simbolos/simbolo5.jpg';
-import simbolo6 from './simbolos/simbolo6.jpg';
-import simbolo7 from './simbolos/simbolo7.jpg';
-import simbolo8 from './simbolos/simbolo8.jpg';
+import simbolo1 from './simbolos/simbolo1.png';
+import simbolo2 from './simbolos/simbolo2.png';
+import simbolo3 from './simbolos/simbolo3.png';
+import simbolo4 from './simbolos/simbolo4.png';
+import simbolo5 from './simbolos/simbolo5.png';
+import simbolo6 from './simbolos/simbolo6.png';
+import simbolo7 from './simbolos/simbolo7.png';
+import simbolo8 from './simbolos/simbolo8.png';
+import simbolo9 from './simbolos/simbolo9.png';
+import simbolo10 from './simbolos/simbolo10.png';
+import simbolo11 from './simbolos/simbolo11.png';
+import simbolo12 from './simbolos/simbolo12.png';
+import simbolo13 from './simbolos/simbolo13.png';
+import simbolo14 from './simbolos/simbolo14.png';
+import simbolo15 from './simbolos/simbolo15.png';
+import simbolo16 from './simbolos/simbolo16.png';
+
 import off from './switch/off.png';
 import { simbolos } from '../rolesdata.js';
 
@@ -19,12 +28,42 @@ import { Acumulador } from './Acumulador';
 
 // Agrega más imágenes según la cantidad de elementos en tu array original
 
-const imageList = [simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */];
 
-const Minijuego = () => {
+
+const Minijuego = (props) => {
     const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
     const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
     const [animating, setAnimating] = React.useState(false);
+
+    const historia = props.historia;
+    const [imageList, setImageList] = useState([simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */]);
+
+
+    useEffect(() => {
+        buscarUbicaciones(1);
+    }, [props.historia]);
+
+    function buscarUbicaciones(historia) {
+        let imageList;
+
+        if (historia === 1) {
+            imageList = [simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */];
+        } else if (historia === 2) {
+            imageList = [simbolo1, simbolo4, simbolo3, simbolo5, simbolo8, simbolo16, simbolo14, simbolo10];
+        } else if (historia === 3) {
+            imageList = [3, 5, 2, 4];
+        } else if (historia === 4) {
+            imageList = [4, 1, 2, 3];
+        }
+        // } else if (historia === 5) {
+        //     imageList = [3, 4, 1, 5];
+        // }
+
+        setImageList(imageList);
+    }
+
+
+
 
 
     useEffect(() => {
@@ -86,7 +125,7 @@ const Minijuego = () => {
 
                 </div>
             </div>
-            <Acumulador historia={4} />
+            <Acumulador historia={props.historia} />
         </>
 
     );

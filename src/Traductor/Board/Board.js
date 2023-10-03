@@ -14,10 +14,7 @@ const Board = ({ animating, handleMemoClick, memoBlocks }) => {
                         handleMemoClick={handleMemoClick}
                         memoBlock={memoBlock}
                     />
-
-
                     </>
-
                 );
             })}
         </main>

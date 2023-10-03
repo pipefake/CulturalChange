@@ -41,9 +41,9 @@ function App() {
             <Route path="/introduccion/:slug" element={<Introduccion />} />
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-            <Route path="/juego/guia" element={<Mapa historia={2} />} />
-            <Route path="/juego/interprete/parejas" element={<Minijuego historia={2}></Minijuego>} />
-            <Route path="/juego/interprete/traduccion" element={<Traductor historia={4}></Traductor>} />
+            <Route path="/juego/guia" element={<Mapa historia={4} />} />
+            <Route path="/juego/interprete/parejas" element={<Minijuego historia={1}></Minijuego>} />
+            <Route path="/juego/interprete/traduccion" element={<Traductor historia={1}></Traductor>} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />

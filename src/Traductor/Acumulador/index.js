@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Acumulador.css";
 import { simbolos } from "../../rolesdata";
 import iconoBloqueo from "./Iconos/iconoBloqueo.png";
-import simbolo1 from "../simbolos/simbolo1.jpg";
-import simbolo2 from "../simbolos/simbolo2.jpg";
-import simbolo3 from "../simbolos/simbolo3.jpg";
-import simbolo4 from "../simbolos/simbolo4.jpg";
+import simbolo1 from "../simbolos/simbolo1.png";
+import simbolo2 from "../simbolos/simbolo2.png";
+import simbolo3 from "../simbolos/simbolo3.png";
+import simbolo4 from "../simbolos/simbolo4.png";
 
 
 

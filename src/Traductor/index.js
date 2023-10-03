@@ -1,6 +1,6 @@
 import React from "react";
 import bloqueo from './simbolos/Candado.png';
-import simbolo1 from './simbolos/simbolo1.jpg';
+
 import palabra from './simbolos/palabra.png';
 import 'font-awesome/css/font-awesome.css';
 import './Traductor.css';

@@ -6,7 +6,7 @@ import { AnimacionMuseo } from "./AnimacionMuseo";
 import { QrMuseo } from "./QrMuseo";
 import { RolesMuseo } from "./RolesMuseo";
 import { EstadoMuseo } from "./EstadoMuseo";
-
+import { PruebaPrueba } from "./PruebaPrueba/PruebaPrueba";
 import { Header } from "./Header";
 import { Contexto } from "./Contexto";
 import { Mapa } from "./Mapa";
@@ -31,6 +31,7 @@ function App() {
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo />} />
             <Route path="/introduccion" element={<Picker />} />
+            <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
             <Route path="/qrMuseo" element={<QrMuseo />} />

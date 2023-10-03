@@ -140,3 +140,7 @@
 		/users	undefined
 20230924	16:36:07	2fd7574e-0057-47fd-ab57-f3b39ec6518f	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
 		/users	http://localhost:3000
+20230929	17:33:00	8f047e95-5e1a-40c9-b02b-b6343d094df3	Error: ENOENT: no such file or directory, stat 'C:\Users\sebas\OneDrive - Universidad Autónoma de Occidente\Escritorio\CulturalChange\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20230929	17:33:31	99abf006-325a-4308-b85e-d6793ec45ce6	Error: ENOENT: no such file or directory, stat 'C:\Users\sebas\OneDrive - Universidad Autónoma de Occidente\Escritorio\CulturalChange\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined

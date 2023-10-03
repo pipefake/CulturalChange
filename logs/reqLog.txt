@@ -356,3 +356,7 @@
 20230927	11:03:12	3264fa7f-438f-41ed-b266-ef6b3ab0b9d2	GET 	 undefined 	 /users
 20230927	11:04:02	c3584edd-904f-4fd2-9b8f-28391c3d31f2	PATCH 	 undefined 	 /users
 20230927	11:04:19	10fd57be-96c5-4f53-9a16-a9d0edddf7f0	GET 	 undefined 	 /users
+20230929	16:31:21	c1cb27e1-f5ab-44ea-b406-4a030750481b	GET 	 undefined 	 /users
+20230929	17:25:49	d83f0009-3abe-4c53-aa86-301a3aba7ff1	GET 	 undefined 	 /users
+20230929	17:33:00	c9ba9af8-1118-423c-b5b7-f8f70c410faf	GET 	 undefined 	 /api/roomCode
+20230929	17:33:31	010cc8fa-0b14-41a4-bf89-90a671939b31	GET 	 undefined 	 /api/roomCode

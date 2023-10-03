@@ -39,6 +39,12 @@ const Minijuego = (props) => {
     const [imageList, setImageList] = useState([simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */]);
 
 
+    const [encontrado1, setEncontrado1] = useState(true);
+    const [encontrado2, setEncontrado2] = useState(true);
+    const [encontrado3, setEncontrado3] = useState(false);
+    const [encontrado4, setEncontrado4] = useState(false);
+
+
     useEffect(() => {
         buscarUbicaciones(1);
     }, [props.historia]);
@@ -85,19 +91,27 @@ const Minijuego = (props) => {
         let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, flippedMemoBlock);
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+
         if (selectedMemoBlock === null) {
             setselectedMemoBlock(memoBlock);
         } else if (selectedMemoBlock.image === memoBlock.image) {
             // Cuando las parejas coinciden
             console.log(`¡Las parejas coinciden! Son: ${JSON.stringify(selectedMemoBlock)} y ${JSON.stringify(memoBlock)}`);
 
-            const simbolo1Encontrado = simbolos.find(simbolo => simbolo.image === memoBlock.image);
-
-            if (simbolo1Encontrado) {
-                simbolo1Encontrado.interpretado = true;
+            // Validar si selectedMemoBlock.image coincide con las 4 primeras imágenes del arreglo imageList
+            const isInFirstFour = imageList.slice(0, 4).includes(selectedMemoBlock.image);
+            if (!isInFirstFour) {
+                setAnimating(true);
+                setTimeout(() => {
+                    shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+                    shuffledMemoBlocksCopy.splice(selectedMemoBlock.index, 1, selectedMemoBlock);
+                    setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+                    setselectedMemoBlock(null);
+                    setAnimating(false);
+                }, 1000);
+            } else {
+                setselectedMemoBlock(null);
             }
-
-            setselectedMemoBlock(null);
         } else {
             setAnimating(true);
             setTimeout(() => {
@@ -109,6 +123,10 @@ const Minijuego = (props) => {
             }, 1000);
         }
     }
+
+
+
+
 
 
     return (

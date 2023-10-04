@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  top: -60px; /* Un valor negativo moverá la sección hacia arriba. */
+}
+
+.center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-image {
+  width: 40px;
+  height: 40px;
+}
+
+.clock-animation {
+  width: 100px;
+  height: 100px;
+}
+
+.loading-animation {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes animationCronometro {
+  0% {
+    background-image: url(../Header/Reloj/Reloj1.png);
+  }
+
+  6% {
+    background-image: url(../Header/Reloj/Reloj2.png);
+  }
+
+  12% {
+    background-image: url(../Header/Reloj/Reloj3.png);
+  }
+  18% {
+    background-image: url(../Header/Reloj/Reloj4.png);
+  }
+  25% {
+    background-image: url(../Header/Reloj/Reloj5.png);
+  }
+  50% {
+    background-image: url(../Header/Reloj/Reloj6.png);
+  }
+  65% {
+    background-image: url(../Header/Reloj/Reloj7.png);
+  }
+  70% {
+    background-image: url(../Header/Reloj/Reloj8.png);
+  }
+  85% {
+    background-image: url(../Header/Reloj/Reloj9.png);
+  }
+  90% {
+    background-image: url(../Header/Reloj/Reloj10.png);
+  }
+  92% {
+    background-image: url(../Header/Reloj/Reloj11.png);
+  }
+  94% {
+    background-image: url(../Header/Reloj/Reloj12.png);
+  }
+  96% {
+    background-image: url(../Header/Reloj/Reloj13.png);
+  }
+  98% {
+    background-image: url(../Header/Reloj/Reloj14.png);
+  }
+  100% {
+    background-image: url(../Header/Reloj/Reloj15.png);
+  }
+}
+.animacionCronometro {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  animation-name: animationCronometro;
+  animation-duration: 30s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  width: 60px;
+  height: 72px;
+}
+
+.huaquero-text {
+  color: #f7851e;
+  text-align: center;
+  font-family: "ABeeZee";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.24px;
+}
+
+.camara-text {
+  color: #432b18;
+  font-family: ABeeZee;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 46.8px */
+  letter-spacing: -0.36px;
+}
+
+.camera-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 80%; /* Ajustar según preferencia */
+  text-align: center;
+}
+
+.full-screen-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Altura completa de la ventana */
+  z-index: -1; /* Para que esté detrás de los demás elementos */
+}

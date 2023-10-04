@@ -28,55 +28,40 @@ import { Acumulador } from './Acumulador';
 
 // Agrega más imágenes según la cantidad de elementos en tu array original
 
-
-
 const Minijuego = (props) => {
     const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
     const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
     const [animating, setAnimating] = React.useState(false);
-
-    const historia = props.historia;
-    const [imageList, setImageList] = useState([simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */]);
-
-
-
-    const [encontrados, setEncontrados] =
-        useState([true, true, false, true]);
-
+    const [encontrados, setEncontrados] = useState([true, true, false, true]);
+    const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
 
     useEffect(() => {
-        buscarUbicaciones(1);
+        buscarUbicaciones(props.historia); // Update imageList based on props.historia
     }, [props.historia]);
 
-    function buscarUbicaciones(historia) {
-        let imageList;
+    function buscarUbicaciones(aux) {
+        let newImageList = [];
 
-        if (historia === 1) {
-            imageList = [simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8, /* Agrega más imágenes */];
-        } else if (historia === 2) {
-            imageList = [simbolo1, simbolo4, simbolo3, simbolo5, simbolo8, simbolo16, simbolo14, simbolo10];
-        } else if (historia === 3) {
-            imageList = [3, 5, 2, 4];
-        } else if (historia === 4) {
-            imageList = [4, 1, 2, 3];
+        if (aux === 1) {
+            newImageList = [simbolo1, simbolo2, simbolo3, simbolo4, simbolo5, simbolo6, simbolo7, simbolo8 /* Add more images */];
+        } else if (aux === 2) {
+            newImageList = [simbolo13, simbolo14, simbolo15, simbolo16, simbolo8, simbolo1, simbolo2, simbolo9];
+        } else if (aux === 3) {
+            newImageList = [simbolo9, simbolo10, simbolo11, simbolo12, simbolo3, simbolo15, simbolo14, simbolo7];
+        } else if (aux === 4) {
+            newImageList = [simbolo5, simbolo6, simbolo7, simbolo8, simbolo3, simbolo14, simbolo12, simbolo2];
         }
-        // } else if (historia === 5) {
-        //     imageList = [3, 4, 1, 5];
-        // }
 
-        setImageList(imageList);
+        setImageList([...newImageList]);
     }
-
-
-
-
 
     useEffect(() => {
         const shuffledImageList = shuffleArray([...imageList, ...imageList]);
         setShuffledMemoBlocks(
             shuffledImageList.map((image, i) => ({ codigo: 1000 + i, index: i, image, flipped: false }))
         );
-    }, []);
+    }, [imageList]); // Update shuffledMemoBlocks when imageList changes
+
     const shuffleArray = a => {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

@@ -162,3 +162,11 @@
 		/users	http://localhost:3000
 20231001	11:43:36	3c8cd534-8821-4758-b402-f557a181073a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
 		/api/roomCode	undefined
+20231002	00:24:43	583a2856-7e0e-4637-9dc0-fabdcd6f7358	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	f844e2ab-928f-4ed2-aa32-ffaf427a9e3c	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	886f3499-e5fa-44eb-8267-2afe35b40512	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	a87c300d-3830-40bd-89e5-42f7f9f32726	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/

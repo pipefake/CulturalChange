@@ -16,6 +16,7 @@ import { SeleccionCargando } from "./SeleccionCargando";
 import { Picker } from "./Picker";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Traductor } from "./Traductor";
+import { SymbolsPage } from "./huaquero2AntroTest";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={2} />} />
+            <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/interprete/parejas"
               element={<Minijuego></Minijuego>}

@@ -22,14 +22,8 @@ const getAllUsers = asyncHandler(async (req, res) => {
 //ruta: POST /users
 //acceso: privado
 const createNewUser = asyncHandler(async (req, res) => {
-  const {
-    name,
-    identification,
-    email,
-    rol,
-    finalizadaTarea,
-    tipoUsuario
-  } = req.body;
+  const { name, identification, email, rol, finalizadaTarea, tipoUsuario } =
+    req.body;
 
   //lineas para meter el codigo de la sala
   const roomCodeEntry = await room.findOne();
@@ -44,11 +38,9 @@ const createNewUser = asyncHandler(async (req, res) => {
     !finalizadaTarea ||
     !tipoUsuario
   ) {
-    return res
-      .status(400)
-      .json({
-        message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
-      });
+    return res.status(400).json({
+      message: `Todos los campos son requeridos: ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
+    });
   }
 
   //EN CASO QUE QUERAMOS EVITAR DUPLICADOS
@@ -68,7 +60,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     secretKey
   ).toString();
   const encryptedCorreo = CryptoJS.AES.encrypt(email, secretKey).toString();
-  
+
   const userObject = {
     name,
     identification: encryptedIdentificacion,
@@ -76,7 +68,7 @@ const createNewUser = asyncHandler(async (req, res) => {
     rol,
     finalizadaTarea,
     tipoUsuario,
-    codigoSala: roomCode
+    codigoSala: roomCode,
   };
 
   //crear y guardar nuevo usuario
@@ -106,7 +98,7 @@ const updateUser = asyncHandler(async (req, res) => {
     email,
     rol,
     finalizadaTarea,
-    tipoUsuario
+    tipoUsuario,
   } = req.body;
 
   //confirmando campos no vacios
@@ -118,11 +110,9 @@ const updateUser = asyncHandler(async (req, res) => {
     !finalizadaTarea ||
     !tipoUsuario
   ) {
-    return res
-      .status(400)
-      .json({
-        message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
-      });
+    return res.status(400).json({
+      message: `Todos los campos son requeridos: ${_id} ${name} ${identification} ${email} ${rol} ${finalizadaTarea} ${tipoUsuario}`,
+    });
   }
 
   //toca modificar un solo usuario, asi que llamemos por su id
@@ -166,8 +156,31 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
+const updateSymbols = asyncHandler(async (req, res) => {
+  try {
+
+    const {
+      huaqueroSymbols
+    } = req.body;
+
+    const user = await User.findById(userId);
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.symbols = huaqueroSymbols;
+
+    await user.save();
+
+    res.status(200).json({ message: "Symbols updated successfully", user });
+  } catch (error) {
+    console.error("Error updating symbols:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+
+});
+
 module.exports = {
   getAllUsers,
   createNewUser,
-  updateUser,
+  updateUser
 };

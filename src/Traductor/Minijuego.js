@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Board from './Board/Board.js';
 import { Link } from 'react-router-dom';
 import { Header } from '../Header';
+import on from './switch/on.png';
 
 import simbolo1 from './simbolos/simbolo1.png';
 import simbolo2 from './simbolos/simbolo2.png';
@@ -20,6 +21,29 @@ import simbolo14 from './simbolos/simbolo14.png';
 import simbolo15 from './simbolos/simbolo15.png';
 import simbolo16 from './simbolos/simbolo16.png';
 
+
+import tuariles from './anagramas/tuariles.png';
+import tear from './anagramas/tear.png';
+import alfarosre from './anagramas/alfarosre.png';
+import potiem from './anagramas/potiem.png';
+import turascul from './anagramas/turascul.png';
+import masfor from './anagramas/masfor.png';
+import blospue from './anagramas/blospue.png';
+import gadole from './anagramas/gadole.png';
+import braso from './anagramas/braso.png';
+import loshi from './anagramas/loshi.png';
+import toriahis from './anagramas/toriahis.png';
+import tefuen from './anagramas/tefuen.png';
+import naur from './anagramas/naur.png';
+import incianfa from './anagramas/incianfan.png';
+import zacru from './anagramas/zacru.png';
+import dosniso from './anagramas/dosniso.png';
+import zaspie from './anagramas/zaspie.png';
+import batosil from './anagramas/batosil.png';
+
+import { useMyContext } from '../SeleccionCargando/MyContext';
+import { Traductor } from './index.js';
+
 import off from './switch/off.png';
 import { simbolos } from '../rolesdata.js';
 
@@ -32,8 +56,15 @@ const Minijuego = (props) => {
     const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
     const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
     const [animating, setAnimating] = React.useState(false);
+    const [btnSlide, setBtnSlide] = React.useState(false);
     const [encontrados, setEncontrados] = useState([true, true, false, true]);
     const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
+
+
+    const [esinterpretado1, setEsInterpretado1] = useState(false);
+    const [esinterpretado2, setEsInterpretado2] = useState(false);
+    const [esinterpretado3, setEsInterpretado3] = useState(false);
+    const [esinterpretado4, setEsInterpretado4] = useState(false);
 
     useEffect(() => {
         buscarUbicaciones(props.historia); // Update imageList based on props.historia
@@ -70,6 +101,59 @@ const Minijuego = (props) => {
         return a;
     }
 
+
+
+    const cambiarComponenteInterprete = () => {
+        setBtnSlide(!btnSlide);
+    }
+    const [anagramas, setAnagramas] = useState([]);
+
+    useEffect(() => {
+        buscarAnagramas(props.historia);
+    }, [props.historia]);
+
+    function buscarAnagramas(historia) {
+        let nuevosAnagramas = [];
+
+        if (historia === 1) {
+            nuevosAnagramas = [tuariles, tear, alfarosre, potiem];
+        } else if (historia === 2) {
+            nuevosAnagramas = [turascul, masfor, blospue, gadole];
+        } else if (historia === 3) {
+            nuevosAnagramas = [braso, loshi, toriahis, tefuen];
+        } else if (historia === 4) {
+            nuevosAnagramas = [tuariles, naur, incianfa, zacru];
+        } else if (historia === 5) {
+            nuevosAnagramas = [dosniso, zaspie, toriahis, batosil];
+        }
+
+        else {
+            console.warn("Unhandled history case: ", historia);
+        }
+
+        setAnagramas(nuevosAnagramas);
+    }
+    const cambiarEstados = (positionInImageList) => {
+        if (positionInImageList < 4) {
+            switch (positionInImageList) {
+                case 0:
+                    setEsInterpretado1(true);
+                    break;
+                case 1:
+                    setEsInterpretado2(true);
+                    break;
+                case 2:
+                    setEsInterpretado3(true);
+                    break;
+                case 3:
+                    setEsInterpretado4(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     const handleMemoClick = memoBlock => {
         const flippedMemoBlock = { ...memoBlock, flipped: true };
         let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
@@ -85,7 +169,10 @@ const Minijuego = (props) => {
 
             console.log(positionInImageList);
 
-            // Check if the image is in the first position and the corresponding position in encontrados is true
+            if (positionInImageList < 4) {
+                cambiarEstados(positionInImageList);
+            }
+
             if (positionInImageList === 0 && encontrados[positionInImageList]) {
                 setselectedMemoBlock(null);
             } else if (!imageList.slice(0, 4).includes(selectedMemoBlock.image) || !encontrados[positionInImageList]) {
@@ -110,27 +197,55 @@ const Minijuego = (props) => {
                 setAnimating(false);
             }, 1000);
         }
+    };
+
+
+    const validardor = (index) => {
+
+        let aux;
+
+        if (index === 0) {
+            aux = esinterpretado1;
+        } else if (index === 1) {
+            aux = esinterpretado2;
+        } else if (index === 2) {
+            aux = esinterpretado3;
+        } else if (index === 3) {
+            aux = esinterpretado4;
+        }
+        return aux;
     }
-
-
-
 
 
 
     return (
         <>
             <Header></Header>
-            <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto
-"></Contexto>
+            <Contexto titulo="Descubre los símbolos" parrafo="Ten cuidado, solo podrás descifrar los simbolos que el Huaquero te mostró"></Contexto>
             <div className="fondoAmarillo">
                 <div className='contentMinijuego'>
-                    <Link to="/juego/interprete/traduccion">
-                        <img src={off} alt="logo de Guia"></img>
-                    </Link>
-                    <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} />
+                    <button className='btnInterpreteSlide' onClick={cambiarComponenteInterprete}>
+                        {!btnSlide ? (
+                            <img src={off} alt="logo de Guia" />
+                        ) : (
+                            <img src={on} alt="logo de Guia" />
+                        )}
+                    </button>
+                    <div className="ContTraduccion">
+                        {btnSlide ? (
 
+                            anagramas.map((simbolo, index) => (
+
+                                <Traductor key={index} historia={props.historia} imgAnagrama={anagramas[index]} imgSimbolo={imageList[index]} valid={validardor(index)} />
+
+                            ))
+                        ) : (
+                            <Board memoBlocks={shuffledMemoBlocks} animating={animating} handleMemoClick={handleMemoClick} />
+                        )}
+                    </div>
                 </div>
             </div>
+
             <Acumulador historia={props.historia} />
         </>
 

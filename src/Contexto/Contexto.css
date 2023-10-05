@@ -1,12 +1,14 @@
 .subtitulo{
-    font-size: 32px;
+    font-size: 27px;
     color: #432B18;
     text-align: center;
+    margin: 0;
 }
 p{
     font-size: 16px;
     color: #432B18;
     text-align: initial;
+    margin: 0;
 }
 .centrarParrafo{
     text-align: center;

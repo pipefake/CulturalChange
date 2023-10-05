@@ -9,6 +9,10 @@ export function MyContextProvider({ children }) {
     const [esHuaquero, setEsHuaquero] = useState(true);
     const [esInterprete, setEsInterprete] = useState(true);
     const [esAntropologo, setEsAntropologo] = useState(true);
+    const [esinterpretado1, setEsInterpretado1] = useState(false);
+    const [esinterpretado2, setEsInterpretado2] = useState(false);
+    const [esinterpretado3, setEsInterpretado3] = useState(false);
+    const [esinterpretado4, setEsInterpretado4] = useState(false);
 
     return (
         <MyContext.Provider
@@ -21,6 +25,15 @@ export function MyContextProvider({ children }) {
                 setEsInterprete,
                 esAntropologo,
                 setEsAntropologo,
+                esinterpretado1,
+                setEsInterpretado1,
+                esinterpretado2,
+                setEsInterpretado2,
+                esinterpretado3,
+                setEsInterpretado3,
+                esinterpretado4,
+                setEsInterpretado4
+
             }}
         >
             {children}

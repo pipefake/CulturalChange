@@ -31,8 +31,6 @@ function Acumulador(props) {
 
     const [lugares, setLugares] = useState([]);
 
-
-
     const historia = props.historia;
     console.log('Historia:', historia);
 

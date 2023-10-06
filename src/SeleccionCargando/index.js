@@ -21,7 +21,7 @@ function SeleccionCargando() {
 
     const { slug } = useParams();
     const blogpost = blogdata.find(post => post.slug === slug);
-    const rol = "interprete";
+    const rol = localStorage.getItem('selectedRole');
     console.log(rol);
     const navigate = useNavigate();
 
@@ -133,7 +133,6 @@ function SeleccionCargando() {
     }
 
     const enlace = (`/juego/${rol}`);
-
 
 
     const estadosVerdaderos = [guia, huaquero, interprete, antropologo].filter((estado) => estado).length;

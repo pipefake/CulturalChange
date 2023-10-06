@@ -242,7 +242,7 @@ const Minijuego = (props) => {
 
       console.log(positionInImageList);
 
-      if (positionInImageList < 4) {
+      if (positionInImageList < 4 && encontrados[positionInImageList]) {
         cambiarEstados(positionInImageList);
       }
 
@@ -338,7 +338,7 @@ const Minijuego = (props) => {
           </div>
         </div>
       </div>
-      
+
       <Acumulador
         historia={props.historia}
         encontrado1={encontrados[0]}

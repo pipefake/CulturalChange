@@ -21,7 +21,7 @@ function SeleccionCargando() {
 
     const { slug } = useParams();
     const blogpost = blogdata.find(post => post.slug === slug);
-    const rol = localStorage.getItem('selectedRole');
+    const rol = localStorage.getItem("selectedRole");
     console.log(rol);
     const navigate = useNavigate();
 
@@ -43,6 +43,7 @@ function SeleccionCargando() {
                 if (data) {
                     setActiveRoomCode(data);
                     console.log("Room data set:", data);
+                    console.log(rol)
 
                     // Start the interval only after the activeRoomCode has been set.
                     intervalId = setInterval(async () => {

@@ -264,3 +264,7 @@
 		/main.eede1f310a8b3799c520.hot-update.json	undefined
 20231006	05:14:31	84bcf176-a599-405c-a8bb-33d8c84753ac	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
 		/main.23d426b9ce520303cc70.hot-update.json	undefined
+20231006	11:14:59	c2fb07d6-726d-4fba-a793-be17560b52f6	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/static/media/Cargando.baf6e54c5e310922592d.png	undefined
+20231006	11:15:56	a22e5340-39c9-43ca-b07a-294e759ce036	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/static/media/Cargando.baf6e54c5e310922592d.png	undefined

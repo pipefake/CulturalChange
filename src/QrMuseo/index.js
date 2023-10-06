@@ -7,13 +7,17 @@ import axios from "axios";
 
 function QrMuseo() {
   const [roomCode, setRoomCode] = useState("");
+  const [userCount, setUserCount] = useState(0);
 
   useEffect(() => {
     // Fetch the room code immediately when the component is mounted
     fetchRoomCode();
 
-    // Set an interval to fetch the room code every 10 minutes
-    const interval = setInterval(fetchRoomCode, 30 * 1000);
+    // Set an interval to fetch the room code and user count every 10 seconds
+    const interval = setInterval(() => {
+      fetchRoomCode();
+      fetchUserCount();
+    }, 30 * 1000);
 
     // Clear the interval when the component is unmounted
     return () => {
@@ -30,6 +34,17 @@ function QrMuseo() {
     }
   };
 
+  const fetchUserCount = async () => {
+    try {
+      const response = await axios.get("/users");
+      const users = response.data;
+      const count = users.filter((user) => user.codigoSala === roomCode).length;
+      setUserCount(count);
+    } catch (error) {
+      console.error("Error fetching user count:", error);
+    }
+  };
+  
   return (
     <div
       className="container-qr-museo"
@@ -62,7 +77,7 @@ function QrMuseo() {
             className="imagen-boton"
           />
         </div>
-        <div className="texto-informacion contador">{4}/4</div>
+        <div className="texto-informacion contador">{userCount}/4</div>
       </div>
     </div>
   );

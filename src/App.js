@@ -18,6 +18,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
+import { SymbolsPage } from "./huaquero2AntroTest";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route path="/juego/interprete/parejas" element={<Minijuego historia={1}></Minijuego>} />
             <Route path="/juego/interprete/traduccion" element={<Traductor historia={1}></Traductor>} />
+            <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/antropologo"
               element={<Bloqueo historia={5}></Bloqueo>}

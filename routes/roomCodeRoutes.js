@@ -1,9 +1,12 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const roomController = require('../controllers/codigoSalaController')
+const roomController = require("../controllers/codigoSalaController");
 
-router.route('/')
-    .get(roomController.getRoomCode)
+router
+  .route("/")
+  .post(roomController.postSymbol)
+  .get(roomController.getRoomCode)
+  .patch(roomController.updateSymbol);
 
-module.exports = router
+module.exports = router;

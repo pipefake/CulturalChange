@@ -20,6 +20,7 @@ import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
 import { AntroTest } from "./antrotest";
+import { Induccion } from "./induccion";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/introduccion" element={<Picker />} />
             <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
+            <Route path="/induccion" element={< Induccion />} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
             <Route path="/qrMuseo" element={<QrMuseo />} />
             <Route path="/introduccion/:slug" element={<Introduccion />} />

@@ -25,7 +25,6 @@ function SeleccionCargando() {
     console.log(rol);
     const navigate = useNavigate();
 
-
     // Define el estado para cada logo y nombre.
     const [guia, setGuia] = useState(false);
     const [huaquero, setHuaquero] = useState(false);

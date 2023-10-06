@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { blogdata } from '../blogdata';
 import museolili from '../InputCodigo/resources/museolili.png';
 import './seleccionCargando.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-
+import axios from "axios";
 import cargando from './cargando.png';
 import { useMyContext } from './MyContext';
 

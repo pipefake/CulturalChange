@@ -61,3 +61,10 @@
   right: calc(50% - (400px / 2 + 90.833px + 20px));
   top: calc(50% + (120px / 2 + 20px));
 }
+
+.cuadro-contenedor {
+  background-color: #c98686; /* Color de fondo del contenedor */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 40px; /* Espaciado interior */
+  display: inline-block; /* Para que se ajuste al contenido */
+}

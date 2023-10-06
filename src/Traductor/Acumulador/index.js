@@ -70,17 +70,17 @@ function Acumulador(props) {
 
     return (
         <div className="acumulador">
-            <p className="txtAcumulador">Debajo encontrarás los símbolos encontrados por el Huaquero. </p>
-            <div className="simboloscontenedor" ></div>
-            {lugares.map((lugar, index) => (
-                <img
-                    key={index}
-                    className="imgBloqueo"
-                    src={getImageForEncontrado(index)}
-                    alt={`Imagen ${index + 1}`}
-                />
-            ))}
-            <div></div>
+            <p className="txtAcumulador txtAcumulador">Debajo encontrarás los símbolos encontrados por el Huaquero. </p>
+            <div className="simboloscontenedor" >
+                {lugares.map((lugar, index) => (
+                    <img
+                        key={index}
+                        className="imgBloqueo"
+                        src={getImageForEncontrado(index)}
+                        alt={`Imagen ${index + 1}`}
+                    />
+                ))}
+            </div>
 
         </div>
     );

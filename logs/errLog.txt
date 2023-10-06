@@ -170,3 +170,45 @@
 		/roomCode	http://localhost:3500/
 20231002	00:24:43	a87c300d-3830-40bd-89e5-42f7f9f32726	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
 		/roomCode	http://localhost:3500/
+20231005	19:55:40	762ab3b8-96a2-4582-b58e-f9b7168150cd	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:40	d37c58c6-c7f4-4c90-b1ae-7694eeebbf53	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:40	429ae53f-d91f-444d-9b22-3b0deca15e32	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:41	3c09d649-7403-448c-92c4-aa16a2632d19	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	5ce4c5a7-b96d-41b1-abf8-8a12db574ccf	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	e93f3ed5-c76b-44e5-81fa-aa1a4a9e9bd9	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	25938f7b-c3be-43e4-b6ca-d148053eb164	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	f2d2bdba-67c1-4763-9113-33800849ff43	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	5e11dee0-4d54-4f68-a0f3-80f5ffb25c79	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	dcc8c7cd-a872-4244-999f-6b8527ee7f08	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	a46e7ed7-92d3-4b87-8551-6381994cd70f	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	470c879d-72a7-44e3-94b3-8f76eb3b39d2	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:09:28	cde61bd3-0d43-4ce6-9961-a6d116d935ab	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:13:19	b8b5b9c0-e7ae-42ba-8d9d-2a0593f7fe00	ValidationError: RoomCode validation failed: code: Path `code` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:13:46	89d2fbb2-900a-47f0-9009-abe695345a0d	ValidationError: RoomCode validation failed: code: Path `code` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:15:16	768d3922-b04c-4ae1-973b-6edd44712558	TypeError: Cannot read properties of undefined (reading 'name')	POST
+		/roomCode	http://localhost:3500/
+20231005	20:31:08	06a4c154-e3c2-4563-8196-3c0115dd6748	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/getRoomCode	undefined
+20231005	20:31:10	c299d651-5e46-45b7-88ff-afcb47a1c26c	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/getRoomCode	undefined
+20231005	20:36:12	3df26647-7420-4a9d-a369-1001ced399ce	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/
+20231005	20:45:32	9945c0aa-2972-4097-b5ba-c1b42acb3bf7	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/
+20231005	20:47:10	24bed0d5-2ac9-4298-9e8f-b3c746c87ff3	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/

@@ -34,13 +34,14 @@ const generateRoomCode = () => {
     return code;
 };
 
-cron.schedule("*/10 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
     const newCode = generateRoomCode();
     console.log(`Generated new room code: ${newCode}`);
     try {
         // Update the current room code in the RoomCode collection
         let roomCodeEntry = await RoomCode.findOne();
         if (roomCodeEntry) {
+            roomCodeEntry.huaqueroSymbols = [];
             roomCodeEntry.code = newCode;
             roomCodeEntry.updatedAt = Date.now();
             await roomCodeEntry.save();
@@ -53,7 +54,6 @@ cron.schedule("*/10 * * * *", async () => {
     }
 });
 //====================================
-
 
 //conexion base de datos
 connectDB();

@@ -2153,3 +2153,7 @@
 20231006	01:56:25	df87ba42-669c-461c-a4e8-898f099802f3	GET 	 undefined 	 /roomCode
 20231006	01:56:26	43aa7f6d-e9ea-4b88-a645-354a4afa50da	GET 	 undefined 	 /users
 20231006	01:56:41	7bb56d9b-fa00-4a79-ae3f-011c47362496	GET 	 undefined 	 /roomCode
+20231006	02:23:49	9ee27cdc-7d0b-49e1-ac69-bbe24ccd1be5	GET 	 undefined 	 /roomCode
+20231006	02:24:01	36e9ca9b-c5d1-40ca-bedd-42c6b6de2ba6	GET 	 undefined 	 /static/media/Cargando.baf6e54c5e310922592d.png
+20231006	02:47:48	37e790fd-1613-477e-85c2-511f816d93a3	GET 	 undefined 	 /roomCode
+20231006	02:48:01	355fa843-342a-4075-a419-84cf004aa582	GET 	 undefined 	 /static/media/Cargando.baf6e54c5e310922592d.png

@@ -19,6 +19,7 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
+import { AntroTest } from "./antrotest";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/antropologo"
-              element={<Bloqueo historia={5}></Bloqueo>}
+              element={<Bloqueo historia={1}></Bloqueo>}
             />
 
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />

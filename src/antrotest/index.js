@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function SymbolsPage() {
+function AntroTest() {
   const [symbols, setSymbols] = useState([]);
   const [roomCode, setRoomCode] = useState(""); // State to store the room code
 
   useEffect(() => {
     const sendSymbols = async () => {
       try {
-        await addSymbol("Symbol1");
-        await addSymbol("Symbol2");
-        await addSymbol("Symbol3");
-        await addSymbol("Symbol4");
-        await addSymbol("simbolo1");
-        await addSymbol("simbolo2");
-        await addSymbol("simbolo3");
-        await addSymbol("simbolo4");
+        await addSymbol("Symbol5");
+        await addSymbol("Symbol6");
+        await addSymbol("Symbol7");
+        await addSymbol("Symbol8");
         
         // After sending all symbols, fetch the room code and symbols
         fetchRoomCode();
@@ -65,27 +61,6 @@ function SymbolsPage() {
     }
   };
 
-  // const updateSymbol = async (roomCode, symbolName) => {
-  //   console.log("Sending the symbol: ", symbols)
-  //   console.log("Sending the roomCode: ", roomCode)
-  //   try {
-  //     await axios.patch('/updateSymbol', {
-  //       roomCode: roomCode, // Replace with the actual room code
-  //       symbolName: symbolName,
-  //     });
-  //     console.log(`${symbolName} updated successfully`);
-
-  //     // Update the symbols array to reflect the updated 'found' state
-  //     setSymbols((prevSymbols) =>
-  //       prevSymbols.map((symbol) =>
-  //         symbol.name === symbolName ? { ...symbol, found: true } : symbol
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error(`Error updating ${symbolName}:`, error);
-  //   }
-  // };
-
   const updateSymbol = async (symbolName) => {
     try {
       const response = await axios.patch('/roomCode', { symbolName, found: true });
@@ -97,12 +72,11 @@ function SymbolsPage() {
 
   return (
     <div>
-      <button onClick={() => updateSymbol("Symbol1")}>Symbol1</button>
-      <button onClick={() => updateSymbol("Symbol2")}>Symbol2</button>
-      <button onClick={() => updateSymbol("Symbol3")}>Symbol3</button>
-      <button onClick={() => updateSymbol("Symbol4")}>Symbol4</button>
+      <button onClick={() => updateSymbol("Symbol5")}>Symbol5</button>
+      <button onClick={() => updateSymbol("Symbol6")}>Symbol6</button>
+      <button onClick={() => updateSymbol("Symbol7")}>Symbol7</button>
+      <button onClick={() => updateSymbol("Symbol8")}>Symbol8</button>
     </div>
   );
 }
-
-export { SymbolsPage };
+export { AntroTest };

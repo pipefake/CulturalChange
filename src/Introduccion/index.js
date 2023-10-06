@@ -42,6 +42,7 @@ function Introduccion() {
         };
         fetchData(); // invoke the function to fetch and set user data
     }, []); // empty dependency array to run only once after component mount
+
     const userId = localStorage.getItem("userId"); // ID from local storage
 
     const getUserData = async () => {
@@ -86,7 +87,7 @@ function Introduccion() {
                 );
 
                 console.log("User updated:", response.data);
-                localStorage.clear();
+
 
                 // localStorage.clear();
             } catch (error) {

@@ -216,7 +216,7 @@ function IntroduccionRol(props) {
           <Link
             className={`txtRoles linkRoles`}
             to={`/introduccion/${post.slug}`}
-            onClick={() => handleRoleSelection(post.rol)}
+            onClick={handleRoleSelection(post.rol)}
           >
             <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
             {post.rol}

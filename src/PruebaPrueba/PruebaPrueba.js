@@ -69,7 +69,7 @@ function PruebaPrueba() {
         );
 
         console.log("User updated:", response.data);
-        localStorage.clear();
+
         // localStorage.clear();
       } catch (error) {
         console.error("Error updating user:", error);

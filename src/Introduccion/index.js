@@ -61,6 +61,7 @@ function Introduccion() {
     };
 
     const updateRol = async (newRol) => {
+
         console.log(userData._id);
         console.log('UserData before axios call:', userData);
 
@@ -86,6 +87,7 @@ function Introduccion() {
 
                 console.log("User updated:", response.data);
                 localStorage.clear();
+
                 // localStorage.clear();
             } catch (error) {
                 console.error("Error updating user:", error);

@@ -47,7 +47,7 @@ function App() {
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/antropologo"
-              element={<Bloqueo historia={5}></Bloqueo>}
+              element={<Bloqueo historia={1}></Bloqueo>}
             />
 
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />

@@ -51,7 +51,7 @@ function Bloqueo(props) {
 
     return (
         <>
-            <Header />
+
             <div className="info_juegoAntropologo">
                 <h1 className="info_juegoAntropologoTitulo">
                     Descifra las palabras

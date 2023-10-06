@@ -42,8 +42,7 @@ function App() {
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
 
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
-            <Route path="/juego/interprete/parejas" element={<Minijuego historia={1}></Minijuego>} />
-            <Route path="/juego/interprete/traduccion" element={<Traductor historia={1}></Traductor>} />
+            <Route path="/juego/interprete" element={<Minijuego historia={1}></Minijuego>} />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/antropologo"

@@ -300,7 +300,7 @@ const Minijuego = (props) => {
 
   return (
     <>
-      <Header></Header>
+
       <Contexto
         titulo="Descubre los símbolos"
         parrafo="Ten cuidado, solo podrás descifrar los simbolos que el Huaquero te mostró"

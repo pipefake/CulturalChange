@@ -256,3 +256,5 @@
 		/api/roomCode	undefined
 20231005	22:20:12	d04e1f7b-ef68-4541-a5fc-b9a4053e4692	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
 		/api/roomCode	undefined
+20231006	01:23:32	4d0db148-7304-48b1-abd6-95d001bca96e	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.31cf7cf1043b78c0a855.hot-update.json	undefined

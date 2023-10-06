@@ -68,3 +68,16 @@
   padding: 40px; /* Espaciado interior */
   display: inline-block; /* Para que se ajuste al contenido */
 }
+
+.room-code {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 31.2px */
+  letter-spacing: -0.24px;
+  margin-top: 20px;
+}

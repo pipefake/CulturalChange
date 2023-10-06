@@ -45,12 +45,15 @@ function QrMuseo() {
         <div className="imagenes-contenedor">
           <div className="cuadro-contenedor">
             {roomCode && (
-              <QRCode
-                value={roomCode}
-                size={300} //Tamaño Qr
-                bgColor="#c98686" // Color fondo
-                fgColor="#000" // Color QR
-              />
+              <>
+                <QRCode
+                  value={roomCode}
+                  size={300} // Tamaño Qr
+                  bgColor="#c98686" // Color fondo
+                  fgColor="#000" // Color QR
+                />
+                <div className="room-code">{roomCode}</div>
+              </>
             )}
           </div>
           <img

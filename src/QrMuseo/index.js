@@ -9,41 +9,34 @@ function QrMuseo() {
   const [roomCode, setRoomCode] = useState("");
   const [userCount, setUserCount] = useState(0);
 
-  useEffect(() => {
-    // Fetch the room code immediately when the component is mounted
-    fetchRoomCode();
+  const fetchRoomData = async () => {
+    try {
+      // Fetch the room code
+      const roomResponse = await axios.get("/roomCode");
+      setRoomCode(roomResponse.data[0].code);
 
-    // Set an interval to fetch the room code and user count every 10 seconds
-    const interval = setInterval(() => {
-      fetchRoomCode();
-      fetchUserCount();
-    }, 30 * 1000);
+      // Fetch the user count
+      const userResponse = await axios.get("/users");
+      const users = userResponse.data;
+      const count = users.filter((user) => user.codigoSala === roomCode).length;
+      setUserCount(count);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch room data immediately when the component mounts
+    fetchRoomData();
+
+    // Set an interval to fetch room data every 10 seconds
+    const interval = setInterval(fetchRoomData, 10 * 1000);
 
     // Clear the interval when the component is unmounted
     return () => {
       clearInterval(interval);
     };
-  }, []);
-
-  const fetchRoomCode = async () => {
-    try {
-      const response = await axios.get("/roomCode");
-      setRoomCode(response.data[0].code);
-    } catch (error) {
-      console.error("Error fetching room code:", error);
-    }
-  };
-
-  const fetchUserCount = async () => {
-    try {
-      const response = await axios.get("/users");
-      const users = response.data;
-      const count = users.filter((user) => user.codigoSala === roomCode).length;
-      setUserCount(count);
-    } catch (error) {
-      console.error("Error fetching user count:", error);
-    }
-  };
+  }, [roomCode]);
   
   return (
     <div

@@ -1,12 +1,13 @@
 .acumulador{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 396px;
     position: absolute;
     left: 0;
     z-index: 3;
     top: 700px;
     justify-content: center;
+    
 }
 .imgBloqueo{
     width: 95px;

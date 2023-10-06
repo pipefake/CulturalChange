@@ -20,23 +20,35 @@ function QrMuseo() {
       const users = userResponse.data;
       const count = users.filter((user) => user.codigoSala === roomCode).length;
       setUserCount(count);
+
+      // Clear the interval if userCount reaches 4
+      if (count === 4) {
+        clearInterval(interval);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  useEffect(() => {
+  let interval;
+
+useEffect(() => {
     // Fetch room data immediately when the component mounts
     fetchRoomData();
 
     // Set an interval to fetch room data every 10 seconds
-    const interval = setInterval(fetchRoomData, 10 * 1000);
+    interval = setInterval(fetchRoomData, 10 * 1000);
+
+    // Clear the interval if userCount reaches 4
+    if (userCount === 4) {
+      clearInterval(interval);
+    }
 
     // Clear the interval when the component is unmounted
     return () => {
       clearInterval(interval);
     };
-  }, [roomCode]);
+  }, [roomCode, userCount]);
   
   return (
     <div

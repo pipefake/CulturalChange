@@ -212,3 +212,47 @@
 		/updateSymbol	http://localhost:3500/
 20231005	20:47:10	24bed0d5-2ac9-4298-9e8f-b3c746c87ff3	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
 		/updateSymbol	http://localhost:3500/
+20231005	22:11:43	17e960dc-8bcf-4ca1-9cc1-cc3b30af6066	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:12:13	d05fa351-31f2-48e2-9d76-f8ec84600c7f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:12:43	8569d729-c27d-4464-97c3-4f3e0884be4a	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:13:13	13697226-4562-4662-8cf1-20b1b697eef2	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:13:42	2814a9cd-85d8-4b5e-8c62-123e78dabd79	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:14:13	af64ed8f-f5f2-4343-8f8c-b4b2bd392409	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:14:43	c6905e5b-4ad1-4182-9ff2-2669ca1a4831	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:15:13	0dd3f354-cefc-460a-9952-eef35fc063a2	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:16:13	4b5d7bdd-b7b6-4ce6-a441-9e48b491996d	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:16:43	caf84ccd-acce-4559-9e17-b513e271fb23	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:17:13	2bfd048b-4d1e-42fe-a4e9-0d476feb9ff3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:17:29	c104e8ef-33ab-4f3c-889d-b521c489b431	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:26	edc24418-56dc-41e8-b46d-44d07920f301	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.f0df378498f010b9f429.hot-update.json	undefined
+20231005	22:18:27	1a08dd43-eb4e-4f5d-a26c-0b4e25235d51	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:35	9b671d10-20db-4bc0-9cd7-da45e7774b44	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:55	1c92f7ad-39de-4208-af51-8b00ed1691f3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:57	04cd0443-d457-4a27-8500-5c14eab7d51f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:12	3afed02b-ad93-408b-aa62-58698456ee46	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:27	c7ad4011-ce59-4342-8901-4c29616f1f99	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:42	3a446b7d-b4c4-479d-a10a-af07970c49b9	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:57	e0e6256c-6cc4-4131-bdbd-2cb36aeaae35	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:20:12	d04e1f7b-ef68-4541-a5fc-b9a4053e4692	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined

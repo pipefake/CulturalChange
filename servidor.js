@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3500;
 const cors = require('cors');
 //importando el modulo creado
 //para hacer un log de eventos
-const {logger} = require("./middleware/logEvents");
+const { logger } = require("./middleware/logEvents");
 //errores personalizados y su log
 //no tiene {} porque ese archivo tiene un import de logger y se hace patata
 const errorHandler = require("./middleware/errorHandler");
@@ -23,7 +23,7 @@ const connectDB = require("./config/dbConn")
 //====================================
 //PRUEBAS CODIGO QR
 const cron = require("node-cron");
-const RoomCode = require ("./models/RoomCode");
+const RoomCode = require("./models/RoomCode");
 
 const generateRoomCode = () => {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -34,7 +34,7 @@ const generateRoomCode = () => {
     return code;
 };
 
-cron.schedule("*/15 * * * *", async () => {
+cron.schedule("*/30 * * * *", async () => {
     const newCode = generateRoomCode();
     console.log(`Generated new room code: ${newCode}`);
     try {
@@ -71,7 +71,7 @@ app.use(logger);
 app.use(cors());
 
 //sacar cosas de url
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 //nos permite sacar json de las respuestas
 app.use(express.json());
@@ -92,20 +92,20 @@ app.use("/roomCode", require("./routes/roomCodeRoutes"))
 //==============
 
 //rutas a manifiesto y favicon
-app.get("^/$|/favicon.ico", (req,res)=>{
-	res.sendFile(path.join(__dirname, "public", "favicon.ico"));
+app.get("^/$|/favicon.ico", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "favicon.ico"));
 })
 
-app.get("^/$|/manifest.json", (req,res)=>{
-	res.sendFile(path.join(__dirname, "public", "manifest.json"));
+app.get("^/$|/manifest.json", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "manifest.json"));
 })
 
-app.get("^/$|/react192.png", (req,res)=>{
-	res.sendFile(path.join(__dirname, "public", "react192.png"));
+app.get("^/$|/react192.png", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "react192.png"));
 })
 
-app.get("^/$|/react512.png", (req,res)=>{
-	res.sendFile(path.join(__dirname, "public", "react512.png"));
+app.get("^/$|/react512.png", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "react512.png"));
 })
 //=============
 
@@ -114,16 +114,16 @@ app.get("^/$|/react512.png", (req,res)=>{
 //a all, esto permite que todo (incluso middleware) obtenga el erro 404
 //los if es para ver que tipo de archivo pidi�
 //y le respondemos 404 dependiendo el tipo
-app.all("*", (req,res)=>{
-	res.status(404);
-	if(req.accepts("html")){
-		res.sendFile(path.join(__dirname, "views", "404.html"));
-	}
-	else if(req.accepts("json")){
-		res.json({error: "404 Not Found"});
-	}else{
-		res.type("txt").send("404 Not Found");
-	}
+app.all("*", (req, res) => {
+    res.status(404);
+    if (req.accepts("html")) {
+        res.sendFile(path.join(__dirname, "views", "404.html"));
+    }
+    else if (req.accepts("json")) {
+        res.json({ error: "404 Not Found" });
+    } else {
+        res.type("txt").send("404 Not Found");
+    }
 });
 
 //error personalizado sobre CORS denegando acceso
@@ -133,12 +133,12 @@ app.use(errorHandler);
 
 //escuchamos el evento de abiero (la conexion a la bd)
 mongoose.connection.once("open", () => {
-	console.log("Connected to MongoDB")
-	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    console.log("Connected to MongoDB")
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
 
 //catch errores en conexion
 mongoose.connection.on("error", err => {
-	console.log(err);
-	logger(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,`mongoErrLog.log`)
+    console.log(err);
+    logger(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, `mongoErrLog.log`)
 })

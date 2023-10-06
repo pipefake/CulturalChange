@@ -52,11 +52,10 @@
     flex-wrap: wrap;
     flex-direction: column;
     animation-name: animationCronometro;
-    animation-duration: 30s;
+    animation-duration: 600s;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-timing-function: ease;
     width: 60px;
     height: 72px;
-
 }

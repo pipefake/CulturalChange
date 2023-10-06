@@ -258,3 +258,7 @@
 		/api/roomCode	undefined
 20231006	01:23:32	4d0db148-7304-48b1-abd6-95d001bca96e	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
 		/main.31cf7cf1043b78c0a855.hot-update.json	undefined
+20231006	02:49:54	fe5ced75-44e5-41ae-a703-83ef852c91b2	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/main.ece808c6bdd6128b9fff.hot-update.json	undefined
+20231006	02:49:54	5372a1e2-f1f2-49a4-80bc-b0886c583370	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/main.eede1f310a8b3799c520.hot-update.json	undefined

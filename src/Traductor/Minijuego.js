@@ -57,9 +57,8 @@ const Minijuego = (props) => {
     const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
     const [animating, setAnimating] = React.useState(false);
     const [btnSlide, setBtnSlide] = React.useState(false);
-    const [encontrados, setEncontrados] = useState([true, true, false, true]);
+    const [encontrados, setEncontrados] = useState([false, false, false, false]);
     const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
-
 
     const [esinterpretado1, setEsInterpretado1] = useState(false);
     const [esinterpretado2, setEsInterpretado2] = useState(false);
@@ -100,8 +99,6 @@ const Minijuego = (props) => {
         }
         return a;
     }
-
-
 
     const cambiarComponenteInterprete = () => {
         setBtnSlide(!btnSlide);
@@ -199,7 +196,6 @@ const Minijuego = (props) => {
         }
     };
 
-
     const validardor = (index) => {
 
         let aux;
@@ -215,8 +211,6 @@ const Minijuego = (props) => {
         }
         return aux;
     }
-
-
 
     return (
         <>

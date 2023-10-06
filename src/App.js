@@ -42,7 +42,6 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/AntroTest" element={<AntroTest />} />
-
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route path="/juego/interprete" element={<Minijuego historia={1}></Minijuego>} />
             <Route path="/symbolsPage" element={<SymbolsPage />} />

@@ -12,6 +12,10 @@ function SymbolsPage() {
         await addSymbol("Symbol2");
         await addSymbol("Symbol3");
         await addSymbol("Symbol4");
+        await addSymbol("simbolo1");
+        await addSymbol("simbolo2");
+        await addSymbol("simbolo3");
+        await addSymbol("simbolo4");
         
         // After sending all symbols, fetch the room code and symbols
         fetchRoomCode();

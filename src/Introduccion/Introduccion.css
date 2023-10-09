@@ -83,6 +83,9 @@ h3{
     0% {
         background-image: url(./resources/animacionAntropologo/Frame\ 70.png);
     }
+    5% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 70.png);
+    }
 
     10% {
         background-image: url(./resources/animacionAntropologo/Frame\ 69.png);
@@ -102,6 +105,12 @@ h3{
     }
     90% {
         background-image: url(./resources/animacionAntropologo/Frame\ 63.png);
+    }
+    95% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 62.png);
+    }
+    98% {
+        background-image: url(./resources/animacionAntropologo/Frame\ 62.png);
     }
     100% {
         background-image: url(./resources/animacionAntropologo/Frame\ 62.png);
@@ -129,15 +138,13 @@ h3{
     flex-wrap: wrap;
     flex-direction: column;
     animation-name: animationAntropologo;
-    animation-duration: 1.5s;
+    animation-duration: 2.5s;
     animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-timing-function: ease-in;
+    animation-direction: reverse;
+    animation-timing-function: linear;
     display: flex;
     width: 300px;
     height: 298px;
-    
-    margin: 58px 0px;
 }
 
 .animacionInterprete{

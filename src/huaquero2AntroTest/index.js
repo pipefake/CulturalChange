@@ -6,14 +6,28 @@ function SymbolsPage() {
   const [roomCode, setRoomCode] = useState(""); // State to store the room code
 
   useEffect(() => {
-    // Automatically send 4 symbols when the component mounts
-    addSymbol("Symbol1");
-    addSymbol("Symbol2");
-    addSymbol("Symbol3");
-    addSymbol("Symbol4");
-    fetchRoomCode();
-    fetchSymbols();
-  }, []); // Empty dependency array to run only once on mount
+    const sendSymbols = async () => {
+      try {
+        await addSymbol("Symbol1");
+        await addSymbol("Symbol2");
+        await addSymbol("Symbol3");
+        await addSymbol("Symbol4");
+        await addSymbol("simbolo1");
+        await addSymbol("simbolo2");
+        await addSymbol("simbolo3");
+        await addSymbol("simbolo4");
+        
+        // After sending all symbols, fetch the room code and symbols
+        fetchRoomCode();
+        fetchSymbols();
+      } catch (error) {
+        console.error('Error sending symbols:', error);
+      }
+    };
+  
+    // Call the function to send symbols
+    sendSymbols();
+  }, []);
 
   const fetchRoomCode = async () => {
     try {

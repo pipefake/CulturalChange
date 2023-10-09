@@ -61,3 +61,23 @@
   right: calc(50% - (400px / 2 + 90.833px + 20px));
   top: calc(50% + (120px / 2 + 20px));
 }
+
+.cuadro-contenedor {
+  background-color: #c98686; /* Color de fondo del contenedor */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 40px; /* Espaciado interior */
+  display: inline-block; /* Para que se ajuste al contenido */
+}
+
+.room-code {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 31.2px */
+  letter-spacing: -0.24px;
+  margin-top: 20px;
+}

@@ -29,15 +29,13 @@ function PruebaPrueba() {
 
     fetchData(); // invoke the function to fetch and set user data
   }, []); // empty dependency array to run only once after component mount
-  
-  const userId = localStorage.getItem("userId"); // ID from local storage
 
+  const userId = localStorage.getItem("userId"); // ID from local storage
   const getUserData = async () => {
     try {
       const response = await axios.get("/users"); // Adjusted the endpoint
       const users = response.data;
       const user = users.find((u) => u._id === userId); // Assuming each user object has an _id field
-
       if (user) {
         return user;
       } else {
@@ -47,11 +45,9 @@ function PruebaPrueba() {
       console.error("Error fetching users:", error);
     }
   };
-
   const updateRol = async (newRol) => {
     console.log(userData._id);
     console.log('UserData before axios call:', userData);
-
     if (userData) {
       try {
         const response = await axios.patch(

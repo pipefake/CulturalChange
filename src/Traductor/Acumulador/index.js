@@ -19,16 +19,7 @@ import simbolo14 from '../simbolos/simbolo14.png';
 import simbolo15 from '../simbolos/simbolo15.png';
 import simbolo16 from '../simbolos/simbolo16.png';
 
-
-
-
 function Acumulador(props) {
-
-    const [encontrado1, setEncontrado1] = useState(true);
-    const [encontrado2, setEncontrado2] = useState(true);
-    const [encontrado3, setEncontrado3] = useState(false);
-    const [encontrado4, setEncontrado4] = useState(false);
-
     const [lugares, setLugares] = useState([]);
 
     const historia = props.historia;
@@ -62,13 +53,13 @@ function Acumulador(props) {
 
     const getImageForEncontrado = (index) => {
         if (index === 0) {
-            return encontrado1 ? lugares[0] : iconoBloqueo;
+            return props.encontrado1 ? lugares[0] : iconoBloqueo;
         } else if (index === 1) {
-            return encontrado2 ? lugares[1] : iconoBloqueo;
+            return props.encontrado2 ? lugares[1] : iconoBloqueo;
         } else if (index === 2) {
-            return encontrado3 ? lugares[2] : iconoBloqueo;
+            return props.encontrado3 ? lugares[2] : iconoBloqueo;
         } else if (index === 3) {
-            return encontrado4 ? lugares[3] : iconoBloqueo;
+            return props.encontrado4 ? lugares[3] : iconoBloqueo;
         } else {
             return iconoBloqueo;
         }
@@ -79,14 +70,18 @@ function Acumulador(props) {
 
     return (
         <div className="acumulador">
-            {lugares.map((lugar, index) => (
-                <img
-                    key={index}
-                    className="imgBloqueo"
-                    src={getImageForEncontrado(index)}
-                    alt={`Imagen ${index + 1}`}
-                />
-            ))}
+            <p className="txtAcumulador txtAcumulador">Debajo encontrarás los símbolos encontrados por el Huaquero. </p>
+            <div className="simboloscontenedor" >
+                {lugares.map((lugar, index) => (
+                    <img
+                        key={index}
+                        className="imgBloqueo"
+                        src={getImageForEncontrado(index)}
+                        alt={`Imagen ${index + 1}`}
+                    />
+                ))}
+            </div>
+
         </div>
     );
 

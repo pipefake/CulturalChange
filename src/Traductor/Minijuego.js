@@ -40,6 +40,7 @@ import zacru from './anagramas/zacru.png';
 import dosniso from './anagramas/dosniso.png';
 import zaspie from './anagramas/zaspie.png';
 import batosil from './anagramas/batosil.png';
+import parejaCorrecta from './audios/parejaCorrecta.mp3';
 
 import { useMyContext } from '../SeleccionCargando/MyContext';
 import { Traductor } from './index.js';
@@ -156,6 +157,9 @@ const Minijuego = (props) => {
 
     const handleMemoClick = memoBlock => {
         const flippedMemoBlock = { ...memoBlock, flipped: true };
+
+        const audio = new Audio(parejaCorrecta);
+
         let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, flippedMemoBlock);
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
@@ -175,7 +179,9 @@ const Minijuego = (props) => {
 
             if (positionInImageList === 0 && encontrados[positionInImageList]) {
                 setselectedMemoBlock(null);
+                audio.play();
             } else if (!imageList.slice(0, 4).includes(selectedMemoBlock.image) || !encontrados[positionInImageList]) {
+
                 setAnimating(true);
                 setTimeout(() => {
                     shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);

@@ -42,7 +42,7 @@ function Introduccion() {
                 return 'animacionInterprete';
             case 'Huaquero':
                 return 'animacionHuaquero';
-            case 'Antropologo':
+            case 'Antropólogo':
                 return 'animacionAntropologo';
             default:
                 return 'animacionmapa'; // Por defecto, si no coincide con los casos anteriores, aplicamos 'animacionmapa'

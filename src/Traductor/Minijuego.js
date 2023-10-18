@@ -70,6 +70,31 @@ const Minijuego = (props) => {
   const [esinterpretado2, setEsInterpretado2] = useState(false);
   const [esinterpretado3, setEsInterpretado3] = useState(false);
   const [esinterpretado4, setEsInterpretado4] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+  const [modalClosed, setModalClosed] = useState(false);
+  const [showSecondModal, setShowSecondModal] = useState(false);
+  const [secondModalClosed, setSecondModalClosed] = useState(false);
+
+
+  useEffect(() => {
+    if (modalClosed) {
+      setShowModal(false);
+    }
+  }, [modalClosed]);
+
+  function closeModal() {
+    setModalClosed(true);
+  }
+
+  function closeSecondModal() {
+    setSecondModalClosed(true);
+  }
+
+  useEffect(() => {
+    if (secondModalClosed) {
+      setSecondModalClosed(false);
+    }
+  }, [secondModalClosed]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -237,6 +262,7 @@ const Minijuego = (props) => {
           selectedMemoBlock
         )} y ${JSON.stringify(memoBlock)}`
       );
+      setShowSecondModal(true);
 
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
 
@@ -300,7 +326,29 @@ const Minijuego = (props) => {
 
   return (
     <>
-
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <p>
+              Espera a que el huaquero encuentre los símbolos misteriosos. Ten
+              cuidado si descubres símbolos diferentes, perderás tiempo.
+            </p>
+          </div>
+        </div>
+      )}
+      {showSecondModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeSecondModal}>
+              &times;
+            </span>
+            <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
+          </div>
+        </div>
+      )}
       <Contexto
         titulo="Descubre los símbolos"
         parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"

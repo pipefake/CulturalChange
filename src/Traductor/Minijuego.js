@@ -252,7 +252,7 @@ const Minijuego = (props) => {
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
       ) {
-        audio.play();
+        // audio.play();
         setAnimating(true);
         setTimeout(() => {
           shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);

@@ -74,6 +74,8 @@ const Minijuego = (props) => {
   const [modalClosed, setModalClosed] = useState(false);
   const [showSecondModal, setShowSecondModal] = useState(false);
   const [secondModalClosed, setSecondModalClosed] = useState(false);
+  const [showThirdModal, setShowThirdModal] = useState(false);
+  const [thirdModalClosed, setThirdModalClosed] = useState(false);
 
 
   useEffect(() => {
@@ -86,6 +88,7 @@ const Minijuego = (props) => {
     setModalClosed(true);
   }
 
+
   function closeSecondModal() {
     setSecondModalClosed(true);
   }
@@ -95,6 +98,16 @@ const Minijuego = (props) => {
       setSecondModalClosed(false);
     }
   }, [secondModalClosed]);
+
+  function closeThirdModal() {
+    setThirdModalClosed(true);
+  }
+
+  useEffect(() => {
+    if (thirdModalClosed) {
+      setThirdModalClosed(false);
+    }
+  }, [thirdModalClosed]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -262,7 +275,7 @@ const Minijuego = (props) => {
           selectedMemoBlock
         )} y ${JSON.stringify(memoBlock)}`
       );
-      setShowSecondModal(true);
+
 
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
 
@@ -270,14 +283,21 @@ const Minijuego = (props) => {
 
       if (positionInImageList < 4 && encontrados[positionInImageList]) {
         cambiarEstados(positionInImageList);
+
+      } else {
+        setShowSecondModal(true);
       }
 
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
         setselectedMemoBlock(null);
+
       } else if (
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
+
       ) {
+        setShowThirdModal(true);
+        setShowSecondModal(false);
         setAnimating(true);
         setTimeout(() => {
           shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
@@ -289,9 +309,11 @@ const Minijuego = (props) => {
           setShuffledMemoBlocks(shuffledMemoBlocksCopy);
           setselectedMemoBlock(null);
           setAnimating(false);
+          // Close third modal
         }, 1000);
       } else {
         setselectedMemoBlock(null);
+
       }
     } else {
       setAnimating(true);
@@ -305,6 +327,7 @@ const Minijuego = (props) => {
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
         setselectedMemoBlock(null);
         setAnimating(false);
+
       }, 1000);
     }
   };
@@ -342,10 +365,20 @@ const Minijuego = (props) => {
       {showSecondModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={closeSecondModal}>
+            <span className="close" onClick={() => setShowSecondModal(false)}>
               &times;
             </span>
             <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
+          </div>
+        </div>
+      )}
+      {showThirdModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowThirdModal(false)}>
+              &times;
+            </span>
+            <p>Este símbolo aun no ha sido encontrado por el huaquero, tendrás que esperar</p>
           </div>
         </div>
       )}

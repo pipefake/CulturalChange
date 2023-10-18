@@ -140,3 +140,127 @@
 		/users	undefined
 20230924	16:36:07	2fd7574e-0057-47fd-ab57-f3b39ec6518f	ValidationError: User validation failed: codigoSala: Path `codigoSala` is required.	POST
 		/users	http://localhost:3000
+20230930	00:00:14	fb5c472d-df0b-422f-ac84-e09281272450	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3000
+20230930	00:03:18	4acee2e4-f900-4471-87f6-1a07e29079ce	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/api/users	http://localhost:3500/
+20230930	00:08:02	c5402536-00bd-4d64-be0e-cd0c3946be4d	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3000
+20230930	00:08:21	318a8827-ae28-4bfa-a009-71de72a286da	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517ab50e72ba84703694e47	http://localhost:3500/
+20230930	00:20:44	60820e89-1763-414a-a3eb-36fb56fbd83a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/users/6517b00b1c488e8df81f9ebe	undefined
+20230930	00:21:08	ccdbd18e-4751-4dbe-af97-4650f09faa83	SyntaxError: Unexpected string in JSON at position 29	PATCH
+		/users/	undefined
+20230930	00:21:28	299bb220-a29f-4e95-9a38-8ab302e8ff64	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PUT
+		/users/	undefined
+20231001	11:10:23	f494b4bf-7c76-4b07-acd7-65b08cde58e8	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/users/651999e710aebc81c4515598	undefined
+20231001	11:10:28	8fd618e4-0cf5-4400-81fe-932f34035d62	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/users/651999e710aebc81c4515598	undefined
+20231001	11:11:37	39f8384e-af42-4914-acb5-a3a648c89fa1	ReferenceError: roomCode is not defined	PATCH
+		/users	http://localhost:3000
+20231001	11:43:36	3c8cd534-8821-4758-b402-f557a181073a	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231002	00:24:43	583a2856-7e0e-4637-9dc0-fabdcd6f7358	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	f844e2ab-928f-4ed2-aa32-ffaf427a9e3c	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	886f3499-e5fa-44eb-8267-2afe35b40512	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231002	00:24:43	a87c300d-3830-40bd-89e5-42f7f9f32726	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:40	762ab3b8-96a2-4582-b58e-f9b7168150cd	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:40	d37c58c6-c7f4-4c90-b1ae-7694eeebbf53	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:40	429ae53f-d91f-444d-9b22-3b0deca15e32	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:41	3c09d649-7403-448c-92c4-aa16a2632d19	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	5ce4c5a7-b96d-41b1-abf8-8a12db574ccf	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	e93f3ed5-c76b-44e5-81fa-aa1a4a9e9bd9	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	25938f7b-c3be-43e4-b6ca-d148053eb164	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	19:55:49	f2d2bdba-67c1-4763-9113-33800849ff43	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	5e11dee0-4d54-4f68-a0f3-80f5ffb25c79	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	dcc8c7cd-a872-4244-999f-6b8527ee7f08	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	a46e7ed7-92d3-4b87-8551-6381994cd70f	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:00:23	470c879d-72a7-44e3-94b3-8f76eb3b39d2	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:09:28	cde61bd3-0d43-4ce6-9961-a6d116d935ab	ValidationError: RoomCode validation failed: huaqueroSymbols.0.name: Path `name` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:13:19	b8b5b9c0-e7ae-42ba-8d9d-2a0593f7fe00	ValidationError: RoomCode validation failed: code: Path `code` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:13:46	89d2fbb2-900a-47f0-9009-abe695345a0d	ValidationError: RoomCode validation failed: code: Path `code` is required.	POST
+		/roomCode	http://localhost:3500/
+20231005	20:15:16	768d3922-b04c-4ae1-973b-6edd44712558	TypeError: Cannot read properties of undefined (reading 'name')	POST
+		/roomCode	http://localhost:3500/
+20231005	20:31:08	06a4c154-e3c2-4563-8196-3c0115dd6748	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/getRoomCode	undefined
+20231005	20:31:10	c299d651-5e46-45b7-88ff-afcb47a1c26c	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/getRoomCode	undefined
+20231005	20:36:12	3df26647-7420-4a9d-a369-1001ced399ce	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/
+20231005	20:45:32	9945c0aa-2972-4097-b5ba-c1b42acb3bf7	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/
+20231005	20:47:10	24bed0d5-2ac9-4298-9e8f-b3c746c87ff3	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	PATCH
+		/updateSymbol	http://localhost:3500/
+20231005	22:11:43	17e960dc-8bcf-4ca1-9cc1-cc3b30af6066	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:12:13	d05fa351-31f2-48e2-9d76-f8ec84600c7f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:12:43	8569d729-c27d-4464-97c3-4f3e0884be4a	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:13:13	13697226-4562-4662-8cf1-20b1b697eef2	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:13:42	2814a9cd-85d8-4b5e-8c62-123e78dabd79	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:14:13	af64ed8f-f5f2-4343-8f8c-b4b2bd392409	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:14:43	c6905e5b-4ad1-4182-9ff2-2669ca1a4831	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:15:13	0dd3f354-cefc-460a-9952-eef35fc063a2	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:16:13	4b5d7bdd-b7b6-4ce6-a441-9e48b491996d	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:16:43	caf84ccd-acce-4559-9e17-b513e271fb23	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:17:13	2bfd048b-4d1e-42fe-a4e9-0d476feb9ff3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:17:29	c104e8ef-33ab-4f3c-889d-b521c489b431	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:26	edc24418-56dc-41e8-b46d-44d07920f301	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.f0df378498f010b9f429.hot-update.json	undefined
+20231005	22:18:27	1a08dd43-eb4e-4f5d-a26c-0b4e25235d51	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:35	9b671d10-20db-4bc0-9cd7-da45e7774b44	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:55	1c92f7ad-39de-4208-af51-8b00ed1691f3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:18:57	04cd0443-d457-4a27-8500-5c14eab7d51f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:12	3afed02b-ad93-408b-aa62-58698456ee46	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:27	c7ad4011-ce59-4342-8901-4c29616f1f99	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:42	3a446b7d-b4c4-479d-a10a-af07970c49b9	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:19:57	e0e6256c-6cc4-4131-bdbd-2cb36aeaae35	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231005	22:20:12	d04e1f7b-ef68-4541-a5fc-b9a4053e4692	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/api/roomCode	undefined
+20231006	01:23:32	4d0db148-7304-48b1-abd6-95d001bca96e	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.31cf7cf1043b78c0a855.hot-update.json	undefined
+20231006	02:49:54	fe5ced75-44e5-41ae-a703-83ef852c91b2	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/main.ece808c6bdd6128b9fff.hot-update.json	undefined
+20231006	02:49:54	5372a1e2-f1f2-49a4-80bc-b0886c583370	Error: ENOENT: no such file or directory, stat 'E:\SMIGC\CulturalChange\views\404.html'	GET
+		/main.eede1f310a8b3799c520.hot-update.json	undefined
+20231006	05:14:31	84bcf176-a599-405c-a8bb-33d8c84753ac	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.23d426b9ce520303cc70.hot-update.json	undefined

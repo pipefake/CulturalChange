@@ -9,47 +9,47 @@ function QrMuseo() {
   const [roomCode, setRoomCode] = useState("");
   const [userCount, setUserCount] = useState(0);
 
+  const fetchRoomData = async () => {
+    try {
+      // Fetch the room code
+      const roomResponse = await axios.get("/roomCode");
+      setRoomCode(roomResponse.data[0].code);
 
-  useEffect(() => {
-    // Fetch the room code immediately when the component is mounted
-    fetchRoomCode();
+      // Fetch the user count
+      const userResponse = await axios.get("/users");
+      const users = userResponse.data;
+      const count = users.filter((user) => user.codigoSala === roomCode).length;
+      setUserCount(count);
 
-    // Set an interval to fetch the room code every 10 minutes
-    const interval = setInterval(fetchRoomCode, 30 * 1000);
+      // Clear the interval if userCount reaches 4
+      if (count === 4) {
+        clearInterval(interval);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-    // Fetch the user count immediately when the component is mounted or the room code changes
-    fetchUserCount();
+  let interval;
 
-    // Set an interval to fetch the user count every 30 seconds or another suitable interval
-    const userCountInterval = setInterval(fetchUserCount, 30 * 1000);
+useEffect(() => {
+    // Fetch room data immediately when the component mounts
+    fetchRoomData();
+
+    // Set an interval to fetch room data every 10 seconds
+    interval = setInterval(fetchRoomData, 10 * 1000);
+
+    // Clear the interval if userCount reaches 4
+    if (userCount === 4) {
+      clearInterval(interval);
+    }
 
     // Clear the interval when the component is unmounted
     return () => {
       clearInterval(interval);
-      clearInterval(userCountInterval);
     };
-  }, [roomCode]);
-
-  const fetchRoomCode = async () => {
-    try {
-      const response = await axios.get("/api/roomCode");
-      setRoomCode(response.data.roomCode);
-    } catch (error) {
-      console.error("Error fetching room code:", error);
-    }
-  };
-
-  const fetchUserCount = async () => {
-    try {
-      if (roomCode) {
-        const response = await axios.get(`/api/roomUsers/${roomCode}`);
-        setUserCount(response.data.userCount);
-      }
-    } catch (error) {
-      console.error('Error fetching user count:', error);
-    }
-  };
-
+  }, [roomCode, userCount]);
+  
   return (
     <div
       className="container-qr-museo"
@@ -63,22 +63,25 @@ function QrMuseo() {
         </div>
 
         <div className="imagenes-contenedor">
-          {roomCode ? (
-            <>
-              <h2>Your Room Code:</h2>
-              <p>{roomCode}</p>
-              <h3>Scan the QR Code:</h3>
-              <QRCode value={roomCode} />
-            </>
-          ) : (
-            <p>Loading room code...</p>
-          )}
+          <div className="cuadro-contenedor">
+            {roomCode && (
+              <>
+                <QRCode
+                  value={roomCode}
+                  size={300} // Tamaño Qr
+                  bgColor="#c98686" // Color fondo
+                  fgColor="#000" // Color QR
+                />
+                <div className="room-code">{roomCode}</div>
+              </>
+            )}
+          </div>
+          <img
+            src={refresh}
+            alt="Descripción del botón"
+            className="imagen-boton"
+          />
         </div>
-        <img
-          src={refresh}
-          alt="Descripción del botón"
-          className="imagen-boton"
-        />
         <div className="texto-informacion contador">{userCount}/4</div>
       </div>
     </div>

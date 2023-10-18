@@ -1,12 +1,31 @@
 .acumulador{
     display: flex;
-    flex-direction: row;
-    width: 396px;
+    flex-direction: column;
+    width: 344px;
     position: absolute;
     left: 0;
     z-index: 3;
-    top: 700px;
+    top: 636px;
     justify-content: center;
+    padding: 22px;
+    align-items: center;
+    
+}
+.txtAcumulador{
+    font-size: 16px;
+    color: #432B18;
+    text-align: center;
+    margin: 0;
+    padding: 2px 21px;
+    margin-bottom: 10px;
+}
+.simboloscontenedor{
+    display: flex;
+    flex-direction: row;
+    width: 310px;
+}
+.simboloscontenedor>img{
+    width: 78px;
 }
 .imgBloqueo{
     width: 95px;

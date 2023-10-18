@@ -1,8 +1,11 @@
 .ContTraduccion{
-    width: 320px;
+    width: 308px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    MARGIN-TOP: 25px;
+    justify-content: space-around;
+
 }
 .ContTraduccion>img{
     width: 150px;
@@ -21,4 +24,9 @@
     justify-content: flex-start;
     align-items: center;
     padding: 10vw;
+}
+
+.btnInterpreteSlide{
+    background: none;
+    border: none;
 }

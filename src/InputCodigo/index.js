@@ -17,13 +17,13 @@ function InputCodigo() {
   const [errors, setErrors] = useState({});
 
   const [userData, setUserData] = useState({
-    "name": "",
-    "identification": "",
-    "email": "",
-    "rol": "",
-    "finalizadaTarea": "false",
-    "tipoUsuario": "",
-    "codigoSala": "algo"
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "false",
+    tipoUsuario: "",
+    codigoSala: "algo",
   });
 
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -38,6 +38,8 @@ function InputCodigo() {
   const [errorEmail, setErrorEmail] = useState({});
   const [errorIdentification, setErrorIdentification] = useState({});
 
+  const [roomCode, setRoomCode] = useState("");
+
   const navigate = useNavigate();
 
   const closeErrorModal = () => {
@@ -49,10 +51,10 @@ function InputCodigo() {
     const isChecked = event.target.checked;
     setIsStudent(isChecked);
     setIsVisitor(!isChecked); // If student is checked, visitor becomes unchecked and vice versa
-    setUserData(prevData => ({
+    setUserData((prevData) => ({
       ...prevData,
-      rol: isChecked ? "Estudiante" : (isVisitor ? "Visitante" : ""),  // Adjust based on checkboxes' state
-      tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario
+      rol: isChecked ? "Estudiante" : isVisitor ? "Visitante" : "", // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Estudiante" : prevData.tipoUsuario,
     }));
   };
 
@@ -61,20 +63,35 @@ function InputCodigo() {
     const isChecked = event.target.checked;
     setIsVisitor(isChecked);
     setIsStudent(!isChecked); // If visitor is checked, student becomes unchecked and vice versa
-    setUserData(prevData => ({
+    setUserData((prevData) => ({
       ...prevData,
-      rol: isChecked ? "Visitante" : (isStudent ? "Estudiante" : ""),  // Adjust based on checkboxes' state
-      tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario
+      rol: isChecked ? "Visitante" : isStudent ? "Estudiante" : "", // Adjust based on checkboxes' state
+      tipoUsuario: isChecked ? "Visitante" : prevData.tipoUsuario,
     }));
+  };
+
+  useEffect(() => {
+    // This function is executed once when the component mounts
+    // to fetch the room code.
+    fetchRoomCode();
+  }, []); // An empty dependency array means this useEffect will run once when the component mounts and not on subsequent re-renders.
+
+  const fetchRoomCode = async () => {
+    try {
+      const response = await axios.get("/roomCode");
+      console.log("Full Response:", response.data); // Log entire response
+      if (response.data.length > 0 && response.data[0].code) {
+        setRoomCode(response.data[0].code); // Set the room code state
+      }
+    } catch (error) {
+      console.error("Error fetching room code:", error);
+    }
   };
 
   const updateFormComplete = () => {
     const { name, email } = userData;
     const isComplete =
-      name &&
-      email &&
-      inputValue.length === 4 &&
-      inputValue.toUpperCase() === "ASDW";
+      name && email && inputValue.length === 4 && inputValue === roomCode; // compare with roomCode from the state
     setFormComplete(isComplete);
   };
 
@@ -83,7 +100,7 @@ function InputCodigo() {
     setInputValue(value);
 
     // Validar la cadena ingresada
-    if (value.length === 4 && value.toUpperCase() === "ASDW") {
+    if (value.length === 4 && value.toUpperCase() === roomCode) {
       setShowModal(true);
     }
 
@@ -157,8 +174,7 @@ function InputCodigo() {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|co)$/;
 
     if (!emailPattern.test(userData.email)) {
-      newErrors.email =
-        "El email debe contener '@' y '.com' o '.co'.";
+      newErrors.email = "El email debe contener '@' y '.com' o '.co'.";
     }
 
     setErrorEmail(newErrors);
@@ -195,21 +211,28 @@ function InputCodigo() {
       if (Object.keys(errors).length === 0) {
         try {
           console.log("Conditions met. Attempting to send data...");
-          const response = await axios.post("http://localhost:3500/users", {
-            name: userData.name,
-    identification: userData.identification,
-    email: userData.email,
-    rol: userData.rol,
-    finalizadaTarea: userData.finalizadaTarea,
-    tipoUsuario: userData.tipoUsuario,
-    codigoSala: userData.codigoSala
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+          const response = await axios.post(
+            "http://localhost:3500/users",
+            {
+              name: userData.name,
+              identification: userData.identification,
+              email: userData.email,
+              rol: userData.rol,
+              finalizadaTarea: userData.finalizadaTarea,
+              tipoUsuario: userData.tipoUsuario,
+              codigoSala: userData.codigoSala,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
           console.log("User registered:", response.data);
+          const userId = response.data.userId; // Grab the userId from the response
+          console.log("User ID:", userId); // Log the user ID for debugging
+          localStorage.setItem("userId", userId); // Store the userId in localStorage
 
           setIsLoading(false);
 
@@ -300,11 +323,7 @@ function InputCodigo() {
                 handleValidationErrorName();
               }}
             />
-            {errorName.name && (
-              <div className="errorTxt">
-                {errorName.name}
-              </div>
-            )}
+            {errorName.name && <div className="errorTxt">{errorName.name}</div>}
 
             {userData.identification && (
               <div className="divtxtEscribiendo">
@@ -344,11 +363,7 @@ function InputCodigo() {
                 handleValidationErrorEmail();
               }}
             />
-            {errorEmail.email && (
-              <p className="errorTxt">
-                {errorEmail.email}
-              </p>
-            )}
+            {errorEmail.email && <p className="errorTxt">{errorEmail.email}</p>}
 
             <label className="txtTerminos">
               <input

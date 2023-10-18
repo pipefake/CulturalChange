@@ -32,7 +32,7 @@ function PantallaMuseo() {
         } else {
           setImagenActual(3);
           setAnimacionActiva(false); // Detener la animación
-          navigate("/animacionMuseo"); // Navegar a la nueva página
+          navigate("/induccion"); // Navegar a la nueva página
         }
       }, 400);
 
@@ -64,7 +64,7 @@ function PantallaMuseo() {
       <div className="texto-bienvenida">
         Bienvenidos a una nueva experiencia
       </div>
-      <div className="texto-inicio">¿Estás listo para empezar?</div>
+      <div className="texto-inicio">Museo Interactivo Lilí</div>
 
       <img
         src={imagenes[imagenActual]}

@@ -1,14 +1,26 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./AnimacionMuseo.css";
-import fondo from "./resources/Animacion.png"; // Sustituye NOMBRE_DE_TU_IMAGEN.png con el nombre real de tu imagen.
+import fondo from "./resources/Animacion.png";
+import video from "./resources/contextualizacion.mp4";
 
 function AnimacionMuseo() {
+  const navigate = useNavigate();
+
+  const handleVideoEnd = () => {
+    navigate("/qrMuseo"); // Ruta de pagina
+  };
+
   return (
-    <div
-      className="container-animacion-museo"
-      style={{ backgroundImage: `url(${fondo})` }}
-    >
-      <h1>Bienvenido a AnimacionMuseo</h1>
+    <div className="container-animacion-museo">
+      <video
+        className="video-content"
+        controls // Controles ya que no deja reproducir sin una interaccion
+        autoPlay
+        onEnded={handleVideoEnd}
+        src={video}
+        type="video/mp4"
+      />
     </div>
   );
 }

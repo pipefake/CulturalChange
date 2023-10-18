@@ -2,6 +2,7 @@
 const mongoose = require( "mongoose");
 
 const roomCodeSchema = new mongoose.Schema({
+
     code: {
         type: String,
         required: true,
@@ -10,7 +11,20 @@ const roomCodeSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    }
+    },
+	huaqueroSymbols: [
+		{
+		  name: {
+			type: String,
+			required: true
+		  },
+		  found: {
+			type: Boolean,
+			default: false,
+			required: true
+		  }
+		}
+	  ]
 })
 
 module.exports = mongoose.model("RoomCode", roomCodeSchema)

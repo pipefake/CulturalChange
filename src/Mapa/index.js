@@ -3,7 +3,9 @@ import mapamuseolili from './resources/mapamuseolili.png';
 import pin from './resources/pin-12.png';
 import './Mapa.css';
 import { Header } from "../Header";
-import cargando from './cargando.png';
+import cargando from "./cargando.png";
+import lupa from "./resources/lupa.png";
+import lupahover from "./resources/lupahover.png";
 
 function Mapa(props) {
 
@@ -11,7 +13,7 @@ function Mapa(props) {
     const [lugares, setLugares] = useState([]);
     const [ubicacion, setUbicacion] = useState(null);
     const [posicionActual, setPosicionActual] = useState(0); // Estado para rastrear la posición actual
-    const [segundos, setSegundos] = useState(3); // Valor inicial del temporizador
+    const [segundos, setSegundos] = useState(30); // Valor inicial del temporizador
     const [modalVisible, setModalVisible] = useState(false);
     const [esLoading, setEsLoading] = useState(false);
 
@@ -38,8 +40,8 @@ function Mapa(props) {
             setTimeout(() => {
                 setEsLoading(false);
                 avanzarPosicion(); // Se avanza la posición aquí cuando segundos es 0.
-                setSegundos(5); // Reiniciamos el temporizador al valor inicial.
-            }, 5000);
+                setSegundos(30); // Reiniciamos el temporizador al valor inicial.
+            }, 1000);
         }
     }, [segundos]);
 
@@ -80,9 +82,14 @@ function Mapa(props) {
             setUbicacion(lugares[posicionActual]);
         }
     }, [posicionActual, lugares]);
+
+    const handleClick = () => {
+        setSegundos(0);
+    };
+
     return (
         <>
-            <Header />
+
             <div className="position_map">
                 <h2 className="titulosGuia">Símbolos localizados</h2>
                 <div className="fondoAmarillo">
@@ -101,7 +108,10 @@ function Mapa(props) {
                         )}
                     </div>
                     <h1 className={segundos === 0 ? 'textoRojo' : 'textNormal'}>{segundos} Seg</h1>
-                    <p className="parrafoInferior">Rápido, indícale al Huaquero los puntos que se marcan en el mapa.</p>
+                    <button className="btn_buscar" onClick={handleClick}>
+                        <img src={lupa} />
+                    </button>
+                    <p className="parrafoInferior">Rápido, indícale al Huaquero los puntos que se marcan en el mapa. Toca la lupa para bucar otro símbolo.</p>
                 </div>
             </div>
         </>

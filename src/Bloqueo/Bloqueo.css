@@ -48,3 +48,51 @@ font-size: 31px !important;
     flex-direction: column;
     align-items: center;
 }
+
+.error-animation {
+    animation: shake 0.3s ease-in-out 5 alternate;
+    border: 1px solid red;
+}
+
+/* Definición de la animación de temblor */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25%, 75% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.input-success {
+    box-shadow: 0 0 10px #00ff00; /* Cambia el color y el tamaño del resplandor según tus preferencias */
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px #00ff00;
+    }
+    20% {
+        box-shadow: none;
+    }
+    40% {
+        box-shadow: 0 0 10px #00ff00;
+    }
+    60% {
+        box-shadow: none;
+    }
+    80% {
+        box-shadow: 0 0 10px #00ff00;
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+
+
+
+

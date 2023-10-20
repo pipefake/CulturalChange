@@ -37,14 +37,17 @@ function App() {
             <Route path="/introduccion" element={<Picker />} />
             <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
-            <Route path="/induccion" element={< Induccion />} />
+            <Route path="/induccion" element={<Induccion />} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
             <Route path="/qrMuseo" element={<QrMuseo />} />
             <Route path="/introduccion/:slug" element={<Introduccion />} />
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
-            <Route path="/juego/interprete" element={<Minijuego historia={1}></Minijuego>} />
+            <Route
+              path="/juego/interprete"
+              element={<Minijuego historia={1}></Minijuego>}
+            />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route
               path="/juego/antropologo"
@@ -54,7 +57,7 @@ function App() {
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
 
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
-            <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
+            <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

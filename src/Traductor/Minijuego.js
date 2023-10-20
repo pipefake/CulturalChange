@@ -42,7 +42,7 @@ import zacru from "./anagramas/zacru.png";
 import dosniso from "./anagramas/dosniso.png";
 import zaspie from "./anagramas/zaspie.png";
 import batosil from "./anagramas/batosil.png";
-
+import parejaCorrecta from './audios/parejaCorrecta.mp3';
 import { useMyContext } from "../SeleccionCargando/MyContext";
 import { Traductor } from "./index.js";
 
@@ -51,6 +51,7 @@ import { simbolos } from "../rolesdata.js";
 
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
+
 
 // Agrega más imágenes según la cantidad de elementos en tu array original
 
@@ -237,7 +238,6 @@ const Minijuego = (props) => {
     } else {
       console.warn("Unhandled history case: ", historia);
     }
-
     setAnagramas(nuevosAnagramas);
   }
   const cambiarEstados = (positionInImageList) => {
@@ -295,6 +295,7 @@ const Minijuego = (props) => {
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
       ) {
+
         if (!encontrados[positionInImageList]) {
           setAnimating(true);
           setTimeout(() => {
@@ -315,7 +316,6 @@ const Minijuego = (props) => {
         }
         if (!imageList.slice(0, 4).includes(selectedMemoBlock.image)) {
           setShowSecondModal(true);
-        }
       } else {
         setselectedMemoBlock(null);
 

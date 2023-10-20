@@ -71,6 +71,44 @@ const Minijuego = (props) => {
   const [esinterpretado2, setEsInterpretado2] = useState(false);
   const [esinterpretado3, setEsInterpretado3] = useState(false);
   const [esinterpretado4, setEsInterpretado4] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+  const [modalClosed, setModalClosed] = useState(false);
+  const [showSecondModal, setShowSecondModal] = useState(false);
+  const [secondModalClosed, setSecondModalClosed] = useState(false);
+  const [showThirdModal, setShowThirdModal] = useState(false);
+  const [thirdModalClosed, setThirdModalClosed] = useState(false);
+
+
+  useEffect(() => {
+    if (modalClosed) {
+      setShowModal(false);
+    }
+  }, [modalClosed]);
+
+  function closeModal() {
+    setModalClosed(true);
+  }
+
+
+  function closeSecondModal() {
+    setSecondModalClosed(true);
+  }
+
+  useEffect(() => {
+    if (secondModalClosed) {
+      setSecondModalClosed(false);
+    }
+  }, [secondModalClosed]);
+
+  function closeThirdModal() {
+    setThirdModalClosed(true);
+  }
+
+  useEffect(() => {
+    if (thirdModalClosed) {
+      setThirdModalClosed(false);
+    }
+  }, [thirdModalClosed]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -228,47 +266,65 @@ const Minijuego = (props) => {
     let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
     shuffledMemoBlocksCopy.splice(memoBlock.index, 1, flippedMemoBlock);
     setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-
     if (selectedMemoBlock === null) {
       setselectedMemoBlock(memoBlock);
+
+
     } else if (selectedMemoBlock.image === memoBlock.image) {
       console.log(
         `¡Las parejas coinciden! Son: ${JSON.stringify(
           selectedMemoBlock
         )} y ${JSON.stringify(memoBlock)}`
       );
-
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
-
       console.log(positionInImageList);
 
-      if (positionInImageList < 4 && encontrados[positionInImageList]) {
-        cambiarEstados(positionInImageList);
-      }
 
+      if (positionInImageList < 4) {
+        if (encontrados[positionInImageList]) {
+          cambiarEstados(positionInImageList);
+        } else {
+          setShowThirdModal(true);
+          setShowSecondModal(false);
+        }
+      }
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
         setselectedMemoBlock(null);
+
       } else if (
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
       ) {
-        // audio.play();
-        setAnimating(true);
-        setTimeout(() => {
-          shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
-          shuffledMemoBlocksCopy.splice(
-            selectedMemoBlock.index,
-            1,
-            selectedMemoBlock
-          );
-          setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-          setselectedMemoBlock(null);
-          setAnimating(false);
-        }, 1000);
+
+        if (!encontrados[positionInImageList]) {
+          setAnimating(true);
+          setTimeout(() => {
+            shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+            shuffledMemoBlocksCopy.splice(
+              selectedMemoBlock.index,
+              1,
+              selectedMemoBlock
+            );
+            setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+            setselectedMemoBlock(null);
+            setAnimating(false);
+
+
+          }, 1000);
+        } else {
+
+        }
+        if (!imageList.slice(0, 4).includes(selectedMemoBlock.image)) {
+          setShowSecondModal(true);
       } else {
         setselectedMemoBlock(null);
+
       }
+
+
+
     } else {
+
       setAnimating(true);
       setTimeout(() => {
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
@@ -280,6 +336,7 @@ const Minijuego = (props) => {
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
         setselectedMemoBlock(null);
         setAnimating(false);
+
       }, 1000);
     }
   };
@@ -301,7 +358,39 @@ const Minijuego = (props) => {
 
   return (
     <>
-
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <p>
+              Espera a que el huaquero encuentre los símbolos misteriosos. Ten
+              cuidado si descubres símbolos diferentes, perderás tiempo.
+            </p>
+          </div>
+        </div>
+      )}
+      {showSecondModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowSecondModal(false)}>
+              &times;
+            </span>
+            <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
+          </div>
+        </div>
+      )}
+      {showThirdModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowThirdModal(false)}>
+              &times;
+            </span>
+            <p>Este símbolo aun no ha sido encontrado por el huaquero, tendrás que esperar</p>
+          </div>
+        </div>
+      )}
       <Contexto
         titulo="Descubre los símbolos"
         parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"

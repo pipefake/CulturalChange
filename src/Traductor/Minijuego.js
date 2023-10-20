@@ -266,56 +266,65 @@ const Minijuego = (props) => {
     let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
     shuffledMemoBlocksCopy.splice(memoBlock.index, 1, flippedMemoBlock);
     setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-
     if (selectedMemoBlock === null) {
       setselectedMemoBlock(memoBlock);
+
+
     } else if (selectedMemoBlock.image === memoBlock.image) {
       console.log(
         `¡Las parejas coinciden! Son: ${JSON.stringify(
           selectedMemoBlock
         )} y ${JSON.stringify(memoBlock)}`
       );
-
-
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
-
       console.log(positionInImageList);
 
-      if (positionInImageList < 4 && encontrados[positionInImageList]) {
-        cambiarEstados(positionInImageList);
 
-      } else {
-        setShowSecondModal(true);
+      if (positionInImageList < 4) {
+        if (encontrados[positionInImageList]) {
+          cambiarEstados(positionInImageList);
+        } else {
+          setShowThirdModal(true);
+          setShowSecondModal(false);
+        }
       }
-
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
         setselectedMemoBlock(null);
 
       } else if (
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
-
       ) {
-        setShowThirdModal(true);
-        setShowSecondModal(false);
-        setAnimating(true);
-        setTimeout(() => {
-          shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
-          shuffledMemoBlocksCopy.splice(
-            selectedMemoBlock.index,
-            1,
-            selectedMemoBlock
-          );
-          setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-          setselectedMemoBlock(null);
-          setAnimating(false);
-          // Close third modal
-        }, 1000);
+        if (!encontrados[positionInImageList]) {
+          setAnimating(true);
+          setTimeout(() => {
+            shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+            shuffledMemoBlocksCopy.splice(
+              selectedMemoBlock.index,
+              1,
+              selectedMemoBlock
+            );
+            setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+            setselectedMemoBlock(null);
+            setAnimating(false);
+
+
+          }, 1000);
+        } else {
+
+        }
+        if (!imageList.slice(0, 4).includes(selectedMemoBlock.image)) {
+          setShowSecondModal(true);
+        }
       } else {
         setselectedMemoBlock(null);
 
       }
+
+
+
     } else {
+
       setAnimating(true);
       setTimeout(() => {
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);

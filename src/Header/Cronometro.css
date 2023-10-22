@@ -1,53 +1,53 @@
 @keyframes animationCronometro {
     0% {
-        background-image: url(./Reloj/Reloj1.png);
+      background-image: url(../Header/Reloj/Reloj1.png);
     }
-
-    6% {
-        background-image: url(./Reloj/Reloj2.png);
+  
+    9.9% {
+      background-image: url(../Header/Reloj/Reloj2.png);
     }
-
-    12% {
-        background-image: url(./Reloj/Reloj3.png);
+  
+    19.8% {
+      background-image: url(../Header/Reloj/Reloj3.png);
     }
-    18% {
-        background-image: url(./Reloj/Reloj4.png);
+    29.7% {
+      background-image: url(../Header/Reloj/Reloj4.png);
     }
-    25% {
-        background-image: url(./Reloj/Reloj5.png);
+    39.6% {
+      background-image: url(../Header/Reloj/Reloj5.png);
     }
     50% {
-        background-image: url(./Reloj/Reloj6.png);
+      background-image: url(../Header/Reloj/Reloj6.png);
+    }
+    55% {
+      background-image: url(../Header/Reloj/Reloj7.png);
     }
     65% {
-        background-image: url(./Reloj/Reloj7.png);
+      background-image: url(../Header/Reloj/Reloj8.png);
     }
-    70% {
-        background-image: url(./Reloj/Reloj8.png);
+    75% {
+      background-image: url(../Header/Reloj/Reloj9.png);
     }
-    85% {
-        background-image: url(./Reloj/Reloj9.png);
+    89.75% {
+      background-image: url(../Header/Reloj/Reloj10.png);
     }
     90% {
-        background-image: url(./Reloj/Reloj10.png);
+      background-image: url(../Header/Reloj/Reloj11.png);
     }
-    92% {
-        background-image: url(./Reloj/Reloj11.png);
+    99.25% {
+      background-image: url(../Header/Reloj/Reloj12.png);
     }
-    94% {
-        background-image: url(./Reloj/Reloj12.png);
+    99.50% {
+      background-image: url(../Header/Reloj/Reloj13.png);
     }
-    96% {
-        background-image: url(./Reloj/Reloj13.png);
-    }
-    98% {
-        background-image: url(./Reloj/Reloj14.png);
+    99.75% {
+      background-image: url(../Header/Reloj/Reloj14.png);
     }
     100% {
-        background-image: url(./Reloj/Reloj15.png);
+      background-image: url(../Header/Reloj/Reloj15.png);
     }
-}
-.animacionCronometro {
+  }
+  .animacionCronometro {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -58,4 +58,4 @@
     animation-timing-function: ease;
     width: 60px;
     height: 72px;
-}
+  }

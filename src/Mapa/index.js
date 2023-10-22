@@ -89,7 +89,7 @@ function Mapa(props) {
 
     return (
         <>
-
+            <Header></Header>
             <div className="position_map">
                 <h2 className="titulosGuia">Símbolos localizados</h2>
                 <div className="fondoAmarillo">

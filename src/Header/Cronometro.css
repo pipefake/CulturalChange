@@ -1,61 +1,85 @@
 @keyframes animationCronometro {
-    0% {
-      background-image: url(../Header/Reloj/Reloj1.png);
-    }
-  
-    9.9% {
-      background-image: url(../Header/Reloj/Reloj2.png);
-    }
-  
-    19.8% {
-      background-image: url(../Header/Reloj/Reloj3.png);
-    }
-    29.7% {
-      background-image: url(../Header/Reloj/Reloj4.png);
-    }
-    39.6% {
-      background-image: url(../Header/Reloj/Reloj5.png);
-    }
-    50% {
-      background-image: url(../Header/Reloj/Reloj6.png);
-    }
-    55% {
-      background-image: url(../Header/Reloj/Reloj7.png);
-    }
-    65% {
-      background-image: url(../Header/Reloj/Reloj8.png);
-    }
-    75% {
-      background-image: url(../Header/Reloj/Reloj9.png);
-    }
-    89.75% {
-      background-image: url(../Header/Reloj/Reloj10.png);
-    }
-    90% {
-      background-image: url(../Header/Reloj/Reloj11.png);
-    }
-    99.25% {
-      background-image: url(../Header/Reloj/Reloj12.png);
-    }
-    99.50% {
-      background-image: url(../Header/Reloj/Reloj13.png);
-    }
-    99.75% {
-      background-image: url(../Header/Reloj/Reloj14.png);
-    }
-    100% {
-      background-image: url(../Header/Reloj/Reloj15.png);
-    }
+  0% {
+    background-image: url(../Header/Reloj/Reloj1.png);
   }
-  .animacionCronometro {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    animation-name: animationCronometro;
-    animation-duration: 600s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: ease;
-    width: 60px;
-    height: 72px;
+
+  9.9% {
+    background-image: url(../Header/Reloj/Reloj2.png);
   }
+
+  19.8% {
+    background-image: url(../Header/Reloj/Reloj3.png);
+  }
+  29.7% {
+    background-image: url(../Header/Reloj/Reloj4.png);
+  }
+  39.6% {
+    background-image: url(../Header/Reloj/Reloj5.png);
+  }
+  50% {
+    background-image: url(../Header/Reloj/Reloj6.png);
+  }
+  55% {
+    background-image: url(../Header/Reloj/Reloj7.png);
+  }
+  65% {
+    background-image: url(../Header/Reloj/Reloj8.png);
+  }
+  75% {
+    background-image: url(../Header/Reloj/Reloj9.png);
+  }
+  89.75% {
+    background-image: url(../Header/Reloj/Reloj10.png);
+  }
+  90% {
+    background-image: url(../Header/Reloj/Reloj11.png);
+  }
+  99.25% {
+    background-image: url(../Header/Reloj/Reloj12.png);
+  }
+  99.50% {
+    background-image: url(../Header/Reloj/Reloj13.png);
+  }
+  99.75% {
+    background-image: url(../Header/Reloj/Reloj14.png);
+  }
+  100% {
+    background-image: url(../Header/Reloj/Reloj15.png);
+  }
+}
+.animacionCronometro {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  animation-name: animationCronometro;
+  animation-duration: 600s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  width: 60px;
+  height: 72px;
+}
+
+.modal-inicial{
+  background-color: #FAF1DB;
+  width: 259px;
+  height: 160px;
+  border: solid 5px brown;
+  border-radius: 39px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 308px;
+  left: 10px;
+}
+.modal-inicial>h2{
+font-size: 39px;
+  margin: 0;
+  color: #E54C41;
+}
+.modal-inicial>p{
+font-size: 22px;
+}

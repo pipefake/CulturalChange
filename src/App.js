@@ -19,6 +19,7 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
+import { FeedbackNegativo } from "./Pierde";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route path="/juego/interprete" element={<Minijuego historia={1}></Minijuego>} />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
+            <Route path="/pierde" element={<FeedbackNegativo />} />
             <Route
               path="/juego/antropologo"
               element={<Bloqueo historia={1}></Bloqueo>}

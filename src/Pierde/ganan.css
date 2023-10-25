@@ -1,0 +1,72 @@
+.contenedorExito{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+.contenedorExito>h1{
+   color: #000;
+    text-align: center;
+    font-family: ABeeZee;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: border;
+    line-height: 130%;
+    letter-spacing: -0.36px;
+    margin-bottom: 80px;
+  }
+  .contenedorExito>p{
+    color: #424242;
+  
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 19.5px */
+  letter-spacing: -0.15px;
+  }
+  .formularioFeedback>h2{
+    color: #424242;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 31.2px */
+  letter-spacing: -0.24px;
+  margin: 0;
+  }
+  .star{
+    border: #29261e !important;
+  }
+  textarea{
+    border-radius: 10px;
+    background: rgba(217, 198, 165, 0.63);
+    width: 236px;
+height: 80px;
+font-family: ABeeZee;
+    backdrop-filter: blur(7.5px);
+  }
+  .buttonEnviarForm{
+    width: 127px;
+    height: 43px;
+    color: white;
+    background: #13E028;
+    font-size: 24px;
+    border-radius: 45px;
+    border: solid 3px #22AC16;
+    margin-top: 45px;
+  }
+  .logoImg{
+    width: 70px;
+    margin-top: 30px;
+  }
+  .contenedorGanan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  

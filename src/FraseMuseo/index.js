@@ -4,6 +4,7 @@ import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
+import cronometro from '../Header/Reloj/Reloj15.png';
 
 const ItemTypes = {
     WORD: 'word',
@@ -56,6 +57,7 @@ function DropSpace({ onDrop, index, completed }) {
 function FraseMuseo() {
     const [sentence, setSentence] = useState([null, null, null, null]);
     const [completed, setCompleted] = useState(false);
+    const [antropologo, setAntropologo] = useState(false);
     const [availableWords, setAvailableWords] = useState(['Volantes', 'Huso', 'Volcán', 'Forma']);
     const [wordDraggedToDropSpace, setWordDraggedToDropSpace] = useState([false, false, false, false]);
 
@@ -84,82 +86,100 @@ function FraseMuseo() {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="complete-the-sentence">
-                <div class="containersuperder">
-                    <img class="image" src={superder} alt="Super" />
-                </div>
-                <div class="containerinfeizq">
-                    <img class="image" src={infeizq} alt="Super" />
-                </div>
+            {antropologo ? (
+                <div className="complete-the-sentence">
+                    <div class="containersuperder">
+                        <img class="image" src={superder} alt="Super" />
+                    </div>
+                    <div class="containerinfeizq">
+                        <img class="image" src={infeizq} alt="Super" />
+                    </div>
 
-                <h1 className={`tituloFraseMuseo ${completed ? 'green-title' : ''}`}>Completa la frase</h1>
-                <div className="sentence">
-                    <p className="txtFrase">Los </p>
-                    {sentence[0] ? (
-                        <span className="txtPalabra" key={0}>
-                            {sentence[0]}
-                        </span>
-                    ) : (
-                        <DropSpace
-                            key={0}
-                            onDrop={handleDropWord}
-                            index={0}
-                            completed={completed}
-                        />
-                    )}
-                    <p className="txtFrase">de</p>
-                    {sentence[1] ? (
-                        <span className="txtPalabra" key={1}>
-                            {sentence[1]}
-                        </span>
-                    ) : (
-                        <DropSpace
-                            key={1}
-                            onDrop={handleDropWord}
-                            index={1}
-                            completed={completed}
-                        />
-                    )}
-                    <p className="txtFrase">tienen</p>
-                    {sentence[2] ? (
-                        <span className="txtPalabra" key={2}>
-                            {sentence[2]}
-                        </span>
-                    ) : (
-                        <DropSpace
-                            key={2}
-                            onDrop={handleDropWord}
-                            index={2}
-                            completed={completed}
-                        />
-                    )}
-                    <p className="txtFrase">de</p>
-                    {sentence[3] ? (
-                        <span className="txtPalabra" key={3}>
-                            {sentence[3]}
-                        </span>
-                    ) : (
-                        <DropSpace
-                            key={3}
-                            onDrop={handleDropWord}
-                            index={3}
-                            completed={completed}
-                        />
-                    )}
+                    <h1 className={`tituloFraseMuseo ${completed ? 'green-title' : ''}`}>Completa la frase</h1>
+                    <div className="sentence">
+                        <p className="txtFrase">Los </p>
+                        {sentence[0] ? (
+                            <span className="txtPalabra" key={0}>
+                                {sentence[0]}
+                            </span>
+                        ) : (
+                            <DropSpace
+                                key={0}
+                                onDrop={handleDropWord}
+                                index={0}
+                                completed={completed}
+                            />
+                        )}
+                        <p className="txtFrase">de</p>
+                        {sentence[1] ? (
+                            <span className="txtPalabra" key={1}>
+                                {sentence[1]}
+                            </span>
+                        ) : (
+                            <DropSpace
+                                key={1}
+                                onDrop={handleDropWord}
+                                index={1}
+                                completed={completed}
+                            />
+                        )}
+                        <p className="txtFrase">tienen</p>
+                        {sentence[2] ? (
+                            <span className="txtPalabra" key={2}>
+                                {sentence[2]}
+                            </span>
+                        ) : (
+                            <DropSpace
+                                key={2}
+                                onDrop={handleDropWord}
+                                index={2}
+                                completed={completed}
+                            />
+                        )}
+                        <p className="txtFrase">de</p>
+                        {sentence[3] ? (
+                            <span className="txtPalabra" key={3}>
+                                {sentence[3]}
+                            </span>
+                        ) : (
+                            <DropSpace
+                                key={3}
+                                onDrop={handleDropWord}
+                                index={3}
+                                completed={completed}
+                            />
+                        )}
+                    </div>
+                    <div className="words">
+                        {availableWords.map((word) => (
+                            <DraggableWord
+                                key={word}
+                                word={word}
+                                onDrop={handleDropWord}
+                                isDraggable={!sentence.includes(word)} // Check if word is in the sentence
+                                sentence={sentence}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div className="words">
-                    {availableWords.map((word) => (
-                        <DraggableWord
-                            key={word}
-                            word={word}
-                            onDrop={handleDropWord}
-                            isDraggable={!sentence.includes(word)} // Check if word is in the sentence
-                            sentence={sentence}
-                        />
-                    ))}
+            ) : (
+                <div className="tiempoGrupal">
+                    <div class="containersuperder">
+                        <img class="image" src={superder} alt="Super" />
+                    </div>
+                    <div class="containerinfeizq">
+                        <img class="image" src={infeizq} alt="Super" />
+                    </div>
+                    <h1>Apresúrense el tiempo corre...</h1>
+                    <img
+                        className="animacionCronometro tamañoGrande"
+                        src={cronometro}
+                        alt="Cronometro"
+                    />
                 </div>
-            </div>
+            )}
         </DndProvider>
+
     );
 }
 

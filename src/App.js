@@ -22,6 +22,7 @@ import { SymbolsPage } from "./huaquero2AntroTest";
 import { FeedbackNegativo } from "./Pierde";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
+import { FraseMuseo } from "./FraseMuseo";
 
 function App() {
   return (
@@ -57,6 +58,8 @@ function App() {
 
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
             <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
+
+            <Route path="/fraseMuseo" element={<FraseMuseo historia={1} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

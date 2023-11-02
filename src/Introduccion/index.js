@@ -23,7 +23,7 @@ function Introduccion() {
         identification: "",
         email: "",
         rol: "",
-        finalizadaTarea: "false",
+        finalizadaTarea: "",
         tipoUsuario: "",
     });
     useEffect(() => {
@@ -75,7 +75,7 @@ function Introduccion() {
                         identification: userData.identification,
                         email: userData.email,
                         rol: newRol,
-                        finalizadaTarea: true,
+                        finalizadaTarea: "false",
                         tipoUsuario: userData.tipoUsuario
                     },
                     {
@@ -86,7 +86,6 @@ function Introduccion() {
                 );
 
                 console.log("User updated:", response.data);
-                localStorage.clear();
 
                 // localStorage.clear();
             } catch (error) {

@@ -46,13 +46,10 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route path="/juego/interprete" element={<Minijuego historia={1}></Minijuego>} />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
-            <Route
-              path="/juego/antropologo"
-              element={<Bloqueo historia={1}></Bloqueo>}
+            <Route path="/juego/antropologo"element={<Bloqueo historia={1}></Bloqueo>}
             />
 
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
-
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
             <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
           </Routes>

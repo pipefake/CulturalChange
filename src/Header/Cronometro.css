@@ -22,25 +22,25 @@
   55% {
     background-image: url(../Header/Reloj/Reloj7.png);
   }
-  65% {
+  80% {
     background-image: url(../Header/Reloj/Reloj8.png);
   }
-  75% {
+  90% {
     background-image: url(../Header/Reloj/Reloj9.png);
   }
-  89.75% {
+  99.5% {
     background-image: url(../Header/Reloj/Reloj10.png);
   }
-  90% {
+  99.6% {
     background-image: url(../Header/Reloj/Reloj11.png);
   }
-  99.25% {
+  99.7% {
     background-image: url(../Header/Reloj/Reloj12.png);
   }
-  99.50% {
+  99.8% {
     background-image: url(../Header/Reloj/Reloj13.png);
   }
-  99.75% {
+  99.9% {
     background-image: url(../Header/Reloj/Reloj14.png);
   }
   100% {
@@ -52,14 +52,37 @@
   flex-wrap: wrap;
   flex-direction: column;
   animation-name: animationCronometro;
-  animation-duration: 600s;
+  animation-duration: 612s;
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease;
   width: 60px;
   height: 72px;
 }
-
+.informacionCelular>p{
+  --rem: 16;
+  -webkit-font-smoothing: antialiased;
+  color: #432B18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.64px;
+}
+.txtCronometro{
+  --rem: 16;
+  -webkit-font-smoothing: antialiased;
+  color: #432B18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.64px;
+}
 .modal-inicial{
   background-color: #FAF1DB;
   width: 259px;

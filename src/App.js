@@ -23,6 +23,7 @@ import { FeedbackNegativo } from "./Pierde";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
+import { RevisarCelular } from "./RevisarCelular";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
 
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
+            <Route path="/revisarCelular" element={<RevisarCelular />} />
             <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
 
             <Route path="/fraseMuseo" element={<FraseMuseo historia={1} />} />

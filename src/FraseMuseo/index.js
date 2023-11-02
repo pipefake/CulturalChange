@@ -57,7 +57,7 @@ function DropSpace({ onDrop, index, completed }) {
 function FraseMuseo() {
     const [sentence, setSentence] = useState([null, null, null, null]);
     const [completed, setCompleted] = useState(false);
-    const [antropologo, setAntropologo] = useState(false);
+    const [antropologo, setAntropologo] = useState(true);
     const [availableWords, setAvailableWords] = useState(['Volantes', 'Huso', 'Volcán', 'Forma']);
     const [wordDraggedToDropSpace, setWordDraggedToDropSpace] = useState([false, false, false, false]);
 
@@ -83,6 +83,27 @@ function FraseMuseo() {
             setCompleted(false);
         }
     }, [sentence]);
+    const [timeLeft, setTimeLeft] = useState(600); // 10 minutes in seconds
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            if (timeLeft > 0) {
+                setTimeLeft(timeLeft - 1);
+            }
+        }, 1000); // Update the timer every second
+
+        return () => {
+            clearInterval(timer); // Clean up the timer when the component unmounts
+        };
+    }, [timeLeft]);
+
+    // Function to format the time in minutes and seconds
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secondsLeft = seconds % 60;
+        return `${minutes}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+    };
+
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -164,18 +185,15 @@ function FraseMuseo() {
                 </div>
             ) : (
                 <div className="tiempoGrupal">
-                    <div class="containersuperder">
-                        <img class="image" src={superder} alt="Super" />
+                    <div className="containersuperder">
+                        <img className="image" src={superder} alt="Super" />
                     </div>
-                    <div class="containerinfeizq">
-                        <img class="image" src={infeizq} alt="Super" />
+                    <div className="containerinfeizq">
+                        <img className="image" src={infeizq} alt="Super" />
                     </div>
-                    <h1>Apresúrense el tiempo corre...</h1>
-                    <img
-                        className="animacionCronometro tamañoGrande"
-                        src={cronometro}
-                        alt="Cronometro"
-                    />
+                    <h1>Apresúrense, el tiempo corre...</h1>
+                    <img className="animacionCronometro tamañoGrande" src={cronometro} alt="Cronometro" />
+                    <div className='txtCronometro'>Tiempo {formatTime(timeLeft)}</div>
                 </div>
             )}
         </DndProvider>

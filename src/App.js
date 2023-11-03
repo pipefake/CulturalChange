@@ -21,6 +21,7 @@ import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
+import { TestTimeOut } from "./testTimeOut";
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
           <Routes>
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo />} />
+            <Route path="/testTimeOut" element={<TestTimeOut />} />
+
+
+
             <Route path="/introduccion" element={<Picker />} />
             <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />

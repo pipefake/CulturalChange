@@ -19,8 +19,13 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
+import { FeedbackNegativo } from "./Pierde";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
+import { FraseMuseo } from "./FraseMuseo";
+import { RevisarCelular } from "./RevisarCelular";
+import { IntentaloDenuevo } from "./IntentaloDenuevo";
+import { GananMuseo } from "./GananMuseo";
 import { TablaPuntuacion } from "./TablaPuntuacion";
 
 function App() {

@@ -17,21 +17,20 @@
     display: flex;
     margin: 20px;
     font-size: 1.2em;
-    width: 793px;
+    width: 1085px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
   
   .drop-space {
-    
     border: 2px dashed #9a6138;
     padding: 8px;
     margin: 4px;
     width: 175px;
     height: 46px;
     border-radius: 45px;
-    margin-top: 38px;
+    margin-top: 3px;
   }
   
   .draggable-word {
@@ -59,14 +58,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 37px;
+    margin-top: 0px;
   }
   .words {
     display: flex;
     
   }
   .txtFrase{
-    font-size: 90px;
+    font-size: 40px;
     margin-right: 11px;
     margin-left: 11px;
   }

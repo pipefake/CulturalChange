@@ -60,8 +60,7 @@ function App() {
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
             <Route path="/revisarCelular" element={<RevisarCelular />} />
             <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
-
-            <Route path="/fraseMuseo" element={<FraseMuseo historia={1} />} />
+            <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

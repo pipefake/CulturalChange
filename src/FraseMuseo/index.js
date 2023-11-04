@@ -5,6 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';
+import { Link, useNavigate } from "react-router-dom";
 
 const ItemTypes = {
     WORD: 'word',
@@ -224,10 +225,13 @@ function FraseMuseo({ historia }) {
     };
 
 
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (pair1Matched && pair2Matched && pair3Matched && pair4Matched) {
-            console.log("¡Ganaron!");
+            setTimeout(() => {
+                console.log("¡Ganaron!");
+                navigate("/gananMuseo");
+            }, 5000); // Espera 5 segundos (5000 ms) antes de redirigir
         }
     }, [pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
 

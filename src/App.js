@@ -24,6 +24,9 @@ import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
 import { RevisarCelular } from "./RevisarCelular";
+import { IntentaloDenuevo } from "./IntentaloDenuevo";
+import { GananMuseo } from "./GananMuseo";
+
 
 function App() {
   return (
@@ -61,6 +64,8 @@ function App() {
             <Route path="/revisarCelular" element={<RevisarCelular />} />
             <Route path="/juegoHuaquero" element={<JuegoHuaquero />} />
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
+            <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
+            <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

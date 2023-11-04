@@ -1,0 +1,33 @@
+.divIntentalo>h1{
+    color: #432B18;
+
+    text-align: center;
+    font-family: ABeeZee;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: 130%; /* 124.8px */
+    letter-spacing: -0.96px;
+}
+.divIntentalo{
+    width: 572px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contIntentalo{
+    flex-direction: column;
+    align-items: center;
+    background: #FAF1DB;
+    height: 729px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+.btnSize{
+    width: 362.23px;
+    height: 71.201px;
+    font-size: 36px;
+}

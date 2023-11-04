@@ -70,73 +70,51 @@ function Mapa(props) {
     );
   }
 
-  const closeModal = () => {
-    setModalVisible(false);
-    setSegundos(3); // Reiniciamos el temporizador al valor inicial
-  };
+    const closeModal = () => {
+        setModalVisible(false);
+        setSegundos(3); // Reiniciamos el temporizador al valor inicial
+    };
 
-  useEffect(() => {
-    if (lugares.length > 0) {
-      setUbicacion(lugares[posicionActual]);
-    }
-  }, [posicionActual, lugares]);
+    useEffect(() => {
+        if (lugares.length > 0) {
+            setUbicacion(lugares[posicionActual]);
+        }
+    }, [posicionActual, lugares]);
 
-  const handleClick = () => {
-    setSegundos(0);
-  };
+    const handleClick = () => {
+        setSegundos(0);
+    };
 
-  return (
-    <>
-      <div className="position_map">
-        <div className="top-section">
-          <img className="button-image" src={TopNavegation} alt="Botón" />
-          <h1 className="huaquero-text">Guía</h1>
-          <Cronometro />
-        </div>
-        <h2 className="titulosGuia">Símbolos localizados</h2>
-        <div className="fondoAmarillo">
-          <div className="contenedorImagen">
-            {!esLoading && (
-              <img src={mapamuseolili} alt="Logo del museo Lili" />
-            )}
-          </div>
-          <div className="contenedorPunto">
-            {esLoading ? (
-              <div className="centrarVerticalmente">
-                <img
-                  className="rotating-image animacioncarga"
-                  src={cargando}
-                  alt="Logo de enviando"
-                />
-              </div>
-            ) : (
-              <div
-                className={`web ${
-                  (ubicacion === 1 && "animacionweb1") ||
-                  (ubicacion === 2 && "animacionweb2") ||
-                  (ubicacion === 3 && "animacionweb3") ||
-                  (ubicacion === 4 && "animacionweb4") ||
-                  (ubicacion === 5 && "animacionweb5")
-                }`}
-              >
-                <img src={pin} alt="Pin" />
-              </div>
-            )}
-          </div>
-          <h1 className={segundos === 0 ? "textoRojo" : "textNormal"}>
-            {segundos} Seg
-          </h1>
-          <button className="btn_buscar" onClick={handleClick}>
-            <img src={lupa} />
-          </button>
-          <p className="parrafoInferior">
-            Rápido, indícale al Huaquero los puntos que se marcan en el mapa.
-            Toca la lupa para bucar otro símbolo.
-          </p>
-        </div>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <Header></Header>
+            <div className="position_map">
+                <h2 className="titulosGuia">Símbolos localizados</h2>
+                <div className="fondoAmarillo">
+                    <div className="contenedorImagen">
+                        {!esLoading && <img src={mapamuseolili} alt="Logo del museo Lili" />}
+                    </div>
+                    <div className="contenedorPunto">
+                        {esLoading ? (
+                            <div className="centrarVerticalmente">
+                                <img className="rotating-image animacioncarga" src={cargando} alt="Logo de enviando" />
+                            </div>
+                        ) : (
+                            <div className={`web ${ubicacion === 1 && "animacionweb1" || ubicacion === 2 && "animacionweb2" || ubicacion === 3 && "animacionweb3" || ubicacion === 4 && "animacionweb4" || ubicacion === 5 && "animacionweb5"}`} >
+                                <img src={pin} alt="Pin" />
+                            </div>
+                        )}
+                    </div>
+                    <h1 className={segundos === 0 ? 'textoRojo' : 'textNormal'}>{segundos} Seg</h1>
+                    <button className="btn_buscar" onClick={handleClick}>
+                        <img src={lupa} />
+                    </button>
+                    <p className="parrafoInferior">Rápido, indícale al Huaquero los puntos que se marcan en el mapa. Toca la lupa para bucar otro símbolo.</p>
+                </div>
+            </div>
+        </>
+    );
+
 }
 
 export { Mapa };

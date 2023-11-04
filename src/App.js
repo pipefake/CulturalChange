@@ -21,6 +21,7 @@ import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
+import { TablaPuntuacion } from "./TablaPuntuacion";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
 
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
             <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
+            <Route path="/TablaPuntuacion" element={<TablaPuntuacion />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

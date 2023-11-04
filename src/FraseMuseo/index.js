@@ -248,7 +248,16 @@ function FraseMuseo({ historia }) {
     };
 
 
+    useEffect(() => {
+        if ((!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
+            (allWordsInDropSpaces && atLeastOnePairFalse)) {
 
+            setTimeout(() => {
+                console.log("Perdieron");
+                navigate("/intentaloDenuevo");
+            }, 2000);
+        }
+    }, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
 
     return (
 

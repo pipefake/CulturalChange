@@ -1,76 +1,74 @@
 import React, { useState, useEffect } from "react";
-import mapamuseolili from './resources/mapamuseolili.png';
-import pin from './resources/pin-12.png';
-import './Mapa.css';
+import mapamuseolili from "./resources/mapamuseolili.png";
+import pin from "./resources/pin-12.png";
+import "./Mapa.css";
 import { Header } from "../Header";
 import cargando from "./cargando.png";
 import lupa from "./resources/lupa.png";
 import lupahover from "./resources/lupahover.png";
+import { Cronometro } from "../Header/Cronometro";
+import TopNavegation from "./resources/TopNavigation.png";
+
 
 function Mapa(props) {
+  const [lugares, setLugares] = useState([]);
+  const [ubicacion, setUbicacion] = useState(null);
+  const [posicionActual, setPosicionActual] = useState(0); // Estado para rastrear la posición actual
+  const [segundos, setSegundos] = useState(30); // Valor inicial del temporizador
+  const [modalVisible, setModalVisible] = useState(false);
+  const [esLoading, setEsLoading] = useState(false);
 
+  const historia = props.historia;
 
-    const [lugares, setLugares] = useState([]);
-    const [ubicacion, setUbicacion] = useState(null);
-    const [posicionActual, setPosicionActual] = useState(0); // Estado para rastrear la posición actual
-    const [segundos, setSegundos] = useState(30); // Valor inicial del temporizador
-    const [modalVisible, setModalVisible] = useState(false);
-    const [esLoading, setEsLoading] = useState(false);
+  useEffect(() => {
+    buscarUbicaciones(historia);
+  }, [historia]);
 
-    const historia = props.historia;
+  useEffect(() => {
+    if (lugares.length > 0) {
+      setUbicacion(lugares[posicionActual]);
+    }
+  }, [posicionActual, lugares]);
 
-    useEffect(() => {
-        buscarUbicaciones(historia);
-    }, [historia]);
+  useEffect(() => {
+    if (segundos > 0) {
+      const interval = setInterval(() => {
+        setSegundos((prevSegundos) => prevSegundos - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    } else {
+      setEsLoading(true);
+      setTimeout(() => {
+        setEsLoading(false);
+        avanzarPosicion(); // Se avanza la posición aquí cuando segundos es 0.
+        setSegundos(30); // Reiniciamos el temporizador al valor inicial.
+      }, 1000);
+    }
+  }, [segundos]);
 
-    useEffect(() => {
-        if (lugares.length > 0) {
-            setUbicacion(lugares[posicionActual]);
-        }
-    }, [posicionActual, lugares]);
+  function buscarUbicaciones(historia) {
+    let lugares;
 
-    useEffect(() => {
-        if (segundos > 0) {
-            const interval = setInterval(() => {
-                setSegundos((prevSegundos) => prevSegundos - 1);
-            }, 1000);
-            return () => clearInterval(interval);
-        } else {
-            setEsLoading(true);
-            setTimeout(() => {
-                setEsLoading(false);
-                avanzarPosicion(); // Se avanza la posición aquí cuando segundos es 0.
-                setSegundos(30); // Reiniciamos el temporizador al valor inicial.
-            }, 1000);
-        }
-    }, [segundos]);
-
-
-    function buscarUbicaciones(historia) {
-        let lugares;
-
-        if (historia === 1) {
-            lugares = [1, 2, 3, 4];
-        } else if (historia === 2) {
-            lugares = [1, 4, 3, 5];
-        } else if (historia === 3) {
-            lugares = [3, 5, 2, 4];
-        } else if (historia === 4) {
-            lugares = [4, 1, 2, 3];
-        } else if (historia === 5) {
-            lugares = [3, 4, 1, 5];
-        }
-
-        setLugares(lugares);
+    if (historia === 1) {
+      lugares = [1, 2, 3, 4];
+    } else if (historia === 2) {
+      lugares = [1, 4, 3, 5];
+    } else if (historia === 3) {
+      lugares = [3, 5, 2, 4];
+    } else if (historia === 4) {
+      lugares = [4, 1, 2, 3];
+    } else if (historia === 5) {
+      lugares = [3, 4, 1, 5];
     }
 
-    function avanzarPosicion() {
-        setPosicionActual((prevPosicion) =>
-            prevPosicion === lugares.length - 1 ? 0 : prevPosicion + 1
-        );
-    }
+    setLugares(lugares);
+  }
 
-
+  function avanzarPosicion() {
+    setPosicionActual((prevPosicion) =>
+      prevPosicion === lugares.length - 1 ? 0 : prevPosicion + 1
+    );
+  }
 
     const closeModal = () => {
         setModalVisible(false);
@@ -116,6 +114,7 @@ function Mapa(props) {
             </div>
         </>
     );
+
 }
 
 export { Mapa };

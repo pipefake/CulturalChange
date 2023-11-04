@@ -175,22 +175,42 @@ function Anagrama(props) {
         setInputValue(event.target.value);
         const userInput = event.target.value;
         const validChars = resolverAnagrama(props.palabra);
+        const tamaño = validChars.length === userInput.length;
 
         // Verificar si userInput contiene caracteres no válidos
         if (userInput.split('').every(char => validChars.includes(char))) {
             setInputValue(userInput);
             setError(false); // No hay error, así que establecemos el estado de error en falso
+            if (tamaño && validChars === userInput) {
+                event.target.classList.add('input-success');
+                // Remover la clase después de un tiempo para que el efecto se repita
+                setTimeout(() => {
+                    event.target.classList.remove('input-success');
+                }, 2000); // 2 segundos
+
+            } else if (tamaño) {
+                event.target.classList.add('error-animation');
+                setTimeout(() => {
+                    event.target.classList.remove('error-animation');
+                    event.target.value = "";
+                }, 600); // 0.5 segundos
+
+            }
         } else {
             setError(true); // Hay caracteres no válidos, establecemos el estado de error en verdadero
+            // Agregar clase para la animación de error
+
         }
     };
+
+
 
 
 
     return (
         <div className="contenedorAcronimo">
             <div>
-                {luckimg ? (
+                {!luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>
                         {props.palabra}
                     </h4>

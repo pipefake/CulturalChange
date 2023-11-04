@@ -60,7 +60,11 @@ function FraseMuseo({ historia }) {
     const [matchedPairs, setMatchedPairs] = useState(0);
 
     const [completed, setCompleted] = useState(false);
-    const [antropologo, setAntropologo] = useState(true);
+
+
+    const [antropologo, setAntropologo] = useState(false); // modificar este estado cuando el antropologo le unda continuar en su pantalla
+
+
     const [availableWords, setAvailableWords] = useState([]);
     const [pair1Matched, setPair1Matched] = useState(false);
     const [pair2Matched, setPair2Matched] = useState(false);
@@ -231,6 +235,7 @@ function FraseMuseo({ historia }) {
             setTimeout(() => {
                 console.log("¡Ganaron!");
                 navigate("/gananMuseo");
+
             }, 5000); // Espera 5 segundos (5000 ms) antes de redirigir
         }
     }, [pair1Matched, pair2Matched, pair3Matched, pair4Matched]);

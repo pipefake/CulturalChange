@@ -26,7 +26,7 @@ import { FraseMuseo } from "./FraseMuseo";
 import { RevisarCelular } from "./RevisarCelular";
 import { IntentaloDenuevo } from "./IntentaloDenuevo";
 import { GananMuseo } from "./GananMuseo";
-import { TablaPuntuacion } from "./TablaPuntuacion";
+
 
 function App() {
   return (
@@ -71,7 +71,7 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
-            <Route path="/TablaPuntuacion" element={<TablaPuntuacion />} />
+
           </Routes>
         </MyContextProvider>
       </HashRouter>

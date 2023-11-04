@@ -50,15 +50,22 @@ function App() {
               element={<Minijuego historia={1}></Minijuego>}
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
+            <Route path="/pierde" element={<FeedbackNegativo />} />
             <Route
               path="/juego/antropologo"
               element={<Bloqueo historia={1}></Bloqueo>}
             />
+                <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
 
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
 
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
-            <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
+
+            <Route path="/revisarCelular" element={<RevisarCelular />} />
+            
+            <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
+            <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
+            <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
             <Route path="/TablaPuntuacion" element={<TablaPuntuacion />} />
           </Routes>
         </MyContextProvider>

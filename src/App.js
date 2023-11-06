@@ -19,9 +19,15 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
+import { FeedbackNegativo } from "./Pierde";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
-
+import { FraseMuseo } from "./FraseMuseo";
+import { RevisarCelular } from "./RevisarCelular";
+import { IntentaloDenuevo } from "./IntentaloDenuevo";
+import { GananMuseo } from "./GananMuseo";
+import { TestTimeOut } from "./testTimeOut";
+import { TestFinalizada } from "./TestFinalizada/index.js";
 function App() {
   return (
     <div className="App">
@@ -34,6 +40,7 @@ function App() {
           <Routes>
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo />} />
+            <Route path="/testTimeOut" element={<TestTimeOut />} />
             <Route path="/introduccion" element={<Picker />} />
             <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
@@ -42,6 +49,7 @@ function App() {
             <Route path="/qrMuseo" element={<QrMuseo />} />
             <Route path="/introduccion/:slug" element={<Introduccion />} />
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
+            <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route
@@ -49,15 +57,18 @@ function App() {
               element={<Minijuego historia={1}></Minijuego>}
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
-            <Route
-              path="/juego/antropologo"
-              element={<Bloqueo historia={1}></Bloqueo>}
+            <Route path="/pierde" element={<FeedbackNegativo />} />
+            <Route path="/juego/antropologo"element={<Bloqueo historia={1}></Bloqueo>}
             />
-
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
-
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
-            <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
+
+            <Route path="/revisarCelular" element={<RevisarCelular />} />
+
+  
+            <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
+            <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
+            <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

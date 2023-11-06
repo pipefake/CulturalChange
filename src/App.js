@@ -60,8 +60,10 @@ function App() {
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route path="/pierde" element={<FeedbackNegativo />} />
-            
-            <Route path="/juego/antropologo"element={<Bloqueo historia={1}></Bloqueo>}
+
+            <Route
+              path="/juego/antropologo"
+              element={<Bloqueo historia={1}></Bloqueo>}
             />
             <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
             <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
@@ -72,7 +74,6 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
-
           </Routes>
         </MyContextProvider>
       </HashRouter>

@@ -266,3 +266,51 @@
 		/main.23d426b9ce520303cc70.hot-update.json	undefined
 20231102	12:02:46	595b4a41-83e5-44ed-8409-513c6ea7df39	Error: ENOENT: no such file or directory, stat 'C:\Trabajos\SMIGC\CulturalChange\views\404.html'	GET
 		/main.e105f940cec1496288b5.hot-update.json	undefined
+20231103	13:17:19	81cba244-20ab-4617-a874-bf5f880f8f15	MongoServerSelectionError: getaddrinfo ENOTFOUND ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net	GET
+		/roomCode	undefined
+20231103	13:17:19	25d1fd68-7f4d-4f9b-9b7e-a479e6e2a0e7	MongoServerSelectionError: getaddrinfo ENOTFOUND ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net	GET
+		/roomCode	undefined
+20231103	15:14:12	a8b66529-7be2-4d4d-b2f1-7fc2688516ee	MongoServerSelectionError: getaddrinfo ENOTFOUND ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net	GET
+		/roomCode	undefined
+20231103	15:14:12	85562a13-9831-4c3b-aa89-6e3c45353d1e	MongoServerSelectionError: getaddrinfo ENOTFOUND ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net	GET
+		/roomCode	undefined
+20231103	15:14:29	ec0222bf-d518-4ddb-a300-24e02f3ddbef	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:14:29	53669405-042d-47b0-abb4-53eb12ef652c	MongoPoolClearedError: Connection pool for ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net:27017 was cleared because another operation failed with: "28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+"	GET
+		/roomCode	undefined
+20231103	15:15:03	b666ca89-6d04-481c-a9a6-d0876204a480	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:15:03	b440eec0-ed80-41ac-b871-4a2247be6c2e	MongoPoolClearedError: Connection pool for ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net:27017 was cleared because another operation failed with: "28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+"	GET
+		/roomCode	undefined
+20231103	15:16:01	7ed98e7f-7c1f-4a69-9ae3-943671968966	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:16:01	2e4ec1ba-e3c5-45a0-b299-26fac52399a9	MongoPoolClearedError: Connection pool for ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net:27017 was cleared because another operation failed with: "28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+"	GET
+		/roomCode	undefined
+20231103	15:17:04	4d27cfac-219d-41ac-9106-95ab1d7ac8b6	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:17:04	4e737b10-c6ef-46ce-abc8-0aa0d4df9983	MongoPoolClearedError: Connection pool for ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net:27017 was cleared because another operation failed with: "28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+"	GET
+		/roomCode	undefined
+20231103	15:18:43	e7e1b99d-9242-405a-b96f-50932e518d36	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:18:44	68ece269-f136-428d-bb44-153406950284	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:19:05	941f23ef-c7db-42a4-9647-9f302b0d77b1	MongoNetworkError: 28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+	GET
+		/roomCode	undefined
+20231103	15:19:06	ceade7fa-ee2b-4a92-a7af-cea3ab427f5b	MongoPoolClearedError: Connection pool for ac-7cfnuy8-shard-00-02.knb6gcs.mongodb.net:27017 was cleared because another operation failed with: "28130000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1600:SSL alert number 80
+"	GET
+		/roomCode	undefined
+20231103	17:32:44	75506166-cbd3-459d-a723-a4421ddfb30a	MongoServerSelectionError: connection <monitor> to 34.234.163.249:27017 closed	GET
+		/roomCode	undefined
+20231103	17:32:44	7c8bd336-9b5a-4f4f-b551-248daf81dd8a	MongoServerSelectionError: connection <monitor> to 34.234.163.249:27017 closed	GET
+		/roomCode	undefined

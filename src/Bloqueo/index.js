@@ -284,10 +284,6 @@ function Anagrama(props) {
         }
     };
 
-
-
-
-
   return (
     <div className="contenedorAcronimo">
       <div>

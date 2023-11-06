@@ -276,7 +276,6 @@ function Mapa(props) {
         </>
     );
 
-
     setLugares(lugares);
   }
 
@@ -302,55 +301,6 @@ function Mapa(props) {
     updateState();
   };
 
-  const getUserData = async () => {
-    try {
-      const response = await axios.get("/users"); // Adjusted the endpoint
-      const users = response.data;
-      const user = users.find((u) => u._id === userId); // Assuming each user object has an _id field
-
-      if (user) {
-        return user;
-      } else {
-        console.error("User not found");
-      }
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    }
-  };
-
-  const updateState = async () => {
-    console.log(userData._id);
-    console.log("UserData before axios call:", userData);
-
-    if (userData) {
-      try {
-        const response = await axios.patch(
-          "http://localhost:3500/users",
-          {
-            _id: userId,
-            name: userData.name,
-            identification: userData.identification,
-            email: userData.email,
-            rol: userData.rol,
-            finalizadaTarea: "true",
-            tipoUsuario: userData.tipoUsuario,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        console.log("User updated:", response.data);
-        localStorage.clear();
-
-        // localStorage.clear();
-      } catch (error) {
-        console.error("Error updating user:", error);
-      }
-    }
-  };
   return (
     <>
       <div className="position_map">

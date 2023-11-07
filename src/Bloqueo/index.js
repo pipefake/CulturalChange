@@ -160,7 +160,7 @@ function Bloqueo(props) {
         <p className="centrarParrafo">
           Solicita al intérprete las palabras claves
         </p>
-      </div>    
+      </div>
       <div className="fondoAmarillo">
         <div className="contentMinijuego">
           {anagramas.map((palabra, index) => (
@@ -178,12 +178,15 @@ function Bloqueo(props) {
           <button
             className="btnContinuar btnContinuarBlock btnAntropologo"
             disabled
-            
           >
             Continuar
           </button>
         ) : (
-          <Link to={`/juego/`} className="btnContinuar btnAntropologo" onClick={handleClick}>
+          <Link
+            to={`/juego/`}
+            className="btnContinuar btnAntropologo"
+            onClick={handleClick}
+          >
             Continuar
           </Link>
         )}
@@ -252,57 +255,58 @@ function Anagrama(props) {
     props.onValidityChange(isInputCorrect); // Notify the parent component about the validity
   }, [isInputCorrect]);
 
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
-        const userInput = event.target.value;
-        const validChars = resolverAnagrama(props.palabra);
-        const tamaño = validChars.length === userInput.length;
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+    const userInput = event.target.value;
+    const validChars = resolverAnagrama(props.palabra);
+    const tamaño = validChars.length === userInput.length;
 
-        // Verificar si userInput contiene caracteres no válidos
-        if (userInput.split('').every(char => validChars.includes(char))) {
-            setInputValue(userInput);
-            setError(false); // No hay error, así que establecemos el estado de error en falso
-            if (tamaño && validChars === userInput) {
-                event.target.classList.add('input-success');
-                // Remover la clase después de un tiempo para que el efecto se repita
-                setTimeout(() => {
-                    event.target.classList.remove('input-success');
-                }, 2000); // 2 segundos
+    // Verificar si userInput contiene caracteres no válidos
+    if (userInput.split("").every((char) => validChars.includes(char))) {
+      setInputValue(userInput);
+      setError(false); // No hay error, así que establecemos el estado de error en falso
+      if (tamaño && validChars === userInput) {
+        event.target.classList.add("input-success");
+        // Remover la clase después de un tiempo para que el efecto se repita
+        setTimeout(() => {
+          event.target.classList.remove("input-success");
+        }, 2000); // 2 segundos
+      } else if (tamaño) {
+        event.target.classList.add("error-animation");
+        setTimeout(() => {
+          event.target.classList.remove("error-animation");
+          event.target.value = "";
+        }, 600); // 0.5 segundos
+      }
+    } else {
+      setError(true); // Hay caracteres no válidos, establecemos el estado de error en verdadero
+      // Agregar clase para la animación de error
+    }
+  };
 
-            } else if (tamaño) {
-                event.target.classList.add('error-animation');
-                setTimeout(() => {
-                    event.target.classList.remove('error-animation');
-                    event.target.value = "";
-                }, 600); // 0.5 segundos
-
-            }
-        } else {
-            setError(true); // Hay caracteres no válidos, establecemos el estado de error en verdadero
-            // Agregar clase para la animación de error
-
-        }
-    };
-
-
-
-
-
-    return (
-        <div className="contenedorAcronimo">
-            <div>
-                {!luckimg ? (
-                    <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>
-                        {props.palabra}
-                    </h4>
-                ) : (
-                    <img src={bloqueoIMG} alt="Imagen" />
-                )}
-            </div>
-            <input className="input_acronimo" value={inputValue} onChange={handleChange} />
-            {error && <p className="mensajeError">Ingresa solo los caracteres del anagrama.</p>}
-        </div>
-    );
+  return (
+    <div className="contenedorAcronimo">
+      <div>
+        {!luckimg ? (
+          <h4 className={error ? "textoAcronimo rojo" : "textoAcronimo verde"}>
+            {props.palabra}
+          </h4>
+        ) : (
+          <img src={bloqueoIMG} alt="Imagen" />
+        )}
+      </div>
+      <input
+        className="input_acronimo"
+        value={inputValue}
+        onChange={handleChange}
+      />
+      {error && (
+        <p className="mensajeError">
+          Ingresa solo los caracteres del anagrama.
+        </p>
+      )}
+    </div>
+  );
 }
 
 export { Bloqueo };

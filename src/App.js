@@ -53,7 +53,7 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-            <Route path="/juego/guia" element={<Mapa historia={4} />} />
+            <Route path="/juego/guia" element={<Mapa historia={3} />} />
             <Route
               path="/juego/interprete"
               element={<Minijuego historia={1}></Minijuego>}
@@ -73,7 +73,7 @@ function App() {
 
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
-            <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
+            <Route path="/gananMuseo" element={<GananMuseo historia={3} />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

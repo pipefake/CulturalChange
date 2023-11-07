@@ -9,15 +9,6 @@ function TestFinalizada() {
   const [antropologoName, setAntropologoName] = useState("");
   const navigate = useNavigate();
 
-  const [userData, setUserData] = useState({
-    _id: "",
-    name: "",
-    identification: "",
-    email: "",
-    rol: "",
-    finalizadaTarea: "",
-    tipoUsuario: "",
-  });
 
   useEffect(() => {
     let intervalId;
@@ -45,7 +36,6 @@ function TestFinalizada() {
     };
 
     fetchData();
-
     // Clear the interval when the component is unmounted.
     return () => clearInterval(intervalId);
   }, []);
@@ -66,28 +56,12 @@ function TestFinalizada() {
     }
   };
 
-  const getUserData = async () => {
-    try {
-      const response = await axios.get("/users"); // Adjusted the endpoint
-      const users = response.data;
-      const user = users.find((u) => u.rol === "Antropólogo"); // Assuming each user object has an _id field
-
-      if (user) {
-        return user;
-      } else {
-        console.error("User not found");
-      }
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    }
-  };
-
   const findNFilterUsers = async (roomCode) => {
     console.log("Looking for users with roomCode: ", roomCode);
     try {
         const response = await axios.get("/users");
-        const users = response.data;
-        const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
+        const user = response.data;
+        const matchedUsers = user.filter((u) => u.codigoSala === roomCode);
 
         if (matchedUsers && matchedUsers.length > 0) {
             console.log("Found users: ");
@@ -121,7 +95,6 @@ function TestFinalizada() {
         console.error("Error fetching and filtering users:", error);
     }
 };
-
 
   return <h1>Página de espera de prueba</h1>;
 }

@@ -26,9 +26,10 @@ import { FraseMuseo } from "./FraseMuseo";
 import { RevisarCelular } from "./RevisarCelular";
 import { IntentaloDenuevo } from "./IntentaloDenuevo";
 import { GananMuseo } from "./GananMuseo";
-
 import { TestTimeOut } from "./testTimeOut";
 import { TestFinalizada } from "./TestFinalizada/index.js";
+import { MuseoTabla } from "./MuseoTabla";
+import { TablaMuseoMejorT } from "./TabaMuseoMejorT";
 
 function App() {
   return (
@@ -66,7 +67,6 @@ function App() {
               element={<Bloqueo historia={1}></Bloqueo>}
             />
             <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
-            <Route path="/museo" element={<PantallaMuseo></PantallaMuseo>} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
 
             <Route path="/revisarCelular" element={<RevisarCelular />} />
@@ -74,6 +74,8 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
+            <Route path="/museoTabla" element={<MuseoTabla />} />
+            <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

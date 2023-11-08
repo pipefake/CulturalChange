@@ -15,6 +15,7 @@ function Bloqueo(props) {
   const [descifrados, setDescifrado1] = useState([false, false, false, false]);
 
   const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
+
   const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
 
   const [userData, setUserData] = useState({

@@ -210,7 +210,7 @@ function Anagrama(props) {
     return (
         <div className="contenedorAcronimo">
             <div>
-                {!luckimg ? (
+                {luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>
                         {props.palabra}
                     </h4>

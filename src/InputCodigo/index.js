@@ -9,6 +9,7 @@ import { EnviandoCarga } from "../EnviandoCarga";
 import { ErrorCarga } from "../ErrorCarga";
 import { SentInformacion } from "../SentInformacion";
 
+
 function InputCodigo() {
   const [inputValue, setInputValue] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -78,7 +79,7 @@ function InputCodigo() {
 
   const fetchRoomCode = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/roomCode");
       console.log("Full Response:", response.data); // Log entire response
       if (response.data.length > 0 && response.data[0].code) {
         setRoomCode(response.data[0].code); // Set the room code state

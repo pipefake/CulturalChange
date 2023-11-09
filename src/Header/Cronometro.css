@@ -1,61 +1,108 @@
 @keyframes animationCronometro {
-    0% {
-        background-image: url(./Reloj/Reloj1.png);
-    }
+  0% {
+    background-image: url(../Header/Reloj/Reloj1.png);
+  }
 
-    6% {
-        background-image: url(./Reloj/Reloj2.png);
-    }
+  9.9% {
+    background-image: url(../Header/Reloj/Reloj2.png);
+  }
 
-    12% {
-        background-image: url(./Reloj/Reloj3.png);
-    }
-    18% {
-        background-image: url(./Reloj/Reloj4.png);
-    }
-    25% {
-        background-image: url(./Reloj/Reloj5.png);
-    }
-    50% {
-        background-image: url(./Reloj/Reloj6.png);
-    }
-    65% {
-        background-image: url(./Reloj/Reloj7.png);
-    }
-    70% {
-        background-image: url(./Reloj/Reloj8.png);
-    }
-    85% {
-        background-image: url(./Reloj/Reloj9.png);
-    }
-    90% {
-        background-image: url(./Reloj/Reloj10.png);
-    }
-    92% {
-        background-image: url(./Reloj/Reloj11.png);
-    }
-    94% {
-        background-image: url(./Reloj/Reloj12.png);
-    }
-    96% {
-        background-image: url(./Reloj/Reloj13.png);
-    }
-    98% {
-        background-image: url(./Reloj/Reloj14.png);
-    }
-    100% {
-        background-image: url(./Reloj/Reloj15.png);
-    }
+  19.8% {
+    background-image: url(../Header/Reloj/Reloj3.png);
+  }
+  29.7% {
+    background-image: url(../Header/Reloj/Reloj4.png);
+  }
+  39.6% {
+    background-image: url(../Header/Reloj/Reloj5.png);
+  }
+  50% {
+    background-image: url(../Header/Reloj/Reloj6.png);
+  }
+  55% {
+    background-image: url(../Header/Reloj/Reloj7.png);
+  }
+  80% {
+    background-image: url(../Header/Reloj/Reloj8.png);
+  }
+  90% {
+    background-image: url(../Header/Reloj/Reloj9.png);
+  }
+  99.5% {
+    background-image: url(../Header/Reloj/Reloj10.png);
+  }
+  99.6% {
+    background-image: url(../Header/Reloj/Reloj11.png);
+  }
+  99.7% {
+    background-image: url(../Header/Reloj/Reloj12.png);
+  }
+  99.8% {
+    background-image: url(../Header/Reloj/Reloj13.png);
+  }
+  99.9% {
+    background-image: url(../Header/Reloj/Reloj14.png);
+  }
+  100% {
+    background-image: url(../Header/Reloj/Reloj15.png);
+  }
 }
 .animacionCronometro {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    animation-name: animationCronometro;
-    animation-duration: 600s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: ease;
-    width: 60px;
-    height: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  animation-name: animationCronometro;
+  animation-duration: 616s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  width: 60px;
+  height: 72px;
+}
+.informacionCelular>p{
+  --rem: 16;
+  -webkit-font-smoothing: antialiased;
+  color: #432B18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.64px;
+}
+.txtCronometro{
+  --rem: 16;
+  -webkit-font-smoothing: antialiased;
+  color: #432B18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.64px;
+}
+.modal-inicial{
+  background-color: #FAF1DB;
+  width: 259px;
+  height: 160px;
+  border: solid 5px brown;
+  border-radius: 39px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 308px;
+  left: 10px;
+}
+.modal-inicial>h2{
+font-size: 39px;
+  margin: 0;
+  color: #E54C41;
+}
+.modal-inicial>p{
+font-size: 22px;
 }

@@ -13,7 +13,7 @@ export function MyContextProvider({ children }) {
     const [esinterpretado2, setEsInterpretado2] = useState(false);
     const [esinterpretado3, setEsInterpretado3] = useState(false);
     const [esinterpretado4, setEsInterpretado4] = useState(false);
-
+    const [tiempoInicial, setTiempoInicial,] = useState("");
     return (
         <MyContext.Provider
             value={{
@@ -32,8 +32,9 @@ export function MyContextProvider({ children }) {
                 esinterpretado3,
                 setEsInterpretado3,
                 esinterpretado4,
-                setEsInterpretado4
-
+                setEsInterpretado4,
+                tiempoInicial,
+                setTiempoInicial,
             }}
         >
             {children}

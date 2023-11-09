@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
-
 import Board from "./Board/Board.js";
 import { Link } from "react-router-dom";
 import { Header } from "../Header";
@@ -45,27 +43,19 @@ import batosil from "./anagramas/batosil.png";
 import parejaCorrecta from "./audios/parejaCorrecta.mp3";
 import { useMyContext } from "../SeleccionCargando/MyContext";
 import { Traductor } from "./index.js";
-
 import off from "./switch/off.png";
 import { simbolos } from "../rolesdata.js";
-
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
 
-// Agrega más imágenes según la cantidad de elementos en tu array original
-
 const Minijuego = (props) => {
-  const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
-  const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
-  const [animating, setAnimating] = React.useState(false);
-  const [btnSlide, setBtnSlide] = React.useState(false);
-
+  const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([]);
+  const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
+  const [animating, setAnimating] = useState(false);
+  const [btnSlide, setBtnSlide] = useState(false);
   const [encontrados, setEncontrados] = useState([false, false, false, false]);
-
   const [symbols, setSymbols] = useState([]);
-
-  const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
-
+  const [imageList, setImageList] = useState([]);
   const [esinterpretado1, setEsInterpretado1] = useState(false);
   const [esinterpretado2, setEsInterpretado2] = useState(false);
   const [esinterpretado3, setEsInterpretado3] = useState(false);
@@ -111,16 +101,16 @@ const Minijuego = (props) => {
     const intervalId = setInterval(() => {
       fetchSymbols();
       console.log(encontrados);
-    }, 10000); // Check every 10 seconds
+    }, 10000);
 
-    return () => clearInterval(intervalId); // Clear the interval on unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("/roomCode"); // Replace with the correct API endpoint
-      console.log("Full Response:", response.data); // Log entire response
-      const symbols = response.data[0].huaqueroSymbols; // Assuming the symbols are stored in an array inside the response
+      const response = await axios.get("/roomCode");
+      console.log("Full Response:", response.data);
+      const symbols = response.data[0].huaqueroSymbols;
       const newEncontrados = [false, false, false, false];
       symbols.forEach((symbol, index) => {
         if (symbol.found) {
@@ -130,12 +120,11 @@ const Minijuego = (props) => {
       setEncontrados(newEncontrados);
     } catch (error) {
       console.error("Error fetching symbols:", error);
-      return [];
     }
   };
 
   useEffect(() => {
-    buscarUbicaciones(props.historia); // Update imageList based on props.historia
+    buscarUbicaciones(props.historia);
   }, [props.historia]);
 
   function buscarUbicaciones(aux) {
@@ -150,7 +139,7 @@ const Minijuego = (props) => {
         simbolo5,
         simbolo6,
         simbolo7,
-        simbolo8 /* Add more images */,
+        simbolo8,
       ];
     } else if (aux === 2) {
       newImageList = [
@@ -200,7 +189,7 @@ const Minijuego = (props) => {
         flipped: false,
       }))
     );
-  }, [imageList]); // Update shuffledMemoBlocks when imageList changes
+  }, [imageList]);
 
   const shuffleArray = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -213,6 +202,7 @@ const Minijuego = (props) => {
   const cambiarComponenteInterprete = () => {
     setBtnSlide(!btnSlide);
   };
+
   const [anagramas, setAnagramas] = useState([]);
 
   useEffect(() => {
@@ -237,25 +227,20 @@ const Minijuego = (props) => {
     }
     setAnagramas(nuevosAnagramas);
   }
+
   const cambiarEstados = (positionInImageList) => {
-    if (positionInImageList < 4) {
-      switch (positionInImageList) {
-        case 0:
-          setEsInterpretado1(true);
-          break;
-        case 1:
-          setEsInterpretado2(true);
-          break;
-        case 2:
-          setEsInterpretado3(true);
-          break;
-        case 3:
-          setEsInterpretado4(true);
-          break;
-        default:
-          break;
-      }
+    let aux;
+
+    if (positionInImageList === 0) {
+      aux = esinterpretado1;
+    } else if (positionInImageList === 1) {
+      aux = esinterpretado2;
+    } else if (positionInImageList === 2) {
+      aux = esinterpretado3;
+    } else if (positionInImageList === 3) {
+      aux = esinterpretado4;
     }
+    return aux;
   };
 
   const handleMemoClick = (memoBlock) => {
@@ -323,110 +308,109 @@ const Minijuego = (props) => {
         }, 1000);
       }
     }
+  };
 
-    const validardor = (index) => {
-      let aux;
+  const validardor = (index) => {
+    let aux;
 
-      if (index === 0) {
-        aux = esinterpretado1;
-      } else if (index === 1) {
-        aux = esinterpretado2;
-      } else if (index === 2) {
-        aux = esinterpretado3;
-      } else if (index === 3) {
-        aux = esinterpretado4;
-      }
-      return aux;
-    };
-
-    return (
-      <>
-        {showModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={closeModal}>
-                &times;
-              </span>
-              <p>
-                Espera a que el huaquero encuentre los símbolos misteriosos. Ten
-                cuidado si descubres símbolos diferentes, perderás tiempo.
-              </p>
-            </div>
-          </div>
-        )}
-        {showSecondModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={() => setShowSecondModal(false)}>
-                &times;
-              </span>
-              <p>
-                ¡Ups! Este símbolo no pertenece a la historia. Perderás x
-                minutos.
-              </p>
-            </div>
-          </div>
-        )}
-        {showThirdModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={() => setShowThirdModal(false)}>
-                &times;
-              </span>
-              <p>
-                Este símbolo aun no ha sido encontrado por el huaquero, tendrás
-                que esperar
-              </p>
-            </div>
-          </div>
-        )}
-        <Contexto
-          titulo="Descubre los símbolos"
-          parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"
-        ></Contexto>
-        <div className="fondoAmarillo">
-          <div className="contentMinijuego">
-            <button
-              className="btnInterpreteSlide"
-              onClick={cambiarComponenteInterprete}
-            >
-              {!btnSlide ? (
-                <img src={off} alt="logo de Guia" />
-              ) : (
-                <img src={on} alt="logo de Guia" />
-              )}
-            </button>
-            <div className="ContTraduccion">
-              {btnSlide ? (
-                anagramas.map((simbolo, index) => (
-                  <Traductor
-                    key={index}
-                    historia={props.historia}
-                    imgAnagrama={anagramas[index]}
-                    imgSimbolo={imageList[index]}
-                    valid={validardor(index)}
-                  />
-                ))
-              ) : (
-                <Board
-                  memoBlocks={shuffledMemoBlocks}
-                  animating={animating}
-                  handleMemoClick={handleMemoClick}
-                />
-              )}
-            </div>
+    if (index === 0) {
+      aux = esinterpretado1;
+    } else if (index === 1) {
+      aux = esinterpretado2;
+    } else if (index === 2) {
+      aux = esinterpretado3;
+    } else if (index === 3) {
+      aux = esinterpretado4;
+    }
+    return aux;
+  };
+  return (
+    <>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <p>
+              Espera a que el huaquero encuentre los símbolos misteriosos. Ten
+              cuidado si descubres símbolos diferentes, perderás tiempo.
+            </p>
           </div>
         </div>
+      )}
+      {showSecondModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowSecondModal(false)}>
+              &times;
+            </span>
+            <p>
+              ¡Ups! Este símbolo no pertenece a la historia. Perderás x
+              minutos.
+            </p>
+          </div>
+        </div>
+      )}
+      {showThirdModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowThirdModal(false)}>
+              &times;
+            </span>
+            <p>
+              Este símbolo aun no ha sido encontrado por el huaquero, tendrás
+              que esperar
+            </p>
+          </div>
+        </div>
+      )}
+      <Contexto
+        titulo="Descubre los símbolos"
+        parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"
+      ></Contexto>
+      <div className="fondoAmarillo">
+        <div className="contentMinijuego">
+          <button
+            className="btnInterpreteSlide"
+            onClick={cambiarComponenteInterprete}
+          >
+            {!btnSlide ? (
+              <img src={off} alt="logo de Guia" />
+            ) : (
+              <img src={on} alt="logo de Guia" />
+            )}
+          </button>
+          <div className="ContTraduccion">
+            {btnSlide ? (
+              anagramas.map((simbolo, index) => (
+                <Traductor
+                  key={index}
+                  historia={props.historia}
+                  imgAnagrama={anagramas[index]}
+                  imgSimbolo={imageList[index]}
+                  valid={validardor(index)}
+                />
+              ))
+            ) : (
+              <Board
+                memoBlocks={shuffledMemoBlocks}
+                animating={animating}
+                handleMemoClick={handleMemoClick}
+              />
+            )}
+          </div>
+        </div>
+      </div>
 
-        <Acumulador
-          historia={props.historia}
-          encontrado1={encontrados[0]}
-          encontrado2={encontrados[1]}
-          encontrado3={encontrados[2]}
-          encontrado4={encontrados[3]}
-        />
-      </>
-    );
-  };
+      <Acumulador
+        historia={props.historia}
+        encontrado1={encontrados[0]}
+        encontrado2={encontrados[1]}
+        encontrado3={encontrados[2]}
+        encontrado4={encontrados[3]}
+      />
+    </>
+  );
 };
 export { Minijuego };

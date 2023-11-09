@@ -30,6 +30,7 @@ import { TestTimeOut } from "./testTimeOut";
 import { TestFinalizada } from "./TestFinalizada/index.js";
 import { MuseoTabla } from "./MuseoTabla";
 import { TablaMuseoMejorT } from "./TabaMuseoMejorT";
+import { Huaquero } from "./Huaquero";
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
             <Route path="/juego/guia" element={<Mapa historia={4} />} />
             <Route
               path="/juego/interprete"
-              element={<Minijuego historia={1}></Minijuego>}
+              element={<Minijuego historia={2}></Minijuego>}
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
             <Route path="/pierde" element={<FeedbackNegativo />} />
@@ -66,7 +67,7 @@ function App() {
               path="/juego/antropologo"
               element={<Bloqueo historia={1}></Bloqueo>}
             />
-            <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
+            <Route path="/juego/Huaquero" element={<Huaquero />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
 
             <Route path="/revisarCelular" element={<RevisarCelular />} />

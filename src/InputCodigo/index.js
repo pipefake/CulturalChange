@@ -213,7 +213,7 @@ function InputCodigo() {
         try {
           console.log("Conditions met. Attempting to send data...");
           const response = await axios.post(
-            "http://localhost:3500/users",
+            "http://testdeploy-production-9d97.up.railway.app/users",
             {
               name: userData.name,
               identification: userData.identification,

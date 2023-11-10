@@ -1,8 +1,8 @@
 .image-container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   }
   
   .image-button {
@@ -13,8 +13,8 @@
   }
   
   .image-button img {
-    width: 200px;
-    height: 200px;
-    margin: 4px;
+    width: 75px;
+    height: 77px;
+    margin: 1px;
   }
   

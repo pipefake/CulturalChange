@@ -15,7 +15,15 @@ body.active-modal {
     border-radius: 63px;
     
 }
-
+@keyframes highlightButton {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .active-button {
+    animation: highlightButton 1s infinite; /* Aplicar la animación */
+  }
 .modal, .overlay {
     width: 100vw;
     height: 100vh;
@@ -47,5 +55,5 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 5px 7px;
-
+    border: none;
 }

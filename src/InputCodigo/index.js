@@ -103,6 +103,13 @@ function InputCodigo() {
     // Validar la cadena ingresada
     if (value.length === 4 && value.toUpperCase() === roomCode) {
       setShowModal(true);
+    } else if (value.length === 4) {
+      event.target.classList.add('invalid-code');
+      setTimeout(() => {
+        event.target.classList.remove('invalid-code');
+        event.target.value = "";
+      }, 600); // 0.5 segundos
+
     }
 
     // Comprobar si los campos requeridos están completos

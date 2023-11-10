@@ -6,6 +6,7 @@ import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';
 import { Link, useNavigate } from "react-router-dom";
+import videoUrl from "../AnimacionMuseo/resources/contextualizacion.mp4";
 
 const ItemTypes = {
     WORD: 'word',
@@ -263,6 +264,19 @@ function FraseMuseo({ historia }) {
             }, 2000);
         }
     }, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
+
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openPopup = () => {
+        setIsOpen(true);
+    };
+
+    const closePopup = () => {
+        setIsOpen(false);
+    }
+
+
 
     return (
 
@@ -625,6 +639,25 @@ function FraseMuseo({ historia }) {
                     <h1>Apresúrense, el tiempo corre...</h1>
                     <img className="animacionCronometro tamañoGrande" src={cronometro} alt="Cronometro" />
                     <div className='txtCronometro'>Tiempo {formatTime(timeLeft)}</div>
+                    <button className='btnContinuar' onClick={openPopup}>Volver a ver el video</button>
+
+                    {isOpen && (
+                        <div className="video-popup-overlay" onClick={closePopup}>
+                            <div className="video-popup">
+                                <button className="close-button" onClick={closePopup}>
+                                    X
+                                </button>
+                                <iframe
+                                    width="100%"
+                                    height="90%"
+                                    src={videoUrl}
+                                    title="Video Popup"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
             {showPerdieron && (

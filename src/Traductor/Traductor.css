@@ -1,5 +1,5 @@
 .ContTraduccion{
-    width: 308px;
+    width: 318px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -64,5 +64,10 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .sonido{
+    background: none;
+    border: none;
   }
   

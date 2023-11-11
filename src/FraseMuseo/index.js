@@ -253,20 +253,44 @@ function FraseMuseo({ historia }) {
     };
 
 
-    useEffect(() => {
-        if ((!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
-            (allWordsInDropSpaces && atLeastOnePairFalse)) {
+    const [showModal, setShowModal] = useState(false);
 
-            setTimeout(() => {
-                console.log("Perdieron");
-                navigate("/intentaloDenuevo");
-            }, 2000);
-        }
-    }, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
+useEffect(() => {
+    if (
+        (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
+        (allWordsInDropSpaces && atLeastOnePairFalse)
+    ) {
+        setSentence([null, null, null, null]); // Reset the sentence state
+        if (historia === 1) {
+            setAvailableWords(["rituales", "arte", "alfareros", "tiempo"]);
+        } else if (historia === 2) {
+            setAvailableWords(["culturas", "formas", "pueblos", "legado"]);
+        } else if (historia === 3) {
+            setAvailableWords(["obras", "hilos", "historias", "fuente"]);
+        } else if (historia === 4) {
+            setAvailableWords(["rituales", "urna", "infancia", "cruza"]);
+        } else if (historia === 5) {
+            setAvailableWords(["sonidos", "piezas", "historias", "silbato"]);
+        } 
+        setShowModal(true); // Set showModal to true to display the modal
+
+        // Automatically close the modal after 3 seconds
+        setTimeout(() => {
+            setShowModal(false);
+            console.log("Perdieron");
+            // navigate("/intentaloDenuevo");
+        }, 1000);
+    }
+}, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
 
     return (
 
         <DndProvider backend={HTML5Backend}>
+            {showModal && (
+    <div className="modal">
+        <p>La frase es incorrecta, intentalo nuevamente.</p>
+    </div>
+)}
             {antropologo ? (
                 <div className="complete-the-sentence">
                     <div className="containersuperder">

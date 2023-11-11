@@ -9,7 +9,9 @@ import lupa from "./resources/lupa.png";
 import lupahover from "./resources/lupahover.png";
 import { Cronometro } from "../Header/Cronometro";
 import TopNavegation from "./resources/TopNavigation.png";
+import SonidodePuntos from './audios/sonidopuntos.mp3';
 
+import useSound from 'use-sound';
 import { update } from "lodash";
 
 function Mapa(props) {
@@ -21,7 +23,7 @@ function Mapa(props) {
   const [esLoading, setEsLoading] = useState(false);
 
   const historia = props.historia;
-
+  const [SonidoPuntos] = useSound(SonidodePuntos);
   const [userData, setUserData] = useState({
     _id: "",
     name: "",
@@ -52,6 +54,7 @@ function Mapa(props) {
       setEsLoading(true);
       setTimeout(() => {
         setEsLoading(false);
+        SonidoPuntos();
         avanzarPosicion(); // Se avanza la posición aquí cuando segundos es 0.
         setSegundos(30); // Reiniciamos el temporizador al valor inicial.
       }, 1000);
@@ -186,13 +189,12 @@ function Mapa(props) {
               </div>
             ) : (
               <div
-                className={`web ${
-                  (ubicacion === 1 && "animacionweb1") ||
+                className={`web ${(ubicacion === 1 && "animacionweb1") ||
                   (ubicacion === 2 && "animacionweb2") ||
                   (ubicacion === 3 && "animacionweb3") ||
                   (ubicacion === 4 && "animacionweb4") ||
                   (ubicacion === 5 && "animacionweb5")
-                }`}
+                  }`}
               >
                 <img src={pin} alt="Pin" />
               </div>

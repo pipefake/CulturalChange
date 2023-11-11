@@ -43,6 +43,11 @@ import dosniso from "./anagramas/dosniso.png";
 import zaspie from "./anagramas/zaspie.png";
 import batosil from "./anagramas/batosil.png";
 
+import useSound from 'use-sound';
+import tap from './audios/sonidotab.mp3';
+import pierdenSonido from './audios/sonidoincorrecto.mp3';
+import gananSonido from './audios/sonido.exito.pares2.mp3';
+
 import { useMyContext } from "../SeleccionCargando/MyContext";
 import { Traductor } from "./index.js";
 
@@ -51,6 +56,7 @@ import { simbolos } from "../rolesdata.js";
 
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
+import { TablaPuntuacion } from "../TablaPuntuacion/index.js";
 
 // Agrega más imágenes según la cantidad de elementos en tu array original
 
@@ -60,7 +66,7 @@ const Minijuego = (props) => {
   const [animating, setAnimating] = React.useState(false);
   const [btnSlide, setBtnSlide] = React.useState(false);
 
-  const [encontrados, setEncontrados] = useState([false, false, false, false]);
+  const [encontrados, setEncontrados] = useState([true, false, false, false]);
 
   const [symbols, setSymbols] = useState([]);
 
@@ -283,6 +289,7 @@ const Minijuego = (props) => {
       if (positionInImageList < 4) {
         if (encontrados[positionInImageList]) {
           cambiarEstados(positionInImageList);
+          sonidoGanan();
         } else {
           setShowThirdModal(true);
           setShowSecondModal(false);
@@ -336,6 +343,7 @@ const Minijuego = (props) => {
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
         setselectedMemoBlock(null);
         setAnimating(false);
+        sonidoPierden();
 
       }, 1000);
     }
@@ -355,6 +363,12 @@ const Minijuego = (props) => {
     }
     return aux;
   };
+
+  const [audio] = useState(new Audio('ruta_del_sonido.mp3')); // Reemplaza 'ruta_del_sonido.mp3' con la ruta correcta de tu archivo de sonido
+
+  const [playSound] = useSound(tap);
+  const [sonidoPierden] = useSound(pierdenSonido);
+  const [sonidoGanan] = useSound(gananSonido);
 
   return (
     <>
@@ -397,6 +411,7 @@ const Minijuego = (props) => {
       ></Contexto>
       <div className="fondoAmarillo">
         <div className="contentMinijuego">
+
           <button
             className="btnInterpreteSlide"
             onClick={cambiarComponenteInterprete}
@@ -407,7 +422,7 @@ const Minijuego = (props) => {
               <img src={on} alt="logo de Guia" />
             )}
           </button>
-          <div className="ContTraduccion">
+          <button className="ContTraduccion sonido" onClick={playSound}>
             {btnSlide ? (
               anagramas.map((simbolo, index) => (
                 <Traductor
@@ -425,7 +440,7 @@ const Minijuego = (props) => {
                 handleMemoClick={handleMemoClick}
               />
             )}
-          </div>
+          </button>
         </div>
       </div>
 

@@ -6,7 +6,8 @@ import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';
 import { Link, useNavigate } from "react-router-dom";
-import SonidodePuntos from './resource/sonidoincorrecto.mp3';
+import sonidoIncorrecto from './resource/sonidoincorrecto.mp3';
+import sonidoCorrecto from './audio/sonidoCorrecto.mp3';
 
 import useSound from 'use-sound';
 
@@ -69,7 +70,8 @@ function DropSpace({ onDrop, index, completed }) {
 function FraseMuseo({ historia }) {
     const [sentence, setSentence] = useState([null, null, null, null]);
     const [matchedPairs, setMatchedPairs] = useState(0);
-    const [SonidoPuntos] = useSound(SonidodePuntos);
+    const [SonidoIncorrecto] = useSound(sonidoIncorrecto);
+    const [SonidoCorrecto] = useSound(sonidoCorrecto);
     const [completed, setCompleted] = useState(false);
 
 
@@ -160,7 +162,7 @@ function FraseMuseo({ historia }) {
             // Verifica si al menos un par es falso
             if (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) {
                 setAtLeastOnePairFalse(true);
-                SonidoPuntos();
+                SonidoIncorrecto();
                 setShowPerdieron(true); // Muestra "Perdieron" si al menos un par es falso
             }
         } else {
@@ -265,6 +267,7 @@ function FraseMuseo({ historia }) {
     useEffect(() => {
         if (pair1Matched && pair2Matched && pair3Matched && pair4Matched) {
             setTimeout(() => {
+                SonidoCorrecto();
                 console.log("¡Ganaron!");
                 navigate("/gananMuseo");
 
@@ -319,33 +322,33 @@ function FraseMuseo({ historia }) {
     const [isOpen, setIsOpen] = useState(false);
 
 
-useEffect(() => {
-    if (
-        (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
-        (allWordsInDropSpaces && atLeastOnePairFalse)
-    ) {
-        setSentence([null, null, null, null]); // Reset the sentence state
-        if (historia === 1) {
-            setAvailableWords(["rituales", "arte", "alfareros", "tiempo"]);
-        } else if (historia === 2) {
-            setAvailableWords(["culturas", "formas", "pueblos", "legado"]);
-        } else if (historia === 3) {
-            setAvailableWords(["obras", "hilos", "historias", "fuente"]);
-        } else if (historia === 4) {
-            setAvailableWords(["rituales", "urna", "infancia", "cruza"]);
-        } else if (historia === 5) {
-            setAvailableWords(["sonidos", "piezas", "historias", "silbato"]);
-        } 
-        setShowModal(true); // Set showModal to true to display the modal
+    useEffect(() => {
+        if (
+            (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
+            (allWordsInDropSpaces && atLeastOnePairFalse)
+        ) {
+            setSentence([null, null, null, null]); // Reset the sentence state
+            if (historia === 1) {
+                setAvailableWords(["rituales", "arte", "alfareros", "tiempo"]);
+            } else if (historia === 2) {
+                setAvailableWords(["culturas", "formas", "pueblos", "legado"]);
+            } else if (historia === 3) {
+                setAvailableWords(["obras", "hilos", "historias", "fuente"]);
+            } else if (historia === 4) {
+                setAvailableWords(["rituales", "urna", "infancia", "cruza"]);
+            } else if (historia === 5) {
+                setAvailableWords(["sonidos", "piezas", "historias", "silbato"]);
+            }
+            setShowModal(true); // Set showModal to true to display the modal
 
-        // Automatically close the modal after 3 seconds
-        setTimeout(() => {
-            setShowModal(false);
-            console.log("Perdieron");
-            // navigate("/intentaloDenuevo");
-        }, 1000);
-    }
-}, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
+            // Automatically close the modal after 3 seconds
+            setTimeout(() => {
+                setShowModal(false);
+                console.log("Perdieron");
+                // navigate("/intentaloDenuevo");
+            }, 1000);
+        }
+    }, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
 
     return (
 

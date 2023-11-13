@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './intentaloDenuevo.css';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import superder from "../FraseMuseo/resource/supder.png";
 import infeizq from "../FraseMuseo/resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';

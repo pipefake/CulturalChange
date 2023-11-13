@@ -6,12 +6,12 @@ import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';
 import { Link, useNavigate } from "react-router-dom";
+
 import videoSemana1 from "./videosSemanas/Cuencos_1.mp4";
 import videoSemana2 from "./videosSemanas/Alcarrazas_1.mp4";
 import videoSemana3 from "./videosSemanas/Volantes_1.mp4";
 import videoSemana4 from "./videosSemanas/Urnas_1.mp4";
 import videoSemana5 from "./videosSemanas/Silbatos_1.mp4";
-
 
 
 const ItemTypes = {
@@ -313,15 +313,34 @@ useEffect(() => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const openPopup = () => {
-        setIsOpen(true);
-    };
 
-    const closePopup = () => {
-        setIsOpen(false);
+useEffect(() => {
+    if (
+        (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
+        (allWordsInDropSpaces && atLeastOnePairFalse)
+    ) {
+        setSentence([null, null, null, null]); // Reset the sentence state
+        if (historia === 1) {
+            setAvailableWords(["rituales", "arte", "alfareros", "tiempo"]);
+        } else if (historia === 2) {
+            setAvailableWords(["culturas", "formas", "pueblos", "legado"]);
+        } else if (historia === 3) {
+            setAvailableWords(["obras", "hilos", "historias", "fuente"]);
+        } else if (historia === 4) {
+            setAvailableWords(["rituales", "urna", "infancia", "cruza"]);
+        } else if (historia === 5) {
+            setAvailableWords(["sonidos", "piezas", "historias", "silbato"]);
+        } 
+        setShowModal(true); // Set showModal to true to display the modal
+
+        // Automatically close the modal after 3 seconds
+        setTimeout(() => {
+            setShowModal(false);
+            console.log("Perdieron");
+            // navigate("/intentaloDenuevo");
+        }, 1000);
     }
-
-
+}, [allWordsInDropSpaces, pair1Matched, pair2Matched, pair3Matched, pair4Matched]);
 
     return (
 
@@ -689,25 +708,6 @@ useEffect(() => {
                     <h1>Apresúrense, el tiempo corre...</h1>
                     <img className="animacionCronometro tamañoGrande" src={cronometro} alt="Cronometro" />
                     <div className='txtCronometro'>Tiempo {formatTime(timeLeft)}</div>
-                    <button className='btnContinuar' onClick={openPopup}>Volver a ver el video</button>
-
-                    {isOpen && (
-                        <div className="video-popup-overlay" onClick={closePopup}>
-                            <div className="video-popup">
-                                <button className="close-button" onClick={closePopup}>
-                                    X
-                                </button>
-                                <iframe
-                                    width="100%"
-                                    height="90%"
-                                    src={videoUrl}
-                                    title="Video Popup"
-                                    frameBorder="0"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
-                        </div>
-                    )}
                 </div>
             )}
             {showPerdieron && (

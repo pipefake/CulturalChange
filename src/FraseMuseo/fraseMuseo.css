@@ -16,17 +16,20 @@
     background-color: white;
     padding: 20px;
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: -5px 8px 20px 5px rgb(0 0 0 / 38%) !important;
     z-index: 999;
     width: 403px;
     height: 127px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    background: #5c3518;
+    border: #321c0b;
 }
 .modal>p{
   font-size: 39px !important;
   text-align: center;
+  color: #FAF1DB;
 }
   .tituloFraseMuseo{
       font-size: 100px;

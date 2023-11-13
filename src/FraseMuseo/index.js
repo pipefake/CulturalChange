@@ -18,6 +18,7 @@ const ItemTypes = {
     WORD: 'word',
 };
 
+
 function DraggableWord({ word, onDrop, isDraggable, sentence, isDraggedToDropSpace }) {
     const isWordInSentence = sentence.includes(word);
 

@@ -6,7 +6,13 @@ import superder from "./resource/supder.png";
 import infeizq from "./resource/infeizq.png";
 import cronometro from '../Header/Reloj/Reloj15.png';
 import { Link, useNavigate } from "react-router-dom";
-import videoUrl from "../AnimacionMuseo/resources/contextualizacion.mp4";
+import videoSemana1 from "./videosSemanas/Cuencos_1.mp4";
+import videoSemana2 from "./videosSemanas/Alcarrazas_1.mp4";
+import videoSemana3 from "./videosSemanas/Volantes_1.mp4";
+import videoSemana4 from "./videosSemanas/Urnas_1.mp4";
+import videoSemana5 from "./videosSemanas/Silbatos_1.mp4";
+
+
 
 const ItemTypes = {
     WORD: 'word',
@@ -63,7 +69,7 @@ function FraseMuseo({ historia }) {
     const [completed, setCompleted] = useState(false);
 
 
-    const [antropologo, setAntropologo] = useState(false); // modificar este estado cuando el antropologo le unda continuar en su pantalla
+    const [antropologo, setAntropologo] = useState(true); // modificar este estado cuando el antropologo le unda continuar en su pantalla
 
 
     const [availableWords, setAvailableWords] = useState([]);
@@ -81,8 +87,28 @@ function FraseMuseo({ historia }) {
 
 
 
+    const obtenerUrlVideo = (historia) => {
+        switch (historia) {
+            case 1:
+                return videoSemana1; // Cambiar a la URL correspondiente
+            case 2:
+                return videoSemana2; // Cambiar a la URL correspondiente
+            case 3:
+                return videoSemana3; // Cambiar a la URL correspondiente
+            case 4:
+                return videoSemana4; // Cambiar a la URL correspondiente
+            case 5:
+                return videoSemana5; // Cambiar a la URL correspondiente
+            default:
+                // Manejar el caso por defecto o asignar una URL por defecto si es necesario
+                return 'URL_POR_DEFECTO';
+        }
+    };
+    const videoUrl = obtenerUrlVideo(historia);
+
 
     useEffect(() => {
+
         // Establece availableWords según el valor de historia
         if (historia === 1) {
             setAvailableWords(["rituales", "arte", "alfareros", "tiempo"]);

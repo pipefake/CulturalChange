@@ -3,16 +3,21 @@ import "./Bloqueo.css";
 import bloqueoIMG from "./resources/Bloqueo_IMG.png";
 import { Link } from "react-router-dom";
 import { Header } from "../Header";
+import useSound from 'use-sound';
+import SonidoenCorecto from './audio/sonidoCorrecto.mp3';
+import SonidoenIncorecto from './audio/sonidoIncorrecto.mp3';
 import axios from "axios";
 
 function Bloqueo(props) {
+
+
     const historia = props.historia;
 
-    const [encontrados, setEncontrados] = useState([false, false, false, false]);
+    const [encontrados, setEncontrados] = useState([true, false, false, false]);
 
     const [anagramas, setAnagramas] = useState([]);
 
-    const [descifrados, setDescifrado1] = useState([false, false, false, false]);
+    const [descifrados, setDescifrado1] = useState([true, true, true, true]);
 
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
@@ -164,7 +169,8 @@ function Anagrama(props) {
 
         return aux;
     }
-
+    const [SonidoCorecto] = useSound(SonidoenCorecto);
+    const [SonidoIncorecto] = useSound(SonidoenIncorecto);
     const isInputCorrect = inputValue === resolverAnagrama(props.palabra);
 
     useEffect(() => {
@@ -183,6 +189,7 @@ function Anagrama(props) {
             setError(false); // No hay error, así que establecemos el estado de error en falso
             if (tamaño && validChars === userInput) {
                 event.target.classList.add('input-success');
+                SonidoCorecto();
                 // Remover la clase después de un tiempo para que el efecto se repita
                 setTimeout(() => {
                     event.target.classList.remove('input-success');
@@ -190,6 +197,7 @@ function Anagrama(props) {
 
             } else if (tamaño) {
                 event.target.classList.add('error-animation');
+                SonidoIncorecto();
                 setTimeout(() => {
                     event.target.classList.remove('error-animation');
                     event.target.value = "";
@@ -210,7 +218,7 @@ function Anagrama(props) {
     return (
         <div className="contenedorAcronimo">
             <div>
-                {!luckimg ? (
+                {luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>
                         {props.palabra}
                     </h4>

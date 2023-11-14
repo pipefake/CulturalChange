@@ -59,7 +59,7 @@ function App() {
             <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={3} />} />
-            <Route
+            <Route  
               path="/juego/interprete"
               element={<Minijuego historia={2}></Minijuego>}
             />

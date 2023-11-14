@@ -129,7 +129,7 @@ function Bloqueo(props) {
           userDataA.finalizadaTarea == true
         ) {
           setTimeout(() => {
-            navigate("/FeedbackPositivo");
+            navigate("/ganan");
           }, 3000); // Espera 5 segundos (5000 ms) antes de redirigir
         }
       }, [userDataG, userDataG, userDataG, userDataG]);

@@ -56,10 +56,10 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-            <Route path="/juego/guia" element={<Mapa historia={3} />} />
+            <Route path="/juego/guia" element={<Mapa historia={1} />} />
             <Route
               path="/juego/interprete"
-              element={<Minijuego historia={2}></Minijuego>}
+              element={<Minijuego historia={1}></Minijuego>}
             />
 
             <Route path="/pierden" element={<FeedbackNegativo />} />
@@ -74,9 +74,9 @@ function App() {
 
             <Route path="/revisarCelular" element={<RevisarCelular />} />
 
-            <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
+            <Route path="/fraseMuseo" element={<FraseMuseo historia={1} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
-            <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
+            <Route path="/gananMuseo" element={<GananMuseo historia={1} />} />
             <Route path="/museoTabla" element={<MuseoTabla />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
             <Route path="/tematicaMuseo" element={<TematicaMuseo />} />

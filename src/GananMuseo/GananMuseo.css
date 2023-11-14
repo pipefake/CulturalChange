@@ -1,33 +1,33 @@
-.contGanan{
-    flex-direction: column;
-    align-items: center;
-    background: #FAF1DB;
-    height: 729px;
-    width: 100%;
-    justify-content: center;
-    display: flex;
+.contGanan {
+  flex-direction: column;
+  align-items: center;
+  background: #faf1db;
+  height: 1024px;
+  width: 100%;
+  justify-content: center;
+  display: flex;
 }
-.contGanan>h1{
-    color: #432B18;
-text-align: center;
-font-family: ABeeZee;
-font-size: 128px;
-font-style: normal;
-font-weight: bolder;
-line-height: 130%; /* 166.4px */
-letter-spacing: -1.28px;
-margin: 0;
+.contGanan > h1 {
+  color: #432b18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 128px;
+  font-style: normal;
+  font-weight: bolder;
+  line-height: 130%; /* 166.4px */
+  letter-spacing: -1.28px;
+  margin: 0;
 }
-.contGanan>p{
-    color: #432B18;
-text-align: center;
-font-family: ABeeZee;
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: 111%; /* 39.96px */
-letter-spacing: -0.36px;
+.contGanan > p {
+  color: #432b18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 111%; /* 39.96px */
+  letter-spacing: -0.36px;
 }
-.divsimbolos>img{
-    margin: 42px 1px;
+.divsimbolos > img {
+  margin: 42px 1px;
 }

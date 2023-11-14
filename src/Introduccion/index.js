@@ -61,6 +61,17 @@ function Introduccion() {
     };
 
     const updateRol = async (newRol) => {
+        if (newRol == "Antropólogo") {
+            localStorage.setItem("roldirecto", "antropologo");
+        } else if (newRol == "Intérprete") {
+            localStorage.setItem("roldirecto", "interprete");
+        } else if (newRol == "Huaquero") {
+            localStorage.setItem("roldirecto", "huaquero");
+        } else if (newRol == "Guía") {
+            localStorage.setItem("roldirecto", "guia");
+        }
+
+
 
         console.log(userData._id);
         console.log('UserData before axios call:', userData);

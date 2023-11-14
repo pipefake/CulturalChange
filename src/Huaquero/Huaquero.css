@@ -1,0 +1,44 @@
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  }
+  .image-button.active {
+    transform: scale(0.8); /* Puedes ajustar el valor según sea necesario */
+    transition: transform 0.2s ease; /* Agrega una transición suave */
+}
+
+.margen{
+  margin-top: 80px;
+}
+
+.error-animatin {
+  animation: shake 0.3s ease-in-out 5 alternate;
+}
+
+/* Definición de la animación de temblor */
+@keyframes shake {
+  0%, 100% {
+      transform: translateX(0);
+  }
+  25%, 75% {
+      transform: translateX(-10px);
+  }
+  50% {
+      transform: translateX(10px);
+  }
+}
+  .image-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .image-button img {
+    width: 75px;
+    height: 77px;
+    margin: 1px;
+  }
+  

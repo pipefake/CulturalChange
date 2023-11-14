@@ -19,7 +19,8 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
-import { FeedbackNegativo } from "./Pierde";
+import { FeedbackPositivo } from "./Ganan";
+import { FeedbackNegativo } from "./Pierden";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
@@ -30,6 +31,9 @@ import { TestTimeOut } from "./testTimeOut";
 import { TestFinalizada } from "./TestFinalizada/index.js";
 import { MuseoTabla } from "./MuseoTabla";
 import { TablaMuseoMejorT } from "./TabaMuseoMejorT";
+import { Huaquero } from "./Huaquero";
+import { TematicaMuseo } from "./TematicaMuseo";
+import { TematicaMuseo2 } from "./TematicaMuseo2";
 
 function App() {
   return (
@@ -54,19 +58,20 @@ function App() {
             <Route path="/rolesMuseo" element={<RolesMuseo />} />
             <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
-            <Route path="/juego/guia" element={<Mapa historia={4} />} />
-            <Route
+            <Route path="/juego/guia" element={<Mapa historia={3} />} />
+            <Route  
               path="/juego/interprete"
-              element={<Minijuego historia={1}></Minijuego>}
+              element={<Minijuego historia={2}></Minijuego>}
             />
-            <Route path="/symbolsPage" element={<SymbolsPage />} />
-            <Route path="/pierde" element={<FeedbackNegativo />} />
+
+            <Route path="/pierden" element={<FeedbackNegativo />} />
+            <Route path="/ganan" element={<FeedbackPositivo />} />
 
             <Route
               path="/juego/antropologo"
               element={<Bloqueo historia={1}></Bloqueo>}
             />
-            <Route path="/juego/Huaquero" element={<JuegoHuaquero />} />
+            <Route path="/juego/huaquero" element={<Huaquero historia={1} />} />
             <Route path="/estadoMuseo" element={<EstadoMuseo />} />
 
             <Route path="/revisarCelular" element={<RevisarCelular />} />
@@ -76,6 +81,8 @@ function App() {
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
             <Route path="/museoTabla" element={<MuseoTabla />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
+            <Route path="/tematicaMuseo" element={<TematicaMuseo />} />
+            <Route path="/tematicaMuseo2" element={<TematicaMuseo2 />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

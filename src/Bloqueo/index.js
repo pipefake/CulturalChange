@@ -6,21 +6,179 @@ import { Header } from "../Header";
 import useSound from 'use-sound';
 import SonidoenCorecto from './audio/sonidoCorrecto.mp3';
 import SonidoenIncorecto from './audio/sonidoIncorrecto.mp3';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Bloqueo(props) {
 
+    const navigate = useNavigate();
 
     const historia = props.historia;
 
-    const [encontrados, setEncontrados] = useState([true, false, false, false]);
+    const [encontrados, setEncontrados] = useState([false, false, false, false]);
 
     const [anagramas, setAnagramas] = useState([]);
 
-    const [descifrados, setDescifrado1] = useState([true, true, true, true]);
+    const [descifrados, setDescifrado1] = useState([false, false, false, false]);
 
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
+    const [activeRoomCode, setActiveRoomCode] = useState("");
+
+    const [userData, setUserData] = useState({
+        _id: "",
+        name: "",
+        identification: "",
+        email: "",
+        rol: "",
+        finalizadaTarea: "",
+        tipoUsuario: "",
+      });
+    
+      const [userDataG, setUserDataG] = useState({
+        _id: "",
+        name: "",
+        identification: "",
+        email: "",
+        rol: "",
+        finalizadaTarea: "",
+        tipoUsuario: "",
+      });
+    
+      const [userDataH, setUserDataH] = useState({
+        _id: "",
+        name: "",
+        identification: "",
+        email: "",
+        rol: "",
+        finalizadaTarea: "",
+        tipoUsuario: "",
+      });
+    
+      const [userDataI, setUserDataI] = useState({
+        _id: "",
+        name: "",
+        identification: "",
+        email: "",
+        rol: "",
+        finalizadaTarea: "",
+        tipoUsuario: "",
+      });
+      const [userDataA, setUserDataA] = useState({
+        _id: "",
+        name: "",
+        identification: "",
+        email: "",
+        rol: "",
+        finalizadaTarea: "",
+        tipoUsuario: "",
+      });
+    
+      useEffect(() => {
+        let intervalId;
+    
+        const fetchData = async () => {
+          try {
+            const data = await getCurrentRoom();
+            if (data) {
+              setActiveRoomCode(data);
+              console.log("Room data set:", data);
+    
+              // Start the interval only after the activeRoomCode has been set.
+              intervalId = setInterval(async () => {
+                const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
+    
+                // Clear the interval if 4 users are found
+                if (numOfUsers >= 5) clearInterval(intervalId);
+              }, 3000);
+            } else {
+              console.error("No room data received");
+            }
+          } catch (error) {
+            console.error("Error fetching room data:", error);
+          }
+        };
+    
+        fetchData();
+    
+        // Clear the interval when the component is unmounted.
+        return () => clearInterval(intervalId);
+      }, []);
+    
+      const getCurrentRoom = async () => {
+        try {
+          const response = await axios.get("/roomCode");
+          const currentRoomArray = response.data;
+    
+          if (currentRoomArray && currentRoomArray.length > 0) {
+            const currentRoomCode = currentRoomArray[0].code;
+            return currentRoomCode; // returns only the room code string
+          } else {
+            console.error("Room not found");
+          }
+        } catch (error) {
+          console.error("Error fetching room:", error);
+        }
+      };
+    
+      useEffect(() => {
+        if (
+          userDataG.finalizadaTarea == true &&
+          userDataH.finalizadaTarea == true &&
+          userDataI.finalizadaTarea == true &&
+          userDataA.finalizadaTarea == true
+        ) {
+          setTimeout(() => {
+            navigate("/ganan");
+          }, 3000); // Espera 5 segundos (5000 ms) antes de redirigir
+        }
+      }, [userDataG, userDataG, userDataG, userDataG]);
+    
+      const findNFilterUsers = async (roomCode) => {
+        try {
+          const response = await axios.get("/users");
+          const users = response.data;
+          const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
+    
+          if (matchedUsers && matchedUsers.length > 0) {
+            console.log("Found users: ");
+            matchedUsers.forEach((user) => {
+              console.log(
+                "Name:",
+                user.name,
+                "Room Code:",
+                user.codigoSala,
+                "User Role: ",
+                user.rol
+              );
+    
+              // Check user's role, update state, and set name accordingly
+              switch (user.rol) {
+                case "Guía":
+                  setUserDataG(user);
+                  break;
+                case "Huaquero":
+                  setUserDataH(user);
+                  break;
+                case "Intérprete":
+                  setUserDataI(user);
+                  break;
+                case "Antropólogo":
+                  setUserDataA(user);
+                  break;
+                default:
+                  console.error("Unknown user role:", user.rol);
+              }
+            });
+          } else {
+            console.log("No users found with room code", roomCode);
+          }
+    
+          return matchedUsers.length;
+        } catch (error) {
+          console.error("Error fetching and filtering users:", error);
+        }
+      };
 
     const fetchSymbols = async () => {
         try {
@@ -79,7 +237,7 @@ function Bloqueo(props) {
     }, []);
 
     return (
-        <>
+        <><Header></Header>
             <div className="info_juegoAntropologo">
                 <h1 className="info_juegoAntropologoTitulo">Descifra las palabras</h1>
                 <p className="centrarParrafo">
@@ -217,6 +375,7 @@ function Anagrama(props) {
 
     return (
         <div className="contenedorAcronimo">
+
             <div>
                 {luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>

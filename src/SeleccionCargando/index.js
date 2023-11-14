@@ -18,10 +18,9 @@ import logoAntropologoBN from './logos/logoAntropologoBN.png';
 import ready from './listo.png';
 
 function SeleccionCargando() {
+    const selectedRoleData = localStorage.getItem("roldirecto");
 
-    const { slug } = useParams();
-    const blogpost = blogdata.find(post => post.slug === slug);
-    const rol = "interprete";
+    const rol = selectedRoleData;
     console.log(rol);
     const navigate = useNavigate();
 
@@ -130,6 +129,7 @@ function SeleccionCargando() {
 
     const redirectGame = (e) => {
         navigate(enlace);
+        console.log(rol);
     }
 
     const enlace = (`/juego/${rol}`);

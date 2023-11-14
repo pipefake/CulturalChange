@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
-
 import Board from "./Board/Board.js";
 import { Link } from "react-router-dom";
 import { Header } from "../Header";
@@ -50,28 +48,24 @@ import gananSonido from './audios/sonido.exito.pares2.mp3';
 
 import { useMyContext } from "../SeleccionCargando/MyContext";
 import { Traductor } from "./index.js";
-
 import off from "./switch/off.png";
 import { simbolos } from "../rolesdata.js";
-
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
 import { TablaPuntuacion } from "../TablaPuntuacion/index.js";
-
-// Agrega más imágenes según la cantidad de elementos en tu array original
+import { useNavigate } from "react-router-dom";
 
 const Minijuego = (props) => {
-  const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
-  const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
-  const [animating, setAnimating] = React.useState(false);
-  const [btnSlide, setBtnSlide] = React.useState(false);
+  const navigate = useNavigate();
 
-  const [encontrados, setEncontrados] = useState([true, false, false, false]);
+  const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([]);
+  const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
+  const [animating, setAnimating] = useState(false);
+  const [btnSlide, setBtnSlide] = useState(false);
+  const [encontrados, setEncontrados] = useState([false, false, false, false]);
 
   const [symbols, setSymbols] = useState([]);
-
-  const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
-
+  const [imageList, setImageList] = useState([]);
   const [esinterpretado1, setEsInterpretado1] = useState(false);
   const [esinterpretado2, setEsInterpretado2] = useState(false);
   const [esinterpretado3, setEsInterpretado3] = useState(false);
@@ -82,6 +76,162 @@ const Minijuego = (props) => {
   const [secondModalClosed, setSecondModalClosed] = useState(false);
   const [showThirdModal, setShowThirdModal] = useState(false);
   const [thirdModalClosed, setThirdModalClosed] = useState(false);
+  const [activeRoomCode, setActiveRoomCode] = useState("");
+
+  const [userData, setUserData] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  const [userDataG, setUserDataG] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  const [userDataH, setUserDataH] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  const [userDataI, setUserDataI] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+  const [userDataA, setUserDataA] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  useEffect(() => {
+    let intervalId;
+
+    const fetchData = async () => {
+      try {
+        const data = await getCurrentRoom();
+        if (data) {
+          setActiveRoomCode(data);
+          console.log("Room data set:", data);
+
+          // Start the interval only after the activeRoomCode has been set.
+          intervalId = setInterval(async () => {
+            const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
+
+            // Clear the interval if 4 users are found
+            if (numOfUsers >= 5) clearInterval(intervalId);
+          }, 3000);
+        } else {
+          console.error("No room data received");
+        }
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+      }
+    };
+
+    fetchData();
+
+    // Clear the interval when the component is unmounted.
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const getCurrentRoom = async () => {
+    try {
+      const response = await axios.get("/roomCode");
+      const currentRoomArray = response.data;
+
+      if (currentRoomArray && currentRoomArray.length > 0) {
+        const currentRoomCode = currentRoomArray[0].code;
+        return currentRoomCode; // returns only the room code string
+      } else {
+        console.error("Room not found");
+      }
+    } catch (error) {
+      console.error("Error fetching room:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      userDataG.finalizadaTarea == true &&
+      userDataH.finalizadaTarea == true &&
+      userDataI.finalizadaTarea == true &&
+      userDataA.finalizadaTarea == true
+    ) {
+      setTimeout(() => {
+        navigate("/ganan");
+      }, 3000); // Espera 5 segundos (5000 ms) antes de redirigir
+    }
+  }, [userDataG, userDataG, userDataG, userDataG]);
+
+  const findNFilterUsers = async (roomCode) => {
+    try {
+      const response = await axios.get("/users");
+      const users = response.data;
+      const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
+
+      if (matchedUsers && matchedUsers.length > 0) {
+        console.log("Found users: ");
+        matchedUsers.forEach((user) => {
+          console.log(
+            "Name:",
+            user.name,
+            "Room Code:",
+            user.codigoSala,
+            "User Role: ",
+            user.rol
+          );
+
+          // Check user's role, update state, and set name accordingly
+          switch (user.rol) {
+            case "Guía":
+              setUserDataG(user);
+              break;
+            case "Huaquero":
+              setUserDataH(user);
+              break;
+            case "Intérprete":
+              setUserDataI(user);
+              break;
+            case "Antropólogo":
+              setUserDataA(user);
+              break;
+            default:
+              console.error("Unknown user role:", user.rol);
+          }
+        });
+      } else {
+        console.log("No users found with room code", roomCode);
+      }
+
+      return matchedUsers.length;
+    } catch (error) {
+      console.error("Error fetching and filtering users:", error);
+    }
+  };
 
 
   useEffect(() => {
@@ -118,17 +268,19 @@ const Minijuego = (props) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchSymbols();
-      console.log(encontrados)
-    }, 10000); // Check every 10 seconds
 
-    return () => clearInterval(intervalId); // Clear the interval on unmount
+      console.log(encontrados);
+    }, 10000);
+
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("/roomCode"); // Replace with the correct API endpoint
-      console.log("Full Response:", response.data); // Log entire response
-      const symbols = response.data[0].huaqueroSymbols; // Assuming the symbols are stored in an array inside the response
+      const response = await axios.get("/roomCode");
+      console.log("Full Response:", response.data);
+      const symbols = response.data[0].huaqueroSymbols;
       const newEncontrados = [false, false, false, false];
       symbols.forEach((symbol, index) => {
         if (symbol.found) {
@@ -138,12 +290,11 @@ const Minijuego = (props) => {
       setEncontrados(newEncontrados);
     } catch (error) {
       console.error("Error fetching symbols:", error);
-      return [];
     }
   };
 
   useEffect(() => {
-    buscarUbicaciones(props.historia); // Update imageList based on props.historia
+    buscarUbicaciones(props.historia);
   }, [props.historia]);
 
   function buscarUbicaciones(aux) {
@@ -158,7 +309,7 @@ const Minijuego = (props) => {
         simbolo5,
         simbolo6,
         simbolo7,
-        simbolo8 /* Add more images */,
+        simbolo8,
       ];
     } else if (aux === 2) {
       newImageList = [
@@ -208,7 +359,7 @@ const Minijuego = (props) => {
         flipped: false,
       }))
     );
-  }, [imageList]); // Update shuffledMemoBlocks when imageList changes
+  }, [imageList]);
 
   const shuffleArray = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -221,6 +372,7 @@ const Minijuego = (props) => {
   const cambiarComponenteInterprete = () => {
     setBtnSlide(!btnSlide);
   };
+
   const [anagramas, setAnagramas] = useState([]);
 
   useEffect(() => {
@@ -246,25 +398,20 @@ const Minijuego = (props) => {
 
     setAnagramas(nuevosAnagramas);
   }
+
   const cambiarEstados = (positionInImageList) => {
-    if (positionInImageList < 4) {
-      switch (positionInImageList) {
-        case 0:
-          setEsInterpretado1(true);
-          break;
-        case 1:
-          setEsInterpretado2(true);
-          break;
-        case 2:
-          setEsInterpretado3(true);
-          break;
-        case 3:
-          setEsInterpretado4(true);
-          break;
-        default:
-          break;
-      }
+    let aux;
+
+    if (positionInImageList === 0) {
+      aux = esinterpretado1;
+    } else if (positionInImageList === 1) {
+      aux = esinterpretado2;
+    } else if (positionInImageList === 2) {
+      aux = esinterpretado3;
+    } else if (positionInImageList === 3) {
+      aux = esinterpretado4;
     }
+    return aux;
   };
 
   const handleMemoClick = (memoBlock) => {
@@ -364,14 +511,17 @@ const Minijuego = (props) => {
     return aux;
   };
 
+
   const [audio] = useState(new Audio('ruta_del_sonido.mp3')); // Reemplaza 'ruta_del_sonido.mp3' con la ruta correcta de tu archivo de sonido
 
   const [playSound] = useSound(tap);
   const [sonidoPierden] = useSound(pierdenSonido);
   const [sonidoGanan] = useSound(gananSonido);
 
+
   return (
     <>
+      <Header></Header>
       {showModal && (
         <div className="modal">
           <div className="modal-content">
@@ -391,7 +541,9 @@ const Minijuego = (props) => {
             <span className="close" onClick={() => setShowSecondModal(false)}>
               &times;
             </span>
+
             <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
+
           </div>
         </div>
       )}
@@ -401,7 +553,9 @@ const Minijuego = (props) => {
             <span className="close" onClick={() => setShowThirdModal(false)}>
               &times;
             </span>
+
             <p>Este símbolo aun no ha sido encontrado por el huaquero, tendrás que esperar</p>
+
           </div>
         </div>
       )}
@@ -422,7 +576,9 @@ const Minijuego = (props) => {
               <img src={on} alt="logo de Guia" />
             )}
           </button>
+
           <button className="ContTraduccion sonido" onClick={playSound}>
+
             {btnSlide ? (
               anagramas.map((simbolo, index) => (
                 <Traductor
@@ -440,7 +596,9 @@ const Minijuego = (props) => {
                 handleMemoClick={handleMemoClick}
               />
             )}
+
           </button>
+
         </div>
       </div>
 

@@ -27,7 +27,7 @@ function Cronometro() {
         console.log(tiempoActual);
         setTimeout(() => {
             setLostModalIsOpen(true); // Abre el modal de "Perdiste" después de un tiempo
-        }, 6000);
+        }, 600000);
     }, [setTiempoInicial]);
 
     const handleRatingChange = (newRating) => {
@@ -42,12 +42,12 @@ function Cronometro() {
         // Aquí puedes enviar la calificación (rating) y el comentario (comment) al servidor o realizar otras acciones necesarias.
         // Luego, cierra el modal actual.
 
-        navigate("/pierde");
+        navigate("/pierden");
     };
 
     return (
         <>
-            <img className="animacionCronometro" src={cronometro} alt="Cronometro" />
+
             {/* Modal para "Perdiste" */}
             <Modal
                 isOpen={lostModalIsOpen}

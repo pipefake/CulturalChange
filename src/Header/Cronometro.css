@@ -59,6 +59,69 @@
   width: 60px;
   height: 72px;
 }
+
+@keyframes animationCronometroCelular {
+  0% {
+    background-image: url(./Reloj/Reloj1.png);
+  }
+
+  9.9% {
+    background-image: url(./Reloj/Reloj2.png);
+  }
+
+  19.8% {
+    background-image: url(./Reloj/Reloj3.png);
+  }
+  29.7% {
+    background-image: url(./Reloj/Reloj4.png);
+  }
+  39.6% {
+    background-image: url(./Reloj/Reloj5.png);
+  }
+  50% {
+    background-image: url(./Reloj/Reloj6.png);
+  }
+  55% {
+    background-image: url(./Reloj/Reloj7.png);
+  }
+  80% {
+    background-image: url(./Reloj/Reloj8.png);
+  }
+  90% {
+    background-image: url(./Reloj/Reloj9.png);
+  }
+  99.5% {
+    background-image: url(./Reloj/Reloj10.png);
+  }
+  99.6% {
+    background-image: url(./Reloj/Reloj11.png);
+  }
+  99.7% {
+    background-image: url(./Reloj/Reloj12.png);
+  }
+  99.8% {
+    background-image: url(./Reloj/Reloj13.png);
+  }
+  99.9% {
+    background-image: url(./Reloj/Reloj14.png);
+  }
+  100% {
+    background-image: url(./Reloj/Reloj15.png);
+  }
+}
+.animacionCronometroCelular {
+  animation-name: animationCronometroCelular;
+    animation-duration: 616s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: ease;
+    z-index: 5;
+    position: absolute;
+    top: 24px;
+    width: 18%;
+    background-size: cover;
+    right: 11px;
+}
 .informacionCelular>p{
   --rem: 16;
   -webkit-font-smoothing: antialiased;

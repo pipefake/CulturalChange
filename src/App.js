@@ -63,7 +63,6 @@ function App() {
               path="/juego/interprete"
               element={<Minijuego historia={2}></Minijuego>}
             />
-            <Route path="/symbolsPage" element={<SymbolsPage />} />
 
             <Route path="/pierden" element={<FeedbackNegativo />} />
             <Route path="/ganan" element={<FeedbackPositivo />} />

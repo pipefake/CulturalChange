@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import "./ganan.css";
 import museolili from "../InputCodigo/resources/museolili.png";
+import { Link, useNavigate } from "react-router-dom";
 
 function FeedbackPositivo() {
+
+    const navigate = useNavigate();
+    
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     const [ganan, setGanan] = useState(true);
@@ -18,8 +22,7 @@ function FeedbackPositivo() {
     };
 
     const handleSubmit = () => {
-        // Aquí puedes agregar la lógica para enviar la calificación y el comentario.
-        // Por ejemplo, puedes realizar una llamada a una API.
+        navigate("/");
     };
 
     return (

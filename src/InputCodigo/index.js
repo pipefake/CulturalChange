@@ -79,7 +79,7 @@ function InputCodigo() {
 
   const fetchRoomCode = async () => {
     try {
-      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/roomCode");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
       console.log("Full Response:", response.data); // Log entire response
       if (response.data.length > 0 && response.data[0].code) {
         setRoomCode(response.data[0].code); // Set the room code state
@@ -220,7 +220,7 @@ function InputCodigo() {
         try {
           console.log("Conditions met. Attempting to send data...");
           const response = await axios.post(
-            "http://testdeploy-production-9d97.up.railway.app/users",
+            "https://testdeploy-production-9d97.up.railway.app/users",
             {
               name: userData.name,
               identification: userData.identification,

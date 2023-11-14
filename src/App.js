@@ -19,7 +19,8 @@ import { Traductor } from "./Traductor";
 import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
-import { FeedbackNegativo } from "./Pierde";
+import { FeedbackPositivo } from "./Ganan";
+import { FeedbackNegativo } from "./Pierden"
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
@@ -63,7 +64,9 @@ function App() {
               element={<Minijuego historia={2}></Minijuego>}
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
-            <Route path="/pierde" element={<FeedbackNegativo />} />
+
+            <Route path="/pierden" element={<FeedbackNegativo />} />
+            <Route path="/ganan" element={<FeedbackPositivo />} />
 
             <Route
               path="/juego/antropologo"
@@ -77,7 +80,7 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
-            <Route path="/museoTabla" element={<MuseoTabla />} />
+            <Route path="/museoTabla" element={<TablaPuntuacion />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
             <Route path="/tematicaMuseo" element={<TematicaMuseo />} />
             <Route path="/tematicaMuseo2" element={<TematicaMuseo2 />} />

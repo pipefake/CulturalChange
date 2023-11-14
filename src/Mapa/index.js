@@ -85,11 +85,11 @@ function Mapa(props) {
     if (historia === 1) {
       lugares = [1, 2, 3, 4];
     } else if (historia === 2) {
-      lugares = [1, 4, 3, 5];
+      lugares = [1, 4, 2, 5];
     } else if (historia === 3) {
       lugares = [3, 5, 2, 4];
     } else if (historia === 4) {
-      lugares = [4, 1, 2, 3];
+      lugares = [5, 1, 2, 3];
     } else if (historia === 5) {
       lugares = [3, 4, 1, 5];
     }
@@ -168,10 +168,11 @@ function Mapa(props) {
       }
     }
   };
-  
+
   return (
-    <>
+    <><Header></Header>
       <div className="position_map">
+
         <h2 className="titulosGuia">Símbolos localizados</h2>
         <div className="fondoAmarillo">
           <div className="contenedorImagen">

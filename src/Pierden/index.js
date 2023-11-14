@@ -24,17 +24,12 @@ function FeedbackNegativo() {
 
     return (
         <div className='contenedorGanan'>
-            {ganan ? (
-                <div className='contenedorExito'>
-                    <h1>¡Felicitaciones la misión ha sido completada con éxito!</h1>
-                    <p>¡Viajeros!, han encontrado la historia de los pueblos amerindios. ¡Los han salvado del olvido!</p>
-                </div>
-            ) : (
-                <div className='contenedorExito'>
-                    <h1>La misión no ha sido completada con éxito</h1>
-                    <p>Espera n minutos para participar nuevamente</p>
-                </div>
-            )}
+
+            <div className='contenedorExito'>
+                <h1>La misión no ha sido completada con éxito</h1>
+                <p>Espera n minutos para participar nuevamente</p>
+            </div>
+
             <form className='formularioFeedback'>
                 <h2>Califica tu experiencia</h2>
                 <StarRatings

@@ -13,11 +13,11 @@ function Bloqueo(props) {
 
     const historia = props.historia;
 
-    const [encontrados, setEncontrados] = useState([true, false, false, false]);
+    const [encontrados, setEncontrados] = useState([false, false, false, false]);
 
     const [anagramas, setAnagramas] = useState([]);
 
-    const [descifrados, setDescifrado1] = useState([true, true, true, true]);
+    const [descifrados, setDescifrado1] = useState([false, false, false, false]);
 
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
@@ -79,7 +79,7 @@ function Bloqueo(props) {
     }, []);
 
     return (
-        <>
+        <><Header></Header>
             <div className="info_juegoAntropologo">
                 <h1 className="info_juegoAntropologoTitulo">Descifra las palabras</h1>
                 <p className="centrarParrafo">
@@ -217,6 +217,7 @@ function Anagrama(props) {
 
     return (
         <div className="contenedorAcronimo">
+
             <div>
                 {luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>

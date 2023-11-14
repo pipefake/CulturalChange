@@ -86,7 +86,7 @@ function FraseMuseo({ historia }) {
   const [guia, setGuia] = useState(false);
   const [huaquero, setHuaquero] = useState(false);
   const [interprete, setInterprete] = useState(false);
-  const [antropologo, setAntropologo] = useState(true); // modificar este estado cuando el antropologo le unda continuar en su pantalla
+  const [antropologo, setAntropologo] = useState(false); // modificar este estado cuando el antropologo le unda continuar en su pantalla
 
   const [availableWords, setAvailableWords] = useState([]);
   const [pair1Matched, setPair1Matched] = useState(false);
@@ -100,12 +100,6 @@ function FraseMuseo({ historia }) {
   const [draggedWordsInDropSpace, setDraggedWordsInDropSpace] = useState(0);
 
   const [activeRoomCode, setActiveRoomCode] = useState("");
-  const [antropologoName, setAntropologoName] = useState("");
-
-  const [guiaExist, setGuiaExist] = useState(false);
-  const [huaqueroExist, setHuaqueroExist] = useState(false);
-  const [interpreteExist, setInterpreteExist] = useState(false);
-  const [antropologoExist, setAntropologoExist] = useState(false);
 
   const [userDataG, setUserDataG] = useState({
     _id: "",
@@ -228,7 +222,6 @@ function FraseMuseo({ historia }) {
   };
 
   const findNFilterUsers = async (roomCode) => {
-    console.log("Looking for users with roomCode: ", roomCode);
     try {
       const response = await axios.get("/users");
       const users = response.data;
@@ -261,7 +254,6 @@ function FraseMuseo({ historia }) {
               setUserDataI(user);
               break;
             case "Antropólogo":
-              setAntropologo(true);
               setUserDataA(user);
               console.log("El usuario antropologo existe.");
               if (user.finalizadaTarea === true) {

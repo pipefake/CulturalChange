@@ -207,7 +207,7 @@ function FraseMuseo({ historia }) {
 
   const getCurrentRoom = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
       const currentRoomArray = response.data;
 
       if (currentRoomArray && currentRoomArray.length > 0) {
@@ -223,7 +223,7 @@ function FraseMuseo({ historia }) {
 
   const findNFilterUsers = async (roomCode) => {
     try {
-      const response = await axios.get("/users");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
       const users = response.data;
       const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
@@ -281,7 +281,7 @@ function FraseMuseo({ historia }) {
         if (guia) {
           console.log(userDataG)
           const response = await axios.patch(
-            "http://localhost:3500/users",
+            "https://testdeploy-production-9d97.up.railway.app/users",
             {
               _id: userDataG._id,
               name: userDataG.name,
@@ -303,7 +303,7 @@ function FraseMuseo({ historia }) {
 
         if (huaquero) {
           const response = await axios.patch(
-            "http://localhost:3500/users",
+            "https://testdeploy-production-9d97.up.railway.app/users",
             {
               _id: userDataH._id,
               name: userDataH.name,
@@ -324,7 +324,7 @@ function FraseMuseo({ historia }) {
 
         if (interprete) {
           const response = await axios.patch(
-            "http://localhost:3500/users",
+            "https://testdeploy-production-9d97.up.railway.app/users",
             {
               _id: userDataI._id,
               name: userDataI.name,

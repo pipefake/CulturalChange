@@ -160,7 +160,7 @@ const Minijuego = (props) => {
 
   const getCurrentRoom = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
       const currentRoomArray = response.data;
 
       if (currentRoomArray && currentRoomArray.length > 0) {
@@ -189,7 +189,7 @@ const Minijuego = (props) => {
 
   const findNFilterUsers = async (roomCode) => {
     try {
-      const response = await axios.get("/users");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
       const users = response.data;
       const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
@@ -278,7 +278,7 @@ const Minijuego = (props) => {
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
       console.log("Full Response:", response.data);
       const symbols = response.data[0].huaqueroSymbols;
       const newEncontrados = [false, false, false, false];

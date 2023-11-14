@@ -47,9 +47,7 @@ function App() {
           <Routes>
             <Route path="/*" element={<p>no encontrado</p>} />
             <Route path="/" element={<InputCodigo />} />
-            <Route path="/testTimeOut" element={<TestTimeOut />} />
             <Route path="/introduccion" element={<Picker />} />
-            <Route path="/PruebaPrueba" element={<PruebaPrueba />} />
             <Route path="/museo" element={<PantallaMuseo />} />
             <Route path="/induccion" element={<Induccion />} />
             <Route path="/animacionMuseo" element={<AnimacionMuseo />} />
@@ -59,7 +57,7 @@ function App() {
             <Route path="/TestFinalizada" element={<TestFinalizada />} />
             <Route path="/seleccionCargando" element={<SeleccionCargando />} />
             <Route path="/juego/guia" element={<Mapa historia={3} />} />
-            <Route  
+            <Route
               path="/juego/interprete"
               element={<Minijuego historia={2}></Minijuego>}
             />

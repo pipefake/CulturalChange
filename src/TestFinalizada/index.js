@@ -52,7 +52,7 @@ function TestFinalizada() {
 
   const getCurrentRoom = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/roomCode");
       const currentRoomArray = response.data;
 
       if (currentRoomArray && currentRoomArray.length > 0) {
@@ -68,7 +68,7 @@ function TestFinalizada() {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get("/users"); // Adjusted the endpoint
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/users"); // Adjusted the endpoint
       const users = response.data;
       const user = users.find((u) => u.rol === "Antropólogo"); // Assuming each user object has an _id field
 
@@ -85,42 +85,42 @@ function TestFinalizada() {
   const findNFilterUsers = async (roomCode) => {
     console.log("Looking for users with roomCode: ", roomCode);
     try {
-        const response = await axios.get("/users");
-        const users = response.data;
-        const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/users");
+      const users = response.data;
+      const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
-        if (matchedUsers && matchedUsers.length > 0) {
-            console.log("Found users: ");
-            matchedUsers.forEach((user) => {
-                console.log(
-                    "Name:",
-                    user.name,
-                    "Room Code:",
-                    user.codigoSala,
-                    "User Role: ",
-                    user.rol
-                );
+      if (matchedUsers && matchedUsers.length > 0) {
+        console.log("Found users: ");
+        matchedUsers.forEach((user) => {
+          console.log(
+            "Name:",
+            user.name,
+            "Room Code:",
+            user.codigoSala,
+            "User Role: ",
+            user.rol
+          );
 
-                if (user.rol === "Antropólogo") {
-                    console.log("El usuario antropologo existe.")
-                    setAntropologo(true);
-                    setAntropologoName(user.name);
+          if (user.rol === "Antropólogo") {
+            console.log("El usuario antropologo existe.")
+            setAntropologo(true);
+            setAntropologoName(user.name);
 
-                    if (user.finalizadaTarea === true) {
-                        console.log(`El usuario ${user.name} ha terminado su tarea.`);
-                        navigate('/qrMuseo')
-                    }
-                }
-            });
-        } else {
-            console.log("No users found with room code", roomCode);
-        }
+            if (user.finalizadaTarea === true) {
+              console.log(`El usuario ${user.name} ha terminado su tarea.`);
+              navigate('/qrMuseo')
+            }
+          }
+        });
+      } else {
+        console.log("No users found with room code", roomCode);
+      }
 
-        return matchedUsers.length;
+      return matchedUsers.length;
     } catch (error) {
-        console.error("Error fetching and filtering users:", error);
+      console.error("Error fetching and filtering users:", error);
     }
-};
+  };
 
 
   return <h1>Página de espera de prueba</h1>;

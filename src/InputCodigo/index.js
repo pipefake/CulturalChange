@@ -182,7 +182,7 @@ function InputCodigo() {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|co)$/;
 
     if (!emailPattern.test(userData.email)) {
-      newErrors.email = "El email debe contener '@' y '.com' o '.co'.";
+      newErrors.email = "El email debe contener '@' y 'gmail.com'";
     }
 
     setErrorEmail(newErrors);

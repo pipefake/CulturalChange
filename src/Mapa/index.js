@@ -170,9 +170,9 @@ function Mapa(props) {
   };
 
   return (
-    <>
+    <><Header></Header>
       <div className="position_map">
-        <Header></Header>
+
         <h2 className="titulosGuia">Símbolos localizados</h2>
         <div className="fondoAmarillo">
           <div className="contenedorImagen">

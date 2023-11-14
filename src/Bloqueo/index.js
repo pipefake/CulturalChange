@@ -13,11 +13,11 @@ function Bloqueo(props) {
 
     const historia = props.historia;
 
-    const [encontrados, setEncontrados] = useState([true, false, false, false]);
+    const [encontrados, setEncontrados] = useState([false, false, false, false]);
 
     const [anagramas, setAnagramas] = useState([]);
 
-    const [descifrados, setDescifrado1] = useState([true, true, true, true]);
+    const [descifrados, setDescifrado1] = useState([false, false, false, false]);
 
     const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
     const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama

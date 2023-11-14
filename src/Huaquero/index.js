@@ -21,6 +21,7 @@ import simbolo17 from "../Traductor/simbolos/simbolo17.png";
 import simbolo18 from "../Traductor/simbolos/simbolo18.png";
 import simbolo19 from "../Traductor/simbolos/simbolo19.png";
 import simbolo20 from "../Traductor/simbolos/simbolo20.png";
+import { Header } from "../Header";
 
 function Huaquero(props) {
     const [buttonStates, setButtonStates] = useState(Array(20).fill(false));
@@ -109,7 +110,8 @@ function Huaquero(props) {
 
     return (
         <div>
-            <p className="parrafoInferior">
+            <Header></Header>
+            <p className="parrafoInferior margen">
                 Toca los símbolos, tendrás que tener cuidado; si los símbolos no coinciden con la historia perderás x cantidad de tiempo.
             </p>
             <div className="fondoAmarillo">

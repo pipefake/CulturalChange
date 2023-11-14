@@ -186,13 +186,12 @@ function Mapa(props) {
               </div>
             ) : (
               <div
-                className={`web ${
-                  (ubicacion === 1 && "animacionweb1") ||
+                className={`web ${(ubicacion === 1 && "animacionweb1") ||
                   (ubicacion === 2 && "animacionweb2") ||
                   (ubicacion === 3 && "animacionweb3") ||
                   (ubicacion === 4 && "animacionweb4") ||
                   (ubicacion === 5 && "animacionweb5")
-                }`}
+                  }`}
               >
                 <img src={pin} alt="Pin" />
               </div>

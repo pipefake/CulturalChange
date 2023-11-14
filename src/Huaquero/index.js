@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./Huaquero.css";
 import simbolo1 from "../Traductor/simbolos/simbolo1.png";
 import simbolo2 from "../Traductor/simbolos/simbolo2.png";
@@ -16,79 +17,166 @@ import simbolo13 from "../Traductor/simbolos/simbolo13.png";
 import simbolo14 from "../Traductor/simbolos/simbolo14.png";
 import simbolo15 from "../Traductor/simbolos/simbolo15.png";
 import simbolo16 from "../Traductor/simbolos/simbolo16.png";
+import simbolo17 from "../Traductor/simbolos/simbolo17.png";
+import simbolo18 from "../Traductor/simbolos/simbolo18.png";
+import simbolo19 from "../Traductor/simbolos/simbolo19.png";
+import simbolo20 from "../Traductor/simbolos/simbolo20.png";
 
 function Huaquero(props) {
-    const [buttonStates, setButtonStates] = useState(Array(16).fill(false));
-    const [simbolos, setSimbolos] = useState([]);
-
-    const handleButtonClick = (index) => {
-        const newButtonStates = [...buttonStates];
-        newButtonStates[index] = !newButtonStates[index];
-        setButtonStates(newButtonStates);
-    };
+    const [buttonStates, setButtonStates] = useState(Array(20).fill(false));
+    const [symbols, setSymbols] = useState([]);
+    const [roomCode, setRoomCode] = useState(""); // State to store the room code
 
     useEffect(() => {
-        buscarUbicaciones(props.historia);
-    }, [props.historia]);
+        const sendSymbols = async () => {
+            try {
+                await addSymbol("Symbol1");
+                await addSymbol("Symbol2");
+                await addSymbol("Symbol3");
+                await addSymbol("Symbol4");
+                await addSymbol("simbolo1");
+                await addSymbol("simbolo2");
+                await addSymbol("simbolo3");
+                await addSymbol("simbolo4");
 
-    function buscarUbicaciones(aux) {
-        let newImageList = [];
+                // After sending all symbols, fetch the room code and symbols
+                fetchRoomCode();
+                fetchSymbols();
+            } catch (error) {
+                console.error('Error sending symbols:', error);
+            }
+        };
 
-        if (aux === 1) {
-            newImageList = [
-                simbolo1,
-                simbolo2,
-                simbolo3,
-                simbolo4,
-            ];
-        } else if (aux === 2) {
-            newImageList = [
-                simbolo13,
-                simbolo14,
-                simbolo15,
-                simbolo16,
+        // Call the function to send symbols
+        sendSymbols();
+    }, []);
 
-            ];
-        } else if (aux === 3) {
-            newImageList = [
-                simbolo9,
-                simbolo10,
-                simbolo11,
-                simbolo12,
-
-            ];
-        } else if (aux === 4) {
-            newImageList = [
-                simbolo5,
-                simbolo6,
-                simbolo7,
-                simbolo8,
-
-            ];
+    const fetchRoomCode = async () => {
+        try {
+            const response = await axios.get("/roomCode");
+            console.log("Code: ", response.data[0].code); // Log entire response
+            if (response.data.length > 0 && response.data[0].code) {
+                setRoomCode(response.data[0].code); // Set the room code state
+            }
+        } catch (error) {
+            console.error("Error fetching room code:", error);
         }
+    };
 
-        setSimbolos([...newImageList]);
-    }
+    const addSymbol = async (symbolName) => {
+        try {
+            const response = await axios.post("/roomCode", {
+                huaqueroSymbols: {
+                    name: symbolName,
+                    found: false,
+                },
+            });
+            console.log(`${symbolName} posted successfully`);
+            setSymbols([...symbols, response.data]); // Update the symbols array with the newly added symbol
+        } catch (error) {
+            console.error(`Error posting ${symbolName}:`, error);
+        }
+    };
+
+    const fetchSymbols = async () => {
+        try {
+            const response = await axios.get("/roomCode");
+            setSymbols(response.data[0].huaqueroSymbols); // Assuming the symbols are stored in an array inside the response
+        } catch (error) {
+            console.error("Error fetching symbols:", error);
+        }
+    };
+
+    const updateSymbol = async (symbolName) => {
+        try {
+            const response = await axios.patch('/roomCode', { symbolName, found: true });
+            console.log(`Symbol ${symbolName} updated successfully`);
+        } catch (error) {
+            console.error(`Error updating symbol ${symbolName}:`, error);
+        }
+    };
+
+
+    const handleClick = (event) => {
+        // Verificar si userInput contiene caracteres no válidos
+        event.target.classList.add('error-animatin');
+        setTimeout(() => {
+            event.target.classList.remove('error-animatin');
+            // event.target.value = ""; // No es necesario para un botón
+        }, 600); // 0.5 segundos
+    };
+
 
     return (
         <div>
-
             <p className="parrafoInferior">
-                Toca los simbolos, tendrás que tener cuidado, si los símbolo no coinciden con la historia perderas x cantidad de tiempo.
+                Toca los símbolos, tendrás que tener cuidado; si los símbolos no coinciden con la historia perderás x cantidad de tiempo.
             </p>
             <div className="fondoAmarillo">
+                <div className="image-container">
+                    <button key={8} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(9)} alt={`Simbolo ${9}`} />
+                    </button>
+                    <button key={14} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(15)} alt={`Simbolo ${15}`} />
+                    </button>
+                    <button key={11} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(12)} alt={`Simbolo ${12}`} />
+                    </button>
+                    <button key={2} className="image-button" onClick={() => updateSymbol("Symbol1")}>
+                        <img src={getSymbolImage(3)} alt={`Simbolo ${3}`} />
+                    </button>
+                    <button key={10} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(11)} alt={`Simbolo ${11}`} />
+                    </button>
+                    <button key={5} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(6)} alt={`Simbolo ${6}`} />
+                    </button>
+                    <button key={19} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(20)} alt={`Simbolo ${20}`} />
+                    </button>
+                    <button key={4} className="image-button" onClick={handleClick} >
+                        <img src={getSymbolImage(5)} alt={`Simbolo ${5}`} />
+                    </button>
+                    <button key={0} className="image-button" onClick={() => updateSymbol("Symbol2")}>
+                        <img src={getSymbolImage(1)} alt={`Simbolo ${1}`} />
+                    </button>
 
-                <div className="image-container ">
-                    {Array.from({ length: 16 }, (_, index) => (
-                        <button
-                            key={index}
-                            className={`image-button ${buttonStates[index] ? "active" : ""}`}
-                            onClick={() => handleButtonClick(index)}
-                        >
-                            <img src={getSymbolImage(index + 1)} alt={`Simbolo ${index + 1}`} />
-                        </button>
-                    ))}
+                    <button key={13} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(14)} alt={`Simbolo ${14}`} />
+                    </button>
+                    <button key={3} className="image-button" onClick={() => updateSymbol("Symbol3")}>
+                        <img src={getSymbolImage(4)} alt={`Simbolo ${4}`} />
+                    </button>
+                    <button key={18} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(19)} alt={`Simbolo ${19}`} />
+                    </button>
+                    <button key={6} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(7)} alt={`Simbolo ${7}`} />
+                    </button>
+                    <button key={15} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(16)} alt={`Simbolo ${16}`} />
+                    </button>
+                    <button key={1} className="image-button" onClick={() => updateSymbol("Symbol4")}>
+                        <img src={getSymbolImage(2)} alt={`Simbolo ${2}`} />
+                    </button>
+                    <button key={17} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(18)} alt={`Simbolo ${18}`} />
+                    </button>
+                    <button key={7} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(8)} alt={`Simbolo ${8}`} />
+                    </button>
+                    <button key={16} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(17)} alt={`Simbolo ${17}`} />
+                    </button>
+                    <button key={9} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(10)} alt={`Simbolo ${10}`} />
+                    </button>
+                    <button key={12} className="image-button" onClick={handleClick}>
+                        <img src={getSymbolImage(13)} alt={`Simbolo ${13}`} />
+                    </button>
                 </div>
+
             </div>
         </div>
     );
@@ -128,6 +216,14 @@ const getSymbolImage = (symbolNumber) => {
             return simbolo15;
         case 16:
             return simbolo16;
+        case 17:
+            return simbolo17;
+        case 18:
+            return simbolo18;
+        case 19:
+            return simbolo19;
+        case 20:
+            return simbolo20;
         default:
             return null;
     }

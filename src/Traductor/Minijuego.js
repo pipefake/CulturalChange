@@ -40,20 +40,28 @@ import zacru from "./anagramas/zacru.png";
 import dosniso from "./anagramas/dosniso.png";
 import zaspie from "./anagramas/zaspie.png";
 import batosil from "./anagramas/batosil.png";
-import parejaCorrecta from "./audios/parejaCorrecta.mp3";
+
+import useSound from 'use-sound';
+import tap from './audios/sonidotab.mp3';
+import pierdenSonido from './audios/sonidoincorrecto.mp3';
+import gananSonido from './audios/sonido.exito.pares2.mp3';
+
 import { useMyContext } from "../SeleccionCargando/MyContext";
 import { Traductor } from "./index.js";
 import off from "./switch/off.png";
 import { simbolos } from "../rolesdata.js";
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
+import { TablaPuntuacion } from "../TablaPuntuacion/index.js";
 
 const Minijuego = (props) => {
+
   const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([]);
   const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
   const [animating, setAnimating] = useState(false);
   const [btnSlide, setBtnSlide] = useState(false);
   const [encontrados, setEncontrados] = useState([false, false, false, false]);
+
   const [symbols, setSymbols] = useState([]);
   const [imageList, setImageList] = useState([]);
   const [esinterpretado1, setEsInterpretado1] = useState(false);
@@ -67,6 +75,7 @@ const Minijuego = (props) => {
   const [showThirdModal, setShowThirdModal] = useState(false);
   const [thirdModalClosed, setThirdModalClosed] = useState(false);
 
+
   useEffect(() => {
     if (modalClosed) {
       setShowModal(false);
@@ -76,6 +85,7 @@ const Minijuego = (props) => {
   function closeModal() {
     setModalClosed(true);
   }
+
 
   function closeSecondModal() {
     setSecondModalClosed(true);
@@ -100,8 +110,10 @@ const Minijuego = (props) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchSymbols();
+
       console.log(encontrados);
     }, 10000);
+
 
     return () => clearInterval(intervalId);
   }, []);
@@ -225,6 +237,7 @@ const Minijuego = (props) => {
     } else {
       console.warn("Unhandled history case: ", historia);
     }
+
     setAnagramas(nuevosAnagramas);
   }
 
@@ -250,6 +263,8 @@ const Minijuego = (props) => {
     setShuffledMemoBlocks(shuffledMemoBlocksCopy);
     if (selectedMemoBlock === null) {
       setselectedMemoBlock(memoBlock);
+
+
     } else if (selectedMemoBlock.image === memoBlock.image) {
       console.log(
         `¡Las parejas coinciden! Son: ${JSON.stringify(
@@ -259,9 +274,11 @@ const Minijuego = (props) => {
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
       console.log(positionInImageList);
 
+
       if (positionInImageList < 4) {
         if (encontrados[positionInImageList]) {
           cambiarEstados(positionInImageList);
+          sonidoGanan();
         } else {
           setShowThirdModal(true);
           setShowSecondModal(false);
@@ -269,6 +286,7 @@ const Minijuego = (props) => {
       }
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
         setselectedMemoBlock(null);
+
       } else if (
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
@@ -285,28 +303,38 @@ const Minijuego = (props) => {
             setShuffledMemoBlocks(shuffledMemoBlocksCopy);
             setselectedMemoBlock(null);
             setAnimating(false);
+
+
           }, 1000);
         } else {
+
         }
         if (!imageList.slice(0, 4).includes(selectedMemoBlock.image)) {
           setShowSecondModal(true);
-        } else {
-          setselectedMemoBlock(null);
         }
       } else {
-        setAnimating(true);
-        setTimeout(() => {
-          shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
-          shuffledMemoBlocksCopy.splice(
-            selectedMemoBlock.index,
-            1,
-            selectedMemoBlock
-          );
-          setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-          setselectedMemoBlock(null);
-          setAnimating(false);
-        }, 1000);
+        setselectedMemoBlock(null);
+
       }
+
+
+
+    } else {
+
+      setAnimating(true);
+      setTimeout(() => {
+        shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+        shuffledMemoBlocksCopy.splice(
+          selectedMemoBlock.index,
+          1,
+          selectedMemoBlock
+        );
+        setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+        setselectedMemoBlock(null);
+        setAnimating(false);
+        sonidoPierden();
+
+      }, 1000);
     }
   };
 
@@ -324,6 +352,15 @@ const Minijuego = (props) => {
     }
     return aux;
   };
+
+
+  const [audio] = useState(new Audio('ruta_del_sonido.mp3')); // Reemplaza 'ruta_del_sonido.mp3' con la ruta correcta de tu archivo de sonido
+
+  const [playSound] = useSound(tap);
+  const [sonidoPierden] = useSound(pierdenSonido);
+  const [sonidoGanan] = useSound(gananSonido);
+
+
   return (
     <>
       {showModal && (
@@ -345,10 +382,9 @@ const Minijuego = (props) => {
             <span className="close" onClick={() => setShowSecondModal(false)}>
               &times;
             </span>
-            <p>
-              ¡Ups! Este símbolo no pertenece a la historia. Perderás x
-              minutos.
-            </p>
+
+            <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
+
           </div>
         </div>
       )}
@@ -358,10 +394,9 @@ const Minijuego = (props) => {
             <span className="close" onClick={() => setShowThirdModal(false)}>
               &times;
             </span>
-            <p>
-              Este símbolo aun no ha sido encontrado por el huaquero, tendrás
-              que esperar
-            </p>
+
+            <p>Este símbolo aun no ha sido encontrado por el huaquero, tendrás que esperar</p>
+
           </div>
         </div>
       )}
@@ -371,6 +406,7 @@ const Minijuego = (props) => {
       ></Contexto>
       <div className="fondoAmarillo">
         <div className="contentMinijuego">
+
           <button
             className="btnInterpreteSlide"
             onClick={cambiarComponenteInterprete}
@@ -381,7 +417,9 @@ const Minijuego = (props) => {
               <img src={on} alt="logo de Guia" />
             )}
           </button>
-          <div className="ContTraduccion">
+
+          <button className="ContTraduccion sonido" onClick={playSound}>
+
             {btnSlide ? (
               anagramas.map((simbolo, index) => (
                 <Traductor
@@ -399,7 +437,9 @@ const Minijuego = (props) => {
                 handleMemoClick={handleMemoClick}
               />
             )}
-          </div>
+
+          </button>
+
         </div>
       </div>
 
@@ -413,4 +453,5 @@ const Minijuego = (props) => {
     </>
   );
 };
+
 export { Minijuego };

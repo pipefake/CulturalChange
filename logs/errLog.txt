@@ -314,5 +314,58 @@
 		/roomCode	undefined
 20231103	17:32:44	7c8bd336-9b5a-4f4f-b551-248daf81dd8a	MongoServerSelectionError: connection <monitor> to 34.234.163.249:27017 closed	GET
 		/roomCode	undefined
-20231114	00:13:36	197020ae-98e5-4c22-b86b-54978c3b86a2	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
-		/main.704a80c5efadc3c1ab6d.hot-update.json	undefined
+
+20231110	18:04:27	a6d1dbfc-b69e-4b72-a63b-678cd943a68d	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/main.30121b46eab4e87cc4b5.hot-update.json	undefined
+20231110	18:04:28	1b9bcbcb-ec0a-4bd1-858b-358a4bc41efe	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:28	b2773f64-834d-4aad-88b0-c5edd6f32c6d	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:29	cd838d87-dc23-447f-ad0f-4a29481d21e6	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:29	31edbd4b-b45f-452b-8692-02f290bf8b5c	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:29	466d1909-1099-4389-99f6-aa8f3b6b2f1a	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:39	779483f1-f32b-4db3-a3ad-dbf2d169ee35	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:39	46f47ce0-3d87-4741-9c30-f15635494216	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:40	e7b53178-1526-48e9-848f-513a2e09921f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:40	6d5a092b-2576-48bb-bea7-091e672ceee9	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:40	fce6d838-dfd1-4df2-82f5-f4bb1309e67a	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:40	e0796f78-9bfc-4b3f-8596-1e57245398c0	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:47	687bf926-f870-40fe-be77-842c70124b0f	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:47	85a71056-579d-4ba6-878b-50b9de4e3c4b	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:48	9ee9df4d-4b52-4d26-b6d4-3fa1d3660bc5	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:49	29ea0c79-9417-4141-a578-52b2136ee9ac	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:50	94aa1ff6-c2eb-4803-addb-760dd38f06e3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:50	c7d5a788-55e3-482c-8481-9b97a9fce88c	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:50	e72000a1-030e-46fa-94cd-839542ee9a55	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:59	d334fe14-6119-4328-bd54-eeb882956dc4	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:04:59	11212c68-0e15-481a-9a4a-4413decd7318	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:05:09	40c1992c-2975-4b9a-aed7-5d4dc210d1be	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:05:10	b614eeec-97e7-464d-9915-3aa98a387ec3	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:05:15	1deaa89c-678f-49a3-a83e-cf76b08c9cf5	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:05:15	c6527327-780e-4f86-81b8-d9d14648d490	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231110	18:05:16	8ab490be-9ab8-4ebe-ada5-e6dc888d4c6c	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231113	20:44:02	99d0f11b-3112-41d6-824a-7c33bca3a71f	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/main.ab6eb5a19db86bb55847.hot-update.json	undefined

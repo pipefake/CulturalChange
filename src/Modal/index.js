@@ -1,13 +1,16 @@
-import React, { useState } from "react"; import "./Modal.css";
+import React, { useState } from "react";
+import "./Modal.css";
 import helpIcon from './resources/help-icon.png';
 import closeIcon from './resources/closeIcon.png';
 import ImageSlider from './ImageSlider';
 
 function ModalHelp() {
     const [modal, setModal] = useState(false);
+    const [highlightButton, setHighlightButton] = useState(true);
 
     const toggleModal = () => {
         setModal(!modal);
+        setHighlightButton(!modal);
     };
 
     if (modal) {
@@ -19,7 +22,10 @@ function ModalHelp() {
     return (
         <>
 
-            <button onClick={toggleModal} className="btn-modal">
+            <button
+                onClick={toggleModal}
+                className={`btn-modal ${highlightButton ? 'active-button' : ''}`}
+            >
                 <img src={helpIcon} alt="Icono de ayuda" />
             </button>
 

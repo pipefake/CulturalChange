@@ -17,11 +17,11 @@ function QrMuseo() {
   const fetchRoomData = async () => {
     try {
       // Obtener el código de la sala
-      const roomResponse = await axios.get("http://testdeploy-production-9d97.up.railway.app/roomCode");
+      const roomResponse = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
       setRoomCode(roomResponse.data[0].code);
 
       // Obtener el recuento de usuarios
-      const userResponse = await axios.get("http://testdeploy-production-9d97.up.railway.app/users");
+      const userResponse = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
       const users = userResponse.data;
       const count = users.filter((user) => user.codigoSala === roomCode).length;
       setUserCount(count);

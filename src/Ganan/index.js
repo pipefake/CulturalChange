@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings';
 import "./ganan.css";
 import museolili from "../InputCodigo/resources/museolili.png";
 
-function FeedbackNegativo() {
+function FeedbackPositivo() {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     const [ganan, setGanan] = useState(true);
@@ -60,4 +60,4 @@ function FeedbackNegativo() {
     );
 }
 
-export { FeedbackNegativo };
+export { FeedbackPositivo };

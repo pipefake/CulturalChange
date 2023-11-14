@@ -20,7 +20,7 @@ import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
 import { FeedbackPositivo } from "./Ganan";
-import { FeedbackNegativo } from "./Pierden"
+import { FeedbackNegativo } from "./Pierden";
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
@@ -80,7 +80,7 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
-            <Route path="/museoTabla" element={<TablaPuntuacion />} />
+            <Route path="/museoTabla" element={<MuseoTabla />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
             <Route path="/tematicaMuseo" element={<TematicaMuseo />} />
             <Route path="/tematicaMuseo2" element={<TematicaMuseo2 />} />

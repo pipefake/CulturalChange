@@ -109,7 +109,7 @@ function Mapa(props) {
 
   const getCurrentRoom = async () => {
     try {
-      const response = await axios.get("/roomCode");
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/roomCode");
       const currentRoomArray = response.data;
 
       if (currentRoomArray && currentRoomArray.length > 0) {
@@ -138,7 +138,7 @@ function Mapa(props) {
 
   const findNFilterUsers = async (roomCode) => {
     try {
-      const response = await axios.get("/users");
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/users");
       const users = response.data;
       const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
@@ -269,7 +269,7 @@ function Mapa(props) {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get("/users"); // Adjusted the endpoint
+      const response = await axios.get("http://testdeploy-production-9d97.up.railway.app/users"); // Adjusted the endpoint
       const users = response.data;
       const user = users.find((u) => u._id === userId); // Assuming each user object has an _id field
 
@@ -290,7 +290,7 @@ function Mapa(props) {
     if (userData) {
       try {
         const response = await axios.patch(
-          "http://localhost:3500/users",
+          "http://testdeploy-production-9d97.up.railway.app/users",
           {
             _id: userId,
             name: userData.name,

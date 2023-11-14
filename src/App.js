@@ -31,6 +31,7 @@ import { TestFinalizada } from "./TestFinalizada/index.js";
 import { MuseoTabla } from "./MuseoTabla";
 import { TablaMuseoMejorT } from "./TabaMuseoMejorT";
 import { Huaquero } from "./Huaquero";
+import { TablaPuntuacion } from "./TablaPuntuacion";
 
 function App() {
   return (
@@ -75,7 +76,7 @@ function App() {
             <Route path="/fraseMuseo" element={<FraseMuseo historia={3} />} />
             <Route path="/intentaloDenuevo" element={<IntentaloDenuevo />} />
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
-            <Route path="/museoTabla" element={<MuseoTabla />} />
+            <Route path="/museoTabla" element={<TablaPuntuacion />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
           </Routes>
         </MyContextProvider>

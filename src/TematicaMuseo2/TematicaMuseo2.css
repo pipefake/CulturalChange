@@ -1,0 +1,18 @@
+.container-animacion-museo {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../AnimacionMuseo/resources/Animacion.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-content {
+  width: 75%; /* Tamaño del video */
+  z-index: 1; /* Hace que el video esté delante del fondo */
+  border-radius: 20px; /* Ajusta este valor según tu preferencia */
+}

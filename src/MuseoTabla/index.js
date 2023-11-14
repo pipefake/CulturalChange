@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./MuseoTabla.css";
-import logoInterprete from "./resources/logoInterprete.png"; // Imagenes Roles
+import { useNavigate } from "react-router-dom";
+import logoInterprete from "./resources/logoInterprete.png";
 import logoGuia from "./resources/logoGuia.png";
 import logoHuaquero from "./resources/logoHuaquero.png";
 import logoAntropologo from "./resources/logoAntropologo.png";
-import datosReal from "../TablaPuntuacion/index.js";
 
 function MuseoTabla() {
+  const navigate = useNavigate();
+
   // Datos quemados
   const datos = [
     { nombre: "Luis", tiempo: "9:40 minutos", rol: logoGuia },
@@ -14,6 +16,11 @@ function MuseoTabla() {
     { nombre: "Estiven", tiempo: "01:40 minutos", rol: logoHuaquero },
     { nombre: "Lentejo", tiempo: "90:40 minutos", rol: logoAntropologo },
   ];
+
+  const handleContinuarClick = () => {
+    // Redirigir a la página /museoTablaMejorT al hacer clic en el botón "Continuar"
+    navigate("/museoTablaMejorT");
+  };
 
   return (
     <div className="container-museo-tabla">
@@ -38,7 +45,9 @@ function MuseoTabla() {
           ))}
         </tbody>
       </table>
-      <button className="boton-continuar">Continuar</button>
+      <button className="boton-continuar" onClick={handleContinuarClick}>
+        Continuar
+      </button>
     </div>
   );
 }

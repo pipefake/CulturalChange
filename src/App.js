@@ -32,7 +32,8 @@ import { TestFinalizada } from "./TestFinalizada/index.js";
 import { MuseoTabla } from "./MuseoTabla";
 import { TablaMuseoMejorT } from "./TabaMuseoMejorT";
 import { Huaquero } from "./Huaquero";
-import { TablaPuntuacion } from "./TablaPuntuacion";
+import { TematicaMuseo } from "./TematicaMuseo";
+import { TematicaMuseo2 } from "./TematicaMuseo2";
 
 function App() {
   return (
@@ -81,6 +82,8 @@ function App() {
             <Route path="/gananMuseo" element={<GananMuseo historia={5} />} />
             <Route path="/museoTabla" element={<TablaPuntuacion />} />
             <Route path="/museoTablaMejorT" element={<TablaMuseoMejorT />} />
+            <Route path="/tematicaMuseo" element={<TematicaMuseo />} />
+            <Route path="/tematicaMuseo2" element={<TematicaMuseo2 />} />
           </Routes>
         </MyContextProvider>
       </HashRouter>

@@ -117,10 +117,10 @@
     animation-timing-function: ease;
     z-index: 5;
     position: absolute;
-    top: 4px;
-    width: 23%;
+    top: 24px;
+    width: 18%;
     background-size: cover;
-    left: 264px;
+    right: 11px;
 }
 .informacionCelular>p{
   --rem: 16;

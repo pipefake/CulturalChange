@@ -44,7 +44,7 @@
   
 }
 
-  .modal {
+  .modalfrasemuseo {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -61,8 +61,9 @@
     text-align: center;
     background: #5c3518;
     border: #321c0b;
+    font-size: 45px;
 }
-.modal>p{
+.modalfrasemuseo>p{
   font-size: 39px !important;
   text-align: center;
   color: #FAF1DB;

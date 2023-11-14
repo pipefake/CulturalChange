@@ -44,11 +44,10 @@ function DraggableWord({
   return (
     <div
       ref={ref}
-      className={`draggable-word ${
-        isDraggable || !isWordInSentence || isDraggedToDropSpace
-          ? ""
-          : "dragged"
-      }`}
+      className={`draggable-word ${isDraggable || !isWordInSentence || isDraggedToDropSpace
+        ? ""
+        : "dragged"
+        }`}
       style={{ opacity }}
     >
       {word}
@@ -71,9 +70,8 @@ function DropSpace({ onDrop, index, completed }) {
   return (
     <div
       ref={ref}
-      className={`drop-space ${
-        isActive ? "active" : completed ? "completed" : ""
-      }`}
+      className={`drop-space ${isActive ? "active" : completed ? "completed" : ""
+        }`}
     ></div>
   );
 }
@@ -88,7 +86,7 @@ function FraseMuseo({ historia }) {
   const [guia, setGuia] = useState(false);
   const [huaquero, setHuaquero] = useState(false);
   const [interprete, setInterprete] = useState(false);
-  const [antropologo, setAntropologo] = useState(false); // modificar este estado cuando el antropologo le unda continuar en su pantalla
+  const [antropologo, setAntropologo] = useState(true); // modificar este estado cuando el antropologo le unda continuar en su pantalla
 
   const [availableWords, setAvailableWords] = useState([]);
   const [pair1Matched, setPair1Matched] = useState(false);
@@ -522,12 +520,12 @@ function FraseMuseo({ historia }) {
   const txtPalabraStyle = {
     backgroundColor:
       (!pair1Matched || !pair2Matched || !pair3Matched || !pair4Matched) &&
-      allWordsInDropSpaces &&
-      atLeastOnePairFalse
+        allWordsInDropSpaces &&
+        atLeastOnePairFalse
         ? "rgb(216, 59, 48)"
         : pair1Matched && pair2Matched && pair3Matched && pair4Matched
-        ? "#4CAF50"
-        : "",
+          ? "#4CAF50"
+          : "",
   };
 
   const [showModal, setShowModal] = useState(false);
@@ -557,7 +555,7 @@ function FraseMuseo({ historia }) {
         setShowModal(false);
         console.log("Perdieron");
         // navigate("/intentaloDenuevo");
-      }, 2000);
+      }, 3000);
     }
   }, [
     allWordsInDropSpaces,
@@ -594,7 +592,7 @@ function FraseMuseo({ historia }) {
         setShowModal(false);
         console.log("Perdieron");
         // navigate("/intentaloDenuevo");
-      }, 1000);
+      }, 3000);
     }
   }, [
     allWordsInDropSpaces,
@@ -607,7 +605,7 @@ function FraseMuseo({ historia }) {
   return (
     <DndProvider backend={HTML5Backend}>
       {showModal && (
-        <div className="modal">
+        <div className="modalfrasemuseo">
           <p>La frase es incorrecta, inténtalo nuevamente.</p>
         </div>
       )}
@@ -1003,7 +1001,7 @@ function FraseMuseo({ historia }) {
           <div className="txtCronometro">Tiempo {formatTime(timeLeft)}</div>
         </div>
       )}
-      {showPerdieron && <div className="perdieron">Perdieron</div>}
+
     </DndProvider>
   );
 }

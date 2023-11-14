@@ -26,8 +26,8 @@ function SeleccionCargando() {
 
 
     // Define el estado para cada logo y nombre.
-    const [guia, setGuia] = useState(true);
-    const [huaquero, setHuaquero] = useState(true);
+    const [guia, setGuia] = useState(false);
+    const [huaquero, setHuaquero] = useState(false);
     const [interprete, setInterprete] = useState(false);
     const [antropologo, setAntropologo] = useState(false);
 

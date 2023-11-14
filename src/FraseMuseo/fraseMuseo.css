@@ -1,12 +1,12 @@
 .complete-the-sentence {
   flex-direction: column;
   align-items: center;
-  background: #FAF1DB;
-  height: 48vw;
+  background: #faf1db;
+  height: 1024px;
   width: 100vw;
   justify-content: center;
   display: flex;
-  }
+}
 .video-popup-overlay {
   position: fixed;
   top: 0;
@@ -22,15 +22,15 @@
 
 .video-popup {
   position: relative;
-    max-width: 821px;
-    max-height: 92%;
-    background: #fff;
-    padding: 20px;
-    width: 815px;
-    height: 720px;
-    display: flex;
-    align-items: center;
-    border-radius: 15px;
+  max-width: 821px;
+  max-height: 92%;
+  background: #fff;
+  padding: 20px;
+  width: 815px;
+  height: 720px;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
 }
 
 .close-button {
@@ -41,134 +41,128 @@
   cursor: pointer;
   background: none;
   border: none;
-  
 }
 
-  .modalfrasemuseo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: -5px 8px 20px 5px rgb(0 0 0 / 38%) !important;
-    z-index: 999;
-    width: 403px;
-    height: 127px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    background: #5c3518;
-    border: #321c0b;
-    font-size: 45px;
+.modalfrasemuseo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: -5px 8px 20px 5px rgb(0 0 0 / 38%) !important;
+  z-index: 999;
+  width: 403px;
+  height: 127px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background: #5c3518;
+  border: #321c0b;
+  font-size: 45px;
 }
-.modalfrasemuseo>p{
+.modalfrasemuseo > p {
   font-size: 39px !important;
   text-align: center;
-  color: #FAF1DB;
+  color: #faf1db;
 }
-  .tituloFraseMuseo{
-      font-size: 100px;
-      color: #432B18;
-      margin: 0;
-  }
-  .sentence {
-    display: flex;
-    margin: 20px;
-    font-size: 1.2em;
-    width: 1085px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .drop-space {
-    border: 2px dashed #9a6138;
-    padding: 8px;
-    margin: 4px;
-    width: 175px;
-    height: 46px;
-    border-radius: 45px;
-    margin-top: 3px;
-  }
-  
-  .draggable-word {
-    padding: 8px;
-    margin: 4px;
-    cursor: pointer;
-    background-color: #9B6238;
-    border-radius: 45px;
-    width: 186px;
-    height: 50px;
-    font-size: 36px;
-    color: #FAF1DB;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .txtPalabra{
-    background-color: #9B6238;
-    border-radius: 45px;
-    width: 186px;
-    height: 50px;
-    font-size: 36px;
-    color: #FAF1DB;
-    padding: 8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 0px;
-  }
-  .words {
-    display: flex;
-    
-  }
-  .txtFrase{
-    font-size: 40px;
-    margin-right: 11px;
-    margin-left: 11px;
-  }
-  .containersuperder {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  .containerinfeizq {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-  
-  .tiempoGrupal>h1{
-    
-    color: #432B18;
-    text-align: center;
-    font-family: ABeeZee;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
-    letter-spacing: -0.64px;
-    margin-top: 175px;
-  }
-  .tiempoGrupal>img{
-    background-size: cover;
-    width: 345px;
-    HEIGHT: 412PX;
-    
-  }
-  .tiempoGrupal{
-    display: flex;
-    flex-direction: column;
+.tituloFraseMuseo {
+  font-size: 100px;
+  color: #432b18;
+  margin: 0;
+}
+.sentence {
+  display: flex;
+  margin: 20px;
+  font-size: 1.2em;
+  width: 1085px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    align-items: center;
-    background-color: #FAF1DB;
-    height: 80vw;
-  }
- .tiempoGrupal>button{
-   
+.drop-space {
+  border: 2px dashed #9a6138;
+  padding: 8px;
+  margin: 4px;
+  width: 175px;
+  height: 46px;
+  border-radius: 45px;
+  margin-top: 3px;
+}
+
+.draggable-word {
+  padding: 8px;
+  margin: 4px;
+  cursor: pointer;
+  background-color: #9b6238;
+  border-radius: 45px;
+  width: 186px;
+  height: 50px;
+  font-size: 36px;
+  color: #faf1db;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.txtPalabra {
+  background-color: #9b6238;
+  border-radius: 45px;
+  width: 186px;
+  height: 50px;
+  font-size: 36px;
+  color: #faf1db;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0px;
+}
+.words {
+  display: flex;
+}
+.txtFrase {
+  font-size: 40px;
+  margin-right: 11px;
+  margin-left: 11px;
+}
+.containersuperder {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.containerinfeizq {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.tiempoGrupal > h1 {
+  color: #432b18;
+  text-align: center;
+  font-family: ABeeZee;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -0.64px;
+  margin-top: 175px;
+}
+.tiempoGrupal > img {
+  background-size: cover;
+  width: 345px;
+  height: 412px;
+}
+.tiempoGrupal {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  background-color: #faf1db;
+  height: 80vw;
+}
+.tiempoGrupal > button {
   margin-top: 35px;
   width: 230px;
-
- }
+}

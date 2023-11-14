@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RolesMuseo.css";
 import GuiaLogo from "./resources/GuiaLogo.png";
 import HuaqueroLogo from "./resources/HuaqueroLogo.png";
@@ -42,25 +43,36 @@ const roles = [
 ];
 
 function RolesMuseo() {
+  const navigate = useNavigate();
   const [activeRole, setActiveRole] = useState("");
   const [isStarted, setIsStarted] = useState(false);
+  const [audioCounter, setAudioCounter] = useState(0);
 
   const playAudioInSequence = async () => {
     for (const role of roles) {
       const audio = new Audio(role.audio);
       setActiveRole(role.titulo);
       await new Promise((resolve) => {
-        audio.onended = resolve;
+        audio.onended = () => {
+          resolve();
+          setAudioCounter((prevCounter) => prevCounter + 1);
+        };
         audio.play();
       });
     }
-    setActiveRole(""); // Resetear el rol activo al finalizar todos los audios.
+    setActiveRole("");
   };
 
   const startSequence = () => {
     setIsStarted(true);
     playAudioInSequence();
   };
+
+  useEffect(() => {
+    if (audioCounter === roles.length) {
+      navigate("/revisarCelular");
+    }
+  }, [audioCounter, navigate]);
 
   return (
     <div className="roles-section">
@@ -93,4 +105,5 @@ function RolesMuseo() {
     </div>
   );
 }
+
 export { RolesMuseo };

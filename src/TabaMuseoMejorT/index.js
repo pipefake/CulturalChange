@@ -1,11 +1,14 @@
 import React from "react";
 import "./TablaMuseoMejorT.css";
+import { useNavigate } from "react-router-dom";
 import logoInterprete from "../MuseoTabla/resources/logoInterprete.png"; // Imagenes Roles
 import logoGuia from "../MuseoTabla/resources/logoGuia.png";
 import logoHuaquero from "../MuseoTabla/resources/logoHuaquero.png";
 import logoAntropologo from "../MuseoTabla/resources/logoAntropologo.png";
 
 function TablaMuseoMejorT() {
+  const navigate = useNavigate();
+
   // Datos quemados
   const datos = [
     { nombre: "Luis", tiempo: "9:40 minutos", rol: logoGuia },
@@ -13,6 +16,11 @@ function TablaMuseoMejorT() {
     { nombre: "Estiven", tiempo: "01:40 minutos", rol: logoHuaquero },
     { nombre: "Lentejo", tiempo: "90:40 minutos", rol: logoAntropologo },
   ];
+
+  const handleContinuarClick = () => {
+    // Redirigir a la página /museo al hacer clic en el botón "Salir"
+    navigate("/museo");
+  };
 
   return (
     <div className="container-museo-tabla">
@@ -37,7 +45,9 @@ function TablaMuseoMejorT() {
           ))}
         </tbody>
       </table>
-      <button className="boton-continuar">Salir</button>
+      <button className="boton-continuar" onClick={handleContinuarClick}>
+        Salir
+      </button>
     </div>
   );
 }

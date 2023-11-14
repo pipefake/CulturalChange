@@ -152,7 +152,6 @@ function IntroduccionRol(props) {
     const esInterprete = props.esInterprete;
     const esAntropologo = props.esAntropologo;
     const post = props.post;
-    const slug = props.key;
 
     // Define the logo variable based on the role
     let logo;
@@ -204,7 +203,7 @@ function IntroduccionRol(props) {
                             {post.rol}
                         </a>
                     ) : (
-                        <Link className={`txtRoles linkRoles`} to={`/introduccion/${slug}`}>
+                        <Link className={`txtRoles linkRoles`} to={`/introduccion/${post.slug}`}>
                             <img className="logos" src={logo} alt={`Logo ${post.rol}`} />
                             {post.rol}
                         </Link>
@@ -216,5 +215,3 @@ function IntroduccionRol(props) {
 }
 
 export { Picker };
-
-

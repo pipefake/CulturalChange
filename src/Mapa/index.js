@@ -168,6 +168,7 @@ function Mapa(props) {
       }
     }
   };
+  
   return (
     <>
       <div className="position_map">

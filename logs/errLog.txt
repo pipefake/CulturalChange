@@ -366,3 +366,5 @@
 		/ruta_del_sonido.mp3	undefined
 20231110	18:05:16	8ab490be-9ab8-4ebe-ada5-e6dc888d4c6c	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
 		/ruta_del_sonido.mp3	undefined
+20231113	20:44:02	99d0f11b-3112-41d6-824a-7c33bca3a71f	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/main.ab6eb5a19db86bb55847.hot-update.json	undefined

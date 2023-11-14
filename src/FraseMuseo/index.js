@@ -20,8 +20,6 @@ import videoSemana3 from "./videosSemanas/Volantes_1.mp4";
 import videoSemana4 from "./videosSemanas/Urnas_1.mp4";
 import videoSemana5 from "./videosSemanas/Silbatos_1.mp4";
 
-
-
 const ItemTypes = {
   WORD: "word",
 };
@@ -87,7 +85,10 @@ function FraseMuseo({ historia }) {
   const [SonidoCorrecto] = useSound(sonidoCorrecto);
   const [completed, setCompleted] = useState(false);
 
-  const [antropologo, setAntropologo] = useState(true); // modificar este estado cuando el antropologo le unda continuar en su pantalla
+  const [guia, setGuia] = useState(false);
+  const [huaquero, setHuaquero] = useState(false);
+  const [interprete, setInterprete] = useState(false);
+  const [antropologo, setAntropologo] = useState(false); // modificar este estado cuando el antropologo le unda continuar en su pantalla
 
   const [availableWords, setAvailableWords] = useState([]);
   const [pair1Matched, setPair1Matched] = useState(false);
@@ -102,6 +103,50 @@ function FraseMuseo({ historia }) {
 
   const [activeRoomCode, setActiveRoomCode] = useState("");
   const [antropologoName, setAntropologoName] = useState("");
+
+  const [guiaExist, setGuiaExist] = useState(false);
+  const [huaqueroExist, setHuaqueroExist] = useState(false);
+  const [interpreteExist, setInterpreteExist] = useState(false);
+  const [antropologoExist, setAntropologoExist] = useState(false);
+
+  const [userDataG, setUserDataG] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  const [userDataH, setUserDataH] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+
+  const [userDataI, setUserDataI] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
+  const [userDataA, setUserDataA] = useState({
+    _id: "",
+    name: "",
+    identification: "",
+    email: "",
+    rol: "",
+    finalizadaTarea: "",
+    tipoUsuario: "",
+  });
 
   const obtenerUrlVideo = (historia) => {
     switch (historia) {
@@ -152,7 +197,7 @@ function FraseMuseo({ historia }) {
             const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
 
             // Clear the interval if 4 users are found
-            if (numOfUsers >= 2) clearInterval(intervalId);
+            if (numOfUsers >= 5) clearInterval(intervalId);
           }, 3000);
         } else {
           console.error("No room data received");
@@ -163,6 +208,7 @@ function FraseMuseo({ historia }) {
     };
 
     fetchData();
+
     // Clear the interval when the component is unmounted.
     return () => clearInterval(intervalId);
   }, []);
@@ -187,8 +233,8 @@ function FraseMuseo({ historia }) {
     console.log("Looking for users with roomCode: ", roomCode);
     try {
       const response = await axios.get("/users");
-      const user = response.data;
-      const matchedUsers = user.filter((u) => u.codigoSala === roomCode);
+      const users = response.data;
+      const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
       if (matchedUsers && matchedUsers.length > 0) {
         console.log("Found users: ");
@@ -202,15 +248,31 @@ function FraseMuseo({ historia }) {
             user.rol
           );
 
-          if (user.rol === "Antropólogo") {
-            console.log("El usuario antropologo existe.");
-            setAntropologo(true);
-            setAntropologoName(user.name);
-
-            if (user.finalizadaTarea === true) {
-              console.log(`El usuario ${user.name} ha terminado su tarea.`);
+          // Check user's role, update state, and set name accordingly
+          switch (user.rol) {
+            case "Guía":
+              setGuia(true);
+              setUserDataG(user);
+              break;
+            case "Huaquero":
+              setHuaquero(true);
+              setUserDataH(user);
+              break;
+            case "Intérprete":
+              setInterprete(true);
+              setUserDataI(user);
+              break;
+            case "Antropólogo":
               setAntropologo(true);
-            }
+              setUserDataA(user);
+              console.log("El usuario antropologo existe.");
+              if (user.finalizadaTarea === true) {
+                console.log(`El usuario Antropologo ha terminado su tarea.`);
+                setAntropologo(true);
+              }
+              break;
+            default:
+              console.error("Unknown user role:", user.rol);
           }
         });
       } else {
@@ -220,6 +282,80 @@ function FraseMuseo({ historia }) {
       return matchedUsers.length;
     } catch (error) {
       console.error("Error fetching and filtering users:", error);
+    }
+  };
+
+  const updateState = async () => {
+    if (antropologo) {
+      try {
+        if (guia) {
+          console.log(userDataG)
+          const response = await axios.patch(
+            "http://localhost:3500/users",
+            {
+              _id: userDataG._id,
+              name: userDataG.name,
+              identification: userDataG.identification,
+              email: userDataG.email,
+              rol: userDataG.rol,
+              finalizadaTarea: "true",
+              tipoUsuario: userDataG.tipoUsuario,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          console.log("User Guía updated:", response.data);
+        }
+
+        if (huaquero) {
+          const response = await axios.patch(
+            "http://localhost:3500/users",
+            {
+              _id: userDataH._id,
+              name: userDataH.name,
+              identification: userDataH.identification,
+              email: userDataH.email,
+              rol: userDataH.rol,
+              finalizadaTarea: "true",
+              tipoUsuario: userDataH.tipoUsuario,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log("User Huaquero updated:", response.data);
+        }
+
+        if (interprete) {
+          const response = await axios.patch(
+            "http://localhost:3500/users",
+            {
+              _id: userDataI._id,
+              name: userDataI.name,
+              identification: userDataI.identification,
+              email: userDataI.email,
+              rol: userDataI.rol,
+              finalizadaTarea: "true",
+              tipoUsuario: userDataH.tipoUsuario,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          console.log("User Interprete updated:", response.data);
+        }
+      } catch (error) {
+        console.error("Error updating user:", error);
+      }
     }
   };
 
@@ -376,6 +512,7 @@ function FraseMuseo({ historia }) {
       setTimeout(() => {
         SonidoCorrecto();
         console.log("¡Ganaron!");
+        updateState();
         navigate("/gananMuseo");
       }, 5000); // Espera 5 segundos (5000 ms) antes de redirigir
     }

@@ -18,17 +18,16 @@ import logoAntropologoBN from './logos/logoAntropologoBN.png';
 import ready from './listo.png';
 
 function SeleccionCargando() {
+    const selectedRoleData = localStorage.getItem("roldirecto");
 
-    const { slug } = useParams();
-    const blogpost = blogdata.find(post => post.slug === slug);
-    const rol = "interprete";
+    const rol = selectedRoleData;
     console.log(rol);
     const navigate = useNavigate();
 
 
     // Define el estado para cada logo y nombre.
-    const [guia, setGuia] = useState(false);
-    const [huaquero, setHuaquero] = useState(false);
+    const [guia, setGuia] = useState(true);
+    const [huaquero, setHuaquero] = useState(true);
     const [interprete, setInterprete] = useState(false);
     const [antropologo, setAntropologo] = useState(false);
 
@@ -130,6 +129,7 @@ function SeleccionCargando() {
 
     const redirectGame = (e) => {
         navigate(enlace);
+        console.log(rol);
     }
 
     const enlace = (`/juego/${rol}`);

@@ -314,6 +314,7 @@
 		/roomCode	undefined
 20231103	17:32:44	7c8bd336-9b5a-4f4f-b551-248daf81dd8a	MongoServerSelectionError: connection <monitor> to 34.234.163.249:27017 closed	GET
 		/roomCode	undefined
+
 20231110	18:04:27	a6d1dbfc-b69e-4b72-a63b-678cd943a68d	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET
 		/main.30121b46eab4e87cc4b5.hot-update.json	undefined
 20231110	18:04:28	1b9bcbcb-ec0a-4bd1-858b-358a4bc41efe	Error: ENOENT: no such file or directory, stat 'C:\Users\jfjim\OneDrive\Documentos\Universidad\10 semestre\diseño multimedia 2\CulturalChange\views\404.html'	GET

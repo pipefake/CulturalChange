@@ -186,9 +186,6 @@ function IntroduccionRol(props) {
 
     // Ahora puedes usar la variable isDisabled según tus necesidades.
 
-
-
-
     console.log(`post.rol: ${post.rol}`); // Add this line for debugging purposes
 
 

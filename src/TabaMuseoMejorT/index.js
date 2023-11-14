@@ -1,18 +1,42 @@
-import React from "react";
-import "./TablaMuseoMejorT.css";
-import logoInterprete from "../MuseoTabla/resources/logoInterprete.png"; // Imagenes Roles
-import logoGuia from "../MuseoTabla/resources/logoGuia.png";
-import logoHuaquero from "../MuseoTabla/resources/logoHuaquero.png";
-import logoAntropologo from "../MuseoTabla/resources/logoAntropologo.png";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import CryptoJS from 'crypto-js';
+import './TablaMuseoMejorT.css';
+import logoInterprete from '../MuseoTabla/resources/logoInterprete.png';
+import logoGuia from '../MuseoTabla/resources/logoGuia.png';
+import logoHuaquero from '../MuseoTabla/resources/logoHuaquero.png';
+import logoAntropologo from '../MuseoTabla/resources/logoAntropologo.png';
 
 function TablaMuseoMejorT() {
-  // Datos quemados
-  const datos = [
-    { nombre: "Luis", tiempo: "9:40 minutos", rol: logoGuia },
-    { nombre: "Carla", tiempo: "9:50 minutos", rol: logoInterprete },
-    { nombre: "Estiven", tiempo: "01:40 minutos", rol: logoHuaquero },
-    { nombre: "Lentejo", tiempo: "90:40 minutos", rol: logoAntropologo },
-  ];
+  const [datos, setDatos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://testdeploy-production-9d97.up.railway.app/users")
+      .then(response => {
+        console.log("conectado");
+        setDatos(response.data);
+        console.log("Mis datos:" + response.data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los objetos:', error);
+      });
+  }, []);
+
+  //funcion para retornar imagenes
+  const getLogoByRol = (rol) => {
+  switch (rol) {
+    case 'guia':
+      return require('../MuseoTabla/resources/logoGuia.png');
+    case 'interprete':
+      return require('../MuseoTabla/resources/logoInterprete.png');
+    case 'huaquero':
+      return require('../MuseoTabla/resources/logoHuaquero.png');
+    case 'antropologo':
+      return require('../MuseoTabla/resources/logoAntropologo.png');
+    default:
+      return null; // Otra lógica en caso de roles no reconocidos
+  }
+};
 
   return (
     <div className="container-museo-tabla">
@@ -27,11 +51,13 @@ function TablaMuseoMejorT() {
         </thead>
         <tbody className="contenido">
           {datos.map((dato) => (
-            <tr key={dato.nombre}>
-              <td>{dato.nombre}</td>
-              <td>{dato.tiempo}</td>
+            <tr key={dato._id}>
+              <td>{dato.name}</td>
+              <td>{dato.codigoSala}</td>
               <td>
-                <img className="imagen" src={dato.rol} alt="Icono de Rol" />
+                {['guia', 'interprete', 'huaquero', 'antropologo'].includes(dato.rol) && (
+                <img className="imagen" src={getLogoByRol(dato.rol)} alt="Icono de Rol" />
+              )}
               </td>
             </tr>
           ))}

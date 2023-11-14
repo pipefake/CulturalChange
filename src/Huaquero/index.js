@@ -40,9 +40,9 @@ function Huaquero(props) {
         rol: "",
         finalizadaTarea: "",
         tipoUsuario: "",
-      });
-    
-      const [userDataG, setUserDataG] = useState({
+    });
+
+    const [userDataG, setUserDataG] = useState({
         _id: "",
         name: "",
         identification: "",
@@ -50,9 +50,9 @@ function Huaquero(props) {
         rol: "",
         finalizadaTarea: "",
         tipoUsuario: "",
-      });
-    
-      const [userDataH, setUserDataH] = useState({
+    });
+
+    const [userDataH, setUserDataH] = useState({
         _id: "",
         name: "",
         identification: "",
@@ -60,9 +60,9 @@ function Huaquero(props) {
         rol: "",
         finalizadaTarea: "",
         tipoUsuario: "",
-      });
-    
-      const [userDataI, setUserDataI] = useState({
+    });
+
+    const [userDataI, setUserDataI] = useState({
         _id: "",
         name: "",
         identification: "",
@@ -70,8 +70,8 @@ function Huaquero(props) {
         rol: "",
         finalizadaTarea: "",
         tipoUsuario: "",
-      });
-      const [userDataA, setUserDataA] = useState({
+    });
+    const [userDataA, setUserDataA] = useState({
         _id: "",
         name: "",
         identification: "",
@@ -79,115 +79,115 @@ function Huaquero(props) {
         rol: "",
         finalizadaTarea: "",
         tipoUsuario: "",
-      });
-    
-      useEffect(() => {
+    });
+
+    useEffect(() => {
         let intervalId;
-    
+
         const fetchData = async () => {
-          try {
-            const data = await getCurrentRoom();
-            if (data) {
-              setActiveRoomCode(data);
-              console.log("Room data set:", data);
-    
-              // Start the interval only after the activeRoomCode has been set.
-              intervalId = setInterval(async () => {
-                const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
-    
-                // Clear the interval if 4 users are found
-                if (numOfUsers >= 5) clearInterval(intervalId);
-              }, 3000);
-            } else {
-              console.error("No room data received");
+            try {
+                const data = await getCurrentRoom();
+                if (data) {
+                    setActiveRoomCode(data);
+                    console.log("Room data set:", data);
+
+                    // Start the interval only after the activeRoomCode has been set.
+                    intervalId = setInterval(async () => {
+                        const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
+
+                        // Clear the interval if 4 users are found
+                        if (numOfUsers >= 5) clearInterval(intervalId);
+                    }, 3000);
+                } else {
+                    console.error("No room data received");
+                }
+            } catch (error) {
+                console.error("Error fetching room data:", error);
             }
-          } catch (error) {
-            console.error("Error fetching room data:", error);
-          }
         };
-    
+
         fetchData();
-    
+
         // Clear the interval when the component is unmounted.
         return () => clearInterval(intervalId);
-      }, []);
-    
-      const getCurrentRoom = async () => {
-        try {
-          const response = await axios.get("/roomCode");
-          const currentRoomArray = response.data;
-    
-          if (currentRoomArray && currentRoomArray.length > 0) {
-            const currentRoomCode = currentRoomArray[0].code;
-            return currentRoomCode; // returns only the room code string
-          } else {
-            console.error("Room not found");
-          }
-        } catch (error) {
-          console.error("Error fetching room:", error);
-        }
-      };
-    
-      useEffect(() => {
-        if (
-          userDataG.finalizadaTarea == true &&
-          userDataH.finalizadaTarea == true &&
-          userDataI.finalizadaTarea == true &&
-          userDataA.finalizadaTarea == true
-        ) {
-          setTimeout(() => {
-            navigate("/ganan");
-          }, 3000); // Espera 5 segundos (5000 ms) antes de redirigir
-        }
-      }, [userDataG, userDataG, userDataG, userDataG]);
-    
-      const findNFilterUsers = async (roomCode) => {
-        try {
-          const response = await axios.get("/users");
-          const users = response.data;
-          const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
-    
-          if (matchedUsers && matchedUsers.length > 0) {
-            console.log("Found users: ");
-            matchedUsers.forEach((user) => {
-              console.log(
-                "Name:",
-                user.name,
-                "Room Code:",
-                user.codigoSala,
-                "User Role: ",
-                user.rol
-              );
-    
-              // Check user's role, update state, and set name accordingly
-              switch (user.rol) {
-                case "Guía":
-                  setUserDataG(user);
-                  break;
-                case "Huaquero":
-                  setUserDataH(user);
-                  break;
-                case "Intérprete":
-                  setUserDataI(user);
-                  break;
-                case "Antropólogo":
-                  setUserDataA(user);
-                  break;
-                default:
-                  console.error("Unknown user role:", user.rol);
-              }
-            });
-          } else {
-            console.log("No users found with room code", roomCode);
-          }
-    
-          return matchedUsers.length;
-        } catch (error) {
-          console.error("Error fetching and filtering users:", error);
-        }
-      };
+    }, []);
 
-    
+    const getCurrentRoom = async () => {
+        try {
+            const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
+            const currentRoomArray = response.data;
+
+            if (currentRoomArray && currentRoomArray.length > 0) {
+                const currentRoomCode = currentRoomArray[0].code;
+                return currentRoomCode; // returns only the room code string
+            } else {
+                console.error("Room not found");
+            }
+        } catch (error) {
+            console.error("Error fetching room:", error);
+        }
+    };
+
+    useEffect(() => {
+        if (
+            userDataG.finalizadaTarea == true &&
+            userDataH.finalizadaTarea == true &&
+            userDataI.finalizadaTarea == true &&
+            userDataA.finalizadaTarea == true
+        ) {
+            setTimeout(() => {
+                navigate("/ganan");
+            }, 3000); // Espera 5 segundos (5000 ms) antes de redirigir
+        }
+    }, [userDataG, userDataG, userDataG, userDataG]);
+
+    const findNFilterUsers = async (roomCode) => {
+        try {
+            const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
+            const users = response.data;
+            const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
+
+            if (matchedUsers && matchedUsers.length > 0) {
+                console.log("Found users: ");
+                matchedUsers.forEach((user) => {
+                    console.log(
+                        "Name:",
+                        user.name,
+                        "Room Code:",
+                        user.codigoSala,
+                        "User Role: ",
+                        user.rol
+                    );
+
+                    // Check user's role, update state, and set name accordingly
+                    switch (user.rol) {
+                        case "Guía":
+                            setUserDataG(user);
+                            break;
+                        case "Huaquero":
+                            setUserDataH(user);
+                            break;
+                        case "Intérprete":
+                            setUserDataI(user);
+                            break;
+                        case "Antropólogo":
+                            setUserDataA(user);
+                            break;
+                        default:
+                            console.error("Unknown user role:", user.rol);
+                    }
+                });
+            } else {
+                console.log("No users found with room code", roomCode);
+            }
+
+            return matchedUsers.length;
+        } catch (error) {
+            console.error("Error fetching and filtering users:", error);
+        }
+    };
+
+
 
     useEffect(() => {
         const sendSymbols = async () => {
@@ -215,7 +215,7 @@ function Huaquero(props) {
 
     const fetchRoomCode = async () => {
         try {
-            const response = await axios.get("/roomCode");
+            const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
             console.log("Code: ", response.data[0].code); // Log entire response
             if (response.data.length > 0 && response.data[0].code) {
                 setRoomCode(response.data[0].code); // Set the room code state
@@ -227,7 +227,7 @@ function Huaquero(props) {
 
     const addSymbol = async (symbolName) => {
         try {
-            const response = await axios.post("/roomCode", {
+            const response = await axios.post("https://testdeploy-production-9d97.up.railway.app/roomCode", {
                 huaqueroSymbols: {
                     name: symbolName,
                     found: false,
@@ -242,7 +242,7 @@ function Huaquero(props) {
 
     const fetchSymbols = async () => {
         try {
-            const response = await axios.get("/roomCode");
+            const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
             setSymbols(response.data[0].huaqueroSymbols); // Assuming the symbols are stored in an array inside the response
         } catch (error) {
             console.error("Error fetching symbols:", error);
@@ -251,7 +251,7 @@ function Huaquero(props) {
 
     const updateSymbol = async (symbolName) => {
         try {
-            const response = await axios.patch('/roomCode', { symbolName, found: true });
+            const response = await axios.patch('https://testdeploy-production-9d97.up.railway.app/roomCode', { symbolName, found: true });
             console.log(`Symbol ${symbolName} updated successfully`);
         } catch (error) {
             console.error(`Error updating symbol ${symbolName}:`, error);

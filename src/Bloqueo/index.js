@@ -79,7 +79,7 @@ function Bloqueo(props) {
     }, []);
 
     return (
-        <>
+        <><Header></Header>
             <div className="info_juegoAntropologo">
                 <h1 className="info_juegoAntropologoTitulo">Descifra las palabras</h1>
                 <p className="centrarParrafo">
@@ -217,6 +217,7 @@ function Anagrama(props) {
 
     return (
         <div className="contenedorAcronimo">
+
             <div>
                 {luckimg ? (
                     <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>

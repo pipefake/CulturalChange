@@ -372,6 +372,7 @@ const Minijuego = (props) => {
 
   return (
     <>
+      <Header></Header>
       {showModal && (
         <div className="modal">
           <div className="modal-content">

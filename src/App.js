@@ -20,6 +20,7 @@ import { Bloqueo } from "./Bloqueo";
 import { JuegoHuaquero } from "./JuegoHuaquero";
 import { SymbolsPage } from "./huaquero2AntroTest";
 import { FeedbackPositivo } from "./Ganan";
+import { FeedbackNegativo } from "./Pierden"
 import { AntroTest } from "./antrotest";
 import { Induccion } from "./induccion";
 import { FraseMuseo } from "./FraseMuseo";
@@ -61,6 +62,7 @@ function App() {
             />
             <Route path="/symbolsPage" element={<SymbolsPage />} />
 
+            <Route path="/pierden" element={<FeedbackNegativo />} />
             <Route path="/ganan" element={<FeedbackPositivo />} />
 
             <Route

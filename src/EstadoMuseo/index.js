@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./EstadoMuseo.css";
 import fondo from "./resources/Estado.png";
 import GuiaLogo from "./resources/GuiaLogo.png";
@@ -10,6 +10,8 @@ import HuaqueroLogoNo from "./resources/HuaqueroNo.png";
 import InterpreteLogoNo from "./resources/InterpreteNo.png";
 import AntropologoLogoNo from "./resources/AntropologoNo.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function EstadoMuseo() {
   // Define el estado para cada logo y nombre.
@@ -26,6 +28,12 @@ function EstadoMuseo() {
   const [activeRoomCode, setActiveRoomCode] = useState("");
 
   const [isRoomFull, setIsRoomFull] = useState(false);
+
+  const navigate = useNavigate();
+  const [roomCode, setRoomCode] = useState("");
+  const [userCount, setUserCount] = useState(0);
+
+  const intervalRef = useRef(null);
 
 
   useEffect(() => {

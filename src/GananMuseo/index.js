@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import { blogdata } from "../blogdata";
 import superder from "../FraseMuseo/resource/supder.png";
 import infeizq from "../FraseMuseo/resource/infeizq.png";
+import { useNavigate } from "react-router-dom";
+
 
 import simbolo1 from "../Traductor/simbolos/simbolo1.png";
 import simbolo2 from "../Traductor/simbolos/simbolo2.png";
@@ -23,6 +25,13 @@ import simbolo15 from "../Traductor/simbolos/simbolo15.png";
 import simbolo16 from "../Traductor/simbolos/simbolo16.png";
 
 function GananMuseo({ historia }) {
+  const navigate = useNavigate();
+
+  const handleContinuarClick = () => {
+    // Redirigir a la página /museoTablaMejorT al hacer clic en el botón "Continuar"
+    navigate("/museoTabla");
+  };
+
   const asignarSrcImagenes = (historia) => {
     if (historia === 1) {
       return [simbolo1, simbolo2, simbolo3, simbolo4];
@@ -58,7 +67,7 @@ function GananMuseo({ historia }) {
             <img key={index} src={imagen} alt={`Simbolo ${index + 1}`} />
           ))}
         </div>
-        <button className="btnContinuar btnSize">Continuar</button>
+        <button className="btnContinuar btnSize" onClick={handleContinuarClick}>Continuar</button>
       </div>
     </>
   );

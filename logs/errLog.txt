@@ -505,3 +505,31 @@
 		/ruta_del_sonido.mp3	undefined
 20231114	04:14:42	65ff5e16-8bee-4283-92fb-0576056c423b	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
 		/ruta_del_sonido.mp3	undefined
+20231115	09:20:07	4fcc0721-0ff4-4c2a-8a9a-e0f4f09f5775	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:09	7219020a-2abb-470f-b18f-ff78772fe322	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	c812f93e-0a14-4b2f-92d6-1341f2ae582e	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	d7893c97-2955-47be-8e62-cc8f7b921eff	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	f9e03960-350e-4804-89ac-67d5a3702a19	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	e9a56cb1-ec59-46e2-b01b-4a5cf4c70c69	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	7fd0db67-e3d5-47a4-b3b4-2e104b4607b7	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:10	1890a0c8-fb3a-4153-93f1-ca391c229866	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:13	70a900f4-2be6-4007-8d4a-7ee3a6f4e386	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:16	992185d5-9041-4337-ba5e-bbd2c06fbc47	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:19	f018d05e-faa4-4c21-bd2f-156d118a0aca	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:20	97da0bfd-d012-4c97-a708-e6aa8c25f6b1	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:22	effe2599-fecb-44ca-a79e-6994ac599b8a	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined
+20231115	09:20:25	5425d76b-7841-4679-8dda-6728427a0dfc	Error: ENOENT: no such file or directory, stat 'D:\Cultural Change\CulturalChange\views\404.html'	GET
+		/ruta_del_sonido.mp3	undefined

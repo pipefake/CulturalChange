@@ -10,7 +10,6 @@ import useSound from 'use-sound';
 import SonidoenCorecto from './audio/sonidoCorrecto.mp3';
 import SonidoenIncorecto from './audio/sonidoIncorrecto.mp3';
 
-
 function Bloqueo(props) {
   const historia = props.historia;
 

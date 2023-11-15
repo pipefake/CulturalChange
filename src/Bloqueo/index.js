@@ -202,7 +202,7 @@ function Bloqueo(props) {
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("/roomCode"); // Replace with the correct API endpoint
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode"); // Replace with the correct API endpoint
       const huaqueroSymbols = response.data[0].huaqueroSymbols;
 
       console.log("Full Response:", response.data); // Log entire response
@@ -257,7 +257,7 @@ function Bloqueo(props) {
 
   const getUserData = async () => {
     try {
-      const response = await axios.get("/users"); // Adjusted the endpoint
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users"); // Adjusted the endpoint
       const users = response.data;
       const user = users.find((u) => u._id === userId); // Assuming each user object has an _id field
 
@@ -278,7 +278,7 @@ function Bloqueo(props) {
     if (userData) {
       try {
         const response = await axios.patch(
-          "http://localhost:3500/users",
+          "https://testdeploy-production-9d97.up.railway.app/users",
           {
             _id: userId,
             name: userData.name,

@@ -70,7 +70,7 @@ function RolesMuseo() {
 
   useEffect(() => {
     if (audioCounter === roles.length) {
-      navigate("/revisarCelular");
+      navigate("/estadoMuseo");
     }
   }, [audioCounter, navigate]);
 

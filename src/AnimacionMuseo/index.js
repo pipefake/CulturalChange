@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./AnimacionMuseo.css";
-import video from "./resources/Contextualizacion.mp4";
+import video from "./resources/Contextualizacin.mp4";
 
 function AnimacionMuseo() {
   const navigate = useNavigate();

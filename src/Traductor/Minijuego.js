@@ -248,7 +248,7 @@ const Minijuego = (props) => {
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("/roomCode"); // Replace with the correct API endpoint
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode"); // Replace with the correct API endpoint
       console.log("Full Response:", response.data); // Log entire response
       const symbols = response.data[0].huaqueroSymbols; // Assuming the symbols are stored in an array inside the response
       const newEncontrados = [false, false, false, false];

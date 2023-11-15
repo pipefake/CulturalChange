@@ -25,6 +25,9 @@ function EstadoMuseo() {
 
   const [activeRoomCode, setActiveRoomCode] = useState("");
 
+  const [isRoomFull, setIsRoomFull] = useState(false);
+
+
   useEffect(() => {
     let intervalId;
 
@@ -56,6 +59,12 @@ function EstadoMuseo() {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    if (isRoomFull) {
+      navigate("/revisarCelular");
+    }
+  }, [isRoomFull, navigate]);
+
   const getCurrentRoom = async () => {
     try {
       const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
@@ -71,6 +80,41 @@ function EstadoMuseo() {
       console.error("Error fetching room:", error);
     }
   };
+
+  const fetchRoomData = async () => {
+    try {
+      // Obtener el código de la sala
+      const roomResponse = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
+      setRoomCode(roomResponse.data[0].code);
+
+      // Obtener el recuento de usuarios
+      const userResponse = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
+      const users = userResponse.data;
+      const count = users.filter((user) => user.codigoSala === roomCode).length;
+      setUserCount(count);
+
+      // Limpiar el intervalo si el recuento de usuarios llega a 4
+      if (count === 4) {
+        setIsRoomFull(true);
+        clearInterval(intervalRef.current);
+      }
+    } catch (error) {
+      console.error("Error al obtener datos:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Obtener datos de la sala inmediatamente cuando el componente se monta
+    fetchRoomData();
+
+    // Establecer un intervalo para obtener datos de la sala cada 10 segundos
+    intervalRef.current = setInterval(fetchRoomData, 10 * 1000);
+
+    // Limpiar el intervalo cuando el componente se desmonta
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, [roomCode, userCount]);
 
   const findNFilterUsers = async (roomCode) => {
     console.log("Looking for users with roomCode: ", roomCode);

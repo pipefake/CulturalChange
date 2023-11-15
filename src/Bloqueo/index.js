@@ -6,6 +6,11 @@ import { Header } from "../Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import useSound from 'use-sound';
+import SonidoenCorecto from './audio/sonidoCorrecto.mp3';
+import SonidoenIncorecto from './audio/sonidoIncorrecto.mp3';
+
+
 function Bloqueo(props) {
   const historia = props.historia;
 
@@ -175,6 +180,7 @@ function Bloqueo(props) {
       console.error("Error fetching and filtering users:", error);
     }
   };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -397,7 +403,8 @@ function Anagrama(props) {
 
     return aux;
   }
-
+  const [SonidoCorecto] = useSound(SonidoenCorecto);
+  const [SonidoIncorecto] = useSound(SonidoenIncorecto);
   const isInputCorrect = inputValue === resolverAnagrama(props.palabra);
 
   useEffect(() => {
@@ -416,12 +423,14 @@ function Anagrama(props) {
       setError(false); // No hay error, así que establecemos el estado de error en falso
       if (tamaño && validChars === userInput) {
         event.target.classList.add("input-success");
+        SonidoCorecto();
         // Remover la clase después de un tiempo para que el efecto se repita
         setTimeout(() => {
           event.target.classList.remove("input-success");
         }, 2000); // 2 segundos
       } else if (tamaño) {
         event.target.classList.add("error-animation");
+        SonidoIncorecto();
         setTimeout(() => {
           event.target.classList.remove("error-animation");
           event.target.value = "";
@@ -436,7 +445,7 @@ function Anagrama(props) {
   return (
     <div className="contenedorAcronimo">
       <div>
-        {!luckimg ? (
+        {luckimg ? (
           <h4 className={error ? "textoAcronimo rojo" : "textoAcronimo verde"}>
             {props.palabra}
           </h4>

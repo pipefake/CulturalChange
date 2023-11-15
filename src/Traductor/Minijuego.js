@@ -52,6 +52,11 @@ import { simbolos } from "../rolesdata.js";
 import { Contexto } from "../Contexto";
 import { Acumulador } from "./Acumulador";
 
+import useSound from 'use-sound';
+import tap from './audios/sonidotab.mp3';
+import pierdenSonido from './audios/sonidoincorrecto.mp3';
+import gananSonido from './audios/sonido.exito.pares2.mp3';
+
 // Agrega más imágenes según la cantidad de elementos en tu array original
 
 const Minijuego = (props) => {
@@ -404,6 +409,7 @@ const Minijuego = (props) => {
 
       if (positionInImageList < 4 && encontrados[positionInImageList]) {
         cambiarEstados(positionInImageList);
+        sonidoGanan();
       }
 
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
@@ -430,6 +436,7 @@ const Minijuego = (props) => {
       }
     } else {
       setAnimating(true);
+
       setTimeout(() => {
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
         shuffledMemoBlocksCopy.splice(
@@ -440,6 +447,7 @@ const Minijuego = (props) => {
         setShuffledMemoBlocks(shuffledMemoBlocksCopy);
         setselectedMemoBlock(null);
         setAnimating(false);
+        sonidoPierden();
       }, 1000);
     }
   };
@@ -459,6 +467,12 @@ const Minijuego = (props) => {
     return aux;
   };
 
+
+  const [playSound] = useSound(tap);
+  const [sonidoPierden] = useSound(pierdenSonido);
+  const [sonidoGanan] = useSound(gananSonido);
+
+
   return (
     <>
       <Contexto
@@ -477,7 +491,7 @@ const Minijuego = (props) => {
               <img src={on} alt="logo de Guia" />
             )}
           </button>
-          <div className="ContTraduccion">
+          <button className="ContTraduccion sonido" onClick={playSound}>
             {btnSlide ? (
               anagramas.map((simbolo, index) => (
                 <Traductor
@@ -495,7 +509,7 @@ const Minijuego = (props) => {
                 handleMemoClick={handleMemoClick}
               />
             )}
-          </div>
+          </button>
         </div>
       </div>
 

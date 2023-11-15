@@ -48,7 +48,7 @@ function SeleccionCargando() {
                         const numOfUsers = await findNFilterUsers(data); // pass the fetched room code directly
 
                         // Clear the interval if 4 users are found
-                        if (numOfUsers >= 4) clearInterval(intervalId);
+                        if (numOfUsers >= 5) clearInterval(intervalId);
                     }, 3000);
                 } else {
                     console.error("No room data received");

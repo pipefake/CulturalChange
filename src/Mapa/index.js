@@ -202,7 +202,7 @@ function Mapa(props) {
       setEsLoading(true);
       setTimeout(() => {
         setEsLoading(false);
-        SonidoPuntos();
+
         avanzarPosicion(); // Se avanza la posición aquí cuando segundos es 0.
         setSegundos(30); // Reiniciamos el temporizador al valor inicial.
       }, 1000);
@@ -265,6 +265,7 @@ function Mapa(props) {
   const handleClick = () => {
     setSegundos(0);
     updateState();
+    SonidoPuntos();
   };
 
   const getUserData = async () => {

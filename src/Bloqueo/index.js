@@ -3,16 +3,14 @@ import "./Bloqueo.css";
 import bloqueoIMG from "./resources/Bloqueo_IMG.png";
 import { Link } from "react-router-dom";
 import { Header } from "../Header";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import useSound from 'use-sound';
 import SonidoenCorecto from './audio/sonidoCorrecto.mp3';
 import SonidoenIncorecto from './audio/sonidoIncorrecto.mp3';
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function Bloqueo(props) {
-
-  const navigate = useNavigate();
-
   const historia = props.historia;
 
   const [encontrados, setEncontrados] = useState([false, false, false, false]);
@@ -23,7 +21,9 @@ function Bloqueo(props) {
 
   const [areAllInputsCorrect, setAreAllInputsCorrect] = useState(false);
   const validitiesRef = useRef([]); // Ref to keep track of the validity of each Anagrama
+
   const [activeRoomCode, setActiveRoomCode] = useState("");
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     _id: "",
@@ -180,6 +180,25 @@ function Bloqueo(props) {
     }
   };
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUserData(); // asssuming this function fetches user data
+        if (data) {
+          setUserData(data);
+          console.log("User data set:", data);
+        } else {
+          console.error("No user data received");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    fetchData(); // invoke the function to fetch and set user data
+  }, []); // empty dependency array to run only once after component mount
+  const userId = localStorage.getItem("userId"); // ID from local storage
+
   const fetchSymbols = async () => {
     try {
       const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode"); // Replace with the correct API endpoint
@@ -227,7 +246,6 @@ function Bloqueo(props) {
     } else {
       console.warn("Unhandled history case: ", historia);
     }
-
     setAnagramas(nuevosAnagramas);
   }
 
@@ -236,8 +254,61 @@ function Bloqueo(props) {
     setAreAllInputsCorrect(validitiesRef.current.every(Boolean));
   }, []);
 
+  const getUserData = async () => {
+    try {
+      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users"); // Adjusted the endpoint
+      const users = response.data;
+      const user = users.find((u) => u._id === userId); // Assuming each user object has an _id field
+
+      if (user) {
+        return user;
+      } else {
+        console.error("User not found");
+      }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+  const updateState = async () => {
+    console.log(userData._id);
+    console.log("UserData before axios call:", userData);
+
+    if (userData) {
+      try {
+        const response = await axios.patch(
+          "https://testdeploy-production-9d97.up.railway.app/users",
+          {
+            _id: userId,
+            name: userData.name,
+            identification: userData.identification,
+            email: userData.email,
+            rol: userData.rol,
+            finalizadaTarea: "true",
+            tipoUsuario: userData.tipoUsuario,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        console.log("User updated:", response.data);
+
+        // localStorage.clear();
+      } catch (error) {
+        console.error("Error updating user:", error);
+      }
+    }
+  };
+
+  const handleClick = () => {
+    updateState();
+  };
+
   return (
-    <><Header></Header>
+    <>
       <div className="info_juegoAntropologo">
         <h1 className="info_juegoAntropologoTitulo">Descifra las palabras</h1>
         <p className="centrarParrafo">
@@ -265,7 +336,11 @@ function Bloqueo(props) {
             Continuar
           </button>
         ) : (
-          <Link to={`/juego/`} className="btnContinuar btnAntropologo">
+          <Link
+            to={`/juego/`}
+            className="btnContinuar btnAntropologo"
+            onClick={handleClick}
+          >
             Continuar
           </Link>
         )}
@@ -275,7 +350,7 @@ function Bloqueo(props) {
 }
 
 function Anagrama(props) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState(false); // Estado para controlar si se muestra el mensaje de error
 
   const luckimg = props.isLock;
@@ -342,51 +417,51 @@ function Anagrama(props) {
     const tamaño = validChars.length === userInput.length;
 
     // Verificar si userInput contiene caracteres no válidos
-    if (userInput.split('').every(char => validChars.includes(char))) {
+    if (userInput.split("").every((char) => validChars.includes(char))) {
       setInputValue(userInput);
       setError(false); // No hay error, así que establecemos el estado de error en falso
       if (tamaño && validChars === userInput) {
-        event.target.classList.add('input-success');
+        event.target.classList.add("input-success");
         SonidoCorecto();
         // Remover la clase después de un tiempo para que el efecto se repita
         setTimeout(() => {
-          event.target.classList.remove('input-success');
+          event.target.classList.remove("input-success");
         }, 2000); // 2 segundos
-
       } else if (tamaño) {
-        event.target.classList.add('error-animation');
+        event.target.classList.add("error-animation");
         SonidoIncorecto();
         setTimeout(() => {
-          event.target.classList.remove('error-animation');
+          event.target.classList.remove("error-animation");
           event.target.value = "";
         }, 600); // 0.5 segundos
-
       }
     } else {
       setError(true); // Hay caracteres no válidos, establecemos el estado de error en verdadero
       // Agregar clase para la animación de error
-
     }
   };
 
-
-
-
-
   return (
     <div className="contenedorAcronimo">
-
       <div>
         {luckimg ? (
-          <h4 className={error ? 'textoAcronimo rojo' : 'textoAcronimo verde'}>
+          <h4 className={error ? "textoAcronimo rojo" : "textoAcronimo verde"}>
             {props.palabra}
           </h4>
         ) : (
           <img src={bloqueoIMG} alt="Imagen" />
         )}
       </div>
-      <input className="input_acronimo" value={inputValue} onChange={handleChange} />
-      {error && <p className="mensajeError">Ingresa solo los caracteres del anagrama.</p>}
+      <input
+        className="input_acronimo"
+        value={inputValue}
+        onChange={handleChange}
+      />
+      {error && (
+        <p className="mensajeError">
+          Ingresa solo los caracteres del anagrama.
+        </p>
+      )}
     </div>
   );
 }

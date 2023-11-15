@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+
 import Board from "./Board/Board.js";
 import { Link } from "react-router-dom";
 import { Header } from "../Header";
@@ -41,42 +44,39 @@ import dosniso from "./anagramas/dosniso.png";
 import zaspie from "./anagramas/zaspie.png";
 import batosil from "./anagramas/batosil.png";
 
+import { Traductor } from "./index.js";
+
+import off from "./switch/off.png";
+import { simbolos } from "../rolesdata.js";
+
+import { Contexto } from "../Contexto";
+import { Acumulador } from "./Acumulador";
+
 import useSound from 'use-sound';
 import tap from './audios/sonidotab.mp3';
 import pierdenSonido from './audios/sonidoincorrecto.mp3';
 import gananSonido from './audios/sonido.exito.pares2.mp3';
 
-import { useMyContext } from "../SeleccionCargando/MyContext";
-import { Traductor } from "./index.js";
-import off from "./switch/off.png";
-import { simbolos } from "../rolesdata.js";
-import { Contexto } from "../Contexto";
-import { Acumulador } from "./Acumulador";
-import { TablaPuntuacion } from "../TablaPuntuacion/index.js";
-import { useNavigate } from "react-router-dom";
+// Agrega más imágenes según la cantidad de elementos en tu array original
 
 const Minijuego = (props) => {
-  const navigate = useNavigate();
+  const [shuffledMemoBlocks, setShuffledMemoBlocks] = React.useState([]);
+  const [selectedMemoBlock, setselectedMemoBlock] = React.useState(null);
+  const [animating, setAnimating] = React.useState(false);
+  const [btnSlide, setBtnSlide] = React.useState(false);
 
-  const [shuffledMemoBlocks, setShuffledMemoBlocks] = useState([]);
-  const [selectedMemoBlock, setselectedMemoBlock] = useState(null);
-  const [animating, setAnimating] = useState(false);
-  const [btnSlide, setBtnSlide] = useState(false);
   const [encontrados, setEncontrados] = useState([false, false, false, false]);
 
   const [symbols, setSymbols] = useState([]);
-  const [imageList, setImageList] = useState([]);
+
+  const [imageList, setImageList] = useState([]); // Initialize imageList as an empty array
+
   const [esinterpretado1, setEsInterpretado1] = useState(false);
   const [esinterpretado2, setEsInterpretado2] = useState(false);
   const [esinterpretado3, setEsInterpretado3] = useState(false);
   const [esinterpretado4, setEsInterpretado4] = useState(false);
-  const [showModal, setShowModal] = useState(true);
-  const [modalClosed, setModalClosed] = useState(false);
-  const [showSecondModal, setShowSecondModal] = useState(false);
-  const [secondModalClosed, setSecondModalClosed] = useState(false);
-  const [showThirdModal, setShowThirdModal] = useState(false);
-  const [thirdModalClosed, setThirdModalClosed] = useState(false);
   const [activeRoomCode, setActiveRoomCode] = useState("");
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     _id: "",
@@ -160,7 +160,9 @@ const Minijuego = (props) => {
 
   const getCurrentRoom = async () => {
     try {
-      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
+      const response = await axios.get(
+        "https://testdeploy-production-9d97.up.railway.app/roomCode"
+      );
       const currentRoomArray = response.data;
 
       if (currentRoomArray && currentRoomArray.length > 0) {
@@ -189,7 +191,9 @@ const Minijuego = (props) => {
 
   const findNFilterUsers = async (roomCode) => {
     try {
-      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/users");
+      const response = await axios.get(
+        "https://testdeploy-production-9d97.up.railway.app/users"
+      );
       const users = response.data;
       const matchedUsers = users.filter((u) => u.codigoSala === roomCode);
 
@@ -233,54 +237,20 @@ const Minijuego = (props) => {
     }
   };
 
-
-  useEffect(() => {
-    if (modalClosed) {
-      setShowModal(false);
-    }
-  }, [modalClosed]);
-
-  function closeModal() {
-    setModalClosed(true);
-  }
-
-
-  function closeSecondModal() {
-    setSecondModalClosed(true);
-  }
-
-  useEffect(() => {
-    if (secondModalClosed) {
-      setSecondModalClosed(false);
-    }
-  }, [secondModalClosed]);
-
-  function closeThirdModal() {
-    setThirdModalClosed(true);
-  }
-
-  useEffect(() => {
-    if (thirdModalClosed) {
-      setThirdModalClosed(false);
-    }
-  }, [thirdModalClosed]);
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchSymbols();
-
       console.log(encontrados);
-    }, 10000);
+    }, 10000); // Check every 10 seconds
 
-
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId); // Clear the interval on unmount
   }, []);
 
   const fetchSymbols = async () => {
     try {
-      const response = await axios.get("https://testdeploy-production-9d97.up.railway.app/roomCode");
-      console.log("Full Response:", response.data);
-      const symbols = response.data[0].huaqueroSymbols;
+      const response = await axios.get("/roomCode"); // Replace with the correct API endpoint
+      console.log("Full Response:", response.data); // Log entire response
+      const symbols = response.data[0].huaqueroSymbols; // Assuming the symbols are stored in an array inside the response
       const newEncontrados = [false, false, false, false];
       symbols.forEach((symbol, index) => {
         if (symbol.found) {
@@ -290,11 +260,12 @@ const Minijuego = (props) => {
       setEncontrados(newEncontrados);
     } catch (error) {
       console.error("Error fetching symbols:", error);
+      return [];
     }
   };
 
   useEffect(() => {
-    buscarUbicaciones(props.historia);
+    buscarUbicaciones(props.historia); // Update imageList based on props.historia
   }, [props.historia]);
 
   function buscarUbicaciones(aux) {
@@ -309,7 +280,7 @@ const Minijuego = (props) => {
         simbolo5,
         simbolo6,
         simbolo7,
-        simbolo8,
+        simbolo8 /* Add more images */,
       ];
     } else if (aux === 2) {
       newImageList = [
@@ -359,7 +330,7 @@ const Minijuego = (props) => {
         flipped: false,
       }))
     );
-  }, [imageList]);
+  }, [imageList]); // Update shuffledMemoBlocks when imageList changes
 
   const shuffleArray = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
@@ -372,7 +343,6 @@ const Minijuego = (props) => {
   const cambiarComponenteInterprete = () => {
     setBtnSlide(!btnSlide);
   };
-
   const [anagramas, setAnagramas] = useState([]);
 
   useEffect(() => {
@@ -395,23 +365,27 @@ const Minijuego = (props) => {
     } else {
       console.warn("Unhandled history case: ", historia);
     }
-
     setAnagramas(nuevosAnagramas);
   }
-
   const cambiarEstados = (positionInImageList) => {
-    let aux;
-
-    if (positionInImageList === 0) {
-      aux = esinterpretado1;
-    } else if (positionInImageList === 1) {
-      aux = esinterpretado2;
-    } else if (positionInImageList === 2) {
-      aux = esinterpretado3;
-    } else if (positionInImageList === 3) {
-      aux = esinterpretado4;
+    if (positionInImageList < 4) {
+      switch (positionInImageList) {
+        case 0:
+          setEsInterpretado1(true);
+          break;
+        case 1:
+          setEsInterpretado2(true);
+          break;
+        case 2:
+          setEsInterpretado3(true);
+          break;
+        case 3:
+          setEsInterpretado4(true);
+          break;
+        default:
+          break;
+      }
     }
-    return aux;
   };
 
   const handleMemoClick = (memoBlock) => {
@@ -419,67 +393,50 @@ const Minijuego = (props) => {
     let shuffledMemoBlocksCopy = [...shuffledMemoBlocks];
     shuffledMemoBlocksCopy.splice(memoBlock.index, 1, flippedMemoBlock);
     setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+
     if (selectedMemoBlock === null) {
       setselectedMemoBlock(memoBlock);
-
-
     } else if (selectedMemoBlock.image === memoBlock.image) {
       console.log(
         `¡Las parejas coinciden! Son: ${JSON.stringify(
           selectedMemoBlock
         )} y ${JSON.stringify(memoBlock)}`
       );
+
       const positionInImageList = imageList.indexOf(selectedMemoBlock.image);
+
       console.log(positionInImageList);
 
-
-      if (positionInImageList < 4) {
-        if (encontrados[positionInImageList]) {
-          cambiarEstados(positionInImageList);
-          sonidoGanan();
-        } else {
-          setShowThirdModal(true);
-          setShowSecondModal(false);
-        }
+      if (positionInImageList < 4 && encontrados[positionInImageList]) {
+        cambiarEstados(positionInImageList);
+        sonidoGanan();
       }
+
       if (positionInImageList === 0 && encontrados[positionInImageList]) {
         setselectedMemoBlock(null);
-
       } else if (
         !imageList.slice(0, 4).includes(selectedMemoBlock.image) ||
         !encontrados[positionInImageList]
       ) {
-        if (!encontrados[positionInImageList]) {
-          setAnimating(true);
-          setTimeout(() => {
-            shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
-            shuffledMemoBlocksCopy.splice(
-              selectedMemoBlock.index,
-              1,
-              selectedMemoBlock
-            );
-            setShuffledMemoBlocks(shuffledMemoBlocksCopy);
-            setselectedMemoBlock(null);
-            setAnimating(false);
-
-
-          }, 1000);
-        } else {
-
-        }
-        if (!imageList.slice(0, 4).includes(selectedMemoBlock.image)) {
-          setShowSecondModal(true);
-        }
+        // audio.play();
+        setAnimating(true);
+        setTimeout(() => {
+          shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
+          shuffledMemoBlocksCopy.splice(
+            selectedMemoBlock.index,
+            1,
+            selectedMemoBlock
+          );
+          setShuffledMemoBlocks(shuffledMemoBlocksCopy);
+          setselectedMemoBlock(null);
+          setAnimating(false);
+        }, 1000);
       } else {
         setselectedMemoBlock(null);
-
       }
-
-
-
     } else {
-
       setAnimating(true);
+
       setTimeout(() => {
         shuffledMemoBlocksCopy.splice(memoBlock.index, 1, memoBlock);
         shuffledMemoBlocksCopy.splice(
@@ -491,7 +448,6 @@ const Minijuego = (props) => {
         setselectedMemoBlock(null);
         setAnimating(false);
         sonidoPierden();
-
       }, 1000);
     }
   };
@@ -512,8 +468,6 @@ const Minijuego = (props) => {
   };
 
 
-  const [audio] = useState(new Audio('ruta_del_sonido.mp3')); // Reemplaza 'ruta_del_sonido.mp3' con la ruta correcta de tu archivo de sonido
-
   const [playSound] = useSound(tap);
   const [sonidoPierden] = useSound(pierdenSonido);
   const [sonidoGanan] = useSound(gananSonido);
@@ -521,51 +475,12 @@ const Minijuego = (props) => {
 
   return (
     <>
-      <Header></Header>
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModal}>
-              &times;
-            </span>
-            <p>
-              Espera a que el huaquero encuentre los símbolos misteriosos. Ten
-              cuidado si descubres símbolos diferentes, perderás tiempo.
-            </p>
-          </div>
-        </div>
-      )}
-      {showSecondModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setShowSecondModal(false)}>
-              &times;
-            </span>
-
-            <p>¡Ups! Este símbolo no pertenece a la historia. Perderás x minutos.</p>
-
-          </div>
-        </div>
-      )}
-      {showThirdModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setShowThirdModal(false)}>
-              &times;
-            </span>
-
-            <p>Este símbolo aun no ha sido encontrado por el huaquero, tendrás que esperar</p>
-
-          </div>
-        </div>
-      )}
       <Contexto
         titulo="Descubre los símbolos"
         parrafo="Ten cuidado, si descubres símbolos diferentes a los que el Huaquero te mostró, perderás los que has descubierto"
       ></Contexto>
       <div className="fondoAmarillo">
         <div className="contentMinijuego">
-
           <button
             className="btnInterpreteSlide"
             onClick={cambiarComponenteInterprete}
@@ -576,9 +491,7 @@ const Minijuego = (props) => {
               <img src={on} alt="logo de Guia" />
             )}
           </button>
-
           <button className="ContTraduccion sonido" onClick={playSound}>
-
             {btnSlide ? (
               anagramas.map((simbolo, index) => (
                 <Traductor
@@ -596,9 +509,7 @@ const Minijuego = (props) => {
                 handleMemoClick={handleMemoClick}
               />
             )}
-
           </button>
-
         </div>
       </div>
 
